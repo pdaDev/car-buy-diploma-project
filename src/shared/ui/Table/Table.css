@@ -1,0 +1,29 @@
+
+.table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 500px;
+    border-radius: 1rem;
+}
+
+thead tr {
+    background: #FFFADD;
+}
+
+th, td {
+    border-bottom: 1px solid black;
+    padding: 4px 8px;
+}
+
+tbody {
+    text-align: center;
+    background: rgba(192, 192, 192, 0.2);
+}
+
+tbody tr {
+    cursor: pointer;
+}
+
+tbody td {
+
+}
