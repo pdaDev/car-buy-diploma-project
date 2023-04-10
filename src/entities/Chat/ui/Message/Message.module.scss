@@ -1,0 +1,78 @@
+@import 'src/app/index';
+
+.message {
+  border-radius: var(--brd-radius-1);
+  padding: var(--space-3);
+  width: 100%;
+  max-width: 200px;
+
+  p {
+    margin: 0;
+    text-wrap: normal;
+  }
+
+  .check_marks_wrapper {
+    position: relative;
+    width: 15px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .check_mark {
+      width: 20px;
+      height: 20px;
+      position: relative;
+
+      & > svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      path {
+        stroke-width: 3px;
+        fill: none;
+        stroke-dasharray: 2566;
+        stroke-linecap: round;
+      }
+
+      .active_check_mark {
+        z-index: 2;
+
+        path {
+          stroke: #1ea7fd;
+
+          @keyframes done {
+            from {
+              stroke-dashoffset: -200;
+            }
+            to {
+              stroke-dashoffset: 0;
+            }
+          }
+
+          animation: done 1s forwards;
+        }
+      }
+
+      .background_check_mark {
+        path {
+          stroke: var(--clr-grey-1);
+        }
+      }
+    }
+  }
+
+
+  &.type {
+    &_me {
+      background: var(--clr-primary)
+    }
+
+    &_opponent {
+      background: var(--clr-secondary);
+    }
+  }
+
+}

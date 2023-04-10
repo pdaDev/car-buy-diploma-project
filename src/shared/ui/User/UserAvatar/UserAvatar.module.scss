@@ -1,0 +1,25 @@
+@import '../../../../app/index';
+
+.user_avatar {
+  border-radius: 50%;
+  background: var(--clr-primary-light);
+  overflow: hidden;
+  @extend %loading;
+
+  &.size {
+    &_small {
+      height: 16px;
+      width: 16px;
+    }
+
+    &_medium {
+      height: 36px;
+      width: 36px;
+    }
+
+    &_large {
+      height: 48px;
+      width: 48px;
+    }
+  }
+}

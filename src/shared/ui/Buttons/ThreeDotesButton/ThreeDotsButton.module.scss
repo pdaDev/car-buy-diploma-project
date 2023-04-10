@@ -1,0 +1,46 @@
+@import '../../../../app/index';
+
+.dotes_button {
+  font-weight: var(--fnt-weight-semi-bold);
+  @extend %pos-flex-center;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  font-size: 28px;
+
+  img {
+    width: 50%;
+    height: 50%;
+  }
+
+  &.size {
+    &_small {
+      width: 24px;
+      height: 24px;
+    }
+
+    &_medium {
+      width: 36px;
+      height: 36px;
+    }
+
+    &_large {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &.color {
+    &_primary {
+      background: var(--clr-primary);
+    }
+
+    &_secondary {
+      background: var(--clr-primary-light);
+    }
+  }
+}

@@ -1,0 +1,143 @@
+@import "src/app/index";
+
+.price_wrapper {
+  background: var(--clr-primary);
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-3);
+  box-sizing: border-box;
+  @extend %loading;
+  &[data-loading=true] {
+    width: 120px;
+  }
+  margin: var(--space-4) 0;
+  text-align: center;
+  border-radius: var(--brd-radius-1);
+
+  &.small_card {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.advertisement {
+  box-sizing: border-box;
+  position: relative;
+  border-radius: var(--brd-radius-2);
+  background: var(--clr-secondary);
+
+  &.type{
+    &_large {
+      width: 100%;
+      display: flex;
+      max-width: 1000px;
+      padding: var(--space-3);
+      justify-content: space-between;
+    }
+
+    &_small {
+      width: 220px;
+      display: inline-grid;
+      flex-direction: column;
+      gap: var(--space-3);
+      overflow: hidden;
+      box-shadow: var(--shadow-2);
+    }
+  }
+
+  .content_wrapper {
+    padding: var(--space-3);
+    padding-top: 0;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .image_wrapper {
+    &.type {
+      &_large {
+        margin-right: 16px;
+        width: 150px;
+        height: 150px;
+      }
+
+      &_small {
+        width: 220px;
+        height: 200px;
+      }
+    }
+
+  }
+
+  .data_wrapper {
+    padding-top: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .extra_data_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .favourite_button {
+    position: absolute;
+    transition: .2s;
+
+    &.type {
+      &_large {
+        top: 0;
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(50%, -50%);
+      }
+
+      &_small {
+        width: 0;
+        height: 0;
+        display: flex;
+        top: -5px;
+        right: -5px;
+        padding: 6px 4px 0 0;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: var(--clr-secondary);
+      }
+    }
+  }
+  .management_panel {
+    position: absolute;
+    right: -8px;
+    top: 0;
+    transition: .3s;
+    z-index: -1;
+  }
+
+  &:hover .management_panel{
+    right: -48px;
+  }
+
+  &:hover .favourite_button {
+    &.type {
+      &_small {
+        width: 40px;
+        //transform: translate(10%, -10%);
+        box-sizing: border-box;
+        height: 40px;
+      }
+
+      &_large {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+  }
+}

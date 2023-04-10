@@ -1,0 +1,52 @@
+@import 'src/app/index';
+
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+
+
+  input {
+    width: 100%;
+    padding: 8px;
+    font-weight: var(--fnt-weight-medium);
+    font-size: var(--fnt-size-3);
+    background: var(--clr-grey-light);
+    color: black;
+    outline: none;
+    border-radius: var(--brd-radius-1);
+    box-sizing: border-box;
+    border: 2px solid transparent;
+
+    &:-moz-placeholder {
+      color: var(--clr-grey-1);
+    }
+  }
+
+  .label_wrapper {
+    font-weight: var(--fnt-weight-regular);
+    color: var(--clr-grey-1);
+    margin-bottom: var(--space-1);
+    margin-left: var(--space-3);
+  }
+
+  .error_wrapper {
+    width: 100%;
+    margin-top: var(--space-1);
+    text-align: center;
+    font-size: 12px;
+  }
+
+  &.has_error {
+    font-weight: var(--fnt-weight-regular);
+
+    input {
+      border-color: red;
+    }
+
+    color: red;
+  }
+
+  @extend %width;
+  @extend %size;
+}

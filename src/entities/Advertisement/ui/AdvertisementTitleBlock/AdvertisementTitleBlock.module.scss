@@ -1,0 +1,33 @@
+@import 'src/app/index';
+
+.title_block_wrapper {
+  display: flex;
+  justify-content: space-between;
+  border-radius: var(--brd-radius-2);
+  box-shadow: var(--shadow-2);
+  background: var(--clr-secondary);
+  align-items: center;
+  position: relative;
+  padding: var(--space-3) var(--space-4);
+  @extend %loading;
+}
+
+.name_wrapper {
+  display: flex;
+  gap: var(--space-2);
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.fav_button_wrapper {
+  position: absolute;
+  right: 0;
+  //box-shadow: var(--shadow-2);
+  top: 0;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: var(--shadow-1);
+  background: transparent;
+  transform: translate(50%, -50%);
+}

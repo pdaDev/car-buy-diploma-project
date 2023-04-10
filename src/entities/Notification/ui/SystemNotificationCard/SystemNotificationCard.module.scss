@@ -1,0 +1,31 @@
+@import "src/app/index";
+
+.notification_wrapper {
+  width: 100%;
+  max-width: 400px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  overflow: hidden;
+  border: 4px solid black;
+  box-sizing: border-box;
+  background: var(--clr-secondary);
+  border-radius: var(--brd-radius-2);
+  position: relative;
+
+  &.type {
+    &_success {
+      border-color: var(--clr-success);
+    }
+
+    &_error {
+      border-color: var(--clr-error);
+    }
+
+    &_warning {
+      border-color: var(--clr-warning);
+    }
+  }
+}
+

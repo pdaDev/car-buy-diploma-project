@@ -1,0 +1,10 @@
+@import "src/app/index";
+
+.desctiption_block {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--clr-secondary);
+  border-radius: var(--brd-radius-2);
+  flex-direction: column;
+}

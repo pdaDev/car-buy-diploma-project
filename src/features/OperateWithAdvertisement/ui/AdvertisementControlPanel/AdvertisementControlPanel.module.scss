@@ -1,0 +1,43 @@
+@import "src/app/index";
+
+.wrapper {
+  background: var(--clr-secondary);
+  @extend %loading;
+  border-radius: var(--brd-radius-2);
+  display: flex;
+  box-sizing: border-box;
+  height: auto;
+  justify-content: flex-end;
+  &[data-loading=true] {
+    height: 24px;
+  }
+
+  .edit, .delete {
+    border-radius: var(--brd-radius-2);
+    display: flex;
+    justify-content: center;
+    font-size: var(--fnt-size-4);
+    gap: var(--space-3);
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 56px;
+    padding: var(--space-3) var(--space-5);
+  }
+
+  .edit {
+    background: var(--clr-primary-light);
+    -moz-border-radius-bottomright: 0;
+    -moz-border-radius-topright: 0;
+    z-index: 1;
+    transform: translate(16px);
+  }
+
+  .delete {
+    z-index: 2;
+    background: var(--clr-primary);
+  }
+
+}
+

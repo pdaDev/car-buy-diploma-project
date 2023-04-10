@@ -1,0 +1,14 @@
+@import "variables";
+@import "templates";
+
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--clr-background);
+  font-family: "Inter", serif;
+}
+
+button {
+  outline: none;
+  border: none;
+}

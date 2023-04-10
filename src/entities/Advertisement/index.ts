@@ -1,0 +1,7 @@
+export { AdvertisementCard } from './ui/AdvertisementCard/AdvertisementCard'
+export { AdvertisementTitleBlock } from './ui/AdvertisementTitleBlock/AdvertisementTitleBlock'
+export { AdvertisementCarPropsBlock } from './ui/AdvertisementCarPropsBlock/AdvertisementCarPropsBlock'
+export { AdvertisementDescriptionBLock } from './ui/AdvertisementDescriptionBlock/AdvertisementDescriptionBlock'
+export { advertisementAPI } from './api/queryAPI'
+export * as NS from './namespace'
+export * from './api'

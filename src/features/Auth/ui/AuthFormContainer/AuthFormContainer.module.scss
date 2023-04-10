@@ -1,0 +1,7 @@
+@import 'src/app/index';
+
+.label_wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}

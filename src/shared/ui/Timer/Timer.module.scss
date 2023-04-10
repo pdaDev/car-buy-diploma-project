@@ -1,0 +1,32 @@
+@import 'src/app/index';
+
+
+.timer_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+
+  .timer_value_wrapper {
+
+  }
+
+  .timer_line, .timer {
+    height: var(--space-2);
+    border-radius: 10px;
+  }
+
+  .timer_line {
+    width: 100%;
+    background: var(--clr-grey-1);
+    position: relative;
+  }
+
+  .timer {
+    background: var(--clr-primary);
+    position: absolute;
+    left: 0;
+    transition: .3s;
+    top: 0
+  }
+}

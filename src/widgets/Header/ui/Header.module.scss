@@ -1,0 +1,29 @@
+@import "src/app/index";
+
+.header {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  &[data-transparent=false] {
+    box-shadow: var(--shadow-1);
+    background: var(--clr-secondary);
+  }
+
+  .buttons_line_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+}
+
+.geo_wrapper {
+
+}
+.header_wrapper {
+  width: 100%;
+}

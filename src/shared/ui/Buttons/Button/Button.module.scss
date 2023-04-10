@@ -1,0 +1,59 @@
+@import 'src/app/index';
+
+.wrapper {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  z-index: 1;
+  border-radius: var(--border-1);
+  padding: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  @extend %size;
+  font-weight: var(--fnt-weight-medium);
+}
+
+.type {
+  &_primary {
+    color: var(--clr-fnt-black);
+    background: var(--clr-primary);
+  }
+
+  &_secondary {
+    color: var(--clr-fnt-black);
+    background: var(--clr-primary-light);
+  }
+}
+
+
+
+.width {
+  &_auto {
+    width: auto;
+  }
+
+  &_full {
+    width: 100%;
+  }
+}
+
+.color {
+  &_primary {
+    background: var(--clr-primary);
+  }
+
+  &_secondary {
+    background: var(--clr-primary-light);
+  }
+
+  &_vk {
+    background: #0277ff;
+  }
+
+  &_google {
+    background: #dc4c39;
+  }
+}

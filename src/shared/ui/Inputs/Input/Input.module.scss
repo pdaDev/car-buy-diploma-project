@@ -1,0 +1,33 @@
+@import "../../../../app/index";
+
+
+.input_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  input {
+    width: 100%;
+    padding: 8px;
+    background: var(--clr-grey-light);
+    color: black;
+    outline: none;
+    border-radius: var(--brd-radius-1);
+    box-sizing: border-box;
+    border: 2px solid transparent;
+
+    &:-moz-placeholder {
+      color: var(--clr-grey-1);
+    }
+  }
+
+  &.has_error {
+    input {
+      border-color: red;
+    }
+
+    color: red;
+  }
+
+  @extend %width;
+}

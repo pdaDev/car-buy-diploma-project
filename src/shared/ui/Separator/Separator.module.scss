@@ -1,0 +1,55 @@
+@import 'src/app/index';
+
+.separator_wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  &.thickness {
+    &_thin {
+      .separator {
+        height: var(--space-1);
+      }
+
+      .text_wrapper {
+        font-weight: var(--fnt-weight-regular);
+      }
+    }
+
+    &_medium {
+      .separator {
+        height: var(--space-2);
+      }
+
+      .text_wrapper {
+        font-weight: var(--fnt-weight-medium);
+      }
+    }
+
+    &_thick {
+      .separator {
+        height: var(--space-3);
+      }
+
+      .text_wrapper {
+        font-weight: var(--fnt-weight-bold);
+      }
+    }
+  }
+
+  .text_wrapper {
+    flex-grow: 0;
+    color: var(--clr-grey-1);
+    text-wrap: none;
+  }
+
+  .separator {
+    border-radius: 20px;
+    background: var(--clr-grey-1);
+    flex-grow: 1;
+    margin: 0 var(--space-2);
+  }
+}
+
+

@@ -1,0 +1,38 @@
+.ui_settings {
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  background: var(--clr-background);
+  width: 100%;
+  transition: .3s;
+  position: relative;
+
+  .setting_content {
+    display: flex;
+    gap: 16px;
+    background: var(--clr-secondary);
+    border-radius: var(--brd-radius-1);
+    padding: 8px;
+  }
+
+  .setting_option {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &.enter {
+    max-height: 0;
+    padding: 0;
+  }
+
+  &.enter_active {
+    max-height: 400px;
+    padding: 8px;
+  }
+
+  &.exit_active {
+    max-height: 0;
+    padding: 0;
+  }
+}

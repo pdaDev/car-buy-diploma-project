@@ -1,0 +1,6 @@
+export { UserAvatar } from '../../shared/ui/User/UserAvatar/UserAvatar'
+export { UserNickname } from '../../shared/ui/User/UserNickname/UserNickname'
+export * from './model'
+export * from './namespace'
+export * from './lib'
+export {ProfileAvatar} from './ui/ProfileAvatar/ProfileAvatar'

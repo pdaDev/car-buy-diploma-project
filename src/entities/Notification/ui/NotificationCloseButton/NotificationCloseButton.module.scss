@@ -1,0 +1,20 @@
+@import 'src/app/index';
+
+.close_button {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  font-size: 28px;
+  padding-bottom: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--brd-radius-1);
+  background: var(--clr-grey-light);
+  color: var(--clr-grey-1);
+}

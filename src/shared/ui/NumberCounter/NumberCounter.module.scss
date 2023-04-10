@@ -1,0 +1,27 @@
+.number_counter {
+  border-radius: var(--brd-radius-1);
+  display: inline-flex;
+  background: var(--clr-secondary);
+  overflow: hidden;
+  height: auto;
+
+  .current_wrapper, .total_wrapper {
+    padding: 8px 0;
+  }
+
+  .total_wrapper {
+    color: var(--clr-secondary);
+    clip-path: polygon(36% 0, 100% 0, 100% 100%, 0% 100%);
+    background: var(--clr-primary);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .current_wrapper {
+    padding-left: 16px;
+    padding-right: 8px;
+    color: var(--clr-primary)
+  }
+
+
+}

@@ -3,34 +3,85 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mdi/js": "^7.1.96",
+    "@mdi/react": "^1.6.1",
+    "@reduxjs/toolkit": "^1.9.2",
+    "@storybook/addon-essentials": "^7.0.0-beta.53",
+    "@storybook/addon-interactions": "^7.0.0-beta.53",
+    "@storybook/addon-links": "^7.0.0-beta.53",
+    "@storybook/addon-viewport": "^7.0.0-beta.53",
+    "@storybook/blocks": "^7.0.0-alpha.8",
+    "@storybook/cli": "^7.0.0-beta.53",
+    "@storybook/preset-create-react-app": "^7.0.0-beta.53",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^7.0.0-beta.53",
+    "@storybook/react-webpack5": "^7.0.0-beta.53",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.10",
     "@types/react": "^18.0.26",
+    "@types/react-css-modules": "^4.6.4",
     "@types/react-dom": "^18.0.9",
+    "@types/react-i18next": "^8.1.0",
+    "@types/react-redux": "^7.1.25",
+    "@types/react-transition-group": "^4.4.5",
+    "@types/redux": "^3.6.0",
+    "@types/styled-components": "^5.1.26",
     "axios": "^1.3.2",
+    "classnames": "^2.3.2",
+    "i18next": "^22.4.10",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.2.0",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.5",
+    "react-i18next": "^12.2.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
-    "storybook": "^6.5.16",
+    "react-transition-group": "^4.4.5",
+    "redux": "^4.2.1",
+    "storybook": "^7.0.0-beta.53",
     "styled-components": "^5.3.6",
     "typescript": "^4.9.4",
+    "typescript-plugin-css-modules": "^4.2.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sb": "storybook dev -p 6006 -s public",
+    "construct": "node structure-config/index.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      },
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -46,6 +97,13 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.58.0"
+    "@storybook/testing-library": "^0.0.13",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "file-structure-builder": "^1.0.3",
+    "i": "^0.3.7",
+    "npm": "^9.5.1",
+    "prop-types": "^15.8.1",
+    "sass": "^1.58.0",
+    "webpack": "^5.75.0"
   }
 }

@@ -1,0 +1,41 @@
+@import 'src/app/index';
+
+.images {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 70%;
+  padding: var(--space-4);
+
+  img {
+    width: 100%;
+    display: inline-block;
+    height: auto;
+  }
+}
+
+.navigation {
+  position: fixed;
+  top: 50%;
+  height: 100%;
+  max-height: 800px;
+  right: 30px;
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: column;
+  gap: 4px;
+  transform: translate(-50%);
+
+  &_item {
+    width: 50px;
+    cursor: pointer;
+    height: available;
+    filter: brightness(60%);
+
+    &.active {
+      filter: none;
+    }
+  }
+}

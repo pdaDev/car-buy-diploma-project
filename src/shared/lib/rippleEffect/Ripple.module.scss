@@ -1,0 +1,22 @@
+@keyframes ripple-effect {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0.8;
+  }
+  to {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: absolute;
+  z-index: 100;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple-effect;
+  animation-duration: 1s;
+}

@@ -1,0 +1,11 @@
+@import 'src/app/index';
+
+.profile_avatar {
+  width: 150px;
+  height: 220px;
+  background: var(--clr-primary-light);
+  border-radius: var(--brd-radius-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,87 @@
+@import "src/app/index";
+
+.switcher {
+  display: inline-flex;
+  position: relative;
+  background: var(--clr-primary-light);
+
+  @extend %size;
+
+  .hidden_options {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .selected_value {
+    height: 100%;
+    position: absolute;
+    border-radius: var(--brd-radius-1);
+    z-index: 0;
+    transition: .3s;
+    background: var(--clr-primary);
+  }
+
+  .option {
+    padding: 8px 16px 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+    user-select: none
+  }
+
+  .options_wrapper {
+    display: inline-flex;
+
+    &.single_mode {
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      left: 0;
+    }
+  }
+
+  .multiple_option {
+    border-radius: var(--brd-radius-1);
+    position: relative;
+    transition: .2s;
+
+    &.active {
+      background: var(--clr-primary) !important;
+    }
+
+    &.has_left_option {
+      border-radius: 0 var(--brd-radius-1) var(--brd-radius-1) 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 70%;
+        width: 1px;
+        background: var(--clr-secondary);
+        border-radius: 0 var(--brd-radius-1) var(--brd-radius-1) 0;
+      }
+    }
+
+    &.has_right_option {
+     border-radius: var(--brd-radius-1) 0 0 var(--brd-radius-1);
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        height: 70%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        border-radius: var(--brd-radius-1) 0 0 var(--brd-radius-1);
+        background: var(--clr-secondary);
+      }
+
+      &.has_right_option.has_left_option {
+        border-radius: 0;
+      }
+    }
+  }
+}

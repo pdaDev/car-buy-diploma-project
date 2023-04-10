@@ -1,0 +1,37 @@
+@import "src/app/index";
+
+.circle {
+  transition: 1s;
+  stroke: var(--clr-primary);
+  transform: rotate(90deg);
+  transform-origin: center center;
+
+}
+.container {
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
+  &[data-zero-start='right'] {
+    .circle {
+      transform: rotate(0deg);
+    }
+  }
+  &[data-zero-start='top'] {
+    .circle {
+      transform: rotate(-90deg);
+    }
+  }
+  &[data-zero-start='left'] {
+    .circle {
+      transform: rotate(180deg);
+    }
+  }
+
+}
+.group {
+  position: relative;
+  transform-origin: center center;
+}
+.back_circle {
+  stroke: #D9D9D9
+}

@@ -1,0 +1,58 @@
+@import 'src/app/index';
+
+
+.tooltip {
+  width: 200px;
+  padding: var(--space-3);
+  box-sizing: border-box;
+  background: var(--clr-secondary);
+  border-radius: var(--brd-radius-1);
+  box-shadow: var(--shadow-2);
+  font-size: var(--fnt-size-2);
+  position: relative;
+  text-align: center;
+
+  &::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    background: var(--clr-secondary);
+    z-index: 10;
+    clip-path: polygon(50% 28%, 0% 100%, 100% 100%);
+  }
+
+  $def-tooltip-offset: -6px;
+
+  &.pos {
+    &:after {
+      top: 50%;
+      right: 0;
+      transform: translate(100%, -50%) rotate(90deg);
+    }
+  }
+
+  &_right {
+    &:after {
+      top: 50%;
+      left: 0;
+      transform: translate(-100%, -50%) rotate(-90deg);
+    }
+  }
+
+  &_down {
+    &:after {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
+  }
+
+  &_up {
+    &:after {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 100%) rotate(180deg);
+    }
+  }
+}

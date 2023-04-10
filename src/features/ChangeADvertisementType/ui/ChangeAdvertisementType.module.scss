@@ -1,0 +1,65 @@
+@import "src/app/index";
+
+.wrapper {
+  display: inline-flex;
+  width: auto;
+  padding: var(--space-2) var(--space-3);
+  gap: var(--space-2);
+
+  .large_card {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card_item {
+      width: 8px;
+      height: 4px;
+      border-collapse: collapse;
+      position: relative;
+      border-radius: 2px;
+      border: 1px solid var(--clr-grey-1);
+
+      .image {
+        position: absolute;
+        border-radius: 2px;
+        height: 100%;
+        width: 4px;
+        left: 0;
+        top: 0;
+        border: 1px solid var(--clr-grey-1);
+      }
+    }
+  }
+
+  .small_card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr 1fr;
+    padding: var(--space-1);
+    background: var(--clr-grey-light);
+
+    .card_item {
+      margin: 1px;
+      width: 4px;
+      height: 4px;
+      border-radius: 2px;
+      border: 1px solid var(--clr-grey-1);
+    }
+  }
+
+  .small_card, .large_card {
+    border-radius: 8px;
+    border: 1px solid var(--clr-grey-1);
+    transition: .2s;
+
+    &.active {
+      border-color: var(--clr-primary);
+    }
+
+    &:hover {
+      border-color: var(--clr-primary-light);
+    }
+  }
+}

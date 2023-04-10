@@ -1,0 +1,1 @@
+export { AdvertisementSlider } from './ui/AdvertisementSlider'

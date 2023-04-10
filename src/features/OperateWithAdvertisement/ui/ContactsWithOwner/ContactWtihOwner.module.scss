@@ -1,0 +1,40 @@
+@import "src/app/index";
+
+
+.wrapper {
+  display: flex;
+  background: var(--clr-secondary);
+  border-radius: var(--brd-radius-2);
+  justify-content: space-between;
+  box-sizing: border-box;
+  box-shadow: var(--shadow-2);
+
+  .write_message, .phone_number_wrapper {
+    border-radius: var(--brd-radius-2);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: var(--fnt-size-4);
+    flex-grow: 1;
+    align-items: center;
+    padding: 0 var(--space-5);
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .write_message {
+    background: var(--clr-primary-light);
+    -moz-border-radius-bottomright: 0;
+    -moz-border-radius-topright: 0;
+    z-index: 1;
+    transform: translate(20px);
+  }
+
+  .phone_number_wrapper {
+    z-index: 2;
+    background: var(--clr-primary);
+  }
+}
+
+
+

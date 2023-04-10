@@ -1,0 +1,30 @@
+{
+  "validators": {
+    "required": "RequiredField",
+    "max_length": "",
+    "min_length": "",
+    "email": "",
+    "has_digit": "",
+    "letter_upper_case": "",
+    "has_letters": "",
+    "has_special_symbols": "",
+    "only_english": "",
+    "only_russian": ""
+  },
+  "search": {
+    "label": "Find",
+    "base": "Base search",
+    "extended": "Extended search",
+    "advertisement": {
+      "new": "New",
+      "used": "Used",
+      "show": "Show advertisements"
+    },
+    "subject": {
+      "advertisement": "Advertisements",
+      "model": "Models"
+    },
+    "reset" : "Reset"
+  }
+
+}

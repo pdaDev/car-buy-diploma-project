@@ -1,0 +1,1 @@
+export { ConcreteModel } from './ui/ConcretModel'

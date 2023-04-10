@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
+    "plugins": [
+      { "name": "typescript-plugin-css-modules" }
+    ],
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": "src",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,6 +23,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
+  },
+  "typeAcquisition": {
+    "enable": true
   },
   "include": [
     "src"

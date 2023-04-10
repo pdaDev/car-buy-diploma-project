@@ -1,0 +1,29 @@
+@import 'src/app/index';
+
+.icon_wrapper {
+  margin-left: 8px;
+  position: relative;
+  height: 100%;
+  margin-right: 12px;
+  display: flex;align-items: center;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.count_of_favourites {
+  position: absolute;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  background: var(--clr-primary-light);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50%;
+  padding-bottom: 1px;
+  left: 72%;
+  top: 2px;
+}

@@ -1,0 +1,123 @@
+@import "src/app/index";
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  width: 48px;
+  box-sizing: border-box;
+  height: 48px;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  gap: 8px
+
+}
+
+.avatar_wrapper {
+  cursor: pointer;
+  padding: 4px;
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: var(--brd-radius-2);
+  background: var(--clr-secondary);
+  z-index: 4;
+  @extend %pos-absolute-center;
+
+  &:hover {
+    border-color: var(--clr-grey-light);
+  }
+
+  .avatar {
+    background: var(--clr-primary-light);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+  }
+}
+
+.name_wrapper {
+  height: 36px;
+  width: 140px;
+  text-wrap: normal;
+  display: flex;
+  transition: .2s;
+  align-items: center;
+  padding-right: 48px;
+}
+
+
+@mixin hide($d, $f) {
+  @keyframes h {
+    from {
+      display: $f;
+    }
+    to {
+      display: none;
+    }
+  }
+  animation: h;
+  animation-delay: $d;
+}
+
+@keyframes h {
+  from {
+    display: inline-block;
+  }
+  to {
+    visibility: hidden;
+    background: red;
+  }
+}
+
+.modal {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: var(--clr-secondary);
+  padding: 8px;
+  display: flex;
+  border-radius: var(--brd-radius-2);
+  flex-direction: column;
+  gap: 8px;
+  transition: 300ms;
+  box-shadow: var(--shadow-2);
+
+
+  &.enter {
+    width: 30px;
+    max-height: 30px;
+    transition: 300ms;
+  }
+
+  &.enter_active {
+    width: 150px;
+
+    display: inline-block;
+    max-height: 2000px;
+    transition: 300ms;
+  }
+
+
+  &.exit_active {
+    width: 30px;
+    max-height: 30px;
+    text-wrap: none;
+    transition: 300ms;
+
+    .name_wrapper {
+      opacity: 0;
+    }
+  }
+}
+

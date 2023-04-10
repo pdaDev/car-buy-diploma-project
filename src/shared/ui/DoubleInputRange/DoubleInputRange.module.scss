@@ -1,0 +1,43 @@
+@import "src/app/index";
+
+.wrapper {
+  box-sizing: border-box;
+
+  input {
+    box-sizing: border-box;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  & > div {
+    gap: 0;
+
+    div:first-child {
+      input  {
+        border: 2px solid black;
+        border-bottom-right-radius: 0 ;
+        border-top-right-radius: 0;
+        border-right-width: 1px;
+
+        &:focus {
+          border-color: var(--clr-primary-light);
+        }
+      }
+    }
+    div:last-child {
+      input {
+        border: 2px solid black;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left-width: 1px;
+
+        &:focus {
+          border-color: var(--clr-primary-light);
+        }
+      }
+    }
+  }
+}

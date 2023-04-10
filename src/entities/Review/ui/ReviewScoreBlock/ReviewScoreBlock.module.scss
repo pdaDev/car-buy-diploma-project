@@ -1,0 +1,36 @@
+@import 'src/app/index';
+
+.wrapper {
+  background: var(--clr-secondary);
+  padding: var(--space-4);
+  border-radius: var(--brd-radius-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.point_line {
+  position: relative;
+  height: var(--space-2);
+  width: 100%;
+  flex-grow: 1;
+
+  .line, .background_line {
+    position: absolute;
+    height: 6px;
+    border-radius: var(--space-3);
+    background: var(--clr-primary);
+    left: 0;
+    top: 0;
+  }
+
+  .line {
+    background: var(--clr-primary);
+    z-index: 3;
+  }
+
+  .background_line {
+    background: var(--clr-grey-1);
+    width: 100%;
+  }
+}

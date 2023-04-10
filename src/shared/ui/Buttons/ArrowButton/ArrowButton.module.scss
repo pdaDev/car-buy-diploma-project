@@ -1,0 +1,55 @@
+@import '../../../../app/index';
+
+.arrow_button_wrapper {
+  border-radius: var(--brd-radius-1);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  font-weight: var(--fnt-weight-bold);
+  box-sizing: border-box;
+
+  &:hover {
+    background: var(--clr-grey-light);
+  }
+
+  &:active {
+    background: var(--clr-grey-1);
+  }
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+  }
+
+  &.size {
+    &_small {
+      height: 20px;
+      width: 30px;
+    }
+
+    &_medium {
+
+    }
+
+    &_large {
+
+    }
+  }
+
+  &.direction {
+    &_up {
+      transform: rotate(-90deg);
+    }
+
+    &_down {
+      transform: rotate(90deg);
+    }
+
+    &_left {
+      transform: rotate(-180deg);
+    }
+  }
+}

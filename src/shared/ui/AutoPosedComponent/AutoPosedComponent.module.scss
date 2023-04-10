@@ -1,0 +1,49 @@
+@import 'src/app/index';
+
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  width: auto;
+}
+
+.component {
+  position: absolute;
+  width: auto;
+  display: inline-block;
+  opacity: 0;
+  visibility: hidden;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  $def-tooltip-offset: -6px;
+
+  &.pos {
+    &_left {
+      top: 50%;
+      left: $def-tooltip-offset;
+      transform: translate(-100%, -50%);
+    }
+
+    &_right {
+      top: 50%;
+      right: $def-tooltip-offset;
+      transform: translate(100%, -50%);
+    }
+
+    &_down {
+      bottom: $def-tooltip-offset;
+      left: 50%;
+      transform: translate(-50%, 100%);
+    }
+
+    &_up {
+      top: $def-tooltip-offset;
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
+  }
+}

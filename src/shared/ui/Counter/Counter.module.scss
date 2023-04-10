@@ -1,0 +1,29 @@
+.counter {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+
+  .el {
+    border-radius: 20px;
+    width: 50%;
+    cursor: pointer;
+    flex-grow: 1;
+    transition: .2s;
+    background: var(--clr-primary-light);
+
+    &.active {
+      background: var(--clr-primary);
+      flex-grow: 4;
+      width: 100%;
+    }
+
+    &.size_small {
+      height: 8px;
+    }
+  }
+}
+
+
+
