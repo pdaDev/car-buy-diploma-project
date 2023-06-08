@@ -32,7 +32,7 @@ export const Garage: FC = () => {
         {value: 'all', label: t("advertisement.all")},
         ...statusesOptions
     ]
-
+    //comment
     const {isLoading, data, refetch} = useGetMyAdsQuery()
     const [status, setStatus] = useState('all')
     useEffect(() => {
