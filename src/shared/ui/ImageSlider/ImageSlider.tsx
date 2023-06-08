@@ -19,6 +19,7 @@ import {Symbol} from "../Symbol/Symbol";
 interface IProps {
     images: string[]
     infinite?: boolean
+    loading?: boolean
     extra?: {
         button: ReactNode
     }
@@ -38,6 +39,7 @@ export const ImageSlider: FC<IProps> = ({
                                             onImageClick,
                                             infinite,
                                             counter = defaultCounter,
+                                            loading,
                                             extra,
                                             images
                                         }) => {
@@ -75,26 +77,30 @@ export const ImageSlider: FC<IProps> = ({
     }
     return <div className={s.wrap}>
         <div className={s.slider_wrapper}>
-            {images.length > 0 ? <Slider data={images}
-                                         countVisibleItems={1}
-                                         onPagination={setCurrentPage}
-                                         spacing={0}
-                                         infinite={true}
-                                         renderEl={(image: string) => <Image width={'580px'}
-                                                                             height={'400px'}
-                                                                             fit={'cover'}
-                                                                             src={image}
-                                                                             onClick={handleClick}
-                                                                             alt={''}
+            {
+                !loading &&  <>
+                    {images.length > 0 ? <Slider data={images}
+                                                 countVisibleItems={1}
+                                                 onPagination={setCurrentPage}
+                                                 spacing={0}
+                                                 infinite={true}
+                                                 renderEl={(image: string) => <Image width={'580px'}
+                                                                                     height={'400px'}
+                                                                                     fit={'cover'}
+                                                                                     src={image}
+                                                                                     onClick={handleClick}
+                                                                                     alt={''}
 
-                                         />}/>
-                : <Symbol content={t("advertisement.photo_empty")} color={'fnt-black'}/>
+                                                 />}/>
+                        : <Symbol content={t("advertisement.photo_empty")} color={'fnt-black'}/>
+                    }
+                </>
             }
         </div>
-        { extra && extra.button && <div className={s.extra_button}>
-            { extra.button }
-        </div> }
-        { <div className={cn(s.background_image, !hasImages && s.no_image)}>
+        {extra && extra.button && <div className={s.extra_button}>
+            {extra.button}
+        </div>}
+        {<div data-loading={loading} className={cn(s.background_image, !loading && !hasImages && s.no_image)}>
             {hasImages && <img src={images[currentPage]}/>}
         </div>}
         {<div className={s.counter_wrapper}>

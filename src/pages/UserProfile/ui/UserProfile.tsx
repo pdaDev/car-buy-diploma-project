@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {useAppDispatch, useAppSelector} from "../../../app/services";
 import {getAnotherUserProfileData, getUserName, selectors} from 'entities/User'
 import {useParams} from "react-router-dom";
@@ -11,6 +11,7 @@ export const UserProfile: FC = () => {
     const { id } = useParams()
     const data = useAppSelector(selectors.selectAnotherUser)
     const loading = useAppSelector(selectors.selectUserDataLoadingStatus)
+    const [loadingStatus, setLoadingStatus] = useState(true)
     const { t } = useTranslation()
 
     useEffect(() => {
@@ -20,13 +21,23 @@ export const UserProfile: FC = () => {
         }
     },[id])
 
+    useEffect(() => {
+        if (data.data.firstName && !loading) {
+            setLoadingStatus(false)
+        } else {
+            setLoadingStatus(true)
+        }
+    }, [data, loading])
+
     useTabTile(t("pages.profile") + getUserName('full', data.data.firstName, data.data.secondName), )
 
     return <Container max_w={'800px'}>
         <Stack spacing={4} size={'container'}>
-            <ProfileUserCard  type={'another'} {...data.data}/>
-            { data.advertisements.length > 0 &&  <AdvertisementsList data={data.advertisements}
-                                                                     loading={loading}
+            <ProfileUserCard  type={'another'}
+                              loading={loadingStatus}
+                              {...data.data}/>
+            { data && data.advertisements.length === 0 && !loadingStatus ? null :  <AdvertisementsList data={data.advertisements}
+                                                                     loading={loadingStatus}
                                                                      sort={{
                                                                          sortKeys: ['price', 'start_date'],
                                                                          withFrontSideSorting: true

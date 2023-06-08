@@ -15,14 +15,18 @@ export const useStartChat = (type: NS.ChatType, receiver?: IUserCommonData, adve
     const n = useAppNavigate()
     const getKey = () => {
         if (currentUserId) {
-            const key = combineChatId(currentUserId, type === 'support' ? ADMIN_USER_ID : receiver!.id, type === 'admin' ? 'support' : type, advertisementId, car?.generation.id)
+            if (type === 'sell' && !receiver && !advertisementId) {
+                return ''
+            } else {
+                const key = combineChatId(currentUserId, type === 'support' ? ADMIN_USER_ID : receiver!.id, type === 'admin' ? 'support' : type, advertisementId, car?.generation.id)
 
-            if (car && !chatCarsId.includes(car?.generation.id))
-                d(addCar(car))
-            if (type !== 'support' && receiver && !chatUsersId.includes(receiver.id))
-                d(addUser(receiver))
+                if (car && !chatCarsId.includes(car?.generation.id))
+                    d(addCar(car))
+                if (type !== 'support' && receiver && !chatUsersId.includes(receiver.id))
+                    d(addUser(receiver))
 
-            return key
+                return key
+            }
         }
         return null
     }

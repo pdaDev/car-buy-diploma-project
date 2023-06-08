@@ -1,0 +1,9 @@
+@import "src/app/index";
+
+.logo_wrapper {
+  display: inline-block;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  @extend %loading;
+}

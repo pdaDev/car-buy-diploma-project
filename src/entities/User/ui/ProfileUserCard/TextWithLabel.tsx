@@ -5,9 +5,10 @@ import {FC} from "react";
 interface IProps {
     value: string | number | null
     translationIndex: string
+    loading?: boolean
 }
 
-export const TextWithLabel: FC<IProps> = ({value, translationIndex}) => {
+export const TextWithLabel: FC<IProps> = ({value, translationIndex, loading}) => {
     const {t} = useTranslation()
     const getIndex = getTranslationIndexCreator('user')
     const textValue = value || t(getIndex('null'))
@@ -19,6 +20,7 @@ export const TextWithLabel: FC<IProps> = ({value, translationIndex}) => {
        <Stack direction={'row'} spacing={3} vAlign={'center'}>
            <Label label={textValue}
                   level={3}
+                  loading={loading}
                   weight={"medium"}/>
            {
                translationIndex === 'phone_number' && !value && <Box background={'primary-light'} brd={3}>

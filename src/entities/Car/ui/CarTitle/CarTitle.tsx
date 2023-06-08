@@ -20,10 +20,19 @@ export const CarTitle: FC<IProps> = ({
         ? `${data.generation.name} (${getGenerationPeriod(data.generation)})`
         : null
     return <Card width={'100%'} paddings={4}>
-        <Label level={2} weight={'medium'} label={name} type={'primary'}/>
+        <Label level={2}
+               weight={'medium'}
+               loading={loading}
+               loadingWidth={300}
+               label={name} type={'primary'}/>
          <Stack direction={'row'} spacing={3} vAlign={'center'}>
-            <Label label={t("car.generation.title")}  weight={'regular'} level={3} type={'secondary'}/>
-            <Symbol content={gen} weight={'medium'} size={4}/>
+            <Label label={t("car.generation.title")}
+                   weight={'regular'}
+                   loading={loading}
+                   level={3} type={'secondary'}/>
+            <Symbol content={gen}
+                    weight={'medium'}
+                    size={4}/>
         </Stack>
     </Card>
 }

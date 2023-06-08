@@ -30,6 +30,7 @@
   overflow: hidden;
   border-radius: var(--brd-radius-2);
   z-index: 2;
+  @extend %loading;
 
   img {
     width: 110%;

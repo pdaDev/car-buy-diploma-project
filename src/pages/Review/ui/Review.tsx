@@ -3,7 +3,7 @@ import {
     Container,
     FormMode, getCarNameFromObjectWithId, getTimeWithoutSeconds,
     IServerReviewListItem,
-    Label,
+    Label, Loader,
     Slider,
     Stack,
     Text,
@@ -45,6 +45,12 @@ export const Review: FC = () => {
     useTabTile(tabTitle)
     const n = useAppNavigate()
 
+    if (formMode === 'edit' && isLoading) {
+        return <Container>
+            <Loader type={'line'} size={'medium'}/>
+        </Container>
+    }
+
     const dateOFReview = data ? new Date(data?.date) : new Date()
     return <>
         {formMode === 'edit'
@@ -56,17 +62,23 @@ export const Review: FC = () => {
             : <>
                 <Container max_w={'800px'} zi={2}>
                     <Stack size={'container'} hAlign={'center'} spacing={4}>
-                        <CarTitle data={data?.car || null}/>
+                        <CarTitle data={data?.car || null} loading={loadingStatus}/>
                         {isOwner && <ReviewManagementBlock id={+review_id}/>}
                         <Card width={'100%'}
                               zIndex={2}
                               contentDirection={'column'}
                               contentGap={5} paddings={4}>
-                            <Stack direction={'row'} vAlign={'center'}>
-                                <Label label={data?.title} level={1} weight={'bold'} loading={loadingStatus}/>
+                            <Stack direction={'row'} spacing={4} vAlign={'center'}>
+                                <Label label={data?.title} level={1}
+                                       loadingWidth={380}
+                                       weight={'bold'} loading={loadingStatus}/>
                             </Stack>
-                            <Text content={data?.message} size={3}
-                                  lineHeight={'24px'}/>
+                            { isLoading ? <Stack size={'width'} spacing={3}>
+                                {[...new Array(10)].map(() => <Label label={''} width={'100%'} level={5} loading={loadingStatus}/>)}
+                            </Stack> : <Text content={data?.message}
+                                             size={3}
+                                             loading={loadingStatus}
+                                             lineHeight={'24px'}/> }
                         </Card>
                     </Stack>
                 </Container>
@@ -74,10 +86,10 @@ export const Review: FC = () => {
                     <ReviewPhotoViewer photos={data.photos.map(p => p.photo)}/>}
                 <Container max_w={'800px'} mt={4}>
                     <Stack spacing={4} size={'container'}>
-                        {data && <ReviewScoreBlock {...data?.score_point} />}
-                        {data && <Stack size={'width'} direction={'row'} spacing={4} hAlign={'start'}>
+                       <ReviewScoreBlock data={data?.score_point} loading={loadingStatus} />
+                       <Stack size={'width'} direction={'row'} spacing={4} hAlign={'start'}>
                             <Card>
-                                <UserBlock user={data.owner} nameRenderType={'with-short-last-name'}/>
+                                <UserBlock user={data?.owner || null} loading={loadingStatus} nameRenderType={'with-short-last-name'}/>
                             </Card>
                             <Card height={'100%'} paddings={4}>
                                 <Container contentAlign={'center'}>
@@ -85,18 +97,22 @@ export const Review: FC = () => {
                                         label={`${dateOFReview.toLocaleDateString()} ${getTimeWithoutSeconds(dateOFReview)}`}
                                         level={4}
                                         size={4}
+                                        loading={loadingStatus}
+                                        loadingWidth={140}
                                         weight={'regular'}
                                     />
                                 </Container>
                             </Card>
-                        </Stack>}
-                        {data && data.other_reviews.results.length > 0 &&
+                        </Stack>
+                        {data && data.other_reviews.results.length === 0 && !isLoading ? null :
                             <Stack size={'width'} direction={'column'} hAlign={'start'}>
-                                <Label label={t("review.read_another_reviews")} level={3} weight={'medium'}/>
+                                <Label label={t("review.read_another_reviews")}
+                                       loadingWidth={250}
+                                       loading={isLoading} level={3} weight={'medium'}/>
                                <Container contentAlign={'center'}>
-                                   <ReviewSlider data={data.other_reviews.results}
-                                                 totalCountOfReviews={data.other_reviews.count}
-                                                 car={data.car}
+                                   <ReviewSlider data={data?.other_reviews.results}
+                                                 totalCountOfReviews={data?.other_reviews.count}
+                                                 car={data?.car}
                                                  loading={isLoading}
                                    />
                                </Container>

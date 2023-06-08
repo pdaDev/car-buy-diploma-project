@@ -12,6 +12,7 @@
   .write_message, .phone_number_wrapper {
     border-radius: var(--brd-radius-2);
     height: 100%;
+    @extend %loading;
     display: flex;
     justify-content: center;
     font-size: var(--fnt-size-4);

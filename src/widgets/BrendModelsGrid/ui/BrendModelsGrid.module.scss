@@ -83,6 +83,11 @@
       grid-template-rows: 1fr 1fr;
     }
 
+    &_small_one_line {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr
+    }
+
     &_medium {
       grid-template-columns: repeat(2, 1fr);
     }

@@ -46,17 +46,24 @@ export const AdvertisementTitleBlock: FC<IProps> = ({
         onChange({price: value})
     }
 
-    return <div className={s.title_block_wrapper} data-loading={loadingStatus}>
+    return <div className={s.title_block_wrapper} >
         <div className={s.name_wrapper}>
-            <Label label={carName} weight={'regular'} level={2}/>
-            <Label label={date} level={4} type={'secondary'}/>
+            <Label label={carName} loading={loading}
+                   loadingWidth={200}
+                   weight={'regular'} level={2}/>
+            <Label label={date} loading={loading}
+                   loadingWidth={180}
+                   level={4} type={'secondary'}/>
         </div>
         {isEditMode ? <NumberInput
                              value={editData?.price ?? (price?.latest || 0) }
                              onChange={onPriceChange}/> :
-            <Label label={formatPrice(price?.latest || 0)} weight={'medium'} level={2} size={6} />}
+            <Label label={formatPrice(price?.latest || 0)}
+                   loading={loading} weight={'medium'}
+                   loadingWidth={200}
+                   level={2} size={6} />}
         {
-            favouriteButton && <div className={s.fav_button_wrapper}>
+            favouriteButton && !loading && <div className={s.fav_button_wrapper}>
                 { favouriteButton }
             </div>
         }

@@ -18,7 +18,7 @@ import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace"
 import {NS, ReviewCard} from 'entities/Review'
 
 interface IProps {
-    data: IServerReviewListItem[]
+    data?: IServerReviewListItem[]
     loading: boolean
     countOfVisibleItems?: number
     car?: Partial<ICarNameWithId>
@@ -41,7 +41,6 @@ export const ReviewSlider: FC<IProps> = ({
         n(p => p.reviews, getCarQuery(car))
     const excessiveReviews = totalCountOfReviews ? totalCountOfReviews - list.length : 0
 
-
     return <Slider data={list}
                    loading={loading}
                    width={'full'}
@@ -59,9 +58,10 @@ export const ReviewSlider: FC<IProps> = ({
                               align={'center'}
                               level={3}/>
                    </Card>}
-                   renderEl={(data: IServerReviewListItem) => <ReviewCard
+                   renderEl={(data: IServerReviewListItem, loadingStatus) => <ReviewCard
                        onClick={() => data && n(p => p.reviews._key_(data.review_id))}
                        data={data}
+                       loading={loadingStatus}
                        type={'small'}/>}
     />
 }

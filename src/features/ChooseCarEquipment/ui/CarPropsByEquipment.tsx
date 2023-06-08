@@ -9,6 +9,7 @@ interface IProps {
     equipmentIndex?: number
     equipments: NS.IServerCarEquipment[]
     defaultEquipment?: number
+    loading?: boolean
     optionsPos?: 'bottom' | "top"
 
 }

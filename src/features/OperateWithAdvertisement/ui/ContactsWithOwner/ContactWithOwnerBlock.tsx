@@ -10,28 +10,35 @@ import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../../app/se
 import {PhoneNumberBlock} from "./PhoneNumberBlock";
 import {useStartChat} from "../../../../entities/Chat";
 
+interface IProps {
+    loading?: boolean
+}
 
 
-export const ContactWithOwnerBlock: FC<Pick<NS.IServerAdvertisement, 'owner' | 'name' | 'advertisement_id'>> = (
+export const ContactWithOwnerBlock: FC<IProps & Partial<Pick<NS.IServerAdvertisement, 'name' | 'owner' | 'advertisement_id'>>> = (
     {
         owner,
         name,
+        loading,
         advertisement_id
     }) => {
-    const {phone_number, email, ...user} = owner
     const {t} = useTranslation()
-
     const startChat = useStartChat('sell', owner, advertisement_id, name)
 
+    const startChatWithUser = () => {
+        if (!loading && advertisement_id) {
+            startChat.navigate()
+        }
+    }
 
 
     return <div className={s.wrapper}>
         <Container pl={4} pt={3} pb={3}>
-            <UserBlock user={user} withNavigate/>
+            <UserBlock user={owner || null} loading={loading} withNavigate/>
         </Container>
-        <button className={s.write_message} onClick={startChat.navigate}>
+        { !loading &&  <button className={s.write_message} data-loading={loading} onClick={startChatWithUser}>
             {t("advertisement.write")}
-        </button>
-        <PhoneNumberBlock phoneNumber={phone_number}/>
+        </button>}
+        { !loading && <PhoneNumberBlock phoneNumber={owner?.phone_number}/> }
     </div>
 }

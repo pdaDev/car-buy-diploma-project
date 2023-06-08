@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
 import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
-import {cleanCompareData, getCompareList, NS, selectors} from "../../../features/CompareSmth";
+import {cleanCompareData, getCompareList, NS, selectors, setCompareLoadingStatus} from "../../../features/CompareSmth";
 import {
     Button,
     Checkbox,
@@ -49,6 +49,10 @@ export const Compare: FC = () => {
             d(cleanCompareData())
         }
     }, [])
+
+    useEffect(() => {
+        d(setCompareLoadingStatus(true))
+    }, [d, compareType])
 
 
     const {t} = useTranslation()
@@ -165,7 +169,7 @@ export const Compare: FC = () => {
                 }
             </Stack>
             {loading
-                ? <Container contentAlign={'center'}>
+                ? <Container contentAlign={'center'} min_h={'100%'}>
                     <Loader type={'circle'} size={'medium'}/>
                 </Container>
                 : list.length > 0

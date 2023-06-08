@@ -15,6 +15,7 @@ interface IProps extends RippleEffectProp {
     behaviorType?: 'submit' | 'reset' | 'button'
     color?: ElementColor | 'vk' | 'google'
     classNamePrefix?: string
+    loading?: boolean
 }
 
 export const Button: FC<IProps> = (
@@ -24,6 +25,7 @@ export const Button: FC<IProps> = (
         size = 'medium',
         label,
         disabled = false,
+        loading,
         onClick,
         width = 'auto',
         behaviorType = 'button',
@@ -33,7 +35,7 @@ export const Button: FC<IProps> = (
 
     }) => {
     const onButtonClick: MouseEventHandler = e => {
-        onClick && onClick(e)
+        onClick && !loading && onClick(e)
 
         if (withRippleEffect && type !== 'underline') {
             addRipple(e)
@@ -43,6 +45,7 @@ export const Button: FC<IProps> = (
 
 
     return <button onClick={onButtonClick}
+                   data-loading={loading}
                    disabled={disabled}
                    type={behaviorType}
                    style={{width: width}}

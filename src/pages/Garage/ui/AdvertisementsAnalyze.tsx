@@ -21,7 +21,7 @@ export const AdvertisementsAnalyze: FC<IProps> = ({advertisements, statuses, loa
                        size={'3'}/>
                <Container max_w={'40px'} mr={3}>
                    <Container position={'center'} contentAlign={'center'} pl={'10px'}>
-                       <Label label={el} loading={loading}/>
+                       { !loading && <Label label={el} loading={loading}/> }
                    </Container>
                    <CircleDiagram parts={advertisements.length}
                                   strokeWidth={4}

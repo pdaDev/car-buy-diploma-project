@@ -70,8 +70,8 @@ export interface IServerCarProps {
     performance_indicators: {
         max_speed: number
         fuel_consumption: number
-        fuel: number
-        ecological_class: number
+        fuel: IHandbookItem
+        ecological_class: IHandbookItem
         acceleration: number
     }
     engine: {
@@ -152,7 +152,7 @@ export interface IServerBrend extends IBrend{
 
 export interface IGenerationCard {
     id: number
-    photo: string
+    photo: string | null
     car_body_type: IHandbookItem
 }
 

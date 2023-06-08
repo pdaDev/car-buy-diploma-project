@@ -12,7 +12,7 @@ import {
     Button, Card,
     Container,
     FormMode, getCarName, getCarNameFromModelWithId,
-    ImageSlider,
+    ImageSlider, Loader,
     Stack,
     useClassState,
     useQueryParamsFormMode,
@@ -105,6 +105,12 @@ export const Advertisement: FC = () => {
         }
     }
 
+    if (isEditMode && isLoading) {
+        return <Container contentAlign={'center'}>
+            <Loader type={'line'} size={'medium'}/>
+        </Container>
+    }
+
     if (isEditMode) {
         return <AdvertisementForm defaultData={data}
                                   mode={'edit'}
@@ -127,35 +133,37 @@ export const Advertisement: FC = () => {
                                          advertisementId={data?.advertisement_id || -1}
                                      /> : null}/>
             {
-                isUserAdvertisement || isLoading
-                    ? <AdvertisementControlPanel
+                !isUserAdvertisement || isLoading
+                    ? <ContactWithOwnerBlock owner={data?.owner}
+                                             loading={isLoading}
+                                             advertisement_id={data?.advertisement_id}
+                                             name={data?.name}/>
+                   : <AdvertisementControlPanel
                         loading={isLoading}
                         status={data?.status_code.code as StatusCode}
                         advertisementId={data?.advertisement_id || -1}
                     />
-                    : <ContactWithOwnerBlock owner={data!.owner}
-                                             advertisement_id={data!.advertisement_id}
-                                             name={data!.name}/>
             }
 
             <Stack direction={'row'} spacing={4}>
                 <AdvertisementCarPropsBlock data={carProps}
                                             mode={'view'}
                                             loading={isLoading}
-                                            buttonsBlock={<Stack spacing={3}>
-                                                {!isUserAdvertisement && <Button type={'primary'}
-                                                                                 size={'medium'}
-                                                                                 label={compareButtonTitle}
-                                                                                 onClick={compare.switchCompare}
+                                            buttonsBlock={!isLoading && <Stack spacing={3}>
+                                            {!isUserAdvertisement  && <Button type={'primary'}
+                                                size={'medium'}
+                                                label={compareButtonTitle}
+                                                onClick={compare.switchCompare}
                                                 />}
                                                 <Button type={'primary'}
-                                                        size={'medium'}
-                                                        onClick={goToCarCharacteristicsPage}
-                                                        label={t("advertisement.read_info") as string}/>
-                                            </Stack>}
+                                                size={'medium'}
+                                                onClick={goToCarCharacteristicsPage}
+                                                label={t("advertisement.read_info") as string}/>
+                                                </Stack>}
                 />
                 <Container min_w={"580px"} max_w={"550px"} min_h={"450px"}>
                     <ImageSlider images={data?.photos.map(p => p.photo) || []}
+                                 loading={isLoading}
                                  onImageClick={onImageClick}
                     />
                 </Container>
@@ -164,7 +172,7 @@ export const Advertisement: FC = () => {
             <AdvertisementDescriptionBLock loading={isLoading}
                                            description={data?.description || null}
             />
-            {data?.review && <ReviewScoreBlock {...data.review.score_point} extra={
+            {data?.review && <ReviewScoreBlock data={data.review.score_point} extra={
                 {
                     Button: <Button type={'primary'}
                                     label={t("advertisement.review_read") as string}

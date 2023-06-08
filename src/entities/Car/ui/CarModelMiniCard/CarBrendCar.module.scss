@@ -19,6 +19,14 @@
     height: 100%;
   }
 
+  .loading_back {
+    width: 100%;
+    height: 100%;
+    height: 500px;
+    background: red;
+    @extend %loading;
+  }
+
   .text_wrap {
     padding: var(--space-3);
     border: var(--brd-radius-2);

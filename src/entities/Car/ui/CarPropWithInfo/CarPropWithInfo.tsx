@@ -52,6 +52,7 @@ export const CarPropWithInfo: FC<IProps> = (
 
         <Label level={4} weight={'regular'}
                loading={loading}
+               loadingWidth={150}
                type={textType}
                label={valueLabel as string}/>
         {showInfo && !loading &&

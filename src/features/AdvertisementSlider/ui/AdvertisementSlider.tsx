@@ -18,7 +18,7 @@ import {useAuthorize} from "../../../entities/User/lib/hooks";
 
 
 interface IProps {
-    data: IAdvertisementListItem[]
+    data?: IAdvertisementListItem[]
     loading: boolean
     withFavourites?: boolean
     countOfVisible?: number

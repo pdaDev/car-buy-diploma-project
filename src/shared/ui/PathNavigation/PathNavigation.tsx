@@ -6,6 +6,7 @@ import {Label} from "../Label/Label";
 import {Symbol} from "../Symbol/Symbol";
 
 interface IProps {
+    loading?: boolean
     paths: {
         label: string
         onClick: () => void
@@ -14,7 +15,8 @@ interface IProps {
 }
 
 export const PathNavigation: FC<IProps> = ({
-                                               paths
+                                               paths,
+                                               loading,
                                            }) => {
     let firstActiveIndex = paths.length
     for (let i = 0; i < paths.length; i++) {
@@ -26,18 +28,19 @@ export const PathNavigation: FC<IProps> = ({
 
     return <Container size={'content'}>
         <Stack direction={'row'} spacing={2} vAlign={'center'}>
-            { paths.filter((_, index) => index <= firstActiveIndex).map((pathOption, index, arr) => {
+            {paths.filter((_, index) => index <= firstActiveIndex).map((pathOption, index, arr) => {
                 const isLastEl = index === arr.length - 1
-                return <React.Fragment key={pathOption.label} >
-            <span onClick={pathOption.onClick} style={{ cursor: "pointer" }}>
+                return <React.Fragment key={pathOption.label}>
+            <span onClick={pathOption.onClick} style={{cursor: "pointer"}}>
                 <Label label={pathOption.label}
                        level={3}
+                       loading={loading}
                        weight={'regular'}
                        type={'secondary'}/>
             </span>
-                    { !isLastEl && <Symbol size={3} content={'/'} weight={'regular'} color={'grey-1'}/> }
+                    {!isLastEl && <Symbol size={3} content={'/'} weight={'regular'} color={'grey-1'}/>}
                 </React.Fragment>
-            }) }
+            })}
         </Stack>
     </Container>
 }

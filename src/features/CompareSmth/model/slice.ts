@@ -33,6 +33,9 @@ const compareSlice = createSlice({
         cleanCompareData(state){
             state.data = []
         },
+        setCompareLoadingStatus(state, { payload }: PayloadAction<boolean>) {
+            state.loading = payload
+        },
         cleanAdsCompareList(state) {
             state.addsToCompareList = []
         },
@@ -113,5 +116,6 @@ const compareSlice = createSlice({
 export const compareReducer = compareSlice.reducer
 export const {removeAdFromCompare, removeModelFromCompare,
     addModelToCompare, addAdToCompare, addElementToCompare, removeElementFromCompare,
-    cleanModelsCompareList, cleanAdsCompareList, cleanCompareList, cleanCompareData
+    cleanModelsCompareList, cleanAdsCompareList, cleanCompareList, cleanCompareData,
+    setCompareLoadingStatus
 } = compareSlice.actions

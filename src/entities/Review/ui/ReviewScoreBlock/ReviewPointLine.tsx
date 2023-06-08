@@ -9,6 +9,7 @@ import styled from "styled-components";
 interface IProps {
     point: keyof ReviewPoints
     data: ReviewPoints
+    loading?: boolean
 
 
 }
@@ -42,19 +43,22 @@ const StyledPointLine = styled.div<{ w: string }>`
 export const ReviewPointLine: FC<IProps> = ({
                                                 point,
                                                 data,
+    loading,
                                             }) => {
     const {t} = useTranslation()
     const maxPoint = 5
 
     if (data[point] !== null) {
         return <Stack size={'width'} direction={'row'} spacing={4}>
-            <Label level={4} label={t(`review.points.${point}`) as string}/>
+            <Label level={4}
+                   loading={loading}
+                   label={t(`review.points.${point}`) as string}/>
             <Stack direction={'row'} size={'container'} spacing={4} vAlign={"center"}>
                 <div className={s.point_line}>
                     <StyledPointLine w={getPercents(data[point]! / maxPoint * 100)}/>
                     <div className={s.background_line}/>
                 </div>
-                <Label level={3} weight={'medium'} label={data[point]}/>
+                { !loading &&  <Label level={3} weight={'medium'} label={data[point]}/> }
             </Stack>
         </Stack>
     }

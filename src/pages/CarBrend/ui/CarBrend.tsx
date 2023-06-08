@@ -1,11 +1,13 @@
 import {FC} from "react";
 import {useParams} from "react-router-dom";
 import {CarModelMiniCard, useGetCarBrendQuery, NS} from "../../../entities/Car";
-import {Card, Container, Grid, Image, Label, Stack, Text, useMultiLanguageHandbooks} from "../../../shared";
+import {Box, Card, Container, Grid, Image, Label, Stack, Text, useMultiLanguageHandbooks} from "../../../shared";
 import {useAppNavigate} from "../../../app/services";
 import {useTranslation} from "react-i18next";
 import {BrendModelsGrid} from "../../../widgets/BrendModelsGrid";
 import {IModelMiniCard} from "../../../entities/Car/namespace";
+import s from './CarBrend.module.scss'
+import {SAMPLE_BREND_MODELS} from "../lib/constants";
 
 export const CarBrend: FC = () => {
     const {id} = useParams()
@@ -15,16 +17,19 @@ export const CarBrend: FC = () => {
     const {getHandbookItemDescription} = useMultiLanguageHandbooks()
 
     return <Container max_w={'800px'}>
-        <Stack spacing={4} size={'container'} vAlign={'start'}>
-            <Card paddings={[4, 5]} width={'100%'}>
-                <Stack direction={'row'} vAlign={'center'}>
+        <Stack spacing={4} size={'width'} vAlign={'start'}>
+            <Card paddings={[4, 5]} width={'100%'} height={'auto'}>
+                <Stack direction={'row'} size={'width'} vAlign={'center'}>
                     <Stack spacing={3}>
                         <Label label={data?.name}
                                level={2}
+                               loading={isLoading}
+                               loadingWidth={220}
                                weight={'medium'}/>
-                        <Stack spacing={3} direction={'row'} hAlign={'start'}>
+                        <Stack spacing={3} direction={'row'} size={'width'} hAlign={'start'}>
                             <Label label={t('admin.data_management.producers.date_of_found')}
                                    level={5}
+                                   loading={isLoading}
                                    type={'secondary'}/>
                             <Label label={data ? new Date(data.producer.date_of_found).toLocaleDateString() : null}
                                    level={4}
@@ -37,19 +42,24 @@ export const CarBrend: FC = () => {
                         />
 
                     </Stack>
-                    <Image src={data?.logo || null}
-                           width={'100px'}
-                           height={'100px'}
-                           alt={'brend_logo'}/>
+                    <div className={s.logo_wrapper} data-loading={isLoading}>
+                        {!isLoading && <Image src={data?.logo || null}
+                                              width={'100px'}
+                                              height={'100px'}
+                                              alt={'brend_logo'}/>}
+                    </div>
                 </Stack>
             </Card>
             <Label label={t('admin.data_management.cars.brend.label')}
                    level={3}
-                    weight={'medium'}/>
-            <Card paddings={3}>
-                <BrendModelsGrid data={data?.models}
-                                 loading={isLoading}
-                />
+                   loading={isLoading}
+                   weight={'medium'}/>
+            <Card paddings={3} height={'auto'}>
+                {
+                    <BrendModelsGrid data={data?.models || SAMPLE_BREND_MODELS}
+                                     loading={isLoading}
+                    />
+                }
             </Card>
 
         </Stack>

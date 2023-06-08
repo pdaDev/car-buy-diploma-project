@@ -7,25 +7,37 @@ import {useTranslation} from "react-i18next";
 
 import {CarPropLine} from "../CarPropLine/CarPropLine";
 
+interface IProps {
+    loading?: boolean
+}
 
-export const CarPropBlock: FC<NS.IServerCarProps> = (props) => {
+
+export const CarPropBlock: FC<NS.IServerCarProps & IProps> = (props) => {
     const { t } = useTranslation()
-    const { headers, allProps, allPropsKeys } = flatCarProps(props, t)
+    const { loading, ...carData} = props
+    const { headers, allProps, allPropsKeys } = flatCarProps(carData, t)
     const index = allPropsKeys.length / 2
     const renderColumn = (keys: string[]) => {
-        return <Stack spacing={3}>
+        return <Stack spacing={3} size={'width'}>
             {
                 keys.filter(key => allProps[key as keyof typeof allProps] !== null )
                     .map(key => {
                     const propValue = allProps[key as keyof typeof allProps]
                     if (headers.includes(key)) {
                         return <Container mt={1} mb={2}>
-                            <Label label={propValue} weight={'medium'}/>
+                            <Label label={propValue}
+                                   level={3}
+                                   loading={loading}
+                                   loadingWidth={350}
+                                   weight={'medium'}/>
                         </Container>
                     }
                     if (propValue === null)
                         return null
-                    return <CarPropLine title={t(`car.props.${key}.title`)} value={propValue} code={key}/>
+                    return <CarPropLine title={t(`car.props.${key}.title`)}
+                                        value={propValue}
+                                        loading={loading}
+                                        code={key}/>
                 })
             }
         </Stack>

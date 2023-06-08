@@ -21,6 +21,7 @@ type Props = {
     type: "owner" | 'another'
     editButton?: ReactNode
     children?: ReactNode
+    loading?: boolean
 } & NS.IUserData
 
 export const ProfileUserCard: FC<Props> = ({
@@ -32,6 +33,7 @@ export const ProfileUserCard: FC<Props> = ({
                                                email,
                                                registerDate,
                                                editButton,
+                                               loading,
                                                children,
                                            }) => {
 
@@ -40,23 +42,29 @@ export const ProfileUserCard: FC<Props> = ({
     return <Box background={'secondary'} shadow={2} brd={2}>
         <Container p={4}>
             <Stack direction={'row'} size={'width'} spacing={4}>
-              <Container max_w={'250px'}>
-                  <ProfileAvatar avatar={avatar}/>
-              </Container>
+                <Container max_w={'250px'}>
+                    <ProfileAvatar avatar={avatar}
+                                   loading={loading}/>
+                </Container>
                 <Stack vAlign={'start'} size={'width'} spacing={4}>
                     <Label label={`${secondName} ${firstName}`}
                            level={2} weight={'medium'}
+                           loading={loading}
+                           loadingWidth={280}
                            size={5}/>
                     <TextWithLabel value={email}
+                                   loading={loading}
                                    translationIndex={'email'}
                     />
                     <TextWithLabel value={regDate}
+                                   loading={loading}
                                    translationIndex={"register_date"}/>
                     {isMyCard ? <TextWithLabel value={phoneNumber ? formatPhoneNumber(phoneNumber) : null}
+                                               loading={loading}
                                                translationIndex={'phone_number'}
                     /> : <PhoneNumberBlock phoneNumber={phoneNumber}/>}
                     {isMyCard && <SelectPersonalGeoLocation/>}
-                    { children }
+                    {children}
                 </Stack>
             </Stack>
             {editButton && <Container size={'content'} p={3} position={"top-right"}>

@@ -43,6 +43,7 @@ export const ReviewCard: FC<IProps> = ({
     const isSmallCard = type === 'small'
     const hasPhotos = data ? data?.photos.length > 0 : true
     const {t} = useTranslation()
+    console.log(loading)
 
     return <div className={cn(s.review_wrapper, addPrefix('type', type, s))} onClick={onClick}>
         {(hasPhotos || !isSmallCard) && <div className={s.card_image_wrapper}>

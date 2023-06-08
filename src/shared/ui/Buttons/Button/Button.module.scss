@@ -13,7 +13,12 @@
   overflow: hidden;
   justify-content: center;
   @extend %size;
+  @extend %loading;
   font-weight: var(--fnt-weight-medium);
+
+  &[data-loading=true] {
+    color: transparent;
+  }
 
   &:disabled {
     background: var(--clr-grey-light);

@@ -16,7 +16,7 @@ interface IProps {
     size?: SpaceLevel | string
     color?: Color,
     weight?: FontWeight
-    loadingWidth?: number | `${number}px`
+    loadingWidth?: number | `${number}%`
 }
 
 const getFontColorByType = (type: IProps['type']) => {
@@ -29,7 +29,7 @@ const getFontColorByType = (type: IProps['type']) => {
 }
 
 const LabelWrapper = styled.span<Omit<IProps, 'label' | 'type' | 'color'> & { t: IProps['type'], clr: IProps['color'] }>`
-  border-radius: var(--brd-radius-1);
+  border-radius: 4px;
   display: inline-flex;
   align-items: center;
   height: auto;
@@ -119,7 +119,7 @@ const LabelWrapper = styled.span<Omit<IProps, 'label' | 'type' | 'color'> & { t:
         color: var(--clr-${props.color});
       `}
       ${props.loadingWidth && css`
-        min-width: ${props.loadingWidth}px;
+        min-width: ${typeof props.loadingWidth === 'string' ? props.loadingWidth : `${props.loadingWidth}px`};
       `}
     }
   `}

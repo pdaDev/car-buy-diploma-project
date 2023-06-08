@@ -74,8 +74,14 @@ export const CarGeneration: FC = () => {
                 carBodyType: `${getHandbookItemName(data.characteristics.car_body_type)}, ${data.characteristics.car_body_type.count_of_doors}дв.`
             }
             return payload
+        } else {
+            return {
+                engine: '',
+                driveTypes: '',
+                transmissionTypes: '',
+                carBodyType: ''
+            }
         }
-        return {}
     }, [data])
 
     const getIndex = getTranslationIndexCreator('car.generation')
@@ -101,21 +107,23 @@ export const CarGeneration: FC = () => {
     return <Container max_w={'800px'}>
         <Stack direction={'column'} spacing={4} size={'container'}>
             <Stack direction={'row'}>
-                {data && <CarPathNavigation brend={data.car.brend}
-                                            model={data.car.model}
-                                            generation={data.car.generation}
+                {<CarPathNavigation brend={data?.car.brend}
+                                    model={data?.car.model}
+                                    generation={data?.car.generation}
                 />}
                 {data && <CarGenerationSwitcher
                     current={'card'}
                     generation={data.generation_variant_id}/>}
             </Stack>
 
-            <CarTitle data={data?.car || null} loading={isLoading}/>
+            <CarTitle data={data?.car || null}
+                      loading={isLoading}/>
             <Card paddings={0} contentDirection={'column'}>
                 <Container min_h={"500px"}>
                     <ImageSlider images={data?.photos || []}
+                                 loading={isLoading}
                                  extra={{
-                                     button: <Stack direction={'row'} spacing={4}>
+                                     button: !isLoading && <Stack direction={'row'} spacing={4}>
                                          <Button type={"primary"}
                                                  onClick={goToSearch}
                                                  label={searchAdsButtonLabel}/>
@@ -137,28 +145,30 @@ export const CarGeneration: FC = () => {
                            size={'container'}
                            spacing={3}
                            hAlign={'start'}>
-                        {data && <Stack size={'width'} direction={'row'} vAlign={'center'}>
+                        {<Stack size={'width'} direction={'row'} vAlign={'center'}>
                             <Stack direction={'row'} spacing={1} hAlign={'start'} vAlign={'center'}>
                                 <Container max_w={'40px'} mr={'20px'}>
                                     <Container position={'center'} contentAlign={'center'} pl={'10px'}>
-                                        <Label label={data.reviews.rate} level={4}/>
+                                        {!isLoading &&
+                                            <Label label={data?.reviews.rate} loading={isLoading} level={4}/>}
                                     </Container>
                                     <CircleDiagram parts={5}
                                                    strokeWidth={4}
                                                    zeroStart={'top'}
-                                                   part={data.reviews.rate}
+                                                   part={data?.reviews.rate || 0}
                                     />
                                 </Container>
                                 <Label label={t(getIndex('according_reviews'))}
                                        level={4}
+                                       loading={isLoading}
                                        weight={'regular'}/>
-                                <Button type={'underline'}
-                                        label={searchReviewsButtonLabel}
-                                        onClick={goToReviews}
-                                />
+                                {!isLoading && <Button type={'underline'}
+                                                       label={searchReviewsButtonLabel}
+                                                       onClick={goToReviews}
+                                />}
                             </Stack>
-
                             <Button type={'primary'}
+                                    loading={isLoading}
                                     label={t(getIndex("make_review")) as string}
                                     onClick={createReviewOnModel}/>
                         </Stack>}
@@ -169,22 +179,28 @@ export const CarGeneration: FC = () => {
                                 <Label label={t(getIndex(key))}
                                        weight={'regular'}
                                        level={4}
+                                       loading={isLoading}
                                        type={'secondary'}/>
                                 <Label label={carCharacteristics[key]}
                                        level={4}
+                                       loading={isLoading}
+                                       loadingWidth={220}
                                        weight={'regular'}
                                 />
                             </Stack>
                         })}
 
-                        {data && data.price &&
+                        {
                             <Stack direction={'row'} hAlign={'start'} spacing={5}>
                                 <Label label={t(getIndex('price'))}
                                        weight={'regular'}
+                                       loading={isLoading}
                                        level={2}
                                        type={'secondary'}/>
-                                <Label label={getPriceRange(data.price)}
+                                <Label label={data ? getPriceRange(data.price) : ''}
                                        level={3}
+                                       loading={isLoading}
+                                       loadingWidth={250}
                                        weight={'medium'}/>
                             </Stack>
                         }
@@ -194,23 +210,25 @@ export const CarGeneration: FC = () => {
 
 
             <Label level={3}
+                   loading={isLoading}
                    weight={'medium'}
                    label={t(getCarGenerationIndex('reviews'))}/>
-            {data && <ReviewSlider data={data.reviews.results}
-                                   totalCountOfReviews={data.reviews.count}
-                                   car={data.car}
-                                   loading={isLoading}
-            />}
+            <ReviewSlider data={data?.reviews.results}
+                          totalCountOfReviews={data?.reviews.count}
+                          car={data?.car}
+                          loading={isLoading}
+            />
 
-            {data && data.advertisements.count > 0 && <>
+            {data && !isLoading && data.advertisements.count === 0 ? null : <>
                 <Label level={3}
+                       loading={isLoading}
                        weight={'medium'}
                        label={t(getCarGenerationIndex('advertisements'))}/>
-                <AdvertisementSlider data={data.advertisements.results}
-                                          car={data.car}
-                                          totalCountOfAdvertisements={data.advertisements.count}
-                                          loading={isLoading}
-            /></>}
+                <AdvertisementSlider data={data?.advertisements.results}
+                                     car={data?.car}
+                                     totalCountOfAdvertisements={data?.advertisements.count}
+                                     loading={isLoading}
+                /></>}
 
         </Stack>
     </Container>
