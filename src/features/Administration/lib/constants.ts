@@ -3,10 +3,10 @@ import  * as NS from '../namespace'
 
 export const EMPTY_HANDBOOK_ITEM: IHandbookItem = {
     code: '',
-    eng_description: null,
     ru_name: '',
     eng_name: null,
-    ru_description: null
+    ru_description: null,
+    eng_description: null,
 }
 export const EMPTY_CAR_BODY_TYPE: ICarBodyTypeHandbook = {
     code: '',

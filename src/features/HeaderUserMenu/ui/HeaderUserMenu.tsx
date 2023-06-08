@@ -1,8 +1,17 @@
 import React, {FC, MouseEventHandler, ReactNode, useEffect, useRef, useState} from 'react'
 
 import s from './HeaderUserMenu.module.scss'
-import {Button, cn, Label, useBlurFocus, useOpenStatus} from "../../../shared";
+import {
+    Button,
+    cn,
+    getTranslationIndex,
+    getTranslationIndexCreator,
+    Label,
+    useBlurFocus,
+    useOpenStatus
+} from "../../../shared";
 import {CSSTransition} from "react-transition-group";
+import {useTranslation} from "react-i18next";
 
 export interface IProps {
     isAuthed: boolean
@@ -31,6 +40,8 @@ export const HeaderUserMenu: FC<IProps> = ({
     const [isOpen, setOpenStatus, toggleOpenStatus] = useOpenStatus()
     const {onFocus, onBlur} = useBlurFocus(() => setOpenStatus(false))
     const ref = useRef(null)
+    const { t } = useTranslation()
+    const getIndex = getTranslationIndexCreator("header_menu")
     return <div className={s.wrapper}
                 tabIndex={0}
                 onFocus={onFocus}
@@ -56,22 +67,22 @@ export const HeaderUserMenu: FC<IProps> = ({
                         <div className={s.name_wrapper}>
                             <Label level={4} weight={'medium'} label={name}/>
                         </div>
-                        <Button label={'личный кабинет'}
+                        <Button label={t(getIndex("personal_cabinet")) as string}
                                 type={'secondary'}
                                 onClick={goToPersonalCabinet}
                                 width={140}
                         />
                         <Button type={'secondary'}
-                                label={'Мои отзывы'}
+                                label={t(getIndex("reviews")) as string}
                                 onClick={goToReviews}
                                 width={140}
                         />
-                        <Button label={'Мои сообщения'}
+                        <Button label={t(getIndex("chats")) as string}
                                 type={'secondary'}
                                 onClick={goToMessages}
                                 width={140}
                         />
-                        <Button label={'выйти'}
+                        <Button label={t(getIndex("logout")) as string}
                                 type={'primary'}
                                 onClick={logout}
                                 width={140}
@@ -81,7 +92,7 @@ export const HeaderUserMenu: FC<IProps> = ({
             </ CSSTransition>
 
 
-        </>) : <Button label={'войти'} type={'primary'} onClick={login}/>}
+        </>) : <Button label={t(getIndex("login")) as string} type={'primary'} onClick={login}/>}
     </div>
 }
 

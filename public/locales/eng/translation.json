@@ -18,6 +18,13 @@
     "is_HEX": "Значение должно являться hex цветом",
     "email_doesnt_exist": "Email doesn't exist"
   },
+  "header_menu": {
+    "reviews": "My reviews",
+    "personal_cabinet": "Personal cabinet",
+    "chats": "My chats",
+    "logout": "Logout",
+    "login": "Login"
+  },
   "loading": "Loading...",
   "banned": "You have banned by admin. You can write contact admin by dapasynkov2001@gmail.com",
   "user": {
@@ -895,7 +902,7 @@
         "hex": "HEX",
         "rgba": "RGBa",
         "code": "Code",
-        "eng_name": "English description",
+        "eng_name": "English name",
         "ru_description": "Russian description",
         "eng_description": "English description",
         "count_of_sit_places": "Count of sit places",

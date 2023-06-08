@@ -1,6 +1,9 @@
 import {BaseSearchData, ExtendedSearchData, ICarSearch} from "../types";
 export const ADMIN_USER_ID = 1
-export const BASE_URL = 'http://127.0.0.1:8000/'
+export const BASE_URL = process.env.NODE_ENV === 'production'
+    ? 'https://carbuyserver.onrender.com'
+    : 'http://127.0.0.1:8000/'
+
 export const closeSymbol = '×'
 export const SPECIAL_SYMBOLS = '!@#$%^&*:?<>{}[];'
 export const SAFE_METHODS = ['get', 'option']

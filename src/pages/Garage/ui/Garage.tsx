@@ -5,7 +5,7 @@ import {useGetAdsMutation, useGetMyAdsQuery} from "../../../entities/Advertiseme
 import {AdvertisementsList} from "../../../widgets/AdvertisementsList";
 import {MotivationBlock} from "../../../shared/ui/MotivationBlock/MotivationBlock";
 import {useTranslation} from "react-i18next";
-import {openModal} from "../../../app/services/withPopupProvider";
+
 import {
     Container,
     IHandbookItem,
@@ -17,8 +17,6 @@ import {
     IOption, Switcher, sorter, CircleDiagram, useNavigationPermission
 } from "../../../shared";
 
-import {SortBLock} from "../../../features/SortBlock";
-import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
 import {useAuthorize} from "../../../entities/User/lib/hooks";
 import {AuthMotivation} from "../../../features/Auth/ui/AuthMotivation/AuthMotivation";
 import {AdvertisementsAnalyze} from "./AdvertisementsAnalyze";
