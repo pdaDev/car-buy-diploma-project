@@ -1,5 +1,5 @@
 import {FC, useEffect} from "react";
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
+import {selectInitializedStatus, useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
 import {makeHeaderNormal, makeHeaderTransparent} from "../../../app/services/withCommonLayout/model/slice";
 import {useTranslation} from "react-i18next";
 import {
@@ -31,6 +31,7 @@ import {RenderContent} from "./RenderContent";
 import {PreTestModal} from "../../../features/Test";
 export const MainPage: FC = () => {
     const d = useAppDispatch()
+    const initStatus = useAppSelector(selectInitializedStatus)
 
     useEffect(() => {
         d(makeHeaderTransparent())
@@ -43,24 +44,25 @@ export const MainPage: FC = () => {
 
     const authStatus = useAppSelector(selectAuthStatus)
     const {data: ads, isLoading} = useGetHistoryQuery({},{ skip: !authStatus })
-    const {data: recommendedAds = [], isLoading: recommendationsLoading} = useGetRecommendationsQuery({},{ skip: !authStatus })
+    // const {data: recommendedAds = [], isLoading: recommendationsLoading} = useGetRecommendationsQuery({},{ skip: !authStatus })
     const [getAds, {data: recentAds, isLoading: recentAdsLoading}] = useGetAdsMutation()
 
-    const [getHistoryEls, { data: historyEls = [] }] = useGetHistoryElsMutation()
+    const [getHistoryEls, { data: historyEls = [] }] = useGetHistoryElsMutation( )
 
 
 
     const { limit, page, setPage } = usePaginationAndSorting()
 
     useEffect(() => {
-        if (!authStatus) {
+        if (!authStatus && initStatus) {
             getHistoryEls()
         }
-    }, [authStatus])
+    }, [authStatus, initStatus])
 
     useEffect(() => {
-        getAds({ sort: 'start_date', filters: null, page, limit })
-    }, [authStatus, page])
+        if (initStatus)
+            getAds({ sort: 'start_date', filters: null, page, limit })
+    }, [authStatus, page, initStatus])
 
 
 
@@ -91,12 +93,6 @@ export const MainPage: FC = () => {
                                                  countOfVisible={5}
                                                  loading={loadingStatus}/>
                         </RenderContent>
-                        {/*<RenderContent title={getMainIndex("recommendations")}>*/}
-                        {/*    <AdvertisementSlider data={recommendedAds || []}*/}
-                        {/*                         countOfVisible={4}*/}
-                        {/*                         loading={loadingStatus}*/}
-                        {/*    />*/}
-                        {/*</RenderContent>*/}
                     </>}
                     <RenderContent title={getMainIndex('recent')}>
                         <AdvertisementsList data={recentAds?.results || []}
