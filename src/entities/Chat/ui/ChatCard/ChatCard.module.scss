@@ -1,0 +1,33 @@
+@import "src/app/index";
+
+.car_wrapper {
+  padding: var(--space-2) var(--space-3);
+  background: var(--clr-primary);
+  color: var(--clr-fnt-black);
+  font-size: var(--fnt-size-3);
+  font-weight: var(--fnt-weight-regular);
+  border-radius: var(--brd-radius-1);
+}
+
+.text {
+  display: inline;
+  font-weight: var(--fnt-weight-regular);
+  font-size: var(--fnt-size-2);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space:nowrap;
+  margin: 0;
+  color: var(--clr-fnt-primary);
+  max-width: 280px;
+  width: 100%;
+}
+
+.user_wrapper {
+  width: 36px;
+  background: var(--clr-primary-light);
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

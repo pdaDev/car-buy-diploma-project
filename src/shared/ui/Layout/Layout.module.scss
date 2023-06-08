@@ -1,5 +1,9 @@
 @import "src/app/index";
 
+.loading_el {
+  @extend %loading;
+}
+
 .flex {
   width: 100%;
   height: 100%;

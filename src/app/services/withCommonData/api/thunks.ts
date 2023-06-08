@@ -13,7 +13,6 @@ export const getHandbook = createAsyncThunk(
                 return {key: option.name, handbook: response.data.data} as SetHandbookPayload
             } else throw new Error('babui')
         } catch (e) {
-            throw new Error('message')
             return thunkAPI.rejectWithValue(e)
         }
     }

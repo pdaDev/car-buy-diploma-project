@@ -4,10 +4,12 @@
   border-radius: var(--brd-radius-1);
   display: flex;
   align-items: center;
+  overflow: hidden;
   cursor: pointer;
   position: relative;
   font-weight: var(--fnt-weight-bold);
   box-sizing: border-box;
+  background: var(--clr-grey-light);
 
   &:hover {
     background: var(--clr-grey-light);

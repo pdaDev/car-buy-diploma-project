@@ -1,10 +1,14 @@
-import axios from "axios";
+import axios, {CreateAxiosDefaults} from "axios";
 import {BASE_URL, SAFE_METHODS} from "../lib";
 import {getToken, refreshToken} from "./token.api";
 import type { AxiosRequestConfig, AxiosError } from 'axios'
-
 import {BaseQueryFn} from "@reduxjs/toolkit/query";
-import {parseError, StateType} from "../../app/services";
+import {parseError, setFatalError, StateType} from "../../app/services";
+import {addSystemNotification} from "../../entities/Notification";
+
+
+
+
 export const api = axios.create({
     baseURL: BASE_URL,
     validateStatus: (status: number) => {
@@ -17,7 +21,9 @@ export const privateApi = axios.create({
 })
 
 privateApi.interceptors.request.use((config => {
-    config.headers['Authorization'] = `Bearer ${getToken()}`
+    if (!(config as any)._sent) {
+        config.headers['Authorization'] = `Bearer ${getToken()}`
+    }
     return config
 }))
 
@@ -26,7 +32,13 @@ privateApi.interceptors.response.use(response => response, async (error )=> {
     if (error.response.status === 401 && error.config && !error.config._sent) {
         try {
             originalRequest._sent = true
-            await refreshToken()
+            const newToken = await refreshToken()
+            console.log(originalRequest.data)
+            originalRequest.headers['Authorization'] = `Bearer ${newToken}`
+
+            if (/"token":"/.test(originalRequest.data)) {
+                originalRequest.data = `{"token": "${newToken}"}`
+            }
             return privateApi(originalRequest)
         } catch (e) {
             console.error(e)
@@ -36,17 +48,25 @@ privateApi.interceptors.response.use(response => response, async (error )=> {
 })
 
 
+type Headers = CreateAxiosDefaults['headers']
+
+const h: Headers = {
+    "Content-Type": 'multipart/form-data'
+}
+
 
 type Privacy = 'not-authenticated' | 'authenticated' | 'all'
+type Method = 'POST' | 'GET' | 'PATCH' | 'DELETE' | 'PUT'
 
 export const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: '' })
     : BaseQueryFn<
         {
             url: string
-            method: AxiosRequestConfig['method']
+            method: Method
             body?: AxiosRequestConfig['data']
             params?: AxiosRequestConfig['params']
             privacy?: Privacy
+            headers?:  any
         } | string,
         unknown,
         unknown
@@ -77,18 +97,33 @@ export const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: '' 
                 const data = isString ? {} : args.body
                 const params =  isString ? {} : args.params
                 const url = isString ? args : args.url
+                const headers = isString ? {} : args.headers
 
-                const result = await getAxiosInstance(privacy, method)({ url: baseUrl + url, method, data, params })
+                const result = await getAxiosInstance(privacy, method)({ url: baseUrl + url, method, data, params, headers })
                 return { data: result.data }
             } catch (axiosError) {
-                let err = axiosError as AxiosError
+                let err = ((axiosError as any).message as string).split(' ')
+
+                const status = +err[err.length - 1]
+
+                const isString = typeof args === 'string'
+                const method = isString ? 'get' : args.method || 'get'
                 const error = {
                     error: {
-                        status: err.response?.status,
-                        data: err.response?.data || err.message,
+                        status: status,
+                        data: 'Server Error'
                     }
                 }
                 store.dispatch(parseError(error))
+                if (status >= 500) {
+                    store.dispatch(setFatalError({...error.error as any}))
+                }
+
+                if (!SAFE_METHODS.includes(method) && status >= 400 && status < 500) {
+                    store.dispatch(addSystemNotification({ message: 'Ошибка, попробуйте снова', type: 'error' }))
+                }
+
+
                 return error
             }
         }

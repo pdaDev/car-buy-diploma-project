@@ -1,0 +1,42 @@
+
+
+
+.calendar {
+
+  &__options_wrapper {
+    width: 60px !important;
+    left: 25% !important;
+  }
+
+  &__current_value_wrapper {
+    width: 50px !important;
+    border: none !important;
+    background: transparent !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  &__input_container {
+    background: transparent !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    padding-right: var(--space-2) !important;
+    font-weight: var(--fnt-weight-medium) !important;
+
+
+
+    input {
+      text-align: center !important;
+      font-size: var(--fnt-size-3) !important;
+      font-weight: var(--fnt-weight-medium) !important;
+      color: var(--clr-fnt-primary);
+    }
+  }
+
+  &__option {
+    border: none !important;
+    padding: 0 var(--space-2);
+
+  }
+}

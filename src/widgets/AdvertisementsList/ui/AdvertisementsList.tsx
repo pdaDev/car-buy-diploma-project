@@ -1,10 +1,10 @@
-import React, {FC, useState} from "react";
+import React, {FC, ReactNode, useState} from "react";
 import {
-    CardType,
+    CardType, Container, DataGrid, formatNumber,
     getCarName,
     getTimeAccordingNow,
-    getYear,
-    List,
+    getYear, Grid, Label,
+    List, sorter,
     Stack,
     useMultiLanguageHandbooks
 } from "../../../shared";
@@ -13,95 +13,161 @@ import {AdvertisementCard} from "../../../entities/Advertisement";
 import {AddRemoveToFavourites} from "../../../features/OperateWithAdvertisementFavourites";
 import {useTranslation} from "react-i18next";
 import {NS} from 'entities/Advertisement'
-import {useAppNavigate, useAppSelector} from "../../../app/services";
-import {selectors as userSelectors} from "../../../entities/User";
+import {selectHandbook, useAppNavigate, useAppSelector} from "../../../app/services";
+
 import {SortBLock} from "../../../features/SortBlock";
 import {AdvertisementManagementPanel} from "../../../features/ManagemenentPanel";
 import {ChangeAdvertisementType} from "../../../features/ChangeADvertisementType";
+import {getEngineCharacteristicsLabel} from "../../../entities/Advertisement/lib/helpers";
+import {useAuthorize} from "../../../entities/User/lib/hooks";
 
 
 interface IProps {
-    data: IAdvertisementListItem[]
+    data: (IAdvertisementListItem)[]
     withDifferentAdCardType?: boolean
     loading: boolean
-    carType?: 'mini-card' | 'base-card' | 'search-card'
-    sort?: Omit<Parameters<typeof SortBLock>[0], 'sortKeys'> & { sortKeys?: string[] }
+    fetching?: boolean
+    carType?: Parameters<typeof AdvertisementCard>[0]['type']
+    sort?: {
+        sortKeys?: string[],
+        withFrontSideSorting?: boolean
+        currentSortKey?: string | null
+        onSort?: (sort: string | null) => void
+    }
     withFavourites?: boolean
     withAdvertisementManagement?: boolean
+    withStatusMark?: boolean
+    extraOptions?: ReactNode
+    cols?: number
 }
 
 export const AdvertisementsList: FC<IProps> = ({
                                                    data,
                                                    sort,
+                                                   cols,
+                                                   carType: defaultCardType,
                                                    loading,
+                                                   fetching,
                                                    withAdvertisementManagement,
                                                    withFavourites,
-                                                   withDifferentAdCardType= false,
+                                                   withDifferentAdCardType = false,
+                                                   withStatusMark = false,
+                                                   extraOptions
                                                }) => {
-    const isAuth = useAppSelector(userSelectors.selectAuthStatus)
-    const userId = useAppSelector(userSelectors.selectUserId)
+    const {userId, authStatus: isAuth} = useAuthorize()
     const {getHandbookItemName} = useMultiLanguageHandbooks()
     const n = useAppNavigate()
     const {t, i18n} = useTranslation()
-
+    const [selfSort, setSelfSort] = useState<null | string>(null)
 
     const goToAdvertisementPage = (id: number) => n(d => d.advertisement._key_(id))
-    const list = data || []
-
-    const refactoredAdvertisements = list.map(ad => {
+    let list = (data || []) as (NS.IAdvertisementListItemWithStatus[])
+    list = sort && sort.withFrontSideSorting ? sorter(list, selfSort, '-') : list
+    const refactoredAdvertisements = list.map((ad) => {
         const {
-            engine: {fuel, hp, volume}, drive, transmission, equipment_name,
-            name, date_of_production, start_date, price, photos, mileage, car_body_type, owner, advertisement_id
+            engine, drive, transmission, equipment_name,
+            name, date_of_production, start_date, price, photos, mileage, car_body_type, owner, advertisement_id,
+            address
         } = ad
+        const status = withStatusMark ? {
+            status: {
+                code: ad.status_code.code as NS.StatusCode,
+                name: getHandbookItemName(ad.status_code)
+            }
+        } : {}
         const advertisementCardData: NS.IAdvertisementCardData = {
             drive: getHandbookItemName(drive),
             transmission: getHandbookItemName(transmission),
-            engine: `${volume} ${t("metrics.liter")} /${hp} ${t("metrics.hp")} /${getHandbookItemName(fuel)}`,
+            engine: getEngineCharacteristicsLabel(engine, t, getHandbookItemName),
             name: getCarName(name),
-            yearOfProduction: getYear(date_of_production),
+            yearOfProduction: +date_of_production,
             startDate: getTimeAccordingNow(start_date, i18n.language),
             carBodyType: getHandbookItemName(car_body_type),
             price,
             photos,
-            mileage: `${mileage} ${t("metrics.kilometer")}`,
-            equipment: equipment_name,
+            mileage: `${formatNumber(mileage)} ${t("metrics.kilometer")}`,
+            equipment: equipment_name || '',
             owner,
-            advertisement_id
+            advertisement_id,
+            address: address ? `г. ${address.name}` : null,
+            ...status
         }
         return advertisementCardData
     }) as NS.IAdvertisementCardData[]
-    const defaultSortKeys = ['price', 'date_of_production', 'mileage']
+    const defaultSortKeys = ['price', 'date_of_production', 'mileage', 'start_date']
     const keysForSorting = sort?.sortKeys ?? defaultSortKeys
-    const [cardType, setCardType] = useState<CardType>('large')
+    const [cardType, setCardType] = useState<CardType>(defaultCardType || 'large')
     const isSmallCard = cardType === 'small'
+    const sortHandler = (value: string | null) => {
+        if (sort) {
+            if (sort.withFrontSideSorting) {
+                setSelfSort(value)
+            } else {
+                sort.onSort && sort.onSort(value)
+            }
+        }
+    }
+    const currentSortKey = sort ? sort.withFrontSideSorting ? selfSort : sort.currentSortKey || null : null
 
-
-    return <Stack spacing={4} vAlign={'start'} size={'container'}>
-        <Stack direction={'row'} size={'container'}>
+    return <Stack spacing={4} vAlign={'start'} size={'width'}>
+        {(withDifferentAdCardType || sort) && <Stack wrap direction={'row'} vAlign={'center'} size={'width'}>
             {sort && keysForSorting.length > 0 &&
-                <SortBLock currentSortKey={sort!.currentSortKey} sortKeys={keysForSorting} onSort={sort!.onSort}/>}
-            { withDifferentAdCardType && <ChangeAdvertisementType onChange={setCardType} activeType={cardType}/> }
-        </Stack>
-        <List data={refactoredAdvertisements}
-              loading={loading}
-              renderListEl={(data: NS.IAdvertisementCardData, loadingStatus?: boolean) =><AdvertisementCard data={data}
-                                         type={cardType}
-                                         extra={{
-                                             favoriteButton: data && isAuth && withFavourites
-                                                 ? <AddRemoveToFavourites withTransparentBackground={isSmallCard}
-                                                                          advertisementId={data?.advertisement_id}
-                                                 />
-                                                 : undefined,
-                                             managementPanel: data && isAuth && data.owner.id === userId && withAdvertisementManagement
-                                                 ?
-                                                 <AdvertisementManagementPanel advertisementId={data?.advertisement_id}/>
-                                                 : null
-                                         }
-                                         }
-                                         onClick={() => data && goToAdvertisementPage(data.advertisement_id)}
-                                         loading={loadingStatus || false}
-                      />
-              }
-        />
+                <SortBLock currentSortKey={currentSortKey} sortKeys={keysForSorting} onSort={sortHandler}/>}
+            {withDifferentAdCardType && <ChangeAdvertisementType onChange={setCardType} activeType={cardType}/>}
+            {extraOptions}
+        </Stack>}
+        {isSmallCard ?
+            <DataGrid loading={loading}
+                      fetching={fetching}
+                      renderEl={data => <AdvertisementCard data={data}
+                                                           type={'small'}
+                                                           extra={{
+                                                               favoriteButton: data && isAuth && withFavourites
+                                                                   ?
+                                                                   <AddRemoveToFavourites
+                                                                       withTransparentBackground={isSmallCard}
+                                                                       advertisementId={data?.advertisement_id}
+                                                                   />
+                                                                   : undefined,
+                                                           }
+                                                           }
+                                                           onClick={() => data && goToAdvertisementPage(data.advertisement_id)}
+                                                           loading={loading || false}/>
+                      }
+                      data={refactoredAdvertisements}
+                      cols={cols || 3}
+                      emptyKey={'advertisement.empty'}
+            />
+
+            : <List data={refactoredAdvertisements}
+                    loading={loading}
+                    fetching={fetching}
+                    emptyKey={'advertisement.empty'}
+                    renderListEl={(data: NS.IAdvertisementCardData, loadingStatus?: boolean) => <AdvertisementCard
+                        data={data}
+                        type={cardType}
+                        withStatus
+                        extra={{
+                            favoriteButton: data && isAuth && withFavourites
+                                ?
+                                <AddRemoveToFavourites
+                                    withTransparentBackground={isSmallCard}
+                                    advertisementId={data?.advertisement_id}
+                                />
+                                : undefined,
+                            managementPanel: data && isAuth && data.owner.id === userId && withAdvertisementManagement
+                                ?
+                                <AdvertisementManagementPanel
+                                    status={data?.status?.code || 'O'}
+                                    advertisementId={data?.advertisement_id}/>
+                                : null
+                        }
+                        }
+                        onClick={() => data && goToAdvertisementPage(data.advertisement_id)}
+                        loading={loadingStatus || false}
+                    />
+                    }
+            />
+        }
     </Stack>
 }

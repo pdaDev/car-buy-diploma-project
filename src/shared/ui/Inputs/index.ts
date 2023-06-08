@@ -1,3 +1,5 @@
 export { Input } from './Input/Input'
 export { NumberInput } from './NumberInput/NumberInput'
+export { PhoneNumberInput } from './PhoneNumberInput/PhoneNumberInput'
+export { InputWrapper } from './InputWrapper/InputWrapper'
 // export { DateInput } from './DateInput/DateInput'

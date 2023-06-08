@@ -1,8 +1,9 @@
 .counter {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  gap: 4px;
   width: 100%;
+  box-sizing: border-box;
   height: auto;
 
   .el {
@@ -11,7 +12,7 @@
     cursor: pointer;
     flex-grow: 1;
     transition: .2s;
-    background: var(--clr-primary-light);
+    background: var(--clr-grey-1);
 
     &.active {
       background: var(--clr-primary);

@@ -1,0 +1,69 @@
+@import 'src/app/index';
+
+.side_menu {
+  width: 100%;
+  max-width: 420px;
+  background: var(--clr-secondary);
+  box-shadow: var(--space-1);
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  right: 0;
+  transform: translateX(100%);
+  height: 100%;
+  transition: .3s;
+  z-index: 200;
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  .buttons_block {
+    background: var(--clr-secondary);
+    box-shadow: -8px 20px 18px -12px rgba(34, 60, 80, 0.2);
+    padding: var(--space-3);
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transform: translateX(-100%);
+    bottom: 10%;
+    border-top-left-radius: var(--brd-radius-2);
+    border-bottom-left-radius: var(--brd-radius-2);
+
+
+    .button {
+      cursor: pointer;
+      position: relative;
+
+      svg {
+        color: var(--clr-grey-1)
+      }
+
+      &.active {
+        svg {
+          color: var(--clr-primary);
+        }
+      }
+
+      .mark {
+        height: 20px;
+        width: 20px;
+        padding: 4px;
+        font-weight: var(--fnt-weight-medium);
+        font-size: var(--fnt-size-2);
+        background: var(--clr-primary);
+        border-radius: 50%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-30%, -30%);
+      }
+    }
+  }
+}

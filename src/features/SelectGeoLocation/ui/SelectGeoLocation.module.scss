@@ -1,0 +1,145 @@
+@import "src/app/index";
+
+
+
+.region {
+  cursor: pointer;
+}
+
+.regions_grid {
+  column-count: 4;
+  overflow: scroll;
+
+  span {
+    font-size: var(--fnt-size-2);
+    font-weight: var(--fnt-weight-regular);
+    color: var(--clr-grey-1);
+    margin: 2px 0;
+    display: block;
+
+    &.active {
+      color: var(--clr-primary);
+    }
+  }
+}
+
+.input_wrapper {
+  .search_icon, .clear_query {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    transform: translateY(-50%);
+  }
+
+  .search_icon {
+    left: 4px;
+  }
+
+  .clear_query {
+    color: var(--clr-grey-1);
+    color: var(--clr-grey-1);
+    right: 8px;
+    cursor: pointer;
+  }
+}
+
+
+.selector {
+  position: relative;
+
+  input {
+    background: var(--clr-grey-light);
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: var(--brd-radius-1);
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--fnt-size-4);
+    border: none;
+
+
+    &:focus {
+      outline: none;
+      border: none;
+
+      .search_icon {
+        color: black;
+      }
+    }
+
+    &:-moz-placeholder {
+      color: var(--clr-grey-1);
+    }
+  }
+
+  .options {
+    top: 42px;
+    box-sizing: border-box;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    overflow: scroll;
+    max-height: 280px;
+    position: absolute;
+    border-radius: var(--brd-radius-2);
+    background: var(--clr-secondary);
+    box-shadow: var(--shadow-1);
+    padding: var(--space-4);
+    padding-bottom: var(--space-3);
+
+    .option {
+      display: flex;
+      gap: var(--space-3);
+      align-items: flex-end;
+      cursor: pointer;
+      border-bottom: 1px solid var(--clr-grey-1);
+      padding: var(--space-3);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:focus {
+        background: var(--clr-primary-light);
+        outline: none;
+      }
+
+    }
+  }
+}
+
+.selected_el {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--brd-radius-1);
+  background: var(--clr-primary);
+  gap: var(--space-4);
+  display: flex;
+  align-items: center;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+
+  @keyframes round {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dashoffset: 100;
+    }
+    100% {
+      stroke-dashoffset: 200;
+    }
+  }
+
+  circle {
+    stroke: var(--clr-grey-1);
+    background: transparent;
+    fill: none;
+    animation: round .5s infinite forwards;
+  }
+}
+
+
+

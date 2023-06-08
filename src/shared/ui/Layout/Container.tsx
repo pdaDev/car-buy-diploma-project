@@ -20,7 +20,10 @@ interface IProps {
     max_h?: string
     min_w?: string
     min_h?: string
-    size?: 'content' | 'container'
+    h?: string
+    w?: string
+    size?: 'content' | 'container' | 'width'
+    pointerEventsNone?: boolean
     contentAlign?: 'center' | 'top-left' | 'top-middle' | 'top-right' | 'middle-left' | 'middle-right' | 'bottom-left' | 'bottom-right' | 'bottom-middle'
     position?: 'center' | 'top-left' | 'top-middle' | 'top-right' | 'middle-left' | 'middle-right' | 'bottom-left' | 'bottom-right' | 'bottom-middle' | 'none'
 }
@@ -63,21 +66,33 @@ const StyledContainer = styled.div<IProps>`
   margin-bottom: ${props => setSpace(props.mb)};
   margin-right: ${props => setSpace(props.mr)};
   z-index: ${props => props.zi || 0};
+  pointer-events: ${props => props.pointerEventsNone ? 'none' : 'auto'};
   
-  ${({size}) => {
+  ${({size, w, h}) => {
       switch (size) {
         case 'content': 
             return css`
-              width: auto;
-              height: auto;
+              width: ${w || 'auto'};
+              flex-grow: 0;
+              height: ${h || 'auto'};
             `
         case 'container':
             return css`
-              width: 100%;
-              height: 100%;
+              width: ${w || '100%'};
+              flex-grow: 1;
+              height: ${h || '100%'};
+              
+            `
+        case 'width':
+            return css`
+              width: ${w || '100%'};
+              flex-grow: 0;
+              height: ${h || 'auto'};
             `
       }
   }};
+  
+  
   max-height: ${props => props.max_h || 'unset'};
   max-width: ${props => props.max_w || 'unset'};
   min-height: ${props => props.min_h || 'unset'};

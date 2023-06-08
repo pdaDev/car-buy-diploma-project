@@ -32,6 +32,10 @@
 
   .phone_number_wrapper {
     z-index: 2;
+    text-wrap: none;
+    word-wrap: unset;
+    word-break: unset;;
+    width: 40%;
     background: var(--clr-primary);
   }
 }

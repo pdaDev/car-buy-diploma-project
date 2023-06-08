@@ -1,12 +1,14 @@
 import * as NS from '../namespace'
-import {useEffect} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useAppDispatch, useAppSelector} from "../../../app/services";
 import {
     addChatNotification, addInformNotification,
     addNotification, addSystemNotification,
     removeFromVisible,
-    selectors
+    selectors, setNotifications, viewNotification
 } from "../model";
+import {addNotificationLS, getNotificationsLS, viewNotificationLS} from "../api";
+import {INotification} from "../namespace";
 
 interface IUseNotifyReturnType {
     notify: (notification: NS.NotificationPayload) => void
@@ -31,14 +33,56 @@ export function useNotify(notification?: NS.NotificationPayload, whenShow?: bool
     return { notify, chatNotify, systemNotify, informNotify }
 }
 
+
+export const useNotificationInit = () => {
+    const d = useAppDispatch()
+
+    useEffect(() => {
+        const notifications = getNotificationsLS()
+        d(setNotifications(notifications))
+    }, [])
+}
 export const useNotifyVisibleUpdate = () => {
     const d = useAppDispatch()
     const visibleNotifications = useAppSelector(selectors.getVisibleNotifications)
+    const [visibleNotificationsHistory, setHistory] = useState<string[]>([])
 
     useEffect(() => {
         if (visibleNotifications.length > 0) {
-            const newNotification = visibleNotifications[visibleNotifications.length - 1]
-            setTimeout(() => d(removeFromVisible(newNotification)), newNotification.showingDuration || 3000)
+            const newNotification = visibleNotifications.find(n => !visibleNotificationsHistory.includes(n.id))
+            if (newNotification) {
+                if (newNotification.necessaryToStore) {
+                    addNotificationLS( {...newNotification, visible: false})
+                }
+                setTimeout(() => d(removeFromVisible(newNotification)), newNotification.showingDuration || 3000)
+            }
         }
+        setHistory(visibleNotifications.map(n => n.id))
     }, [visibleNotifications, d])
+}
+
+export const useNotificationView = (notificationId: string, viewedStatus: boolean) => {
+    const ref = useRef<HTMLImageElement>(null)
+    const d = useAppDispatch()
+    useEffect(() => {
+        if (ref.current && !viewedStatus && !document.hidden) {
+            const observer = new IntersectionObserver(() => {
+                setTimeout(() => {
+                    d(viewNotification(notificationId))
+                    viewNotificationLS(notificationId)
+                }, 3000)
+
+            }, {
+                root: null,
+                rootMargin: "0px",
+                threshold: 1.0, })
+
+            observer.observe(ref.current)
+
+            return () => {
+                observer.disconnect()
+            }
+        }
+    }, [ref, notificationId, viewedStatus])
+    return ref
 }

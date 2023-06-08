@@ -1,7 +1,7 @@
 import React, {FC, MouseEventHandler, ReactNode, useEffect, useRef, useState} from 'react'
 
 import s from './HeaderUserMenu.module.scss'
-import { Button, cn, Label, useBlurFocus, useOpenStatus} from "../../../shared";
+import {Button, cn, Label, useBlurFocus, useOpenStatus} from "../../../shared";
 import {CSSTransition} from "react-transition-group";
 
 export interface IProps {
@@ -11,6 +11,10 @@ export interface IProps {
     logout: MouseEventHandler
     login: MouseEventHandler
     goToPersonalCabinet: MouseEventHandler
+    goToReviews: Function
+    goToMessages: Function
+    goToTestResults: Function
+
 }
 
 export const HeaderUserMenu: FC<IProps> = ({
@@ -19,13 +23,14 @@ export const HeaderUserMenu: FC<IProps> = ({
                                                avatar,
                                                logout,
                                                login,
-                                               goToPersonalCabinet
+                                               goToPersonalCabinet,
+                                               goToReviews,
+                                               goToTestResults,
+                                               goToMessages
                                            }) => {
     const [isOpen, setOpenStatus, toggleOpenStatus] = useOpenStatus()
     const {onFocus, onBlur} = useBlurFocus(() => setOpenStatus(false))
     const ref = useRef(null)
-
-
     return <div className={s.wrapper}
                 tabIndex={0}
                 onFocus={onFocus}
@@ -54,6 +59,16 @@ export const HeaderUserMenu: FC<IProps> = ({
                         <Button label={'личный кабинет'}
                                 type={'secondary'}
                                 onClick={goToPersonalCabinet}
+                                width={140}
+                        />
+                        <Button type={'secondary'}
+                                label={'Мои отзывы'}
+                                onClick={goToReviews}
+                                width={140}
+                        />
+                        <Button label={'Мои сообщения'}
+                                type={'secondary'}
+                                onClick={goToMessages}
                                 width={140}
                         />
                         <Button label={'выйти'}

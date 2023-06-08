@@ -1,0 +1,11 @@
+@import "src/app/index";
+
+.measure {
+  position: absolute;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  padding-bottom: var(--space-2);
+  right: var(--space-3);
+  top: 0
+}

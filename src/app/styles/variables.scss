@@ -9,6 +9,7 @@ html {
 
     --shadow-1: 0px 48px 64px 0px #0000001A;
     --shadow-2: 0px 24px 32px 0px rgba(0, 0, 0, 0.08);
+    --shadow-3: 0px 9px 9px 0px rgba(0, 0, 0, 0.08);
 
     --fnt-size-1: 10px;
     --fnt-size-2: 12px;
@@ -32,28 +33,42 @@ html {
 
     --clr-primary: #FFE12B;
     --clr-fnt-black: black;
+    --clr-green-light: #A0DB8E;
+    --clr-red-light: #FA8072;
     --clr-fnt-white: white;
 }
 
 @mixin dark-theme {
     --clr-background: #111111;
-    --clr-secondary: #373737;
-    --clr-primary-light: #FFFADD;
-    --clr-primary-dark: '';
+    --clr-secondary: #242424;
+    --clr-primary-light: #d9ce93;
+    --clr-primary: #d4b60d;
     --clr-success: #53C037;
     --clr-warning: #FFC876;
     --clr-error: #E91818;
-    --clr-grey-1: #D9D9D9;
+    --clr-grey-1: #4f4f4f;
+    --clr-fnt-black: #111111;
 
-    --clr-grey-light: #EFEFEF;
+    --clr-grey-light: #383838;
     --clr-grey-dark: '';
-    --clr-grey-ligth: '';
-    --clr-fnt-primary: #F4F4F4;
+    --clr-fnt-primary: #d4d4d4;
+    --clr-grey-2: #383838;
+    --clr-light-card: #383838;
+
+    --clr-chat-background: #383838;
+
+    --shadow-3: none;
+    --shadow-1: none;
+    --shadow-2: none;
 }
 
 @mixin light-theme {
+    --clr-grey-2: #D9D9D9;
     --clr-primary: #FFE12B;
+    --clr-fnt-black: black;
+    --clr-light-card: white;
     --clr-background: #F2F2F2;
+    --clr-chat-background: #F2F2F2;
     --clr-secondary: white;
     --clr-primary-light: #FFFADD;
     --clr-primary-dark: '';

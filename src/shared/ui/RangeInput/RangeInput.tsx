@@ -1,26 +1,28 @@
 import {ChangeEvent, FC, KeyboardEvent, MouseEvent, useEffect, useLayoutEffect, useRef, useState} from 'react'
 
 import s from './RangeInput.module.scss'
-import {cn, debounce, getPercents} from "../../lib";
+import {cn, debounce, formatNumber, getPercents} from "../../lib";
+import {setSelectionRange} from "@testing-library/user-event/dist/utils";
+
+type Value = number | null
 
 interface IProps {
     min: number;
     max: number;
-    current: null | {
-        min: null | number
-        max: null | number
-    }
+    current?: Value | Value[]
     type: 'single' | 'multiple'
     valuePostfix?: string
-    onChange: (options: (number | null)[]) => void
+    onChange: (options: Value[]) => void
     parts?: number
     step?: number
+    withoutNumberFormatting?: boolean
 }
 
 export const RangeInput: FC<IProps> = ({
                                            min,
                                            max,
                                            current,
+                                           withoutNumberFormatting= false,
                                            onChange,
                                            type,
                                            parts,
@@ -29,34 +31,56 @@ export const RangeInput: FC<IProps> = ({
                                        }) => {
 
     const rangeStep = step || (parts ? 100 / parts : null)
+
+
     const formatClickPosToStep = (pos: number) => {
         return rangeStep ? Math.round(pos / rangeStep) * rangeStep : pos;
     }
+    const isMultipleType = type === 'multiple'
     const onTrackClick = (e: MouseEvent) => {
         if (ref.current) {
-            const clickPos = formatClickPosToStep(Math.min((e.clientX - ref.current.getBoundingClientRect().x) / ref.current.clientWidth * 100, 100))
-
-            if (clickPos < minThumbPos) {
-                setMinThumbPos(clickPos)
-                selectThumb(0)
-            } else if (clickPos > maxThumbPos) {
+            let clickPos = formatClickPosToStep(Math.min((e.clientX - ref.current.getBoundingClientRect().x) / ref.current.clientWidth * 100, 100))
+            clickPos = formatPosByStep(formatPosByStep(clickPos))
+            if (isMultipleType) {
+                if (!selectedThumb) {
+                    const centerPos = minThumbPos + (maxThumbPos - minThumbPos)
+                    if (clickPos < minThumbPos || clickPos <= centerPos) {
+                        setMinThumbPos(clickPos)
+                        selectThumb(0)
+                    } else if (clickPos > maxThumbPos || clickPos >= centerPos) {
+                        setMaxThumbPos(clickPos)
+                        selectThumb(1)
+                    }
+                }
+                changePoseAccordingThumbId(selectedThumb, clickPos)
+            } else {
                 setMaxThumbPos(clickPos)
-                selectThumb(1)
-            } else changePoseAccordingThumbId(selectedThumb, clickPos)
+            }
         }
     }
 
+    const onRangeBlur = () => selectThumb(null)
+
     const ref = useRef<HTMLDivElement>(null)
-    const [selectedThumb, selectThumb] = useState<number>(0)
+    const [selectedThumb, selectThumb] = useState<number | null>(isMultipleType ? null : 1)
+    // @ts-ignore
     const [maxThumbPos, setMaxThumbPos] = useState<number>(100)
-    const [minThumbPos, setMinThumbPos] = useState<number>(1)
+    const [minThumbPos, setMinThumbPos] = useState<number>(0)
     const selectMinThumb = () => selectThumb(0)
     const selectMaxThumb = () => selectThumb(1)
+    const formatPosByStep = (clickPos: number) => {
+        if (step) {
+            const posStep = (step / (max - min)) * 100
+            const steps = Math.round(clickPos / posStep)
+            return steps * posStep
+        }
+        return clickPos
+    }
     const changePoseAccordingThumbId = (thumb: number | null, clickPos: number) => {
         if (thumb === 0) {
-            setMinThumbPos(Math.min(maxThumbPos, Math.max(0, clickPos)))
+            setMinThumbPos(Math.min(maxThumbPos, Math.max(0, formatPosByStep(clickPos))))
         } else if (thumb === 1) {
-            setMaxThumbPos(Math.min(100, Math.max(minThumbPos, clickPos)))
+            setMaxThumbPos(Math.min(100, Math.max(minThumbPos, formatPosByStep(clickPos))))
         }
     }
     const [capturedThumb, setCapturedThumb] = useState<number | null>(null)
@@ -67,7 +91,7 @@ export const RangeInput: FC<IProps> = ({
     const onMinThumbPointerDown = onThumbPointerDown(0)
     const onMaxThumbPointerDown = onThumbPointerDown(1)
 
-    const isMultipleType = type === 'multiple'
+
     const thumb = useRef<HTMLDivElement>(null)
 
     const getAvailableMinPos = (pos: number) => Math.min(maxThumbPos, Math.max(0, pos))
@@ -75,7 +99,19 @@ export const RangeInput: FC<IProps> = ({
 
 
     useEffect(() => {
-        const onPointerUp = () => setCapturedThumb(null);
+        if (current !== undefined) {
+            const maxValue = isMultipleType ? (current as Value[])[1] : current as Value
+            setMaxThumbPos(maxValue !== null ? (maxValue - min) / (max - min) * 100 : 100)
+            if (isMultipleType) {
+                const minValue = (current as Value[])[0]
+                setMinThumbPos(minValue !== null ? (minValue - min) / (max - min) * 100 : 1)
+            }
+        }
+    }, [current])
+    useEffect(() => {
+        const onPointerUp = () => {
+            setCapturedThumb(null);
+        }
         const onPointerMove = (e: MouseEvent<HTMLDivElement>) => {
             if (ref.current && thumb.current) {
                 const thumbRadius = thumb.current.clientWidth / 2
@@ -129,31 +165,23 @@ export const RangeInput: FC<IProps> = ({
             const razrydnost = step.toString().split('.')[1].length
             return +value.toFixed(razrydnost)
         }
+
         return ~~value
     }
+
+
     const currentMaxValue = roundValue(max * maxThumbPos / 100)
     const currentMinValue = roundValue(((max - min) * minThumbPos / 100 + min))
 
 
     useEffect(() => onChange([
-            currentMinValue === min ? null : currentMinValue,
-            currentMaxValue === max ? null : currentMaxValue
+            currentMinValue,
+            currentMaxValue
         ]),
         [currentMinValue, currentMaxValue])
 
-    return <div className={s.wrapper} tabIndex={0}>
-        <div className={s.value_wrapper}>
-            <div className={s.current_value}>
-                <input type="text"
-                       onBlur={onMinValueInputBlur}
-                       value={currentMinValue}
-                       onChange={onMinValueChange}/>
-                {` ${valuePostfix || ''}`}
-            </div>
-            <div className={s.hidden_value}>
-                {"0000"}
-            </div>
-        </div>
+
+    return <div className={s.wrapper} tabIndex={0} onBlur={onRangeBlur}>
         <div className={s.range_wrapper} tabIndex={0} onKeyDown={onKeyDown}>
             <div className={s.selected_range}
                  data-some-captured={capturedThumb !== null}
@@ -175,18 +203,21 @@ export const RangeInput: FC<IProps> = ({
                  onPointerDown={onMaxThumbPointerDown}
             />
         </div>
-        <div className={s.value_wrapper}>
-            <div className={s.current_value}>
-                <input value={currentMaxValue}
+        <div className={s.values}>
+            <div className={s.value_wrapper}>
+                <input type="text"
+                       onBlur={onMinValueInputBlur}
+                       value={withoutNumberFormatting ? currentMinValue: formatNumber(currentMinValue)}
+                       onChange={onMinValueChange}/>
+                {` ${valuePostfix || ''}`}
+            </div>
+            <div className={s.value_wrapper}>
+                <input value={withoutNumberFormatting ? currentMaxValue: formatNumber(currentMaxValue)}
                        onChange={onMaxValueChange}
                        onBlur={onMaxValueInputBlur}
                 />
                 {` ${valuePostfix || ''}`}
             </div>
-            <div className={s.hidden_value}>
-                {roundValue(max)}
-            </div>
         </div>
-
     </div>
 }

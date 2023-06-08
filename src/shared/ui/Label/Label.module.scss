@@ -1,0 +1,10 @@
+@import "src/app/index";
+
+.loading {
+  @extend %loading;
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  height: auto;
+  border-radius: var(--brd-radius-2);
+}

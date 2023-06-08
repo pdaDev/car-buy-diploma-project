@@ -2,6 +2,7 @@ import {FC, ReactNode} from 'react'
 
 import s from './Card.module.scss'
 import styled, {css} from "styled-components";
+import {Color} from "../../types";
 
 
 type Param = number | string
@@ -16,7 +17,9 @@ interface IProps {
     height?: Param | 'auto' | '100%'
     contentDirection?: 'row' | 'column'
     contentGap?: Param
-    shadow?: 1 | 2 | 3
+    color?: Color
+    shadow?: 1 | 2 | 3 | 0
+    zIndex?: number
     contentAlign?: 'center' | 'top-left' | 'top-middle' | 'top-right' |
         'middle-left' | 'middle-right' | 'bottom-left' |
         'bottom-right' | 'bottom-middle'
@@ -59,14 +62,18 @@ const StyledCard = styled.div<Omit<IProps, 'onClick' | 'children'>>`
                     : css`border-radius: ${getBorderValue(border[0])};`
             : css`border-radius: ${getBorderValue(border!)};`
   }}
-  background: var(--clr-secondary);
+  z-index: ${props => props.zIndex ?? 1};
+  background: var(--clr-${props => props.color || 'secondary'});
   width: ${props => getSizeValue(props.width!)};
+  position: relative;
   height: ${({height}) => getSizeValue(height!)};
   padding: ${({paddings}) => Array.isArray(paddings) ? paddings.map(getPaddingValue) : getPaddingValue(paddings!)};
   display: inline-flex;
   box-shadow: var(--shadow-${props => props.shadow});
   flex-direction: ${props => props.contentDirection};
   justify-content: space-between;
+  box-sizing: border-box;
+  max-height: 100%;
   gap: ${props => props.contentGap || 0}px;
   ${({contentAlign}) => {
     if (contentAlign) {
@@ -86,8 +93,7 @@ const StyledCard = styled.div<Omit<IProps, 'onClick' | 'children'>>`
 
 export const Card: FC<IProps> = ({
                                      onClick,
-                                     children,
-                                     border = 2,
+                                     children, border = 2,
                                      width = 'auto',
                                      height = 'auto',
                                      contentDirection = 'row',

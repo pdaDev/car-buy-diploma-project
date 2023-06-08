@@ -1,51 +1,83 @@
-import {FC, useEffect, useState} from "react";
-import {useAppDispatch, useAppSelector} from "app/services";
+import React, {FC, useEffect, useState} from "react";
+import {selectHandbook, useAppDispatch, useAppSelector} from "app/services";
 import {selectors} from 'entities/User'
 import {useGetAdsMutation, useGetMyAdsQuery} from "../../../entities/Advertisement/api/queryAPI";
 import {AdvertisementsList} from "../../../widgets/AdvertisementsList";
 import {MotivationBlock} from "../../../shared/ui/MotivationBlock/MotivationBlock";
 import {useTranslation} from "react-i18next";
 import {openModal} from "../../../app/services/withPopupProvider";
-import {Container, useTabTile} from "../../../shared";
+import {
+    Container,
+    IHandbookItem,
+    sortList,
+    Label,
+    Stack,
+    useMultiLanguageHandbooks,
+    useTabTile,
+    IOption, Switcher, sorter, CircleDiagram, useNavigationPermission
+} from "../../../shared";
+
+import {SortBLock} from "../../../features/SortBlock";
+import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
+import {useAuthorize} from "../../../entities/User/lib/hooks";
+import {AuthMotivation} from "../../../features/Auth/ui/AuthMotivation/AuthMotivation";
+import {AdvertisementsAnalyze} from "./AdvertisementsAnalyze";
 
 export const Garage: FC = () => {
-    const authStatus = useAppSelector(selectors.selectAuthStatus)
+    const {authStatus} = useAuthorize()
     const {t} = useTranslation()
-    const d = useAppDispatch()
-    const openLoginForm = () => d(openModal({key: 'auth'}))
     useTabTile(t("pages.garage") as string)
-    const [sort, setSort] = useState<string | null>(null)
-    const limit = 10
-    const offset = 0
-    const {isLoading, data, refetch} = useGetMyAdsQuery({limit, offset, sort})
+    const statuses = useAppSelector(selectHandbook('adStatus'))
+    const {getHandbookOptions} = useMultiLanguageHandbooks()
+    const statusesOptions: IOption[] = getHandbookOptions(statuses as IHandbookItem[])
+    const switcherOptions = [
+        {value: 'all', label: t("advertisement.all")},
+        ...statusesOptions
+    ]
+
+    const {isLoading, data, refetch} = useGetMyAdsQuery()
+    const [status, setStatus] = useState('all')
     useEffect(() => {
         refetch()
-    }, [authStatus, refetch, sort])
+    }, [authStatus, refetch])
 
-    if (!authStatus) {
-        return <MotivationBlock handleAction={openLoginForm}
-                                buttonLabel={"motivate.garage.authorize.button"}
-                                message={t("motivate.garage.authorize.message") as string}
-        />
-    }
-    const ads = data?.results || []
-    if (!isLoading && ads.length === 0) {
-        return <MotivationBlock handleAction={() => {}}
+
+    let ads = data || []
+
+    if (!isLoading && ads.length === 0 && authStatus) {
+        return <MotivationBlock handleAction={() => {
+        }}
                                 buttonLabel={t("motivate.garage.createAd.button") as string}
                                 message={t("motivate.garage.createAd.message") as string}
         />
     }
 
 
-    return <Container max_w={'700px'}>
-        <AdvertisementsList data={ads} sort={{
-            currentSortKey: sort,
-            onSort: setSort,
-            sortKeys: []
-        }}
-                            loading={isLoading}
-                            withAdvertisementManagement
-        />
-    </Container>
+    ads = status !== 'all' ? ads.filter(ad => ad.status_code.code === status) : ads
+
+    return <AuthMotivation translationKey={'garage'}>
+        <Container max_w={'800px'}>
+            <Stack spacing={4} vAlign={'start'} size={'container'}>
+                <Label label={t("pages.garage")} level={1} weight={'medium'}/>
+                <AdvertisementsAnalyze advertisements={data || []}
+                                       loading={isLoading}
+                                       statuses={statusesOptions}/>
+                <AdvertisementsList data={ads}
+                                    loading={isLoading}
+                                    withAdvertisementManagement
+                                    withStatusMark
+                                    sort={{
+                                        sortKeys: ['price', 'start_date'],
+                                        withFrontSideSorting: true
+                                    }}
+                                    extraOptions={
+                                        <Switcher options={switcherOptions}
+                                                  activeOptions={status}
+                                                  onChange={setStatus}/>
+                                    }
+                />
+            </Stack>
+        </Container>
+    </AuthMotivation>
 
 }

@@ -16,7 +16,9 @@ export const SeparatedInput: FC<IProps> = ({
                                            }) => {
     const [text, setText] = useState<string[]>(new Array(dataToCompare.length))
     const [index, setIndex] = useState(0)
-    const isSuccess = text.join('') === dataToCompare
+
+    const isSuccess = text.join('').toLowerCase() === dataToCompare.toLowerCase()
+    console.log(isSuccess, dataToCompare, text.join(''))
     const container = useRef<HTMLDivElement>(null)
     const goToNext = () => setIndex(Math.min(dataToCompare.length - 1, index + 1))
     const goToPrev = () => setIndex(Math.max(0, index - 1))

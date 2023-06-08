@@ -26,7 +26,11 @@ export interface IEngine {
 export interface IBrend {
     brend_id: number;
     name: string;
-    producer_id: number;
+    logo: null | string
+    producer: {
+        producer_id: number
+        name: string
+    };
 }
 
 export interface IModel {
@@ -53,19 +57,43 @@ export interface ICarName {
     generation: string
 }
 
+type Name = {
+    id: number
+    name: string
+}
+export interface ICarNameWithId {
+    model: Name
+    brend: Name
+    generation: Name
+    generation_variant: number
+}
 interface ICar {
     id: number
     name: string
 }
+export interface IServerGenerationWithPeriod extends  ICar {
+    start: string
+    end: string | null
+}
 export interface IServerCarName {
     model: ICar
-    generation: ICar & {
-        start: number
-        end: number | null
-    }
+    generation: IServerGenerationWithPeriod
     brend: ICar
+    generation_variant: number
 
 }
+
+export interface IServerReviewListItem {
+    title: string
+    date: string
+    score: number
+    message: string
+    owner: IUserCommonData
+    car: ICarName
+    review_id: number
+    photos: string[]
+}
+
 
 export interface ReviewPoints {
     comfort_point: null | number
@@ -76,6 +104,7 @@ export interface ReviewPoints {
     cross_country_point: number | null
     total: number
 }
+export type ReviewPointsWithoutTotal = NonNullable<Omit<ReviewPoints, 'total'>>
 
 export interface IUserCommonData {
     first_name: string
@@ -91,8 +120,9 @@ export interface ICarBodyTypeHandbook extends IHandbookItem {
 }
 
 export interface IColor {
-    id: number;
-    hex: string;
-    rgba: string;
+    code: string;
+    color: string
+    ru_name: string
+    eng_name: null | string
 
 }

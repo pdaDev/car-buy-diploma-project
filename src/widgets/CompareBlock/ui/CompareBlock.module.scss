@@ -1,0 +1,21 @@
+
+
+.info_block_wrapper {
+  width: 264px;
+  flex-shrink: 0;
+  height: 100%;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+}
+
+.info_block {
+  padding: var(--space-3);
+  height: 100%;
+  border-radius: var(--brd-radius-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 120px;
+  background: var(--clr-secondary);
+}

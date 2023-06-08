@@ -6,18 +6,43 @@ export const routeTree = {
     init: {
         __path__: ''
     },
+    administration: {
+      dataOperation: {
+          __path__: 'data-operation'
+      },
+        userManagement: {
+          __path__: 'user-management'
+        }
+    },
     search: null,
     favourites: null,
+    compare: null,
     reviews: {
+        create: null,
+        me: null,
         _key_: {
             __path__: 'id'
         }
     },
-    model: {
-        _key_: {
-            __path__: 'id',
+    saved_tests: null,
+    test: null,
+    car: {
+        brend: {
+            _key_: {
+                __path__: 'id'
+            }
         },
-        concrete: null
+        model: {
+            _key_: {
+                __path__: 'id'
+            }
+        },
+        generation: {
+            _key_: {
+                __path__: 'id'
+            }
+        },
+        technical: null
     },
     garage: null,
     user: {
@@ -26,6 +51,12 @@ export const routeTree = {
         }
     },
     advertisement: {
+        create: null,
+        _key_: {
+            __path__: 'id'
+        }
+    },
+    chat: {
         _key_: {
             __path__: 'id'
         }

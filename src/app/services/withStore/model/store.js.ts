@@ -11,6 +11,12 @@ import {userReducer} from "../../../../entities/User";
 import {favouritesReducer} from "../../../../features/OperateWithAdvertisementFavourites";
 import {reviewAPI} from "../../../../entities/Review";
 import {carApi} from "../../../../entities/Car";
+import {compareReducer} from "../../../../features/CompareSmth";
+import {chatReducer, chatSlice} from "../../../../entities/Chat";
+import {adminAPI} from "../../../../features/Administration";
+import {testAPI} from "../../../../features/Test/api";
+import {savedTestResultReducer} from "../../../../features/Test/model/slice";
+
 
 
 export const store = configureStore({
@@ -22,10 +28,15 @@ export const store = configureStore({
         commonLayout: commonLayoutReducer,
         user: userReducer,
         favourites: favouritesReducer,
+        compares: compareReducer,
+        chat: chatReducer,
+        savedTestResults: savedTestResultReducer,
         [advertisementAPI.reducerPath]: advertisementAPI.reducer,
         [searchApi.reducerPath]: searchApi.reducer,
         [reviewAPI.reducerPath]: reviewAPI.reducer,
-        [carApi.reducerPath]: carApi.reducer
+        [carApi.reducerPath]: carApi.reducer,
+        [adminAPI.reducerPath]: adminAPI.reducer,
+        [testAPI.reducerPath]: testAPI.reducer
     },
     middleware: (getDefaultMiddleware) => {
         return getDefaultMiddleware()
@@ -33,6 +44,8 @@ export const store = configureStore({
             .concat(searchApi.middleware)
             .concat(reviewAPI.middleware)
             .concat(carApi.middleware)
+            .concat(adminAPI.middleware)
+            .concat(testAPI.middleware)
     }
 })
 

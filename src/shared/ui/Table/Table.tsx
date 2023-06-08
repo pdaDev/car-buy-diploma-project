@@ -1,9 +1,10 @@
 import {FC} from 'react'
-import './Table.css'
+import s from './Table.module.scss'
+import {cn} from "../../lib";
 
 export type Column<T extends object> = {
     id?: string;
-    accessor: keyof T  | Function;
+    accessor: keyof T | Function;
     header: string
     onClickAction?: Function;
 }
@@ -11,11 +12,15 @@ export type Column<T extends object> = {
 interface IProps<T extends object> {
     data: T[]
     columns: Array<Column<T>>
+    withVerticalSeparator?: boolean
+    withHorizontalSeparator?: boolean
 }
 
 export function Table<T extends object>({
                                             data,
-                                            columns
+                                            columns,
+                                            withHorizontalSeparator,
+                                            withVerticalSeparator
                                         }: IProps<T>) {
 
     const getKey = (col: Column<T>) => col?.id
@@ -26,18 +31,23 @@ export function Table<T extends object>({
         : row[col.accessor]
 
     return (
-        <table className="table">
+        <table className={cn(
+            s.table,
+            withVerticalSeparator && s.vertical_separator,
+            withHorizontalSeparator && s.horizontal_separator
+        )}>
             <thead>
             <tr>
                 {
-                    columns.map(col => <th key={getKey(col)}>{ col.header }</th>)
+                    columns.map(col => <th key={getKey(col)}>{col.header}</th>)
                 }
             </tr>
             </thead>
             <tbody>
             {
                 data.length > 0 ? data.map((row, i) => <tr key={i}>{
-                    columns.map(col => <td key={getKey(col)} onClick={() => col.onClickAction && col.onClickAction(row)}>{ getValue(row, col) }</td>)
+                    columns.map(col => <td key={getKey(col)}
+                                           onClick={() => col.onClickAction && col.onClickAction(row)}>{getValue(row, col)}</td>)
                 }</tr>) : 'Таблица пустая'
             }
             </tbody>

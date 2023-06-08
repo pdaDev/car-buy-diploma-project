@@ -1,0 +1,117 @@
+@import 'src/app/index';
+
+
+.load_image {
+  width: 220px;
+  height: 280px;
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  input[type=file] {
+    display: none;
+  }
+  background: var(--clr-grey-light);
+
+
+  .delete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    padding: var(--space-3);
+    background: var(--clr-secondary);
+    box-shadow: var(--shadow-3);
+    transition: .2s;
+
+    svg {
+      color: var(--clr-grey-1)
+    }
+  }
+
+  .load_image_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(239, 239, 239, 0.5);
+    cursor: pointer;
+
+    svg {
+      color: var(--clr-grey-1)
+    }
+
+    &.has_image {
+      opacity: 0;
+      transition: .2s;
+
+      .delete {
+        opacity: 0;
+      }
+
+      &:hover {
+        opacity: 1;
+
+        .delete {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.drag_form {
+  background: var(--clr-grey-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  padding: var(--space-5) var(--space-4);
+
+  & > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    gap: var(--space-3);
+    transition: .2s;
+
+    svg, p {
+      transition: .2s;
+      color: var(--clr-grey-1)
+    }
+  }
+
+  &.can_drop {
+    background: var(--clr-grey-1);
+
+    svg, p {
+      transition: .2s;
+      color: var(--clr-grey-light)
+    }
+  }
+}

@@ -3,8 +3,11 @@
 .input_wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
   max-width: 250px;
-
+  box-sizing: border-box;
+  border-bottom: var(--space-3);
 
   input {
     width: 100%;
@@ -12,14 +15,21 @@
     font-weight: var(--fnt-weight-medium);
     font-size: var(--fnt-size-3);
     background: var(--clr-grey-light);
-    color: black;
+    color: var(--clr-fnt-primary);
     outline: none;
     border-radius: var(--brd-radius-1);
     box-sizing: border-box;
     border: 2px solid transparent;
 
-    &:-moz-placeholder {
+    &::-webkit-input-placeholder {
       color: var(--clr-grey-1);
+      font-weight: var(--fnt-weight-regular);
+    }
+  }
+
+  &.width {
+    &_full {
+      max-width: 100%;
     }
   }
 
@@ -32,19 +42,16 @@
 
   .error_wrapper {
     width: 100%;
-    margin-top: var(--space-1);
-    text-align: center;
-    font-size: 12px;
+    margin-top: var(--space-3);
+    text-align: start;
+    color: var(--clr-red-light);
+    font-size: var(--fnt-size-2);
+    box-sizing: border-box;
   }
 
   &.has_error {
     font-weight: var(--fnt-weight-regular);
-
-    input {
-      border-color: red;
-    }
-
-    color: red;
+    color: var(--clr-red-light);
   }
 
   @extend %width;

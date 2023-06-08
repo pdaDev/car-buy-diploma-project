@@ -1,1 +1,31 @@
 @import 'src/app/index';
+
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: auto;
+  height: auto;
+
+  &.full_width {
+    width: 100%;
+  }
+
+  &.controls_pos {
+    &_auto {
+      width: auto;
+    }
+
+    &_full_width {
+      width: 100%;
+    }
+  }
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-grow: 1;
+  flex-shrink: 0;
+}

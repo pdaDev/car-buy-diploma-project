@@ -3,45 +3,51 @@ import './Button.module.scss';
 import s from './Button.module.scss'
 import {addPrefix, addRipple, cn, getPercents, RippleEffectProp} from "../../../lib";
 import {ElementColor, ElementWidth} from "../../../types";
-interface IProps extends RippleEffectProp{
+
+interface IProps extends RippleEffectProp {
     size?: 'small' | 'medium' | 'large';
     label?: string;
-    type: 'primary' | 'secondary'
+    type: 'primary' | 'secondary' | 'underline' | 'circle' | 'delete'
     disabled?: boolean;
-    onClick?: (...args: any[]) => void;
+    onClick?: Function
     width?: ElementWidth
     children?: ReactNode
+    behaviorType?: 'submit' | 'reset' | 'button'
     color?: ElementColor | 'vk' | 'google'
+    classNamePrefix?: string
 }
 
 export const Button: FC<IProps> = (
     {
+        classNamePrefix,
         type,
-        size= 'medium',
+        size = 'medium',
         label,
         disabled = false,
         onClick,
-        width= 'auto',
+        width = 'auto',
+        behaviorType = 'button',
         children,
-        withRippleEffect= true,
+        withRippleEffect = true,
         color
 
     }) => {
     const onButtonClick: MouseEventHandler = e => {
-        onClick && onClick()
+        onClick && onClick(e)
 
-        if (withRippleEffect) {
+        if (withRippleEffect && type !== 'underline') {
             addRipple(e)
         }
     }
+    const className = classNamePrefix ? cn(`${classNamePrefix}__button`, s.wrapper) : s.wrapper
 
 
     return <button onClick={onButtonClick}
                    disabled={disabled}
-                   type={'submit'}
-                   style={{ width: width }}
+                   type={behaviorType}
+                   style={{width: width}}
                    className={cn(
-                       s.wrapper,
+                       className,
                        addPrefix('type', type, s),
                        addPrefix('size', size, s),
                        addPrefix('width', width, s),

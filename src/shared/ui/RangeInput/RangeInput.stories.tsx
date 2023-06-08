@@ -11,6 +11,8 @@ export const Base: ComponentStory<typeof RangeInput> = (args) => <RangeInput {..
 
 Base.args = {
     type: 'multiple',
-    min: 100,
-    max: 1000,
+    min: 1,
+    max: 10,
+    step: 1,
+    current: [1, 2],
 }

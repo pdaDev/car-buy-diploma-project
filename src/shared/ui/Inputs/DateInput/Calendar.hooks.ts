@@ -30,7 +30,13 @@ export const useCalendar = (isEngLanguage: boolean) => {
         date.current.setMonth(date.current.getMonth() - 1)
         render()
     }
+
+    const setYear = (year: number) => {
+        date.current.setFullYear(year)
+        render()
+    }
     return {
+        setYear,
         date: date.current,
         upMonth,
         downMonth,

@@ -1,8 +1,10 @@
-import {FC, MouseEventHandler, useEffect} from "react";
+import {FC, MouseEventHandler, useEffect, useRef} from "react";
 import s from './DateInput.module.scss'
 import {useCalendar, useSelectDate} from './Calendar.hooks'
-import {Button, Label, ArrowButton} from '../../index'
+import {Button, Label, ArrowButton, Symbol, Text} from '../../index'
 import {cn} from "../../../lib";
+import {Selector} from "../../Selector/Selector";
+import './Calendar.scss'
 
 
 export interface IDates {
@@ -37,6 +39,7 @@ export const Calendar: FC<ICalendar> = ({
                                             closeBehavior = 'blur'
                                         }) => {
     const currentDate = new Date()
+    const timer = useRef(0)
 
     const isEngLanguage = local === 'eng'
 
@@ -46,6 +49,7 @@ export const Calendar: FC<ICalendar> = ({
     const monthsNamesEngFormat = ['january', 'february', 'march', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
     const {
         date,
+        setYear,
         upMonth,
         downMonth,
         countOfMonthDays,
@@ -63,7 +67,6 @@ export const Calendar: FC<ICalendar> = ({
         selectDate,
         changeStatus
     } = useSelectDate(date, defDate, type === 'single' ? 'toDate' : defaultChangeStatus)
-    console.log(dates.current)
     const isCurrentDay = (day: number, month: number, year: number) => currentDate.getFullYear() === year &&
         currentDate.getMonth() === month && day === currentDate.getDate()
     const isSelectedDay = (day: number, month: number, year: number) => ((dates.current.sinceDate.getFullYear() === year &&
@@ -103,8 +106,7 @@ export const Calendar: FC<ICalendar> = ({
     }
     const isAvailableToSubmit = type === 'range' ? dates.current.toDate.getTime() < dates.current.sinceDate.getTime() : true
     const submit = () => {
-        console.log(setDate)
-        setDate(dates.current)
+        setDate(type === 'range' ? dates.current : dates.current.toDate)
     }
 
     const daysOfCurrentMonth = [...new Array(countOfMonthDays)].map((_, i) => i + 1)
@@ -126,7 +128,10 @@ export const Calendar: FC<ICalendar> = ({
                         selectDate(x, month, year)
 
                         if (type === 'single' && saveBehavior === 'select') {
-                            close()
+                            setTimeout(() => close(), 200)
+                        }
+                        if (saveBehavior === 'select') {
+                            submit()
                         }
                     }
                 }
@@ -149,20 +154,60 @@ export const Calendar: FC<ICalendar> = ({
         )
     }
 
-    useEffect(() => {
-        return (() => {
-            if (saveBehavior === 'select') {
-                submit()
-            }
-        })
-    }, [saveBehavior, type, submit])
 
-    return <div className={s.calendar}>
+    const onBlur = () => {
+        if (closeBehavior === 'blur') {
+            timer.current = setTimeout(close, 10) as any
+        }
+    }
+
+    const ref = useRef<HTMLDivElement>(null)
+    useEffect(() => {
+        if (ref.current) {
+            ref.current.focus()
+        }
+    }, [ref])
+
+    const minYear = min ? min === 'today' ? new Date().getFullYear() : min.getFullYear() : 1880
+    const calendarOptions = [...new Array(new Date().getFullYear() - minYear)].map((_, i) => ({
+        value: (minYear + i + 1),
+        label: (minYear + i + 1).toString()
+    })).reverse()
+
+    const onSelectYear = (value: number) => {
+        setYear(value)
+        // @ts-ignore
+        ref?.current.focus()
+    }
+
+    const onFocus = () => {
+        clearTimeout(timer.current)
+    }
+
+    console.log(date.getFullYear())
+
+
+    return <div className={s.calendar}
+                tabIndex={0}
+                ref={ref}
+                onFocus={onFocus}
+                onBlur={onBlur}>
         <div className={s.legend}>
-            <Label level={4} label={date.getFullYear().toString()}/>
+            {calendarOptions.length === 1
+                ? <Label label={date.getFullYear()} level={3} weight={'medium'}/>
+                : <Selector options={calendarOptions}
+                            onChange={onSelectYear}
+                            current={date.getFullYear()}
+                            classNamePrefix={'calendar'}
+                />
+            }
+
             <div className={s.navigation_block}>
                 <ArrowButton direction={"left"} size={"small"} onClick={downMonth}/>
-                <Label level={4} label={(isEngLanguage ? monthsNamesEngFormat : monthsNames)[date.getMonth()]}/>
+                <Text content={(isEngLanguage ? monthsNamesEngFormat : monthsNames)[date.getMonth()]}
+                      weight={'medium'}
+                      size={4}
+                />
                 <ArrowButton direction={"right"} size={"small"} onClick={upMonth}/>
             </div>
         </div>

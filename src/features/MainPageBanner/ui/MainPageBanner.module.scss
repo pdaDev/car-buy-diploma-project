@@ -1,0 +1,28 @@
+@import "src/app/index";
+
+.banner {
+  background: var(--clr-secondary);
+  padding: var(--space-5);
+  box-sizing: border-box;
+  padding-top: 80px;
+  display: flex;
+  width: 100%;
+  z-index: 1;
+  border-bottom-left-radius: var(--brd-radius-3);
+  border-bottom-right-radius: var(--brd-radius-3);
+  justify-content: space-between;
+  transform: translateY(-60px);
+
+  .title {
+    margin-top: var(--space-4);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-3);
+    span {
+      font-size: 36px !important;
+      font-weight: var(--fnt-weight-semi-bold) !important;
+      text-transform: uppercase
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import "src/app/index";
+
+
+.selecting_element {
+  padding: var(--space-4) var(--space-4);
+  width: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+  border-radius: var(--brd-radius-2);
+  background: var(--clr-grey-light);
+  cursor: pointer;
+
+  h3 {
+    margin: 0;
+    font-size: var(--fnt-size-4);
+    font-weight: var(--fnt-weight-regular);
+    color: var(--clr-fnt-primary) !important;
+  }
+  border: 2px solid var(--clr-grey-1);
+
+  .selected_pointer {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid var(--clr-grey-1);
+
+
+    &.multiple {
+      border-radius: 6px;
+    }
+  }
+
+  &.selected {
+    border-color: var(--clr-primary);
+    background: var(--clr-primary-light);
+
+    h3 {
+      color: var(--clr-fnt-black) !important;
+    }
+
+    .selected_pointer {
+      border-color: var(--clr-primary);
+    }
+
+    svg {
+      color: var(--clr-primary);
+    }
+  }
+}

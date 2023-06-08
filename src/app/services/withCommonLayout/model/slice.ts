@@ -6,6 +6,7 @@ const initialState = {
     showFooterStatus: true,
     transparentHeader: false,
     transparentFooter: false,
+    sideMenuContentType: null
 } as NS.IReduxState
 
 const commonLayoutSlice = createSlice({
@@ -28,13 +29,19 @@ const commonLayoutSlice = createSlice({
             state.transparentHeader = true
         },
         makeHeaderNormal(state) {
-            state.transparentHeader = true
+            state.transparentHeader = false
         },
         makeFooterTransparent(state) {
             state.transparentFooter = true
         },
         makeFooterNormal(state) {
-            state.transparentFooter = true
+            state.transparentFooter = false
+        },
+        toggleSideMenuNotifications(state) {
+            state.sideMenuContentType = state.sideMenuContentType === 'notifications' ? null : 'notifications'
+        },
+        toggleSideMenuChat(state) {
+            state.sideMenuContentType = state.sideMenuContentType === 'chat' ? null : 'chat'
         }
     }
 })
@@ -46,6 +53,8 @@ export const {
     showHeader,
     hideHeader,
     makeFooterTransparent,
+    toggleSideMenuChat,
+    toggleSideMenuNotifications,
     makeHeaderNormal,
     makeFooterNormal,
     makeHeaderTransparent

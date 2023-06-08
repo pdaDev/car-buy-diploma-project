@@ -4,7 +4,7 @@ import {
     BaseSearchData,
     Box,
     Button,
-    Container, createMultiLanguageOptions, ExtendedSearchData, INIT_SEARCH_DATA,
+    Container, createMultiLanguageOptions, createRuWordEndingByNumberGetter, ExtendedSearchData, INIT_SEARCH_DATA,
     IOption,
     SearchType,
     Stack,
@@ -15,6 +15,8 @@ import s from './SearchBlock.module.scss'
 import {BaseSearch} from "features/BaseSearch";
 import {ExtendedSearch} from "../../../features/ExtendedSearch";
 import {Label} from "../../../shared/ui/Label/Label";
+import {useSearchQuery} from "../../../features/Administration/lib/hooks";
+import {useSearchParams} from "react-router-dom";
 
 
 interface IProps {
@@ -23,6 +25,7 @@ interface IProps {
     onChange: (obj: Partial<BaseSearchData>) => void;
     setType: Function;
     search: Function
+    searchButtonLabel: string
 }
 
 export const SearchBlock: FC<IProps> = ({
@@ -31,26 +34,35 @@ export const SearchBlock: FC<IProps> = ({
                                             onChange,
                                             setType,
                                             search,
-
+                                            searchButtonLabel
                                         }) => {
     const [mode, setMode] = useState<'base' | 'extended'>('base')
 
-    const {t , i18n} = useTranslation()
+    const {t, i18n} = useTranslation()
     const searchTypeOptions = createMultiLanguageOptions(['advertisement', 'model'], t, 'search.subject')
-    const advertisementTypeOptions = createMultiLanguageOptions(['new', 'used'], t, "search.advertisement" )
+    const advertisementTypeOptions = createMultiLanguageOptions(['new', 'used'], t, "search.advertisement")
 
+
+    const [query, setQuery] = useSearchParams()
     const resetForm = () => {
+        console.log('reset')
         onChange(INIT_SEARCH_DATA)
+        setQuery({})
     }
+
+
 
     const setAdvertisementType = (o: any) => {
         // @ts-ignore
         onChange({...data, advertisementType: o})
+
+
     }
 
     const toggleMode = () => {
         setMode(mode === 'base' ? 'extended' : 'base')
     }
+
 
 
     return <Container max_w={"700px"} zi={5} size={'content'}>
@@ -80,10 +92,18 @@ export const SearchBlock: FC<IProps> = ({
                             <ExtendedSearch type={type} onSearchChange={onChange} data={data as ExtendedSearchData}/>}
                     </div>
                     <Stack direction={'row'} spacing={3}>
-                        <Button label={t("search.reset") as string} onClick={resetForm} type={'secondary'} width="full"/>
-                        <Button label={mode === 'base' ? t("search.extended") as string : t("search.base") as string} onClick={toggleMode}
+                        <Button label={t("search.reset") as string}
+                                onClick={resetForm}
+                                type={'secondary'}
+                                width="full"/>
+                        <Button label={mode === 'base' ? t("search.extended") as string : t("search.base") as string}
+                                onClick={toggleMode}
                                 type={'secondary'} width="full"/>
-                        <Button label={t("search.advertisement.show") as string} onClick={search as any} type={'primary'} width="full"/>
+                        <Button label={searchButtonLabel}
+                                onClick={search as any}
+                                type={'primary'}
+                                width="full"
+                        />
                     </Stack>
                 </Stack>
             </Container>

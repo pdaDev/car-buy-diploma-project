@@ -2,13 +2,15 @@
 
 
 .tooltip {
-  width: 200px;
+  width: auto;
   padding: var(--space-3);
+  max-width: 200px;
   box-sizing: border-box;
   background: var(--clr-secondary);
   border-radius: var(--brd-radius-1);
   box-shadow: var(--shadow-2);
   font-size: var(--fnt-size-2);
+  color: var(--clr-fnt-primary);
   position: relative;
   text-align: center;
 

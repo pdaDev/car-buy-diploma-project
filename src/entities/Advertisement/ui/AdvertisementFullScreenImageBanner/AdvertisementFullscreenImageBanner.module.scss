@@ -1,0 +1,12 @@
+@import "src/app/index";
+
+.price_wrapper {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--clr-primary);
+  border-radius: var(--brd-radius-1);
+  margin-bottom: var(--space-3);
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: var(--space-2);
+}

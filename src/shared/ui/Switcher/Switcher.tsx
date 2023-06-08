@@ -36,7 +36,6 @@ export const Switcher: FC<IProps> = ({
 
     const activeOption = ref.current?.firstElementChild?.children[selectedOptionIndex!]
 
-
     return <div className={cn(s.switcher, addPrefix('size', size, s))} ref={ref}>
         <div className={cn(s.options_wrapper, isSingleMode && s.single_mode)}>
             {
@@ -67,7 +66,10 @@ export const Switcher: FC<IProps> = ({
         </div>
         { isSingleMode && (<>
             <div className={s.hidden_options}>
-                { options.map(option => <div key={option.value} className={s.option}>{option.label}</div>) }
+                { options.map(option => <div key={option.value} className={cn(s.option, isSingleMode
+                    ? activeOptions === option.value && s.active
+                    : activeOptions.includes(option.value) && s.active
+                )}>{option.label}</div>) }
             </div>
             <div className={s.selected_value}
                  style={{

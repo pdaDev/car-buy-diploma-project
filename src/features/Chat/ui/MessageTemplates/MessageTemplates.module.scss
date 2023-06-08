@@ -1,0 +1,20 @@
+
+@import "src/app/index";
+
+.message_templates_wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3)
+}
+
+.template {
+  cursor: pointer;
+  background: var(--clr-secondary);
+  border-radius: 50px;
+  padding: var(--space-2) var(--space-3);
+  color: var(--clr-fnt-primary);
+  font-weight: var(--fnt-weight-medium);
+  font-size: var(--fnt-size-2);
+  box-shadow:  4px 4px 8px 0px rgba(34, 60, 80, 0.1);
+}

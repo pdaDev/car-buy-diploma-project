@@ -1,16 +1,37 @@
 import {FC, useEffect} from "react";
-import {useAppDispatch} from "../../../app/services";
+import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
 import {makeHeaderNormal, makeHeaderTransparent} from "../../../app/services/withCommonLayout/model/slice";
 import {useTranslation} from "react-i18next";
-import {Button, Card, Container, Image, Label, Slider, Stack, Symbol} from "../../../shared";
+import {
+    Button,
+    Card,
+    Container,
+    createRuWordEndingByNumberGetter, getTranslationIndexCreator,
+    Image,
+    Label,
+    Slider,
+    Stack,
+    Symbol, useOnScrollPagination, usePaginationAndSorting, useTabTile
+} from "../../../shared";
 // @ts-ignore
 import promo from './image 6.png'
 import {Advertisement} from "../../Advertisement";
-import {AdvertisementCard, useGetAdsMutation} from "../../../entities/Advertisement";
+import {
+    AdvertisementCard,
+    useGetAdsMutation, useGetHistoryElsMutation,
+    useGetHistoryQuery,
+    useGetRecommendationsQuery
+} from "../../../entities/Advertisement";
 import {getRecentAds} from "../../../entities/Advertisement/api/historyAPI";
 import {AdvertisementSlider} from "../../../features/AdvertisementSlider";
+import {selectAuthStatus} from "../../../entities/User/model/selectors";
+import {AdvertisementsList} from "../../../widgets/AdvertisementsList";
+import {MainPageBanner} from "../../../features/MainPageBanner/ui/MainPageBanner";
+import {RenderContent} from "./RenderContent";
+import {PreTestModal} from "../../../features/Test";
 export const MainPage: FC = () => {
     const d = useAppDispatch()
+
     useEffect(() => {
         d(makeHeaderTransparent())
         return () => {
@@ -18,35 +39,77 @@ export const MainPage: FC = () => {
         }
     }, [d])
     const {t} = useTranslation()
-    const [getAds, {data: ads, isLoading}] = useGetAdsMutation()
-    useEffect(() => {
-        const historyAds = getRecentAds()
-        getAds({ ids: historyAds, page: 0, limit: historyAds.length })
-    }, [])
+    useTabTile(t('pages.main'))
 
+    const authStatus = useAppSelector(selectAuthStatus)
+    const {data: ads, isLoading} = useGetHistoryQuery({},{ skip: !authStatus })
+    const {data: recommendedAds = [], isLoading: recommendationsLoading} = useGetRecommendationsQuery({},{ skip: !authStatus })
+    const [getAds, {data: recentAds, isLoading: recentAdsLoading}] = useGetAdsMutation()
+
+    const [getHistoryEls, { data: historyEls = [] }] = useGetHistoryElsMutation()
+
+
+
+    const { limit, page, setPage } = usePaginationAndSorting()
+
+    useEffect(() => {
+        if (!authStatus) {
+            getHistoryEls()
+        }
+    }, [authStatus])
+
+    useEffect(() => {
+        getAds({ sort: 'start_date', filters: null, page, limit })
+    }, [authStatus, page])
+
+
+
+    useOnScrollPagination({
+        data: recentAds?.results,
+        loading: recentAdsLoading,
+        sort: null,
+        limit,
+        page,
+        count: recentAds?.count || 0,
+        onPagination: setPage
+    })
+
+
+
+    const getMainIndex = getTranslationIndexCreator('main')
     const loadingStatus = isLoading
+    const history = authStatus ? (ads || []) : (historyEls?.results || [])
 
     return <Container position={"top-middle"}>
-        <Stack spacing={5}>
-            <Card width={'100%'} border={[0, 0, 3, 3]} contentDirection={'row'}>
-                <Stack spacing={3}>
-                    <Symbol content={t("main.title.want")}/>
-                    <Stack direction={'row'} spacing={3}>
-                        <Symbol content={t("main.title.buy")}/>
-                        <Symbol content={t("main.title.or")}/>
-                        <Symbol content={t("main.title.sell")}/>
-                    </Stack>
-                    <Symbol content={t("main.title.auto")}/>
+        <Stack spacing={0} size={'container'} hAlign={'center'}>
+            <MainPageBanner/>
+            <Container max_w={'1200px'}>
+                <Stack size={'width'} spacing={5} hAlign={'center'}>
+                    {<>
+                        <RenderContent title={getMainIndex("history")}>
+                            <AdvertisementSlider data={history}
+                                                 countOfVisible={5}
+                                                 loading={loadingStatus}/>
+                        </RenderContent>
+                        {/*<RenderContent title={getMainIndex("recommendations")}>*/}
+                        {/*    <AdvertisementSlider data={recommendedAds || []}*/}
+                        {/*                         countOfVisible={4}*/}
+                        {/*                         loading={loadingStatus}*/}
+                        {/*    />*/}
+                        {/*</RenderContent>*/}
+                    </>}
+                    <RenderContent title={getMainIndex('recent')}>
+                        <AdvertisementsList data={recentAds?.results || []}
+                                            loading={recentAdsLoading}
+                                            cols={5}
+                                            withFavourites
+                                            carType={'small'}
 
+                        />
+                    </RenderContent>
                 </Stack>
-                <Stack direction={'row'} spacing={4}>
-                    <Button type={'primary'} size={'medium'} label={t("main.buy") as string}/>
-                    <Button type={'primary'} size={'medium'} label={t("main.sell") as string}/>
-                </Stack>
-                <Image src={promo} alt={'promo'} width={'300px'} height={'300px'}/>
-            </Card>
+            </Container>
         </Stack>
-        <Label label={t("main.history")} weight={'medium'} level={2}/>
-        <AdvertisementSlider data={ads} loading={loadingStatus} />
+        <PreTestModal/>
     </Container>
 }

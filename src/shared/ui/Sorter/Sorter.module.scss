@@ -13,6 +13,7 @@
     display: inline-block;
     padding: 4px 16px 4px 8px;
     border-radius: var(--brd-radius-1);
+    color: var(--clr-grey-1);
   }
 
   .direction_pointer {
@@ -43,7 +44,7 @@
       .first_line, .second_line, .third_line {
         border-radius: var(--brd-radius-3);
         height: 2px;
-        background: black;
+        background: var(--clr-fnt-primary);
         transition: .1s;
       }
 
@@ -75,6 +76,7 @@
     .label {
       background: var(--clr-primary);
       font-weight: var(--fnt-weight-medium);
+      color: var(--clr-fnt-black);
     }
 
     .direction_pointer {

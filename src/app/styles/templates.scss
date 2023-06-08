@@ -21,7 +21,7 @@
 
     box-shadow: none;
     border-color: transparent;
-    background-color: #DDDBDD;
+    background-color: var(--clr-grey-1);
     overflow: hidden;
     position: relative;
 
@@ -77,7 +77,12 @@
 
     &_large {
       height: 48px;
+      font-size: var(--fnt-size-3);
       border-radius: var(--brd-radius-1);
     }
   }
+}
+
+%hide_scrollbar {
+
 }

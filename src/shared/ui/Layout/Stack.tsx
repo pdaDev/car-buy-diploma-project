@@ -14,6 +14,8 @@ interface IProps {
     children: ReactNode
     reverse?: boolean
     onClick?: Function
+    scrolled?: boolean
+    wrap?: boolean
 }
 
 const getSize = (fs: string | undefined, style?: 'width' | 'height') => {
@@ -47,23 +49,31 @@ const getAlign = (align: Align | undefined) => {
 
 const StyledStack = styled.div<IProps>`
   display: inline-flex;
+  box-sizing: border-box;
+  overflow: ${props => props.scrolled ? 'scroll' : 'visible'};
   gap: ${props => typeof props.spacing === 'string'
           ? props.spacing
           : `var(--space-${props.spacing || 1})`};
   justify-content: space-between;
   width: ${props => getSize(props.size, 'width')};
   height: ${props => getSize(props.size, 'height')};
+  
+  ${props => props.size === 'container' && css`
+    flex-grow: 1;
+  `}
+  min-height: ${props => getSize(props.size, 'height')};
+  flex-wrap: ${props => props.wrap ? 'wrap' : 'nowrap'};
   ${(props) => {
     switch (props.direction || 'column') {
       case 'row':
         return css`
-          flex-direction: ${props.reverse ? 'reverse-' : ''}row;
+          flex-direction: row${props.reverse ? '-reverse' : ''};
           justify-content: ${getAlign(props.hAlign)};
           align-items: ${getAlign(props.vAlign)};
         `
       case 'column':
         return css`
-          flex-direction: ${props.reverse ? 'reverse-' : ''}column;
+          flex-direction: column${props.reverse ? '-reverse' : ''};
           justify-content: ${getAlign(props.vAlign)};
           align-items: ${getAlign(props.hAlign)};
         `

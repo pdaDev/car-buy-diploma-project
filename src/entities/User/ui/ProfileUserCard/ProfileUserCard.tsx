@@ -1,11 +1,27 @@
-import {FC} from "react";
-import {Box, Container, Label, Stack, UserNickname} from "../../../../shared";
+import {FC, ReactNode} from "react";
+import {
+    Box,
+    Container,
+    formatPhoneNumber,
+    getTranslationIndexCreator,
+    Label,
+    Stack,
+    Symbol,
+    UserNickname
+} from "../../../../shared";
 import {ProfileAvatar} from "../ProfileAvatar/ProfileAvatar";
 import * as NS from '../../namespace'
+import {useTranslation} from "react-i18next";
+import {TextWithLabel} from "./TextWithLabel";
+import {PhoneNumberBlock} from "../../../../features/OperateWithAdvertisement/ui/ContactsWithOwner/PhoneNumberBlock";
+import {SelectGeoLocationModal} from "../../../../features/SelectGeoLocation/ui/SelectGeoLocationModal";
+import {SelectPersonalGeoLocation} from "../../../../features/SelectGeoLocation/ui/SelectProfileLocation";
 
 type Props = {
     type: "owner" | 'another'
-} & NS.IUserData['data']
+    editButton?: ReactNode
+    children?: ReactNode
+} & NS.IUserData
 
 export const ProfileUserCard: FC<Props> = ({
                                                type,
@@ -13,23 +29,39 @@ export const ProfileUserCard: FC<Props> = ({
                                                avatar,
                                                firstName,
                                                secondName,
-                                               email
+                                               email,
+                                               registerDate,
+                                               editButton,
+                                               children,
                                            }) => {
-    return <Container max_w={"700px"} max_h={"256px"}>
-        <Box background={'secondary'} shadow={1} brd={2}>
-            <Container p={4}>
-                <Stack direction={'row'} spacing={4}>
-                    <ProfileAvatar avatar={avatar}/>
-                    <Stack vAlign={'start'} spacing={4}>
-                        <UserNickname first_name={firstName}
-                                      last_name={secondName}
-                                      type={'full'}
-                        />
-                        <Label label={phoneNumber}/>
-                        <Label label={email}/>
-                    </Stack>
+
+    const regDate = registerDate ? new Date(registerDate).toLocaleDateString() : null
+    const isMyCard = type === 'owner'
+    return <Box background={'secondary'} shadow={2} brd={2}>
+        <Container p={4}>
+            <Stack direction={'row'} size={'width'} spacing={4}>
+              <Container max_w={'250px'}>
+                  <ProfileAvatar avatar={avatar}/>
+              </Container>
+                <Stack vAlign={'start'} size={'width'} spacing={4}>
+                    <Label label={`${secondName} ${firstName}`}
+                           level={2} weight={'medium'}
+                           size={5}/>
+                    <TextWithLabel value={email}
+                                   translationIndex={'email'}
+                    />
+                    <TextWithLabel value={regDate}
+                                   translationIndex={"register_date"}/>
+                    {isMyCard ? <TextWithLabel value={phoneNumber ? formatPhoneNumber(phoneNumber) : null}
+                                               translationIndex={'phone_number'}
+                    /> : <PhoneNumberBlock phoneNumber={phoneNumber}/>}
+                    {isMyCard && <SelectPersonalGeoLocation/>}
+                    { children }
                 </Stack>
-            </Container>
-        </Box>
-    </Container>
+            </Stack>
+            {editButton && <Container size={'content'} p={3} position={"top-right"}>
+                {editButton}
+            </Container>}
+        </Container>
+    </Box>
 }

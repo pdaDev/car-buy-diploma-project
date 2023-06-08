@@ -1,0 +1,1 @@
+export { CarGenerationsList } from './ui/CarGenerationsList'

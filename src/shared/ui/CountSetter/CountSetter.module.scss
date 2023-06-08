@@ -1,0 +1,27 @@
+@import 'src/app/index';
+
+.circle_button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--fnt-size-3);
+  font-weight: var(--fnt-weight-medium);
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  transition: .1s;
+  background: var(--clr-primary);
+
+  &:disabled {
+    background: var(--clr-grey-light);
+    color: var(--clr-grey-dark);
+  }
+
+  &:active {
+    background: var(--clr-primary-light);
+  }
+}

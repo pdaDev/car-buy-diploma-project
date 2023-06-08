@@ -1,0 +1,18 @@
+@import "src/app/index";
+
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--space-3);
+
+  h3 {
+    padding-left: var(--space-3);
+  }
+
+  .errors_wrapper {
+    font-weight: var(--fnt-weight-regular);
+    font-size: var(--fnt-size-2);
+    color: var(--clr-red-light);
+  }
+}

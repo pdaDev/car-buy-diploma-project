@@ -1,30 +1,1008 @@
 {
   "validators": {
-    "required": "RequiredField",
-    "max_length": "",
-    "min_length": "",
-    "email": "",
-    "has_digit": "",
-    "letter_upper_case": "",
-    "has_letters": "",
-    "has_special_symbols": "",
-    "only_english": "",
-    "only_russian": ""
+    "required": "Required",
+    "passwords_equal": "Password must be equal",
+    "max_length": "Max length is ",
+    "max_value": "Value must be less then ",
+    "min_value": "Value must be bigger then ",
+    "min_length": "Min length is ",
+    "email": "Must be email",
+    "has_digit": "Must have 1 or mode digits",
+    "letter_upper_case": "Must have 1 or more chars in uppercase",
+    "has_letters": "Must have 1 or more chars",
+    "has_special_symbols": "Must have 1 or more special symbols",
+    "only_english": "Only english language",
+    "only_russian": "Only russian language",
+    "only_letters": "Only letters",
+    "only_digits": "Only digits",
+    "is_HEX": "Значение должно являться hex цветом",
+    "email_doesnt_exist": "Email doesn't exist"
+  },
+  "loading": "Loading...",
+  "banned": "You have banned by admin. You can write contact admin by dapasynkov2001@gmail.com",
+  "user": {
+    "phone_number": "Phone number",
+    "register_date": "Registered at ",
+    "email": "Email",
+    "first_name": "Name",
+    "second_name": "Surname",
+    "null": "None",
+    "banned": "Banned",
+    "add_phone_number": "Add phone number"
+  },
+  "test": {
+    "saved_results": {
+      "label": "Saved results of testing",
+      "res_label": "Result of testing ",
+      "run_test": "Run testing",
+      "empty_list": "None saved results",
+      "reset": "Reset saves"
+    },
+    "result": {
+      "label": "Results of tesing",
+      "save": "Saved results",
+      "run_test_again": "Run test ading",
+      "match": {
+        "description": "Match degree show level of matching to stated recommendations",
+        "0": "Low match",
+        "1": "Medium match",
+        "2": "Close match"
+      },
+      "recommendations": {
+        "title": "Recommendations",
+        "engine": "Engine",
+        "fuel_consumption": "Fuel consumption, l",
+        "price": "Price, ₽",
+        "drive": "Drive",
+        "brend": "Brand(s)",
+        "car_body_type": "Car body types",
+        "desire": "Features",
+        "trank_volume": "Trank volume, l",
+        "clearance": "Clearance, mm",
+        "sit_place": "Count of sit places",
+        "to_100": "Acceleration 100 км/ч, с"
+      },
+      "empty_list": "Unfortunately, we can't choose car according your need. Try run test again"
+    },
+    "pre": {
+      "label": "Не хотите пройти тестирование?",
+      "motivation": "if you are not sure about your car preferences, you can go testing and we try to choose a car according to your needs. Testing will take no more than 5 minutes",
+      "go_to_test": "Run test again",
+      "go_to_search": "Go to search"
+    },
+    "navigation": {
+      "next": "Next",
+      "prev": "Back",
+      "finish": "Finish"
+    },
+    "steps": {
+      "money": {
+        "title": "How much money?",
+        "text": "What money do you want to spend on car?",
+        "elements": {
+          "0-250k": {
+            "title": "0 - 250 000 ₽"
+          },
+          "250k-500k": {
+            "title": "250 000 - 500 000 ₽"
+          },
+          "500k-1kk": {
+            "title": "500 000 - 1 000 000 ₽"
+          },
+          "1kk-2kk": {
+            "title": "1 000 000 - 2 000 000 ₽"
+          },
+          "2kk-3kk": {
+            "title": "2 000 000 - 3 000 000 ₽"
+          },
+          "3kk-5kk": {
+            "title": "3 000 000 - 5 000 000 ₽"
+          },
+          "5kk-10kk": {
+            "title": "5 000 000 - 10 000 000 ₽"
+          },
+          "10kk-": {
+            "title": "10 000 000 ₽ - infinity"
+          }
+        }
+      },
+      "carBodyTypes": {
+        "title": "What car body type do you want?",
+        "text": "Choose what cars, do you like"
+      },
+      "engine": {
+        "title": "What engine do you like?",
+        "text": "Chose preferable engine type"
+      },
+      "isFirstAuto": {
+        "title": "First time?",
+        "text": "It's your first auto?",
+        "elements": {
+          "yes": {
+            "title": "Yes"
+          },
+          "no": {
+            "title": "No"
+          }
+        }
+      },
+      "areasOfUse": {
+        "title": "Where you want to use cars?",
+        "text": "Choose common places, where you want to use cars",
+        "elements": {
+          "city": {
+            "title": "City"
+          },
+          "countryside": {
+            "title": "Counry side"
+          },
+          "track": {
+            "title": "Race track"
+          },
+          "trassa": {
+            "title": "Highway"
+          }
+        }
+      },
+      "desires": {
+        "title": "What do you want ot get from Car?",
+        "text": "Choose qualitis, what your prefer in cars",
+        "elements": {
+          "comfort_point": {
+            "title": "Comfort"
+          },
+          "economic_point": {
+            "title": "Economic"
+          },
+          "contrallabilty_point": {
+            "title": "Contrallabilty"
+          },
+          "safety_point": {
+            "title": "Save"
+          },
+          "reliable_point": {
+            "title": "Reliable"
+          },
+          "cross_country_point": {
+            "title": "Cross country"
+          }
+        }
+      },
+      "brends": {
+        "title": "What brands do you like?",
+        "text": "Choose your favourite car brands"
+      },
+      "goals": {
+        "title": "What goals?",
+        "text": "Choose areas of use for your car",
+        "elements": {
+          "family": {
+            "title": "Family"
+          },
+          "shipping": {
+            "title": "Shipping"
+          },
+          "travel": {
+            "title": "Travel"
+          },
+          "fishing": {
+            "title": "Fishing/hunting"
+          },
+          "work": {
+            "title": "Work trip"
+          }
+        }
+      },
+      "climat": {
+        "title": "What climat?",
+        "text": "Choose climat, where you want to use your car",
+        "elements": {
+          "warm": {
+            "title": "Warm"
+          },
+          "snow": {
+            "title":"Cold"
+          }
+        }
+      }
+    }
+  },
+  "geo": {
+    "all_regions": "All regions",
+    "and_another": "and etc.",
+    "choose_location": "Set your geolocation",
+    "label": {
+      "city": "Choose city",
+      "region": "Choose region",
+      "city-region": "Choose region or city"
+    }
+  },
+  "notifications": {
+    "label": "Notifications",
+    "reset": "Reset notification"
+  },
+  "chat": {
+
+    "edited": "edited",
+    "edited_message": "Edit message",
+    "write_message": "Write message...",
+    "support_agent": "Support agent",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "chat_with_support": "Connect with support",
+    "load_images": "Load images",
+    "reply": "Reply",
+    "search_message": "Search in message history",
+    "drop": {
+      "allowed": "Drag photos to it to attach it to message",
+      "denied": "You cant' add new photos, because limit of photos is reached"
+    },
+    "empty_chat": {
+      "title": "No messages",
+      "text": "You can write to advertisement owner to know additional information about car"
+    },
+    "message_templates": {
+      "how_technical": {
+        "title": "Техническое состояние?",
+        "message": "Здравствуйте, немогли бы вы сказать, какое техническое состояние у данного автомобиля?"
+      },
+      "has_sale": {
+        "title": "Есть торг?",
+        "message": "Здравствуйте, возможен ли торг на данный автомобиль?"
+      },
+      "change": {
+        "title": "Возможен обмен?",
+        "message": "Здравствуйте, возможен ли обмен на данный автомобиль?"
+      },
+      "has_dtp": {
+        "title": "Был ли в ДТП?",
+        "message": "Здравствуйте, был ли данный автомобиль в ДТП?"
+      },
+      "to": {
+        "title": "Как часто обслуживался?",
+        "message": "Здравствуйте, как часто данный автомобиль обслуживался в сервисных центрах?"
+      }
+    },
+    "list": {
+      "label": "Chats",
+      "group": {
+        "all": "All",
+        "userId": "User",
+        "carId": "Car",
+        "label": "Group chats by"
+      },
+      "chat_type": {
+        "all": "All",
+        "receiverId": "Sell",
+        "initiatorId": "Buy"
+      }
+    }
+  },
+  "auth": {
+    "login_social": "Авторизироваться через соц сети",
+    "email": "Email",
+    "first_name": "Name",
+    "second_name": "Surname",
+    "show_password": "Show password",
+    "reset_password": "Reset password",
+    "login": "Login",
+    "register": "Register",
+    "password": "Password",
+    "repeat_password": "Repeat password",
+    "send_again": "Send code again",
+    "time_finished": "Time is left",
+    "steps": {
+      "reset_password": {
+        "title": "Enter new password"
+      },
+      "email_confirmation": {
+        "title": "Enter confirmation code"
+      },
+      "email_enter": {
+        "title": "Enter email",
+        "text": "Enter email, where we will sent mail with confirmation code"
+      }
+    }
+
   },
   "search": {
+    "divs": {
+      "common": "Common",
+      "sizes": "Sizes and volumes",
+      "engine": "Engine",
+      "using": "Utilizing",
+      "colors": "Colors",
+      "materials": "Interior materials"
+    },
+    "find": "Find",
     "label": "Find",
+    "found": "Found",
     "base": "Base search",
     "extended": "Extended search",
+    "placeholder": {
+      "min": "Min",
+      "max": "Max",
+      "selector": "Select value"
+    },
     "advertisement": {
+      "price": "Price",
       "new": "New",
       "used": "Used",
-      "show": "Show advertisements"
+      "show": "Show advertisements",
+      "dateOfProduction": "Date of production"
     },
     "subject": {
       "advertisement": "Advertisements",
-      "model": "Models"
+      "model": "Model"
     },
-    "reset" : "Reset"
-  }
+    "reset": "Reset"
+  },
+  "handbook": {
+    "carBodyType": "Car body type",
+    "transmissionType": "Transmission",
+    "carDriveType": "Dive"
+  },
+  "car": {
+    "navigation": {
+      "technical": "Characteristics"
+    },
+    "brend": {
+      "title": "Brand",
+      "advertisement_count": "advertisements"
+    },
+    "model": {
+      "advertisements": "Advertisements",
+      "reviews": "Reviews",
+      "dates": "Dates of production",
+      "prices": "Prices",
+      "advertisements_count": "Advertisements",
+      "title": "Model",
+      "generations_count": "Generations count:",
+      "generations": "Generations"
+    },
+    "generation": {
+      "engine": "Engine",
+      "transmissionTypes": "Transmission",
+      "carBodyType": "Car body type",
+      "title": "Generation",
+      "reviews": "Recent reviews",
+      "driveTypes": "Drive",
+      "price": "PRICE",
+      "make_review": "Whrite review",
+      "search": "Search",
+      "compare": "Compare",
+      "show_characteristics": "Show characteristics",
+      "according_reviews": "according to",
+      "advertisements": "Advertisements",
+      "card": "Card",
+      "characteristics": "Characteristics"
+    },
+    "equipment": {
+      "title": "Equipment"
+    },
+    "transmission": "Transmission",
+    "car_body_type": "Car body type",
+    "mileage": "Mileage, km",
+    "f": "Date of production",
+    "color": "Color",
+    "car_drive_type": "Drive",
+    "engine": {
+      "volume": "Engine volume, l",
+      "label": "Engine"
+    },
+    "date_of_production": "Date of production",
+    "car_characteristics_for_equipment": "Characteristics for eqipment",
+    "props": {
+      "categories": {
+        "common": "Common iformation",
+        "sizes": "Sizes",
+        "volume_and_weight": "Volume and weight",
+        "transmission": "Transmission",
+        "suspension_and_breaks": "Suspension and breaks",
+        "performance_indicators": "Performance indicators",
+        "engine": "Engine"
+      },
+      "car_body_type": {
+        "title": "Car body type"
+      },
+      "mileage": {
+        "title": "Mileage"
+      },
+      "date_of_production": {
+        "title": "Date of production"
+      },
+      "producer": {
+        "title": "Producer"
+      },
+      "electro_horse_powers": {
+        "title": "Electro horse powers"
+      },
+      "volume": {
+        "title": "Engine volume, l"
+      },
+      "fuel_type_code": {
+        "title": "Fuel type"
+      },
+      "power_system_type_code": {
+        "title": "Engine power system"
+      },
+      "type_code": {
+        "title": "Engine type"
+      },
+      "cyllinder_arrangement_type_code": {
+        "title": "Cyllinder arrangement"
+      },
+      "car_class": {
+        "title": "Car class"
+      },
+      "doors_count": {
+        "title": "Count of doors"
+      },
+      "places_count": {
+        "title": "Count of sit places"
+      },
+      "length": {
+        "title": "Length, mm"
+      },
+      "width": {
+        "title": "Width, mm"
+      },
+      "engine_layout_code": {
+        "title": "Engine layout"
+      },
+      "wheel_base": {
+        "title": "Wheel base, mm "
+      },
+      "height": {
+        "title": "Height, mm "
+      },
+      "boost_type_code": {
+        "title": "Boost type"
+      },
+      "in_taxi": {
+        "title": "Was in taxi"
+      },
+      "rate": {
+        "title": "Car rate"
+      },
+      "price": {
+        "title": "Price dispersion"
+      },
+      "clearance": {
+        "title": "Clearance",
+        "message": "Length between ground and lowest point of the car"
+      },
+      "clearence": {
+        "title": "Clearance, mm "
+      },
+      "count_of_clutches": {
+        "title": "Count of clutches"
+      },
+      "has_dry_clutch": {
+        "title": "Has dry clutch"
+      },
+      "fuel_trunk_volume": {
+        "title": "Fuel trunk volume, l "
+      },
+      "car_body_type_code": {
+        "title": "Тип кузова"
+      },
+      "to_100_acceleration": {
+        "title": "Acceleration to 100 km/h, s"
+      },
+      "min_trunk_volume": {
+        "title": "Min trunk volume, mm "
+      },
+      "max_trunk_volum": {
+        "title": "Max trunk volume, mm "
+      },
 
+      "battery_volume": {
+        "title": "Battery volume, mph "
+      },
+      "wheel_size": {
+        "title": "Wheel size "
+      },
+      "trunk_volume": {
+        "title": "Trunk volume (min/max), l "
+      },
+      "fuel_tank_volume": {
+        "title": "Fuel tank volume, l "
+      },
+      "count_of_gears": {
+        "title": "Count of gears "
+      },
+      "weight": {
+        "title": "Weight, kg "
+      },
+      "type": {
+        "title": "Type"
+      },
+      "front_breaks": {
+        "title": "Breaks "
+      },
+      "front_suspension": {
+        "title": "Suspension"
+      },
+      "max_speed": {
+        "title": "Max speed, km/h "
+      },
+      "fuel_consumption": {
+        "title": "Fuel consumption, l/km "
+      },
+      "fuel": {
+        "title": "Fuel type "
+      },
+      "ecological_class": {
+        "title": "Ecological class"
+      },
+      "acceleration": {
+        "title": "Acceleration to 100 km/h, s"
+      },
+      "drive_type": {
+        "title": "Drive",
+        "message": "Drive show, what wheels force car to move"
+      },
+      "torgue": {
+        "title": "Torgue, nm "
+      },
+      "count_of_clapans_on_cyllinder": {
+        "title": "Count of clapans on cyllinder"
+      },
+      "cyllinder_diameter": {
+        "title": "Diameter of cyllinder, mm"
+      },
+      "count_of_cyllinders": {
+        "title": "Count of cyllinders"
+      },
+      "count_of_electro_engines": {
+        "title": "Count of electro engines"
+      },
+      "name": {
+        "title": "Engine name"
+      },
+      "horse_power": {
+        "title": "Horse powers, hp "
+      },
+      "compression_ration": {
+        "title": "Compression"
+      },
+      "transmission_type": {
+        "title": "Transmission"
+      }
+    }
+  },
+  "review": {
+    "rate": "Rate",
+    "empty": "We can't find reviews",
+    "read": "read",
+    "review_from_owner": "review on car",
+    "read_another_reviews": "You alse can read another reviews on this model",
+    "read_extra": "Read remaining",
+    "search_form": {
+      "hide": "Hide",
+      "open": "Open"
+    },
+    "managementPanel": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "points": {
+      "comfort_point": "Comfort",
+      "reliable_point": "Reliable",
+      "contrallabilty_point": "Controlabilty",
+      "safety_point": "Savfety",
+      "economic_point": "Economic",
+      "cross_country_point": "Cross country abilities",
+      "score": "Total score"
+    },
+    "title": "Title",
+    "car": "Car",
+    "save": "Save",
+    "load_image": "Load images",
+    "content": "Content",
+    "set_score": "Rate auto",
+    "load_photos": "You can attach photos"
+  },
+  "sort": {
+    "torgue": "Torgue",
+    "count_of_clutches": "Clutches count",
+    "count_of_gears": "Gears count",
+    "date_of_found": "Date of found",
+    "total_ads": "Advertisement count",
+    "opened_ads": "Количеству открытых объявлений",
+    "closed_ads": "Количеству завершенных объявлений",
+    "booked_ads": "Количеству забронированных объявлений",
+    "first_name": "Name",
+    "last_name": "Surname",
+    "id": "Id",
+    "date_joined": "Register date",
+    "ru_name": "Russian name",
+    "eng_name": "English name",
+    "volume": "Volume",
+    "horse_power": "Horse powers",
+    "label": "Sort by",
+    "name": "Name",
+    "price": "Price",
+    "date_of_production": "Date of production",
+    "mileage": "Mileage",
+    "start_date": "Date",
+    "date": "Date",
+    "total": "Score",
+    "score": "Score"
+  },
+  "metrics": {
+    "liter": "l",
+    "hp": "h.p.",
+    "kilometer": "km"
+  },
+  "advertisement": {
+    "show_other": "Показать оставшиеся",
+    "edit": {
+      "label": "Edit advertisement",
+      "start": "Edit",
+      "stop": "Finish edit"
+    },
+    "statuses": {
+      "booked": "Booked",
+      "opened": "Opened",
+      "closed": "Finished"
+    },
+
+
+    "photo_empty": "No photo",
+    "empty": "We can't find any advertisements",
+    "all": "Все",
+    "description": "Description",
+    "show_phone_number": "Show phone number",
+    "write": "Write",
+    "rate": "Model rate",
+    "read_info": "Read characteristics",
+    "compare": "Compare",
+    "delete": "Delete",
+    "review_read": "Read full reivew",
+    "loading": "Advertisement loading",
+    "add_fav": "Add to favourites",
+    "remove_fav": "Remove from favourites",
+    "managementPanel": {
+      "freeze": "Freeze",
+      "finish": "Finish",
+      "delete": "Delete",
+      "edit": "Edit"
+    },
+    "create": {
+      "price": {
+        "range": "Similar cars are buying by price",
+        "single": "We found only on similar car by price"
+      },
+      "steps": {
+        "choose_car": {
+          "title": "Choose car"
+        },
+        "set_car_data": {
+          "title": "Set parameters of car",
+          "description": "Tell something about car",
+          "in_taxi": "Was in taxi?"
+        },
+        "set_price": {
+          "title": "Set price"
+        },
+        "how_to_connect": {
+          "title": "How to connect with you",
+          "text": "Please write down your phonenumber, that potential client can connect with you by mobile connection\n"
+        },
+        "load_photo": {
+          "title": "Load images"
+        }
+      },
+      "submit": "Make advertisement"
+    },
+    "tabTitle": {
+      "buy": "By car ",
+      "price": "by price"
+    }
+  },
+  "motivate": {
+    "chat": {
+      "authorize": {
+        "label": "Need to authorize",
+        "button": "Authorize",
+        "message": "To utilize chat you need authorize"
+      }
+    },
+    "user": {
+      "activation": {
+        "title": "You need to activate your accaunt",
+        "message": "We sent mail to your email address with link of activation"
+      }
+    },
+    "garage": {
+      "authorize": {
+        "message": "To observe your advertisements you need to authorize",
+        "button": "Authorize"
+      },
+      "createAd": {
+        "message": "You haven't made advertisement yet, but it's never late to do it",
+        "button": "Make  advertisement"
+      }
+    },
+    "saved_results": {
+      "authorize": {
+        "message": "This results are saved only in this browser. You want to have access to it from any device you need to authorize",
+        "button": "Authorize"
+      }
+    },
+    "my_reviews": {
+      "authorize": {
+        "message": "To create reviews you need to authorize",
+        "button": "Authorize"
+      },
+      "create": {
+        "message": "You haven't create any review, but you can do it right now",
+        "button": "Create review"
+      }
+    },
+    "compare": {
+      "authorize": {
+        "message": "Authorize to save your compare results",
+        "button": "Authorize"
+      },
+      "empty": {
+        "model": {
+          "message": "You haven't added model to compare. It's never late to do it",
+          "button": "Search models"
+        },
+        "ad": {
+          "message": "You haven't added advertisement to compare. It's never late to do it",
+          "button": "Search advertisements"
+        }
+      }
+    },
+    "create_advertisement": {
+      "auth": {
+        "message": "To make advertisement you need authorize",
+        "button": "Authorize"
+      }
+    },
+    "favourites": {
+      "authorize": {
+        "message": "To add advertisements to favourites you need to authorize",
+        "button": "Authorize"
+      },
+      "addFavourite": {
+        "message": "Favourites adveritesements list is empty. You can add advertisement to your favourites list by clicking on icon \nin right side of advertisement car",
+        "button": "Search advertisements"
+      }
+    }
+  },
+  "pages": {
+    "garage": "Garage",
+    "favourites": "Favourites",
+    "main": "Main",
+    "my_reviews": "My reviews",
+    "data_management": "Content administration",
+    "user_management": "User administration",
+    "administration": "Administrations",
+    "search": "Search advertisements",
+    "saved_results": "Saved results of test",
+    "test": "Test",
+    "personal_cabinets": "Personal cabinet",
+    "chats": "Chats",
+    "chat_with": "Chat with ",
+    "review_on": "Review on  ",
+    "profile": "User profile ",
+    "create_ad": "Make advertisement"
+  },
+  "admin": {
+    "go_back": "Go back",
+    "label": "Administration",
+    "user_management": {
+      "label": "Users",
+      "empty": "Empty ",
+      "go_to_user_page": "Go to user profile",
+      "search_placeholder": "Enter user",
+      "write_message": "Write message",
+      "total_ads": "Total advertisements"
+    },
+    "data_management": {
+      "entities": {
+        "brend_id": "brand",
+        "model_id": "model",
+        "generation_id": "car generation",
+        "equipment_id": "equipment",
+        "generation_variant_id": "car body type for model generation",
+        "car_id": "concrete car",
+        "producer_id": "producer",
+        "engine_id": "engine",
+        "transmission_id": "transmission"
+      },
+      "edit": "Edit",
+      "create_according_existed": "Create based on current",
+      "create-according-existed": "Create based on",
+      "delete": "Delete",
+      "create": "Create",
+      "transmissions": {
+        "search_placeholder": "Enter name of transmission"
+      },
+      "engines": {
+        "search_placeholder": "Enter name of engine"
+      },
+      "producers": {
+        "name": "Name",
+        "date_of_found": "Date of found",
+        "ru_description": "Russian description",
+        "eng_description": "English description",
+        "country": "Country",
+        "search_placeholder": "Enter the name of producer"
+      },
+      "cars": {
+        "generation": {
+          "end_date": "End date",
+          "start_date": "Start date",
+          "ecological_class_code": "Ecological class",
+          "engine_layout_code": "Engine layout",
+          "name": "Name of generation"
+        },
+        "model": {
+          "car_class_code": "Car class",
+          "search_placeholder": "Enter name of generation",
+          "name": "Mode name"
+        },
+        "generation_variant": {
+          "label": "Car body types",
+          "search_placeholder": "Enter the name of car body type"
+        },
+        "equipment": {
+          "front_suspension_code": "Suspension",
+          "wheel_size": "Wheel size",
+          "drive_type_code": "Drive",
+          "name": "Equipment name",
+          "engine": "Engine",
+          "transmission": "Transmission",
+          "front_breaks_code": "Breaks",
+          "label": "Equipments",
+          "colors": "Colors",
+          "materials": "Interior materials",
+          "search_placeholder": "Enter name of equipment"
+        },
+        "brend": {
+          "label": "Models",
+          "name": "Brand name",
+          "producer": "Owner of brand",
+          "search_placeholder": "Enter name of the brand"
+        },
+        "car": {
+          "label": "Concrete cars"
+        },
+        "brends_list": {
+          "search_placeholder": "Enter name of the brand"
+        },
+        "label": "Cars",
+        "transmissions": {
+          "label": "Transmissions"
+        },
+        "producers": {
+          "label": "Producers"
+        },
+        "engines": {
+          "label": "Engines"
+        }
+      },
+      "choose_data": "Choose data",
+      "handbooks": {
+        "choose_handbook": "Choose handbook",
+        "ru_name": "Russian name",
+        "hex": "HEX",
+        "rgba": "RGBa",
+        "code": "Code",
+        "eng_name": "English description",
+        "ru_description": "Russian description",
+        "eng_description": "English description",
+        "count_of_sit_places": "Count of sit places",
+        "count_of_doors": "Count of doors",
+        "label": "Handbooks",
+        "engineTypes": "Engine types",
+        "carBodyTypes": "Car body types",
+        "carClass": "Car classes ",
+        "engineLayout": "Engine layouts",
+        "color": "Colors",
+        "fuelTypes": "Fuel types",
+        "ecologicalClass": "Ecological classes",
+        "carDrive": "Drive types",
+        "transmissionType": "Transmission types",
+        "suspensionType": "Suspension types",
+        "breakType": "Break types",
+        "carTag": "Tags",
+        "materials": "Materials",
+        "enginePowerSystems": "Types of power systems",
+        "cyllinderArrangements": "Cyllinder arrangements types",
+        "boostTypes": "Boost types"
+      },
+      "label": {
+        "data": "Data management"
+      }
+    }
+  },
+  "header": {
+    "saved_results": "Saved results",
+    "search": "Search",
+    "make_ad": "Make advertisement",
+    "reviews": "Reviews",
+    "favourites": "Favourites",
+    "garage": "Garage",
+    "administration": "Administration",
+    "login": "Login"
+  },
+  "main": {
+    "title": {
+      "want": "Do you want to",
+      "buy": "Buy",
+      "or": "or",
+      "sell": "Sell",
+      "auto": "car?"
+    },
+    "buy": "Buy new car",
+    "sell": "Sell my car",
+    "history": "You have watched",
+    "recommendations": "We recommend",
+    "recent": "Recent"
+  },
+  "compare": {
+    "criteria": "Criteria",
+    "mark": "Advertisement",
+    "results": {
+      "show_full": "Show details of analyze",
+      "label": "Results of compare",
+      "best": "Best variant",
+      "best_few": "Best variants"
+    },
+    "show_different": "Show different",
+    "remove": "Delete from comparison",
+    "authorize": "To save compare items, please, authorize",
+    "title": "Compare",
+    "type": {
+      "ad": "Advertisements",
+      "model": "Models"
+    }
+  },
+  "confirmation": {
+    "confirm": "Accept",
+    "decline": "Decline",
+    "handbook": {
+      "title": "Do you really want to delete this element of handbook?",
+      "message": "bla bla"
+    },
+    "delete_admin": {
+      "title": "Do you really want to delete this item?",
+      "message": "bla bla"
+    },
+    "decline_admin": {
+      "title": "Do you really want to close form?",
+      "message": "All changes will be lost"
+    },
+    "delete_review": {
+      "title": "Do you really want to delete this review?",
+      "message": "bla bla"
+    },
+    "decline_profile_edit": {
+      "title": "Do you really want to stop editing?",
+      "message": "All changes will be lost"
+    },
+    "delete_advertisement": {
+      "title": "Do you really want to delete this advertisement?",
+      "message": "You can't return it anymore"
+    },
+    "save_profile": {
+      "title": "Do you really want to save your profile data?",
+      "message": "бла бла бла"
+    }
+  },
+  "form": {
+    "filter": "Filter",
+    "prev": "Back",
+    "next": "Next",
+    "success": "Data is successfully saved",
+    "decline": "Decline",
+    "save": "Save"
+  }
 }

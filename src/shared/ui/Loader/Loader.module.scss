@@ -1,0 +1,79 @@
+@import "src/app/index";
+
+
+.loader {
+  overflow: hidden;
+
+  &.type {
+    &_line {
+      &.size {
+        &_medium {
+          width: 200px;
+          height: 4px;
+          border-radius: 20px;
+          background: var(--clr-primary-light);
+        }
+      }
+    }
+
+    &_circle {
+      &.size {
+        &_medium {
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+  }
+
+  @keyframes line-animation {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes line-animation-2 {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+
+  line {
+    stroke: var(--clr-primary);
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-dasharray: 500;
+    animation: line-animation 0.8s infinite linear;
+
+    &.second {
+      animation: line-animation-2 1s infinite linear;
+    }
+  }
+
+
+  @keyframes round {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dashoffset: 200;
+    }
+    100% {
+      stroke-dashoffset: 400;
+    }
+  }
+
+  circle {
+    stroke: var(--clr-primary);
+    background: transparent;
+    fill: none;
+    animation: round 1.5s infinite forwards;
+  }
+}

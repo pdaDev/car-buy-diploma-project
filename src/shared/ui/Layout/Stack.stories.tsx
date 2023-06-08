@@ -8,10 +8,10 @@ export default {
 }
 
 export const Base: ComponentStory<typeof Stack> = (args) => <Stack {...args} >
-    <div className={s.box}/>
-    <div className={s.box}/>
-    <div className={s.box}/>
-    <div className={s.box}/>
+    <div className={s.box}>1</div>
+    <div className={s.box}>2</div>
+    <div className={s.box}>3</div>
+    <div className={s.box}>4</div>
 </Stack>
 
 Base.args = {

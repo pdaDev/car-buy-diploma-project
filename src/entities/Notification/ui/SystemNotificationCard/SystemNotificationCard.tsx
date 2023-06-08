@@ -15,6 +15,6 @@ export const SystemNotificationCard: FC<IProps> = ({
                                                    }) => {
     return <div className={cn(s.notification_wrapper, addPrefix('type', type, s))}>
         <Text content={message} />
-        { extra && extra.close && <NotificationCloseButton onClick={extra.close} /> }
+        {/*{ extra && extra.close && <NotificationCloseButton onClick={extra.close} /> }*/}
     </div>
 }

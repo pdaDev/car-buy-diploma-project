@@ -1,0 +1,24 @@
+@import "src/app/index";
+
+.price_info {
+
+}
+
+.finished_mark {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: var(--clr-primary);
+  opacity: 0;
+
+  svg {
+    color: var(--clr-secondary);
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}

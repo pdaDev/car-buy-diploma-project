@@ -4,30 +4,35 @@
   display: inline-flex;
   width: auto;
   padding: var(--space-2) var(--space-3);
-  gap: var(--space-2);
+  gap: var(--space-3);
 
   .large_card {
-    width: 22px;
-    height: 22px;
+    width: 32px;
+    height: 32px;
     display: flex;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
+    border-collapse: collapse;
 
     .card_item {
-      width: 8px;
-      height: 4px;
+      width: 70%;
+      height: 50%;
       border-collapse: collapse;
       position: relative;
-      border-radius: 2px;
+      box-sizing: border-box;
+      border-radius: 4px;
       border: 1px solid var(--clr-grey-1);
 
       .image {
         position: absolute;
-        border-radius: 2px;
-        height: 100%;
-        width: 4px;
-        left: 0;
-        top: 0;
+        border-radius: 4px;
+        height: calc(100% + 2px);
+        box-sizing: border-box;
+        width: 40%;
+        left: -1px;
+        top: -1px;
+        border-collapse: collapse;
         border: 1px solid var(--clr-grey-1);
       }
     }
@@ -35,15 +40,18 @@
 
   .small_card {
     display: grid;
+    width: 32px;
+    height: 32px;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 1fr 1fr;
+    box-sizing: border-box;
     padding: var(--space-1);
-    background: var(--clr-grey-light);
+    background: transparent;
 
     .card_item {
       margin: 1px;
-      width: 4px;
-      height: 4px;
+      width: 8px;
+      height: 8px;
       border-radius: 2px;
       border: 1px solid var(--clr-grey-1);
     }
@@ -56,6 +64,10 @@
 
     &.active {
       border-color: var(--clr-primary);
+      div, span, s.image {
+        border-color: var(--clr-primary) !important;
+
+      }
     }
 
     &:hover {

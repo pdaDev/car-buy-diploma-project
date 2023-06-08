@@ -35,7 +35,7 @@ export const PasswordInput: FC<IProps> = ({
                  onPointerDown={showPassword}
                  onPointerUp={hidePassword}
             >
-                <Icon path={isPasswordVisible ? mdiEyeRemoveOutline : mdiEyeOutline} color={'#D9D9D9'}/>
+                { !needShowPassword && <Icon path={isPasswordVisible ? mdiEyeRemoveOutline : mdiEyeOutline} color={'#D9D9D9'}/> }
             </div>
         </div>
     </InputLayout>

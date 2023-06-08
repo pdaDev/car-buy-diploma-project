@@ -1,0 +1,25 @@
+@import "src/app/index";
+
+.material_card {
+  background: var(--clr-secondary);
+  border-radius: var(--brd-radius-2);
+  padding: 6px var(--space-3);
+  border: 2px solid var(--clr-grey-1);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  width: auto;;
+
+  svg {
+    color: var(--clr-grey-1)
+  }
+
+  &.active {
+    border-color: var(--clr-primary);
+
+    svg {
+      color: var(--clr-primary);
+    }
+  }
+}

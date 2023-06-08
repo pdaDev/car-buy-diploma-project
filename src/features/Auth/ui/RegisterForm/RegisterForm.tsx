@@ -1,50 +1,72 @@
 import { FC } from 'react'
 
 import s from './RegisterForm.module.scss'
-import {Button, Stack, Container, Input} from "../../../../shared";
+import {
+    Button,
+    Stack,
+    Container,
+    Input,
+    useMultiLanguageValidationErrors,
+    getTranslationIndexCreator
+} from "../../../../shared";
 import {set, SubmitHandler, useForm} from "react-hook-form";
 
-import { register as authRegister, IRegisterPayload } from 'entities/User'
-import {useAppDispatch} from "../../../../app/services";
+import {register as authRegister, IRegisterPayload, selectors} from 'entities/User'
+import {useAppDispatch, useAppSelector} from "../../../../app/services";
 import {PasswordInput} from "../../../../shared/ui/Inputs/PasswordInput/PasswordInput";
 import {validators} from "../../lib/validators";
+import {FormValues} from "../../namespace";
+import {useTranslation} from "react-i18next";
 
 interface IProps {
 
 }
 
-type FormWithoutUsername = Omit<IRegisterPayload, 'username'>
-type FormValues = FormWithoutUsername & { repeated_password: string }
+
 
 export const RegisterForm: FC<IProps> = ({
 }) => {
     const { register, formState: { errors }, handleSubmit, setError, setFocus} =  useForm<FormValues>({ mode: 'onTouched' })
     const d = useAppDispatch()
+    const { t } = useTranslation()
 
     const onFormSubmit: SubmitHandler<FormValues> = (payload) => {
         const { repeated_password, ...data } = payload
-        if (payload.password === repeated_password) {
-            d(authRegister({
-                ...data,
-                username: payload.email
-            }))
-        } else {
-            setError('repeated_password', { message: 'пароли должны совпадать' })
-            setFocus('repeated_password')
-        }
+        d(authRegister({
+            ...data,
+            username: payload.email
+        }))
     }
 
-    return <form onSubmit={handleSubmit(onFormSubmit)}>
+    const getIndex = getTranslationIndexCreator('auth')
+
+    const errorsMessages = useMultiLanguageValidationErrors(errors)
+    const loading = useAppSelector(selectors.selectUserDataLoadingStatus)
+    return <form onSubmit={handleSubmit(onFormSubmit)} style={{ zIndex: 10 }}>
         <Stack size={'container'} spacing={5} direction={'column'}>
-            <Input register={register('email', { validate: validators.email })} label={'почта'} error={errors.email?.message} />
-            <Input register={register('first_name', { validate: validators.first_name })} label={'имя'} error={errors.first_name?.message} />
-            <Input register={register('last_name', { validate: validators.last_name })} label={'фамилия'} error={errors.last_name?.message}/>
-            <PasswordInput register={register('password')} label={'пароль'} error={errors.password?.message}/>
-            <PasswordInput register={register('repeated_password')}
-                   label={'повторите пароль'}
-                   error={errors.repeated_password?.message}
+            <Input register={register('email', { validate: validators.email })}
+                   title={t(getIndex('email')) as string}
+                   error={errorsMessages.email}
             />
-            <Button type={'primary'} label={'зарегистироваться'} width={'full'}/>
+            <Input register={register('first_name', { validate: validators.first_name })}
+                   title={t(getIndex('first_name')) as string}
+                   error={errorsMessages.first_name} />
+            <Input register={register('last_name', { validate: validators.last_name })}
+                   title={t(getIndex('second_name')) as string}
+                   error={errorsMessages.last_name}/>
+            <PasswordInput register={register('password', { validate: validators.password })}
+                           title={t(getIndex('password')) as string}
+                           error={errorsMessages.password}
+            />
+            <PasswordInput register={register('repeated_password', { validate: validators.repeated_password })}
+                   title={t(getIndex('repeat_password')) as string}
+                   error={errorsMessages.repeated_password}
+            />
+            <Button type={'primary'}
+                    disabled={loading}
+                    behaviorType={'submit'}
+                    label={t(getIndex('register')) as string}
+                    width={'full'}/>
         </Stack>
     </form>
 }

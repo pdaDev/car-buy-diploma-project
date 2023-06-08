@@ -1,4 +1,6 @@
 export { ReviewCard }  from './ui/ReviewCard/Review'
 export { ReviewScoreBlock } from './ui/ReviewScoreBlock/ReviewScoreBlock'
+export { CarReviewsScore } from './ui/CarReviewsScore/CarReviewsScore'
 export * from './api'
 export * as NS from './namespace'
+export * from './lib/hooks'

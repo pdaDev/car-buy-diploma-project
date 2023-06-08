@@ -2,7 +2,15 @@ import React, {FC, ReactNode} from 'react'
 
 import s from './AdvertisementTitleBlock.module.scss'
 import * as NS from '../../namespace'
-import {formatPrice, FormMode, getCarName, Input, Label, NumberInput} from "../../../../shared";
+import {
+    formatPrice,
+    FormMode,
+    getCarName,
+    getCarNameFromModelWithId,
+    Input,
+    Label,
+    NumberInput
+} from "../../../../shared";
 
 
 
@@ -28,7 +36,7 @@ export const AdvertisementTitleBlock: FC<IProps> = ({
                                                         editData
                                                     }) => {
 
-    const carName = car ? getCarName(car) : null
+    const carName = car ? getCarNameFromModelWithId(car) : null
 
     const date = startDate ? new Date(startDate).toLocaleDateString() : null
 

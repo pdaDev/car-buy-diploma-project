@@ -1,51 +1,82 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {axiosBaseQuery, CommonGetListPayload, CommonServerListResult} from "../../../shared";
+import {axiosBaseQuery, CommonGetListPayload, CommonServerListResult, IServerReviewListItem} from "../../../shared";
 import * as NS from '../namespace'
 
 export const reviewAPI = createApi({
     reducerPath: 'review',
-    baseQuery: axiosBaseQuery({ baseUrl: 'reviews/'}),
+    baseQuery: axiosBaseQuery({baseUrl: 'reviews/'}),
     tagTypes: ['review'],
-    endpoints:(build) => ({
+    endpoints: (build) => ({
         getReviewInfo: build.query({
-            query:(arg) => ({
+            query: (arg) => ({
                 url: '',
                 method: 'GET'
             })
+        }),
+        getMyReviews: build.query<IServerReviewListItem[], void>({
+            query: ()  => 'me/'
         }),
         getReview: build.query<NS.IReview, number>({
-            query:(id) => ({
+            query: (id) => ({
                 url: `${id}/`,
-                method: 'GET'
-            })
-        }),
-        getReviews: build.query<CommonServerListResult<NS.IServerReviewListItem>, CommonGetListPayload & { generations: number[], models: number[], brends: [] }>({
-            query:(params) => ({
-                url: '',
                 method: 'GET',
-                params
-            })
+            }),
+            providesTags: ['review']
         }),
-        editReview: build.mutation<void, NS.IReviewPatchPayload>({
-            query:({id, ...body}) => ({
+        getReviews: build.query<CommonServerListResult<IServerReviewListItem>, CommonGetListPayload & { generations: number[], models: number[], brends: number[] } & NS.IReviewSearchData>({
+            query: ({generations, models, brends, ...params}) => {
+                let carQuery = ''
+                if (generations && brends && models) {
+                    const generationsQuery = generations.map(gen => `generations=${gen}`).join('&')
+                    const brendsQuery = brends.map(brend => `brends=${brend}`).join('&')
+                    const modelsQuery = models.map(model => `models=${model}`).join('&')
+                    carQuery = [modelsQuery, generationsQuery, brendsQuery].filter(str => str.length > 0).join('&')
+                }
+
+
+                return {
+                    url: `?${carQuery}`,
+                    method: 'GET',
+                    params
+                }
+            }
+        }),
+        editReview: build.mutation<void, { id: number, data: FormData }>({
+            query: ({id, data}) => ({
                 url: `${id}/`,
                 method: 'PATCH',
-                body
+                body: data,
+                headers: {
+                    "Content-Type": 'multipart/form-data'
+                }
+            }),
+            invalidatesTags: ['review']
+        }),
+        deleteReview: build.mutation<void, number>({
+            query: (id) => ({
+                url: `${id}/`,
+                method: 'DELETE'
             })
         }),
-        createReview: build.mutation<NS.IReview, number>({
-            query:(body) => ({
+        createReview: build.mutation<number, FormData>({
+            query: (body) => ({
                 url: ``,
                 method: 'POST',
-                body
+                body,
+                privacy: 'authenticated',
+                headers: {
+                    "Content-Type": 'multipart/form-data'
+                }
             })
         })
     })
 })
 
 export const {
+    useDeleteReviewMutation,
     useCreateReviewMutation,
     useEditReviewMutation,
+    useGetMyReviewsQuery,
     useGetReviewInfoQuery,
     useGetReviewsQuery,
     useGetReviewQuery,

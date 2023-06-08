@@ -6,10 +6,13 @@ export const getToken = () => localStorage.getItem('token')
 
 export const refreshToken = async () => {
     try {
-        const response = await api.get('auth/token/refresh/', {refresh: getRefreshToken()} as any).then(data => data)
+        const response = await api.post('api/token/refresh/', {refresh: getRefreshToken()} as any).then(data => data)
         if (response.status === 200) {
             saveToken(response.data.access)
+            return response.data.access
         }
+        return undefined
+
     } catch (e) {
         throw new Error()
     }

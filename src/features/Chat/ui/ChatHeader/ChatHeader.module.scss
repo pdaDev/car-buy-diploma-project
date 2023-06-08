@@ -1,0 +1,43 @@
+@import "src/app/index";
+
+.open_full_chat_button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  
+  svg {
+    color: var(--clr-grey-1);
+
+    &:hover {
+      color: var(--clr-primary)
+    }
+  }
+}
+
+.search_message {
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
+
+  .reset_search_message {
+    position: absolute;
+    right: 4px;
+    z-index: 10;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    svg {
+      color: var(--clr-grey-1);
+    }
+  }
+
+  input {
+    padding-right: 22px;
+    width: 100% !important;
+    flex-grow: 1;
+    max-width: 100% !important;
+  }
+}

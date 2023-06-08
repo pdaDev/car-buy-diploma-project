@@ -1,9 +1,9 @@
-import {FC, useState} from "react";
+import {FC, MouseEventHandler, useState} from "react";
 
 import s from './AddRemoveToFavourites.module.scss'
-import {addFavourite, removeFavourite, selectors} from '../../model'
+
 import {cn, HeartIconFilled, HeartIcon} from "../../../../shared";
-import {useAppDispatch, useAppSelector} from "../../../../app/services";
+import {useAdvertisementsFavourites} from "../../lib/hooks";
 
 interface IProps {
     advertisementId: number;
@@ -15,15 +15,12 @@ export const AddRemoveToFavourites: FC<IProps> = ({
     advertisementId,
     withTransparentBackground = false
                                                   }) => {
-
-    const favourites = useAppSelector(selectors.selectIdsList)
-    const isActive = favourites.includes(advertisementId)
-    const d = useAppDispatch()
-    const switchActiveStatus = () => {
-        d(isActive ? removeFavourite(advertisementId) : addFavourite(advertisementId))
+    const { isFavourite, switchFavouriteStatus } = useAdvertisementsFavourites(advertisementId)
+    const onButtonClick: MouseEventHandler = e => {
+        e.stopPropagation()
+        switchFavouriteStatus()
     }
-
-    return <div className={cn((isActive ? s.active : s.not_active), s.wrapper, !withTransparentBackground && s.with_wrapper)} onClick={switchActiveStatus}>
-        <img src={isActive ? HeartIconFilled : HeartIcon} />
+    return <div className={cn((isFavourite ? s.active : s.not_active), s.wrapper, !withTransparentBackground && s.with_wrapper)} onClick={onButtonClick}>
+        <img src={isFavourite ? HeartIconFilled : HeartIcon} />
     </div>
 }

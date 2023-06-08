@@ -15,6 +15,7 @@ interface IProps<T extends PosType> {
 
 export function AutoPosedComponent<T extends PosType>({children, position, mounted, Component, ...props}: IProps<T>) {
     const defaultPos = typeof position === 'string' ? position : position.defaultPos
+    const posType = typeof position === 'string' ? 'fixed' : position.type
     const [currentPos, setCurrentPos] = useState<Pos>(defaultPos as Pos)
     const [open, setOpen] = useState(mounted)
     const isAuto = typeof position === 'object' && position !== null && position.type !== "fixed"
@@ -65,15 +66,15 @@ export function AutoPosedComponent<T extends PosType>({children, position, mount
         const verticalPositions = ['up', 'down']
         const horizontalPositions = ['left', 'right']
 
-        const avaialablePositions = position.type === 'auto'
+        const avaialablePositions = posType === 'auto'
             ? allPositions
-            : position.type === 'auto-row'
+            : posType === 'auto-row'
                 ? horizontalPositions
                 : verticalPositions
 
         const wrapperSizes = wrap!.getBoundingClientRect()
         const tooltipSizes = wrap!.lastElementChild!.getBoundingClientRect()
-        let posForAnalyze = position.defaultPos
+        let posForAnalyze = defaultPos
 
         for (let i = 0; i < avaialablePositions.length; i++) {
             if (checkIsSmaller(posForAnalyze as Pos, getEndPoint(posForAnalyze as Pos, wrapperSizes, tooltipSizes))) {
@@ -83,7 +84,7 @@ export function AutoPosedComponent<T extends PosType>({children, position, mount
                 posForAnalyze = getNextElInArray(posForAnalyze, avaialablePositions) as Pos
             }
         }
-        setCurrentPos(position.defaultPos as Pos)
+        setCurrentPos(defaultPos as Pos)
 
     }
 

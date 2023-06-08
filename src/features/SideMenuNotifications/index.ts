@@ -1,0 +1,1 @@
+export { SideMenuNotifications } from './ui/SideMenyNotifications'

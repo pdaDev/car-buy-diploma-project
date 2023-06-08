@@ -7,56 +7,97 @@ import {
     MouseEventHandler,
     useEffect,
     useRef,
-    useState
+    useState, FocusEventHandler
 } from "react";
 
-import s from './Selector.module.scss'
-import {cn} from "../../lib";
+import './Selector.scss'
+
+import {addPrefix, cn, Register} from "../../lib";
 import {use} from "i18next";
 import {IOption} from "../../types";
+import {InputWrapper} from "../Inputs";
 
 type Value = string | number
 type OptionPayload = Value[] | Value | null
 
 interface IProps {
     options: IOption[];
-    current: OptionPayload;
-    onChange: Function
+    current?: OptionPayload;
+    onChange?: Function
     withSearch?: boolean;
     placeholder?: string
     withNullableValue?: boolean
     countOfVisibleOptions?: number
+    error?: string
+    title?: string
+    register?: Register
+    position?: 'top' | 'bottom'
+    defaultRegisterData?: string | undefined | number
+    classNamePrefix?: string
+    onFocus?: FocusEventHandler
 }
 
 export const Selector: FC<IProps> = ({
                                          options,
                                          current,
+                                         position = 'bottom',
+                                         onFocus: outFocus,
                                          onChange,
                                          withSearch = false,
                                          placeholder,
                                          withNullableValue = false,
-                                         countOfVisibleOptions = 5
+                                         title,
+                                         countOfVisibleOptions = 5,
+                                         register,
+                                         error,
+                                         defaultRegisterData,
+                                         classNamePrefix,
                                      }) => {
+
     const [isOpen, setOpenStatus] = useState<boolean>(false)
     const [searchValue, setSearchValue] = useState<string>('')
     const [isInputValueAdding, setInputValueAddingStatus] = useState<boolean>(false)
+    const [selfCurrentOption, setOption] = useState<IOption['value']>('')
+    useEffect(() => {
+        if (register && current && isSingleMode) {
+            setOption(current as any)
+        }
+    }, [current])
 
+    const currentOption = register ? selfCurrentOption : current
+
+    const setSelfSingleOption = (value: IOption['value']) => {
+        setOption(value)
+        register && register.onChange({target: {value, name: register.name},})
+    }
+
+
+    useEffect(() => {
+        if (defaultRegisterData) {
+            setOption(defaultRegisterData)
+        }
+    }, [defaultRegisterData])
+
+    const changeOptions = register ? setSelfSingleOption : onChange!
     const timer = useRef<any>()
+
     const filterOptions = (option: IOption) => option?.label.indexOf(searchValue) > -1
     const findOption = (options.find(o => searchValue.length > 0 && o.label.indexOf(searchValue) === 0)) || null
     const findOptionLabel = findOption?.label || ''
-    const isSingleMode = !Array.isArray(current)
+    const isSingleMode = register || !Array.isArray(current)
     const findSlice = findOptionLabel.substring(searchValue.length, findOptionLabel.length)
-    const currentOptionLabel = isSingleMode ? current !== null ? (options.find(o => o.value === current)?.label || '') : '' : ''
+    const currentOptionLabel = isSingleMode ? currentOption !== null ? (options.find(o => o.value === currentOption)?.label || '') : '' : ''
+
 
     useEffect(() => {
         setSearchValue(currentOptionLabel)
     }, [currentOptionLabel])
 
 
-    const selectOption = (option: Value, isActive?: boolean) => () => {
+    const selectOption = (option: Value, isActive?: boolean) => (e: MouseEvent) => {
+        e.stopPropagation()
         // @ts-ignore
-        onChange(isSingleMode
+        changeOptions(isSingleMode
             ? option
             : option !== null
                 ? isActive
@@ -64,6 +105,9 @@ export const Selector: FC<IProps> = ({
                     : [...current, option]
                 : []
         )
+        if (isSingleMode) {
+            setOpenStatus(false)
+        }
         setInputValueAddingStatus(false)
     }
 
@@ -86,7 +130,7 @@ export const Selector: FC<IProps> = ({
         if (e.code === 'Enter') {
             if (findOption || activeOption > -1) {
                 const objectToInsert = activeOption !== -1 ? optionsForRender[activeOption].value : findOption?.value
-                onChange(isSingleMode
+                changeOptions(isSingleMode
                     ? objectToInsert
                     : objectToInsert !== null ? current.includes(objectToInsert!)
                             ? activeOption === -1
@@ -123,10 +167,13 @@ export const Selector: FC<IProps> = ({
 
     const onFocus = (e: FocusEvent) => {
         clearTimeout(timer.current)
+        outFocus && outFocus(e)
     }
+
 
     const onBlur = () => {
         timer.current = setTimeout(() => {
+            register && register.onBlur()
             setOpenStatus(false)
             if (isSingleMode && withSearch) {
                 setSearchValue(currentOptionLabel)
@@ -146,22 +193,26 @@ export const Selector: FC<IProps> = ({
         }
     }
 
+    const getClassName = (className: string) => {
+        return classNamePrefix ? cn(`${classNamePrefix}__${className}`, className) : className
+    }
 
-    const SearchInputComponent = <div className={cn(s.input_container, !withSearch && s.hide_pointer)}>
+    const SearchInputComponent = <div className={cn(getClassName('input_container'), !withSearch && 'hide_pointer')}>
         <input type="text"
                value={searchValue}
                placeholder={placeholder || ''}
                onChange={onSearchChange}
         />
-        <div className={s.mask}>
-            <div className={s.hidden_part}>
+        {withSearch && <div className={getClassName('mask')}>
+            <div className={getClassName('hidden_part')}>
                 {searchValue.replace(' ', '.')}
             </div>
-            <input className={s.visible_part} value={findSlice}/>
-        </div>
+            <input className={getClassName('visible_part')} value={findSlice}/>
+        </div>}
     </div>
 
     const onCurrentWrapperClick: MouseEventHandler = (e) => {
+        e.stopPropagation()
         if (showSearchInOptionsBlock) {
             // @ts-ignore
             const input = e!.currentTarget!.parentNode!.children[1].firstElementChild!.firstElementChild!
@@ -180,46 +231,59 @@ export const Selector: FC<IProps> = ({
             : [] as IOption[]
     }, [isSingleMode, options, current])
 
-    return <div className={s.selector_wrapper}
-                tabIndex={0}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                onKeyDown={onKeyDown}
-    >
-        <div className={cn(s.current_value_wrapper, !isSingleMode && s.multiple)} onClick={onCurrentWrapperClick}>
-            {isSingleMode ? SearchInputComponent : <div className={s.multiple_options_wrapper}>
-                {
-                    !isSingleMode && currentOptions.length > 0 && currentOptions.map(option => <div key={option.value}
-                                                                className={s.multiple_option}>
-                        {option.label}
-                        <div className={s.close} onClick={selectOption(option.value as Value, true)}>×</div>
-                    </div>)
-                }
-                {
-                    !isSingleMode && currentOptions.length === 0 && placeholder && <span className={s.placeholder_wrapper}>{placeholder}</span>
-                }
-            </div>}
-        </div>
+    // useEffect(() => {
+    //     console.log(r.current)
+    // }, [])
 
-        <div className={cn(s.options_wrapper, isOpen && s.active)} style={{maxHeight: countOfVisibleOptions * 40}}>
-            {showSearchInOptionsBlock && SearchInputComponent}
-            <div className={s.options_container}>
-                {optionsForRender.length > 0 ? optionsForRender.map(option => {
-                    const isActive = isSingleMode
-                        ? option.value === current
-                        : current?.includes(option.value as Value)
-                    return <div
-                        className={cn(
-                            s.option,
-                            isActive && s.active)}
-                        key={option.value}
-                        tabIndex={0}
-                        onClick={selectOption(option.value as Value, isActive)}
-                    >
-                        {option.label}
-                    </div>
-                }) : 'пусто'}
+
+    return <InputWrapper title={title} error={error}>
+        <div className={getClassName('selector_wrapper')}
+             tabIndex={0}
+             onFocus={onFocus}
+             onBlur={onBlur}
+             onKeyDown={onKeyDown}
+        >
+            <div className={cn(getClassName('current_value_wrapper'), !isSingleMode && 'multiple')}
+                 onClick={onCurrentWrapperClick}>
+                {isSingleMode ? SearchInputComponent : <div className={getClassName('multiple_options_wrapper')}>
+                    {
+                        !isSingleMode && currentOptions.length > 0 && currentOptions.map(option => <div
+                            key={option.value}
+                            className={getClassName('multiple_option')}>
+                            {option.label}
+                            <div className={getClassName('close')}
+                                 onClick={selectOption(option.value as Value, true) as any}>×
+                            </div>
+                        </div>)
+                    }
+                    {
+                        !isSingleMode && currentOptions.length === 0 && placeholder &&
+                        <span className={getClassName('placeholder_wrapper')}>{placeholder}</span>
+                    }
+                </div>}
+            </div>
+            <div className={cn(getClassName('options_wrapper'), isOpen && 'active', `selector__pos_${position}`)}
+                 style={{maxHeight: countOfVisibleOptions * 40}}>
+                {showSearchInOptionsBlock && SearchInputComponent}
+                <div className={getClassName('options_container')}>
+                    {optionsForRender.length > 0 ? optionsForRender.map(option => {
+                        const isActive = isSingleMode
+                            ? option.value === current
+                            : current?.includes(option.value as Value)
+                        return <div
+                            className={cn(
+                                getClassName('option'),
+                                isActive && 'active')}
+                            key={option.value}
+                            tabIndex={0}
+                            onClick={selectOption(option.value as Value, isActive) as any}
+                        >
+                            {option.label}
+                        </div>
+                    }) : 'пусто'}
+                </div>
             </div>
         </div>
-    </div>
+    </InputWrapper>
+
 }

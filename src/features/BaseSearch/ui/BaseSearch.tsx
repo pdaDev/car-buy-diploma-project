@@ -6,7 +6,7 @@ import {
     RangeInput,
     SearchType,
     setContainsFilterCreator,
-    setRangeFilterCreator, Stack
+    setRangeFilterCreator, Stack, useQuerySearchCar
 } from "shared";
 import {BrendItem} from "./BrendItem";
 import {CarClassItem} from "./CarClassItem";
@@ -14,6 +14,8 @@ import {TagItem} from "./TagItem";
 
 import s from './BaseSearch.module.scss'
 import {selectBrends, selectHandbooks, useAppSelector} from "../../../app/services";
+import {current} from "@reduxjs/toolkit";
+import {useGetPopularBrendsQuery} from "../../../entities/Car";
 
 interface IProps {
     type: SearchType;
@@ -26,35 +28,33 @@ export const BaseSearch: FC<IProps> = ({
                                            onChange,
                                            data,
                                        }) => {
-    const { containsFilter, rangeFilter } = filtersCreator(data, onChange)
+    const {containsFilter, rangeFilter} = filtersCreator(data, onChange)
     const {carTag, carClass: carClasses} = useAppSelector(selectHandbooks)
-    const brends = useAppSelector(selectBrends)
-
-
+    const {data: brends = []} = useGetPopularBrendsQuery(undefined)
+    const {cars, onCarChange} = useQuerySearchCar()
 
 
     const toggleBrend = (brend: number) => {
-        onChange({
-            car: data.car.find(c => c.brend_id === brend)
-                ? data.car.filter(c => c.brend_id !== brend)
-                : [...data.car, {...EMPTY_CAR_SEARCH_FILTER, brend_id: brend}]
-        })
+        onCarChange(
+            cars.find(c => c.brend_id === brend)
+                ? cars.filter(c => c.brend_id !== brend)
+                : [...cars, {...EMPTY_CAR_SEARCH_FILTER, brend_id: brend}]
+        )
     }
-
-    console.log("render")
 
     return <div className={s.base_search}>
         <div className={s.brends_panel_wrapper}>
             <div className={s.brends_panel}>
                 {brends && brends.map(brend => <BrendItem
+                    logo={brend.logo}
                     name={brend.name}
-                    selected={!!data.car.find(c => c.brend_id === brend.brend_id)}
+                    selected={!!cars.find(c => c.brend_id === brend.brend_id)}
                     onClick={() => toggleBrend(brend.brend_id)}
                     key={brend.brend_id}
                 />)}
             </div>
         </div>
-        <Grid rows={2} cols={4} container gap={3}>
+        <Grid rows={2} cols={4} container gap={4}>
             {carClasses && carClasses.map(carClass => <CarClassItem name={carClass.code}
                                                                     description={carClass.ru_name}
                                                                     selected={data.carClass.includes(carClass.code)}
@@ -62,7 +62,7 @@ export const BaseSearch: FC<IProps> = ({
                                                                     onClick={() => containsFilter('carClass')(carClass.code)}
             />)}
         </Grid>
-        <Stack direction={'row'} hAlign={'start'} spacing={3}>
+        <Stack direction={'row'} hAlign={'start'} wrap spacing={3}>
             {carTag && carTag.map(tag => <TagItem onClick={() => containsFilter('tag')(tag.code)}
                                                   key={tag.code}
                                                   selected={data.tag.includes(tag.code)}
@@ -72,7 +72,10 @@ export const BaseSearch: FC<IProps> = ({
         </Stack>
 
         {type === 'advertisement' && (
-            <RangeInput min={0} current={data.price} max={100000000} type='multiple' onChange={rangeFilter('price')}/>
+            <RangeInput min={0}
+                        max={100000000}
+                        type='multiple'
+                        onChange={rangeFilter('price')}/>
         )}
     </div>
 }

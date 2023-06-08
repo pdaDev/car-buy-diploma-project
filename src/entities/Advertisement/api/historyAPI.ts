@@ -1,5 +1,5 @@
 const historyKey = 'history'
-const getHistory = () => {
+export const getHistory = () => {
     const history = localStorage.getItem(historyKey)
     return  history ? JSON.parse(history) : []
 }
@@ -13,6 +13,6 @@ export const clearHistory = () => {
     localStorage.removeItem('history')
 }
 
-export const getRecentAds = (count: number = 10) => {
+export const getRecentAds = (count: number = 10): { id: number, date: string }[] => {
     return getHistory().filter((_: any, i: number) => i < count)
 }

@@ -9,7 +9,7 @@ export default {
 export const Base: ComponentStory<typeof Message> = (args) => <Message {...args} />
 
 Base.args = {
-    image: null,
+    images: [],
     message: 'слываоывлалоолыдлоаолдалодыалоджао',
     date: new Date().toLocaleTimeString(),
     type: 'me'

@@ -4,7 +4,7 @@
   cursor: pointer;
   outline: none;
   border: none;
-  z-index: 1;
+  z-index: 0;
   border-radius: var(--border-1);
   padding: 0 1rem;
   display: inline-flex;
@@ -14,6 +14,11 @@
   justify-content: center;
   @extend %size;
   font-weight: var(--fnt-weight-medium);
+
+  &:disabled {
+    background: var(--clr-grey-light);
+    cursor: not-allowed;
+  }
 }
 
 .type {
@@ -25,6 +30,33 @@
   &_secondary {
     color: var(--clr-fnt-black);
     background: var(--clr-primary-light);
+
+    h4 {
+      color: var(--clr-fnt-black) !important;
+    }
+  }
+
+  &_underline {
+    color: var(--clr-fnt-primary);
+    background: transparent;
+    text-decoration: underline;
+    transition: .2s;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  &_circle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  &_delete {
+    background: var(--clr-red-light);
+
   }
 }
 

@@ -2,7 +2,7 @@ import React, {FC, ReactNode} from "react";
 
 import s from './Label.module.scss'
 import {addLoadingEffectToStyleComponent, addPrefix, cn, getPercents} from "../../lib";
-import {FontWeight, SpaceLevel} from "../../types";
+import {Color, FontWeight, SpaceLevel} from "../../types";
 import styled, {css} from "styled-components";
 
 interface IProps {
@@ -14,7 +14,7 @@ interface IProps {
     align?: 'start' | 'end' | 'center'
     type?: 'primary' | 'secondary';
     size?: SpaceLevel | string
-    color?: 'primary' | 'secondary' | 'common',
+    color?: Color,
     weight?: FontWeight
     loadingWidth?: number | `${number}px`
 }
@@ -30,6 +30,12 @@ const getFontColorByType = (type: IProps['type']) => {
 
 const LabelWrapper = styled.span<Omit<IProps, 'label' | 'type' | 'color'> & { t: IProps['type'], clr: IProps['color'] }>`
   border-radius: var(--brd-radius-1);
+  display: inline-flex;
+  align-items: center;
+  height: auto;
+  vertical-align: center;
+  width: ${props => props.width};
+  flex-grow: 0;
 
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
@@ -39,6 +45,7 @@ const LabelWrapper = styled.span<Omit<IProps, 'label' | 'type' | 'color'> & { t:
     ${({weight}) => weight && css`font-weight: var(--fnt-weight-${weight})`};
     display: inline-block;
     width: ${props => props.width};
+    height: auto;
     text-align: ${props => props.align};
   }
 
@@ -108,6 +115,9 @@ const LabelWrapper = styled.span<Omit<IProps, 'label' | 'type' | 'color'> & { t:
     }
 
     h1, h2, h3, h4, h5, h6 {
+      ${props.color && css`
+        color: var(--clr-${props.color});
+      `}
       ${props.loadingWidth && css`
         min-width: ${props.loadingWidth}px;
       `}
@@ -129,17 +139,19 @@ export const Label: FC<IProps> = ({
                                   }) => {
     const loading = loadingStatus ?? !label
     let LabelEl: keyof JSX.IntrinsicElements = `h${level}`
-    return <LabelWrapper loading={loading}
-                         t={type}
-                         clr={color}
-                         level={level}
-                         loadingWidth={loadingWidth}
-                         size={size}
-                         weight={weight}
-                         {...props}
-    >
-        <LabelEl>
-            {!loading && label}
-        </LabelEl>
-    </LabelWrapper>
+    return  <div className={s.loading} data-loading={loading}>
+        <LabelWrapper loading={loading}
+                      t={type}
+                      clr={color}
+                      level={level}
+                      loadingWidth={loadingWidth}
+                      size={size}
+                      weight={weight}
+                      {...props}
+        >
+            <LabelEl>
+                {!loading && label}
+            </LabelEl>
+        </LabelWrapper>
+    </div>
 }

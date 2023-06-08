@@ -10,7 +10,7 @@ interface IProps {
 export const SortBLock: FC<IProps> = ({ sortKeys, currentSortKey, onSort }) => {
     const { t } = useTranslation()
     return <Container size={'content'} pr={3} pl={3} mt={4} mb={2}>
-        <Stack direction={'row'} spacing={4} hAlign={'start'} vAlign={'center'}>
+        <Stack direction={'row'} spacing={4} hAlign={'start'} wrap vAlign={'center'}>
             <Label label={t("sort.label") as string} level={3} weight={'semi-bold'} />
             { sortKeys.map(sortKey => <Sorter sort={sortKey}
                                               currentSort={currentSortKey}

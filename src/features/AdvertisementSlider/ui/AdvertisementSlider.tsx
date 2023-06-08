@@ -1,26 +1,40 @@
 import React, {FC} from "react";
-import { getCarName, getTimeAccordingNow, getYear, Slider, useMultiLanguageHandbooks } from "../../../shared";
+import {
+    Card,
+    getCarName,
+    getTimeAccordingNow,
+    getYear,
+    ICarNameWithId, Label,
+    Slider,
+    useMultiLanguageHandbooks
+} from "../../../shared";
 import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
 import {useAppNavigate, useAppSelector} from "../../../app/services";
 import {selectors as userSelectors} from "../../../entities/User";
 import {useTranslation} from "react-i18next";
 import {AdvertisementCard, NS} from "../../../entities/Advertisement";
 import {AddRemoveToFavourites} from "../../OperateWithAdvertisementFavourites";
+import {useAuthorize} from "../../../entities/User/lib/hooks";
 
 
 interface IProps {
     data: IAdvertisementListItem[]
     loading: boolean
     withFavourites?: boolean
+    countOfVisible?: number
+    totalCountOfAdvertisements?: number
+    car?: Partial<ICarNameWithId>
 }
 
 export const AdvertisementSlider: FC<IProps> = ({
                                                     data,
+                                                    countOfVisible,
                                                     loading,
-                                                    withFavourites = true
+                                                    withFavourites = true,
+                                                    car,
+                                                    totalCountOfAdvertisements
                                                 }) => {
-    const isAuth = useAppSelector(userSelectors.selectAuthStatus)
-    const userId = useAppSelector(userSelectors.selectUserId)
+    const {authStatus: isAuth} = useAuthorize()
     const {getHandbookItemName} = useMultiLanguageHandbooks()
     const n = useAppNavigate()
     const {t, i18n} = useTranslation()
@@ -29,8 +43,20 @@ export const AdvertisementSlider: FC<IProps> = ({
 
     const refactoredAdvertisements = list.map(ad => {
         const {
-            engine: {fuel, hp, volume}, drive, transmission, equipment_name,
-            name, date_of_production, start_date, price, photos, mileage, car_body_type, owner, advertisement_id
+            engine: {fuel, hp, volume},
+            drive,
+            transmission,
+            equipment_name,
+            name,
+            date_of_production,
+            start_date,
+            address,
+            price,
+            photos,
+            mileage,
+            car_body_type,
+            owner,
+            advertisement_id
         } = ad
         const advertisementCardData: NS.IAdvertisementCardData = {
             drive: getHandbookItemName(drive),
@@ -42,6 +68,7 @@ export const AdvertisementSlider: FC<IProps> = ({
             carBodyType: getHandbookItemName(car_body_type),
             price,
             photos,
+            address: address ? `г. ${address.name}` : null,
             mileage: `${mileage} ${t("metrics.kilometer")}`,
             equipment: equipment_name,
             owner,
@@ -50,9 +77,31 @@ export const AdvertisementSlider: FC<IProps> = ({
         return advertisementCardData
     }) as NS.IAdvertisementCardData[]
 
+    let query = 'car='
+    query = car?.brend ? query.concat(`brend_id*${car.brend.id}`) : query
+    query = car?.model ? query.concat(`%model_id*${car.model.id}`) : query
+    query = car?.generation ? query.concat(`%generation_id*${car.generation.id}`) : query
+    const goToAdsSearch = () => car &&
+        n(p => p.search, query)
+    const excessiveReviews = totalCountOfAdvertisements ? totalCountOfAdvertisements - list.length : 0
+
     return <Slider data={refactoredAdvertisements}
                    loading={loading}
-                   renderEl={(data: NS.IAdvertisementCardData, loadingStatus?: boolean) => <AdvertisementCard
+                   width={'full'}
+                   spacing={16}
+                   countVisibleItems={countOfVisible || 3}
+                   lastPage={excessiveReviews > 0 && car && <Card
+                       width={'220px'}
+                       paddings={5}
+                       height={'100%'}
+                       onClick={goToAdsSearch}
+                       contentAlign={'center'}>
+                       <Label label={`${t("advertisement.show_other")} ${excessiveReviews}`}
+                              weight={'medium'}
+                              align={'center'}
+                              level={3}/>
+                   </Card>}
+                   renderEl={(data: NS.IAdvertisementCardData, loadingStatus) => <AdvertisementCard
                        data={data}
                        type={'small'}
                        extra={{
@@ -64,7 +113,7 @@ export const AdvertisementSlider: FC<IProps> = ({
                        }
                        }
                        onClick={() => data && goToAdvertisementPage(data.advertisement_id)}
-                       loading={loadingStatus || false}
+                       loading={loadingStatus}
                    />
                    }
     />

@@ -11,6 +11,7 @@
   padding: 0;
   overflow: hidden;
   font-size: 28px;
+  color: var(--clr-fnt-primary);
 
   img {
     width: 50%;
@@ -24,8 +25,8 @@
     }
 
     &_medium {
-      width: 36px;
-      height: 36px;
+      width: 28px;
+      height: 28px;
     }
 
     &_large {
@@ -36,7 +37,7 @@
 
   &.color {
     &_primary {
-      background: var(--clr-primary);
+      background: var(--clr-secondary)
     }
 
     &_secondary {

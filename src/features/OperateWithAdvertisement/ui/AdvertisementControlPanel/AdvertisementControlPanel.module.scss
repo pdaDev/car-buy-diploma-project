@@ -7,7 +7,10 @@
   display: flex;
   box-sizing: border-box;
   height: auto;
-  justify-content: flex-end;
+  align-items: center;
+  padding-left: var(--space-4);
+  justify-content: space-between;
+
   &[data-loading=true] {
     height: 24px;
   }
@@ -31,7 +34,7 @@
     -moz-border-radius-bottomright: 0;
     -moz-border-radius-topright: 0;
     z-index: 1;
-    transform: translate(16px);
+    transform: translate(30px);
   }
 
   .delete {

@@ -1,0 +1,36 @@
+@import "src/app/index";
+
+.row_wrapper {
+  width: 100%;
+  margin: var(--space-4) 0;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.gen_card {
+  cursor: pointer;
+  position: relative;
+  background: var(--clr-primary-light);
+  overflow: hidden;
+  border-radius: var(--brd-radius-2);
+  width: 150px;
+  height: 120px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .car_body_type {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: var(--fnt-weight-regular);
+    color: var(--clr-fnt-black);
+    font-size: var(--fnt-size-3);
+    background: var(--clr-primary);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--brd-radius-1);
+  }
+}

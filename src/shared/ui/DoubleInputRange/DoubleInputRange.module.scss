@@ -16,26 +16,26 @@
     gap: 0;
 
     div:first-child {
-      input  {
-        border: 2px solid black;
+      input  {;
         border-bottom-right-radius: 0 ;
         border-top-right-radius: 0;
         border-right-width: 1px;
+        border-right-color: var(--clr-grey-1);
 
         &:focus {
-          border-color: var(--clr-primary-light);
+          border-color: var(--clr-primary);
         }
       }
     }
     div:last-child {
       input {
-        border: 2px solid black;
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
         border-left-width: 1px;
+        border-left-color: var(--clr-grey-1);
 
         &:focus {
-          border-color: var(--clr-primary-light);
+          border-color: var(--clr-primary);
         }
       }
     }

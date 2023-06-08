@@ -1,0 +1,1 @@
+export { MainPageBanner } from './ui/MainPageBanner'

@@ -2,7 +2,7 @@ import {FC, MouseEvent, useRef, useState} from 'react'
 
 import s from './CardImageViewer.module.scss'
 import {Counter} from "../Counter/Counter";
-import {cn, debounce} from "../../lib";
+import {cn, createRuWordEndingByNumberGetter, debounce} from "../../lib";
 interface IProps {
     photos: string[]
     max?: number
@@ -18,13 +18,14 @@ export const CardImageViewer: FC<IProps> = ({
     const hasPhotos = photos.length > 0
     const [page, setPage] = useState<number>(0)
 
+
     const availableEls = Math.min(max, photos.length)
     const lessEls = Math.max(0, photos.length - availableEls)
 
     const onPointerMove = (e: MouseEvent) => {
         if (ref.current && photos.length > 1) {
             const pos = e.clientX - ref.current.getBoundingClientRect().x
-            const dx = ref.current.clientWidth / (max + 1)
+            const dx = ref.current.clientWidth / (availableEls)
             const currentPage = Math.ceil(pos / dx) - 1
             if (page !== currentPage) {
                 setPage(currentPage)
@@ -32,9 +33,13 @@ export const CardImageViewer: FC<IProps> = ({
         }
     }
 
-    const additionalPagesCounterShow = page === max
+    const additionalPagesCounterShow = photos.length > 0 && page === max - 1
+
     const debouncedOnPointerMove = debounce(onPointerMove, 5)
     const onPointerLeave = () => setPage(0)
+    const getPhotosCount = createRuWordEndingByNumberGetter({
+        root: 'фотограф', single: { ip: 'ия', rp: 'ии'}, multiple: { value: 'ий' }
+    })
 
     return <div ref={ref}
                 className={s.image_viewer}
@@ -56,9 +61,9 @@ export const CardImageViewer: FC<IProps> = ({
                         </div>}
                 </div>
                 {additionalPagesCounterShow && <div className={s.count_of_additiona_pages_wrapper}>
-                    {`Еще есть ${lessEls} фотографий`}
+                    {`Еще есть ${lessEls} ${getPhotosCount(lessEls)}`}
                 </div>}
-                {hasPhotos &&
+                {photos.length > 1 &&
                     <div className={s.counter_wrapper}>
                         <Counter total={availableEls}
                                  current={page}

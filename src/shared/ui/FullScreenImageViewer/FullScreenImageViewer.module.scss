@@ -1,13 +1,34 @@
 @import 'src/app/index';
 
+.container {
+  min-height: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+}
+
+.extra {
+  position: fixed;
+  top: var(--space-5);
+  left: var(--space-4);
+  width: 23%;
+}
+
+.navigation_button {
+  width: 100%;
+  height: 100px;
+  flex-grow: 1;
+  background: var(--clr-grey-1);
+}
+
 .images {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   height: 100%;
-  width: 70%;
+  width: 50%;
   padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 
   img {
     width: 100%;
@@ -19,22 +40,48 @@
 .navigation {
   position: fixed;
   top: 50%;
-  height: 100%;
-  max-height: 800px;
+  height: auto;
+  max-height: 600px;
   right: 30px;
   display: flex;
-  overflow-y: scroll;
   flex-direction: column;
   gap: 4px;
-  transform: translate(-50%);
+  transform: translateY(-50%);
+
+  .list {
+    overflow-y: scroll;
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
 
   &_item {
-    width: 50px;
+    width: 100px;
     cursor: pointer;
-    height: available;
+    height: 80px !important;
+    background: red;
     filter: brightness(60%);
+    flex-grow: 1;
+    border: 1px solid transparent;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
     &.active {
+      border: 1px solid var(--clr-primary);
       filter: none;
     }
   }

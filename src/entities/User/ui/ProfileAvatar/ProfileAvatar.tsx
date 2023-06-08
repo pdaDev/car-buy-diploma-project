@@ -11,8 +11,9 @@ export const ProfileAvatar: FC<IProps> = ({
     avatar
 }) => {
     return <div className={s.profile_avatar}>
-        <Icon path={mdiAccountOutline} size={5} color={'white'}/>
+        { !avatar
+            ? <Icon path={mdiAccountOutline} size={5} color={'white'}/>
+            : <img className={s.profile_avatar} src={avatar || ''}/>
+        }
     </div>
-    // <img className={s.profile_avatar} src={avatar || ''}/>
-
 }

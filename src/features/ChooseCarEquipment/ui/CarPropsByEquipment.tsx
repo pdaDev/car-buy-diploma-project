@@ -1,28 +1,39 @@
-import {FC} from "react";
+import {FC, useEffect, useState} from "react";
 import {Selector} from "../../../shared/ui/Selector/Selector";
 import {CarPropBlock, NS} from 'entities/Car'
-import {Box, Container, createOptions, Stack} from "../../../shared";
+import {Box, Card, Container, createOptions, Label, Stack, useQuery} from "../../../shared";
+import {useTranslation} from "react-i18next";
+import './CarPropsByEquipment.scss'
 
 interface IProps {
-    carProps: NS.IServerCarProps
+    equipmentIndex?: number
     equipments: NS.IServerCarEquipment[]
+    defaultEquipment?: number
+    optionsPos?: 'bottom' | "top"
+
 }
 
 export const CarPropsByEquipment: FC<IProps> = ({
                                                     equipments,
-                                                    carProps
+                                                    equipmentIndex,
+                                                    optionsPos,
+                                                    defaultEquipment,
                                                 }) => {
-    const equipmentsOption = createOptions(equipments, 'id', 'name')
-    return <Box mw={1}>
-        <Container p={3}>
-            <Stack direction={'row'} hAlign={'end'}>
-                <Selector options={equipmentsOption}
-                          current={null}
-                          onChange={() => {}}
-                />
-            </Stack>
-            <CarPropBlock {...carProps}/>
-        </Container>
 
-    </Box>
+
+    const equipmentsOption = createOptions(equipments, 'id', 'name')
+    const [query, setQuery] = useQuery()
+    const equipmentKey = equipmentIndex ? `equipment-${equipmentIndex}` : 'equipment'
+    const onEquipmentChange = (v: number) => {
+        setQuery({[equipmentKey]: v})
+    }
+
+    const currentEquipment = Number(query.get(equipmentKey)) || defaultEquipment
+
+    return <Selector options={equipmentsOption}
+                     current={currentEquipment}
+                     classNamePrefix={'equipment'}
+                     position={optionsPos}
+                     onChange={onEquipmentChange}
+    />
 }

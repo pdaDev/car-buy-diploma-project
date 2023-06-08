@@ -1,0 +1,56 @@
+@import "src/app/index";
+
+.table {
+  border-collapse: collapse;
+  border-radius: var(--brd-radius-2);
+  overflow: hidden;
+  width: 100%;
+
+  thead tr, tbody tr {
+    background: var(--clr-grey-light);
+    color: var(--clr-fnt-primary);
+    font-size: var(--fnt-size-3);
+    text-align: center;
+  }
+
+
+  tbody tr {
+    font-weight: var(--fnt-weight-regular);
+  }
+
+  thead tr th {
+    font-weight: var(--fnt-weight-medium);
+  }
+
+  th, td {
+    padding: 6px var(--space-4)
+  }
+
+  &.vertical_separator {
+    td, th {
+      border-right: 2px solid var(--clr-secondary);
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+
+  &.horizontal_separator {
+    tr {
+      td, th {
+        border-bottom: 2px solid var(--clr-secondary);
+      }
+    }
+
+    tbody {
+      tr:last-child td {
+        border-bottom: none;
+      }
+    }
+
+  }
+
+
+}
+

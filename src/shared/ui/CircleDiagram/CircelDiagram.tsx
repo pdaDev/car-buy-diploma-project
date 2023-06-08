@@ -1,4 +1,4 @@
-import {FC, useEffect, useRef, useState} from "react";
+import {FC, useEffect, useLayoutEffect, useRef, useState} from "react";
 import s from './CircleDiagram.module.scss'
 import styled from "styled-components";
 
@@ -19,7 +19,7 @@ export const CircleDiagram: FC<ICircleDiagram> = ({
     const [radius, setRadius] = useState(0)
     const [isInit, initialize] = useState(false)
     const ref = useRef<HTMLDivElement>(null)
-    useEffect(() => {
+    useLayoutEffect(() => {
         setTimeout(() => initialize(true), 100)
         setRadius(ref.current?.parentElement?.clientWidth
             ? ref.current?.parentElement?.clientWidth / 2 : 0)
@@ -27,7 +27,9 @@ export const CircleDiagram: FC<ICircleDiagram> = ({
     const C = Math.PI * 2 * radius
     const size = 2 * radius + 10
     const time = isInit ? part : 0
-    console.log()
+
+    console.log(radius)
+
     return (
         <div className={s.container} ref={ref}
              data-zero-start={zeroStart}
@@ -43,18 +45,17 @@ export const CircleDiagram: FC<ICircleDiagram> = ({
                                 stroke={'blue'}
                                 strokeWidth={strokeWidth}
                         />
-                        <circle cx={size / 2}
-                                className={s.circle}
-                                cy={size / 2}
-                                r={radius}
-                                fill='none'
-                                stroke={time !== 0 ? 'red' : 'transparent'}
-                                strokeWidth={strokeWidth}
-                                strokeLinecap={"round"}
-                                strokeDasharray={`${C}`}
-                                strokeDashoffset={C / parts * (parts - time)}
-
-                        />
+                        { radius > 0 && <circle cx={size / 2}
+                                 className={s.circle}
+                                 cy={size / 2}
+                                 r={radius}
+                                 fill='none'
+                                 stroke={time !== 0 ? 'red' : 'transparent'}
+                                 strokeWidth={strokeWidth}
+                                 strokeLinecap={"round"}
+                                 strokeDasharray={`${C}`}
+                                 strokeDashoffset={C / parts * (parts - time)}
+                        />}
                     </g>
 
                 </svg>

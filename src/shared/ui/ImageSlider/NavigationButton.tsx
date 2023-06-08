@@ -8,13 +8,17 @@ interface IProps {
     onClick: MouseEventHandler
 }
 
-const NavButtonWrapper = styled.span<IProps>`
+const NavButtonWrapper = styled.div<IProps>`
   position: absolute;
   z-index: 10;
   top: 50%;
   cursor: pointer;
   box-shadow: var(--shadow-2);
-  
+  width: auto;
+  height: auto;
+  background: red;
+  font-weight: var(--fnt-weight-bold);
+  display: inline-block;
   ${({direction}) => {
     switch (direction) {
         case 'right':

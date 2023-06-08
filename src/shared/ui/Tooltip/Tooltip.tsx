@@ -4,7 +4,7 @@ import {addPrefix, cn, debounce} from "../../lib";
 import {AutoPosedComponent} from "../AutoPosedComponent/AutoPosedComponent";
 import {Pos, Position, PosType} from "../../types";
 
-interface IProps<T extends PosType> {
+interface IProps<T extends PosType | never> {
     children: ReactNode
     text: string
     position: Position<T>
@@ -13,12 +13,14 @@ interface IProps<T extends PosType> {
 
 export function Tooltip<T extends PosType>({children, text, position, time}: IProps<T>) {
     const [open, setOpen] = useState<boolean>(false)
-    const [timer, setTimer] = useState(0)
+    const timer = useRef<any>(0)
+    const debouncedTime = 100
+
     const onMouseOver: MouseEventHandler<HTMLDivElement> = e => {
         if (!open) {
             if (time) {
                 // @ts-ignore
-                setTimer(setTimeout(() => setOpen(true), time))
+                timer.current = setTimeout(() => setOpen(true), Math.max(time - debouncedTime, 0))
             } else {
                 setOpen(true)
             }
@@ -27,22 +29,24 @@ export function Tooltip<T extends PosType>({children, text, position, time}: IPr
     const onMouseLeave: MouseEventHandler<HTMLDivElement> = e => {
         if (open) {
             // @ts-ignore
-            setTimer(setTimeout(() => {
+            timer.current = setTimeout(() => {
                 setOpen(false)
-            }, 50))
+            }, 50)
         } else {
-            clearTimeout(timer)
+            clearTimeout(timer.current)
             setOpen(false)
         }
     }
+    const debouncedMouseOver = debounce(onMouseOver, debouncedTime)
+    const debouncedMouseLeave = debounce(onMouseLeave, debouncedTime)
     const onTooltipMouseOver = () => {
-        clearTimeout(timer)
+        clearTimeout(timer.current)
     }
 
     return <AutoPosedComponent position={position}
                                mounted={open}
-                               onMouseOver={onMouseOver}
-                               onMouseLeave={onMouseLeave}
+                               onMouseOver={debouncedMouseOver as any}
+                               onMouseLeave={debouncedMouseLeave as any}
                                Component={(p: Pos) => {
                                   return <div
                                        onMouseOver={onTooltipMouseOver}

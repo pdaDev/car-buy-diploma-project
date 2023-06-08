@@ -1,0 +1,46 @@
+@import 'src/app/index';
+
+.custom_checkbox_wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  user-select: none;
+
+  input {
+    display: none;
+  }
+
+  .custom_checkbox {
+    height: 20px;
+    width: 35px;
+    background: var(--clr-grey-1);
+    border-radius: var(--space-4);
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: .3s;
+
+    &::after {
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      left: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: .3s;
+      background: var(--clr-secondary);
+      border-radius: 50%;
+    }
+  }
+  input[type='checkbox']:checked + .custom_checkbox {
+    content: 'fsdf';
+    flex-direction: row-reverse;;
+    background: var(--clr-primary);
+
+    &::after {
+      left: 100%;
+      transform: translateY(-50%) translateX(-100%) translateX(-2px);
+    }
+  }
+}

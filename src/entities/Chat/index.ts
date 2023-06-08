@@ -1,0 +1,6 @@
+export { ChatCard } from './ui/ChatCard/ChatCard'
+export { ChatLabel } from './ui/ChatCard/ChatLabel'
+export { MessagesWrapper } from './ui/MessagesWrapper/MessagesWrapper'
+export * as NS from './namespace'
+export * from './lib'
+export * from './model'

@@ -1,7 +1,8 @@
 
 export type NotificationType = 'chat' | 'system' | 'inform'
 export interface INotification {
-    id: number
+    id: string
+    viewed: boolean
     date: Date
     type: NotificationType
     visible: boolean
@@ -27,7 +28,7 @@ export type NotificationPayload<T extends NotificationType = 'system'> = {
 }
 
 export type NotificationPayloadId = {
-    id: number
+    id: string
 }
 
 
@@ -37,9 +38,11 @@ export interface IReduxState {
 
 
 export interface IChatNotification {
+    chatId: string
     name: string
     avatar: string | null
     message: string
+
 }
 
 export interface ISystemNotification {

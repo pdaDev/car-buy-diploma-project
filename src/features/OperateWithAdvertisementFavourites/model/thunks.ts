@@ -7,7 +7,6 @@ export const getFavouritesIdsList = createAsyncThunk(
     'favouritesIdsList',
     async (_, thunkAPI) => {
         try {
-            console.log('fsf')
             const response = await privateApi.get('advertisements/favourites/ids/').then(data => data)
             return response.data.results
         } catch (e) {

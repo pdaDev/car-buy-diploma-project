@@ -1,0 +1,28 @@
+@import "src/app/index";
+
+
+.button_wrapper {
+  background: var(--clr-primary-light);
+  border-radius: var(--brd-radius-1);
+  padding: var(--space-3);
+  cursor: pointer;
+  position: relative;
+}
+
+.counter {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(25%, -25%);
+  border-radius: 50%;
+  background: var(--clr-primary);
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  align-content: center;
+  padding-top: var(--space-1);
+  font-size: var(--fnt-size-1);
+  font-weight: var(--fnt-weight-regular);
+}

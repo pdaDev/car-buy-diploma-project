@@ -1,0 +1,10 @@
+
+
+.chats_list {
+  flex-direction: column;
+  display: flex;
+  gap: var(--space-3);
+  overflow: scroll;
+  padding-bottom: var(--space-4);
+  box-sizing: border-box;
+}

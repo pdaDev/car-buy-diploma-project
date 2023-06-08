@@ -3,6 +3,8 @@
 .wrapper {
   background: var(--clr-secondary);
   padding: var(--space-4);
+  width: 100%;
+  box-sizing: border-box;
   border-radius: var(--brd-radius-2);
   display: flex;
   flex-direction: column;
@@ -27,6 +29,9 @@
   .line {
     background: var(--clr-primary);
     z-index: 3;
+    transition: .3s;
+    animation: show .3s forwards;
+
   }
 
   .background_line {
@@ -34,3 +39,4 @@
     width: 100%;
   }
 }
+

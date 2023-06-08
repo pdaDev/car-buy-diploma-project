@@ -4,3 +4,4 @@ export { ChatNotificationCard } from './ui/ChatNotificationCard/ChatNotification
 export { InformNotification } from './ui/InformNotification/InformNotification'
 export * as NS from './namespace'
 export * from './lib/hooks'
+export * from './lib/hocs'

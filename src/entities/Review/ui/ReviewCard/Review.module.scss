@@ -2,10 +2,12 @@
 
 .review_wrapper {
   border-radius: var(--brd-radius-2);
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-3);
+  box-sizing: border-box;
   display: inline-flex;
   background: var(--clr-secondary);
   position: relative;
+;
 
   .score_item {
     position: absolute;
@@ -21,31 +23,64 @@
     height: 45px;
   }
 
-  .card_image_wrapper {
-    box-sizing: border-box;
-  }
 
   .content {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
-  }
+    height: 100%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    box-sizing: border-box;
 
+    .management_panel {
+      position: absolute;
+      right: -8px;
+      top: 0;
+      height: 100%;
+      transition: .3s;
+      z-index: -1;
+    }
+
+    p {
+      box-sizing: border-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 30px;
+    }
+
+    &.with_top_padding {
+      margin-top: var(--space-4);
+    }
+  }
 
   &.type {
     &_large {
       width: 100%;
       padding: var(--space-3);
       gap: var(--space-4);
+      height: auto;
+
+      p {
+        box-sizing: border-box;
+        margin-top: var(--space-3);
+        padding-right: 54px;
+      }
+
+      .content {
+        width: 100%;
+      }
 
       .card_image_wrapper {
+        margin-right: 16px;
         width: 150px;
+        box-sizing: border-box;
         height: 150px;
+        flex-shrink: 0;
       }
 
       .score_item {
         background: var(--clr-primary);
-
         border-radius: var(--brd-radius-2);
         color: black;
       }
@@ -55,11 +90,14 @@
       width: 220px;
       flex-direction: column;
       gap: var(--space-3);
+      min-height: 300px;
       height: 320px;
+      margin-right: var(--space-4);
 
       .card_image_wrapper {
         width: 220px;
         height: 220px;
+        flex-shrink: 0;
       }
 
       .score_item {
@@ -74,10 +112,16 @@
       }
 
       .content {
-        padding: var(--space-3);
+        padding: var(--space-4);
         padding-top: 0;
+        text-overflow: ellipsis ;
       }
     }
   }
+
+  &:hover .management_panel{
+    right: -48px;
+  }
+
 }
 

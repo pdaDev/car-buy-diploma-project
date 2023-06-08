@@ -10,5 +10,6 @@ export default {
 export const Base: ComponentStory<typeof Loader> = (args) => <Loader {...args} />
 
 Base.args = {
-   
+    type: 'circle',
+    size: 'medium'
 }

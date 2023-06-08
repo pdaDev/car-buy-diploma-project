@@ -4,6 +4,8 @@ import s from './ThreeDotsButton.module.scss'
 import {ElementSize} from "../../../types";
 import {addPrefix, addRipple, cn, RippleEffectProp} from "../../../lib";
 import {ThreeDots} from "../../icons";
+import Icon from "@mdi/react";
+import {mdiDotsVertical} from "@mdi/js/commonjs/mdi";
 
 interface IProps extends RippleEffectProp{
     onClick: Function
@@ -33,6 +35,6 @@ export const ThreeDotsButton: FC<IProps> = ({
                    onClick={onButtonClick}
                    disabled={disabled}
     >
-        <img src={ThreeDots} alt="dots"/>
+        <Icon size={1} path={mdiDotsVertical}/>
     </button>
 }

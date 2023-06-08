@@ -31,7 +31,8 @@ Base.args = {
             avatar: null,
             id: 1
         },
-        advertisement_id: 1
+        advertisement_id: 1,
+        address: 'Томск'
     },
     type: 'large',
     extra: {

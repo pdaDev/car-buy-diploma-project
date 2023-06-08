@@ -3,15 +3,17 @@
 .date_input_wrapper {
   position: relative;
   height: 20px;
-  padding: 4px;
+  box-sizing: border-box;
   max-width: 200px;
+  margin-bottom: 40px;
 
 
   .current_value_wrapper {
     border-radius: var(--brd-radius-1);
     background: var(--clr-grey-light);
-    padding: 4px;
+    padding: var(--space-3);
     height: 100%;
+    color: var(--clr-fnt-primary);
 
     .symbol_wrapper {
       color: var(--clr-primary);
@@ -21,8 +23,16 @@
   .calendar_wrapper {
     position: absolute;
     bottom: 0;
+    z-index: 1000;
     left: 50%;
     transform: translate(-50%, 100%);
+  }
+
+  .error_wrapper {
+    h4 {
+      margin: 0;
+      color: var(--clr-red-light);
+    }
   }
 }
 
@@ -33,6 +43,7 @@
   width: 100%;
   padding: 16px;
   max-width: 240px;
+  box-shadow: var(--shadow-3);
   height: auto;
 }
 
@@ -73,6 +84,7 @@
     user-select: none;
     position: relative;
     cursor: pointer;
+    color: var(--clr-fnt-primary);
 
     &.current_day {
       background: var(--clr-secondary);

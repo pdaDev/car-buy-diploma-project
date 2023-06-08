@@ -1,0 +1,30 @@
+@import "src/app/index";
+
+.equipment {
+  &__current_value_wrapper {
+    background: var(--clr-primary) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 100px !important;
+
+  }
+
+  &__input_container {
+    background: transparent !important;
+
+    padding: var(--space-2) var(--space-4) !important;
+    padding-right: var(--space-2) !important;
+
+    input {
+      color: var(--clr-fnt-black) !important;
+      text-align: center !important;
+      font-weight: var(--fnt-weight-medium) !important;
+    }
+  }
+
+  &__option {
+    border: none !important;
+
+  }
+}

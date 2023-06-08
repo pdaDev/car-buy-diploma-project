@@ -1,24 +1,28 @@
 .wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 100%;
   cursor: pointer;
   outline: none;
+  box-sizing: border-box;
+  margin-left: 16px;
+  padding-right: 36px;
 
   &:focus {
     outline: none;
   }
 
+  .values {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .value_wrapper {
     position: relative;
-    .hidden_value {
-      visibility: hidden;
-    }
-
-    .current_value {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+    box-sizing: border-box;
 
       input {
         background: transparent;
@@ -29,6 +33,7 @@
         border-radius: var(--brd-radius-1);
         width: 100%;
         transition: .2s;
+        color: var(--clr-fnt-primary);
 
         &:hover {
           background: var(--clr-primary-light);
@@ -38,12 +43,18 @@
           background: var(--clr-primary-light);
         }
       }
+
+    &:last-child {
+      input {
+        text-align: end;
+      }
     }
   }
 
   .range_wrapper {
     position: relative;
     width: 100%;
+    box-sizing: border-box;
     margin: 0 34px;
 
     &:focus {
@@ -53,6 +64,7 @@
     .selected_range {
       position: absolute;
       top: 50%;
+      box-sizing: border-box;
       background: var(--clr-primary);
       height: 8px;
       border-radius: 16px;
@@ -67,8 +79,9 @@
     }
 
     .track {
-      height: 36px;
+      height: 26px;
       position: relative;
+      box-sizing: border-box;
 
       &::after {
         content: '';
@@ -78,7 +91,7 @@
         height: 8px;
         border-radius: 16px;
         transform: translateY(-50%);
-        background: var(--clr-primary-light);
+        background: var(--clr-grey-1);
       };
     }
 

@@ -52,7 +52,7 @@ export const withErrorDispatcher = (Component: ComponentType) => {
         const fatalError = useAppSelector(s.selectFatalError)
         useEffect(() => {
             if (fatalError) {
-                throw new Error(fatalError as any)
+                throw new Error(fatalError.data, fatalError.status)
             }
         }, [fatalError])
         return <Component {...props} />

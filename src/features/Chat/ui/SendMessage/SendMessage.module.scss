@@ -1,0 +1,102 @@
+@import "src/app/index";
+
+.content {
+  display: flex;
+  width: 100%;
+  gap: var(--space-3);
+  align-items: center;
+  vertical-align: center;
+
+
+  svg {
+    transition: .2s;
+    color: var(--clr-grey-1)
+  }
+
+  svg:hover {
+    color: var(--clr-primary);
+  }
+
+  .load_image {
+    display: inline-flex;
+    align-items: center;
+
+    input {
+      display: none;
+    }
+  }
+}
+
+.images_for_load {
+  display: flex;
+  background: var(--clr-secondary);
+  flex-wrap: wrap;
+  padding: var(--space-3);
+
+  gap: var(--space-3);
+
+  .load_image_item {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--brd-radius-1);
+    position: relative;
+
+    img {
+      width: 100%;
+      border-radius: var(--brd-radius-1);
+      object-fit: cover;
+      height: 100%;
+    }
+
+    .close {
+      cursor: pointer;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      font-size: 11px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translate(50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--clr-primary);
+    }
+  }
+}
+
+.message_templates_container {
+  position: absolute;
+  bottom: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--space-3);
+  padding-bottom: var(--space-4);
+  gap: var(--space-3);
+}
+
+.loader {
+  width: 25px;
+  height: 25px;
+
+  @keyframes round {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dashoffset: 100;
+    }
+    100% {
+      stroke-dashoffset: 200;
+    }
+  }
+
+  circle {
+    stroke: var(--clr-grey-1);
+    background: transparent;
+    fill: none;
+    animation: round .5s infinite forwards;
+  }
+}
