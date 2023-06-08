@@ -82,7 +82,7 @@ export const Advertisement: FC = () => {
     const n = useAppNavigate()
 
     const goToReviewPage = () => n(p => p.reviews._key_(data?.review?.review_id || -1))
-    const goToCarCharacteristicsPage = () => n(p => p.car.technical, {generation: data?.name?.generation_variant || 0})
+    const goToCarCharacteristicsPage = () => n(p => p.car.technical, {generation: data?.name?.generation_variant || 0, equipment: data?.equipment.id})
     const d = useAppDispatch()
     const compare = useContentCompare('ad', advertisement_id)
     const compareButtonTitle = compare.isCompared ? t("compare.remove") : t("compare.title")
@@ -145,7 +145,7 @@ export const Advertisement: FC = () => {
                     />
             }
 
-            <Stack direction={'row'} spacing={4}>
+            <Stack direction={'row'} size={'width'} spacing={4}>
                 <AdvertisementCarPropsBlock data={carProps}
                                             mode={'view'}
                                             loading={isLoading}

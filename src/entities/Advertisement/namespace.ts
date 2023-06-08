@@ -95,6 +95,10 @@ export interface IServerAdvertisement {
     car_id: number
     date_of_production: number
     mileage: number
+    equipment: {
+        id: number,
+        name: string
+    }
     in_taxi: number
     name: ICarNameWithId
     car_characteristics: IServerCarCharacteristic
