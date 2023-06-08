@@ -92,10 +92,10 @@ export const authme = createAsyncThunk(
         if (getToken()) {
             try {
                 const response = await privateApi.post('api/token/verify/', { token: getToken() }).then(data => data)
-                thunkAPI.dispatch(initialize())
                 if (response.status === 200) {
                     thunkAPI.dispatch(getUserData())
                 } else  {
+                    thunkAPI.dispatch(initialize())
                     clearToken()
                     clearRefreshToken()
                 }
@@ -142,11 +142,13 @@ export const activateUser = createAsyncThunk(
 export const getUserData = createAsyncThunk('user_data', async (_, thunkAPI) => {
     try {
         const response = await privateApi.get('api/auth/me/').then(data => data)
+        thunkAPI.dispatch(initialize())
         if (response.status === 200) {
             setTimeout(() => thunkAPI.dispatch(initialize()), 10)
             return response.data.data
         }
     } catch (e) {
+        thunkAPI.dispatch(initialize())
         thunkAPI.rejectWithValue(e)
     }
 })
