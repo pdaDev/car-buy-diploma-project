@@ -13,7 +13,7 @@ export const reviewAPI = createApi({
                 method: 'GET'
             })
         }),
-        getMyReviews: build.query<IServerReviewListItem[], void>({
+        getMyReviews: build.query<IServerReviewListItem[], any>({
             query: ()  => 'me/'
         }),
         getReview: build.query<NS.IReview, number>({

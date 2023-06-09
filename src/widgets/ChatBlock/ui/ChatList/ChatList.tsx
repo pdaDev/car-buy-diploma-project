@@ -57,8 +57,8 @@ export const ChatList: FC<IProps> = ({selectChat}) => {
     const groupedChats = useMemo(() => {
         if (groupByType !== "all") {
             return filteredChats.reduce<Record<string, IChatCardData[]>>((acc, chat) => {
-                acc[groupByType] = acc[groupByType] || []
-                acc[groupByType].push(chat)
+                acc[chat[groupByType]] = acc[chat[groupByType]] || []
+                acc[chat[groupByType]].push(chat)
                 return acc
             }, {})
         }

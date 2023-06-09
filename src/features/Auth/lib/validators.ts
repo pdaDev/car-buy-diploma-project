@@ -7,7 +7,8 @@ const email = combineValidators(
     v.email(),
 )
 const password = combineValidators(
-
+    v.required(),
+    v.minLength(8)
 )
 const first_name = combineValidators(
     v.required(),

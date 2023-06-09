@@ -105,7 +105,6 @@ export const Slider: FC<Props> = ({
             return index > lastPageIndex ? i - (lastPageIndex - firstRenderedImageIndex) - 1 : index
         }))
 
-    console.log(indexesForRender)
     const setNextImage = () => {
         if (ref.current && typeof w === 'number') {
             ref.current.scrollTo({left: w * 2, behavior: 'smooth'})
@@ -156,7 +155,7 @@ export const Slider: FC<Props> = ({
             if (isFullWidth) {
                 const parent = ref.current!.parentElement!.clientWidth
                 setSpacing((parent - w * countVisibleItems) / (countVisibleItems - 1))
-                console.log(parent)
+
                 setW(parent)
             } else {
                 setW(countVisibleItems * (w + spacing) - spacing)

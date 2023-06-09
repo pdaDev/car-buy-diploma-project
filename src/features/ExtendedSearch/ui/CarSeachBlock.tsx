@@ -108,7 +108,7 @@ export const CarSearchBlock: FC<IProps> = ({
                     }
 
                     return (
-                        <Stack direction={'row'} spacing={3} size={'container'} key={index}>
+                        <Stack direction={'row'} spacing={3} size={'width'} key={index}>
                             <Selector placeholder={t("car.brend.title") as string}
                                       options={brendsOptions}
                                       current={brend}

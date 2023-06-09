@@ -26,7 +26,7 @@ interface IProps {
 }
 
 export const TestResult: FC<IProps> = ({data, steps}) => {
-    console.log(data)
+
     const results = useMemo(() => {
         const getType = (key: NS.AllCriteria): NS.CriteriaType => {
             if (MIN_MAX_CRITERIA.includes(key as NS.MinMaxCriteria)) {
@@ -50,6 +50,8 @@ export const TestResult: FC<IProps> = ({data, steps}) => {
             // @ts-ignore
             return getObjectKeys(lib).sort((a: string, b: string) => lib[b] - lib[a])
         }
+
+
 
         const summedCriteria = getObjectKeys(data).reduce<any>((acc, key) => {
             const isArrayValueType = Array.isArray(data[key])
@@ -95,6 +97,7 @@ export const TestResult: FC<IProps> = ({data, steps}) => {
                 })
             return acc
         }, {})
+        console.log(JSON.stringify(summedCriteria))
         getObjectKeys(summedCriteria).forEach(key => {
             const type = getType(key as any)
             if (type === 'min_max') {

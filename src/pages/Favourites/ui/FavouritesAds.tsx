@@ -67,7 +67,7 @@ export const FavouritesAds: FC = () => {
             <Stack size={'width'} vAlign={'start'} spacing={4}>
                 <Stack direction={'row'} vAlign={'center'}>
                     <Label label={t("pages.favourites")} level={1} weight={'medium'}/>
-                    <SortBLock sortKeys={[ 'price', 'date']}
+                    <SortBLock sortKeys={[ 'price', 'start_date']}
                                currentSortKey={sort}
                                onSort={onSort}
                                />

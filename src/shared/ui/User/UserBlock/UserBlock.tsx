@@ -3,7 +3,7 @@ import {UserAvatar} from "../UserAvatar/UserAvatar";
 import {UserNickname} from "../UserNickname/UserNickname";
 import {Stack} from "../../Layout";
 import {ElementSize, IUserCommonData, UserNicknameType} from "../../../types";
-import {useAppNavigate} from "../../../../app/services";
+import {useAppNavigate} from "../../../../../../car-buy/src/app/services";
 
 
 interface IProps {

@@ -52,7 +52,8 @@ export const startChat = () => {
 
 export const parseChatId = (chatId: string) => {
     const splitted = chatId.split(':')
-    const initiatorId = +chatId[0]
+
+    const initiatorId = +splitted[0]
     const type = splitted[1]
 
     if (type === 'support') {

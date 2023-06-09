@@ -61,7 +61,7 @@ export const Review: FC = () => {
             /></Container>
             : <>
                 <Container max_w={'800px'} zi={2}>
-                    <Stack size={'container'} hAlign={'center'} spacing={4}>
+                    <Stack size={'width'} hAlign={'center'} spacing={4}>
                         <CarTitle data={data?.car || null} loading={loadingStatus}/>
                         {isOwner && <ReviewManagementBlock id={+review_id}/>}
                         <Card width={'100%'}
@@ -85,7 +85,7 @@ export const Review: FC = () => {
                 {data && data.photos && data.photos.length > 0 &&
                     <ReviewPhotoViewer photos={data.photos.map(p => p.photo)}/>}
                 <Container max_w={'800px'} mt={4}>
-                    <Stack spacing={4} size={'container'}>
+                    <Stack spacing={4} size={'width'}>
                        <ReviewScoreBlock data={data?.score_point} loading={loadingStatus} />
                        <Stack size={'width'} direction={'row'} spacing={4} hAlign={'start'}>
                             <Card>

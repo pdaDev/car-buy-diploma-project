@@ -197,7 +197,7 @@ export const AdvertisementForm: FC<IProps> = ({onSubmit, defaultData, loading, m
         getPrice && !!color && !!description?.length,
         !!price,
         images.length > 0,
-        !phoneNumber ? ((pn ? pn.length === 14 : false) && !!getPersonalGeoLocation())  :null
+        !phoneNumber ? ((pn ? pn.length === 10 : false) && !!getPersonalGeoLocation())  :null
     ].filter(v => v !== null) as boolean[]
 
     const n = useAppNavigate()

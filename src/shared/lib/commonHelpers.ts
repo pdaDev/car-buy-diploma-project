@@ -1,12 +1,12 @@
 import {ICarName, ICarNameWithId, IHandbookItem, IOption, Paths} from "../types";
 import {useTranslation} from "react-i18next";
-import * as NS from "../../entities/Car/namespace";
+import * as NS from "../../../../car-buy/src/entities/Car/namespace";
 import {F} from "@storybook/react-webpack5/dist/types-6a41b796";
 import {RUB_SYMBOL} from "./constants";
 import {useMultiLanguageHandbooks} from "./hoocs";
-import {useAppNavigate} from "../../app/services";
+import {useAppNavigate} from "../../../../car-buy/src/app/services";
 import {getTimeAccordingNow, getYear} from "./timeHelpers";
-import {IAdvertisementListItem} from "../../entities/Advertisement/namespace";
+import {IAdvertisementListItem} from "../../../../car-buy/src/entities/Advertisement/namespace";
 
 export const getPercents = (value: number | string) => `${value}%`
 
@@ -161,7 +161,7 @@ export function sortAccessor<T extends object>(sort: string | null, descendingKe
         const sortKey = sort.replace(descendingKey, '') as keyof T
 
         if (['date', 'time'].some(k => new RegExp(k).test(sortKey as string))) {
-            return new Date(obj[sortKey] as string).valueOf()
+            return +new Date(obj[sortKey] as string)
         }
 
         return obj[sortKey]

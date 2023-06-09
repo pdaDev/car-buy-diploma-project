@@ -1,4 +1,4 @@
-import {FC, MouseEventHandler, useMemo} from 'react'
+import {FC, MouseEventHandler} from 'react'
 
 import s from './LoadSingleImage.module.scss'
 import {useTranslation} from "react-i18next";

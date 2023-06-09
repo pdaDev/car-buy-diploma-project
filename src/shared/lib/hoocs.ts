@@ -5,11 +5,11 @@ import {useSearchParams} from "react-router-dom";
 import {set, useForm, UseFormProps} from "react-hook-form";
 import {debounce, getObjectKeys, isObject, setObjectFieldFromPath} from "./commonHelpers";
 import {TimeoutId} from "@reduxjs/toolkit/dist/query/core/buildMiddleware/types";
-import {selectInitializedStatus, useAppNavigate, useAppSelector} from "../../app/services";
-import {selectCurrentUser, selectUserId} from "../../entities/User/model/selectors";
+import {selectInitializedStatus, useAppNavigate, useAppSelector} from "../../../../car-buy/src/app/services";
+import {selectCurrentUser, selectUserId} from "../../../../car-buy/src/entities/User/model/selectors";
 import {number, object} from "prop-types";
 import {query} from "firebase/firestore";
-import {useAuthorize} from "../../entities/User/lib/hooks";
+import {useAuthorize} from "../../../../car-buy/src/entities/User/lib/hooks";
 
 export const useTabTile = (title: string, loading: boolean = false) => {
     const { t } = useTranslation()

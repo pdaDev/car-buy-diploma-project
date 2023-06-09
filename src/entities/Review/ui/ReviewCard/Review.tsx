@@ -10,7 +10,7 @@ import {
     Symbol,
     UserAvatar,
     UserNickname,
-    CardType, addPrefix, cn, Button, IServerReviewListItem
+    CardType, addPrefix, cn, Button, IServerReviewListItem, getCarNameFromObjectWithId, getCarName
 } from "../../../../shared";
 import * as NS from '../../namespace'
 import {UserBlock} from "../../../../shared/ui/User/UserBlock/UserBlock";
@@ -74,7 +74,10 @@ export const ReviewCard: FC<IProps> = ({
                     <Text content={data?.message} color={'grey-1'}/>
                 </Container>
                 <Stack size={'width'} direction={"row"} vAlign={'end'}>
-                    <UserBlock user={data?.owner || null} loading={loading} />
+                    <Stack vAlign={'center'} hAlign={'start'} spacing={4} direction={'row'}>
+                        <UserBlock user={data?.owner || null} loading={loading} />
+                        <Label label={data ? getCarNameFromObjectWithId(data.car as any) : ''} loading={loading} type={'secondary'} level={3}/>
+                    </Stack>
                     <Label label={dateOfReview} level={4} type={'secondary'} loading={loading} />
                 </Stack>
                 {

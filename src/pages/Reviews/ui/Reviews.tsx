@@ -21,28 +21,26 @@ import {EMPTY_SEARCH_DATA} from "../lib/constants";
 export const Reviews: FC = () => {
 
 
-    const [searchData, setSearchData] = useClassState({ })
+    const [searchData, setSearchData] = useClassState({})
     const [finalSearchData, setFinalSearchData] = useState({})
-    const { authStatus } = useAuthorize()
+    const {authStatus} = useAuthorize()
     const init = useRef(false)
 
 
-
-
     const {cars, onCarChange} = useQuerySearchCar()
-    const car = useMemo(() => {
-        const generations = Array.from(new Set(cars
-            .filter(c => c.generation_id.length > 0)
-            .map(c => c.generation_id).flat()))
-        const models = Array.from(new Set(cars
-            .filter(c => c.model_id !== null && c.generation_id.length === 0)
-            .map(c => c.model_id).flat()))
-        const brends = Array.from(new Set(cars
-            .filter(c => c.brend_id !== null && c.generation_id.length === 0 && c.model_id.length === 0)
-            .map(c => c.brend_id).flat()))
 
-        return ({generations, ...finalSearchData, models, brends: brends as number[]})
-    }, [cars])
+    const generations = Array.from(new Set(cars
+        .filter(c => c.generation_id.length > 0)
+        .map(c => c.generation_id).flat()))
+    const models = Array.from(new Set(cars
+        .filter(c => c.model_id !== null && c.generation_id.length === 0)
+        .map(c => c.model_id).flat()))
+    const brends = Array.from(new Set(cars
+        .filter(c => c.brend_id !== null && c.generation_id.length === 0 && c.model_id.length === 0)
+        .map(c => c.brend_id).flat()))
+
+    const car = {generations, ...finalSearchData, models, brends: brends as number[]}
+
 
     useEffect(() => {
         if (!init.current && car) {
@@ -51,7 +49,6 @@ export const Reviews: FC = () => {
         }
 
     }, [init, car])
-
 
 
     const {page, limit, setPage, sort, onSort, skeletonLoading} = usePaginationAndSorting()
@@ -80,7 +77,7 @@ export const Reviews: FC = () => {
 
     const search = () => {
 
-        setFinalSearchData({ ...car, ...searchData})
+        setFinalSearchData({...car, ...searchData})
         setPage(0)
         reset()
     }
@@ -90,10 +87,9 @@ export const Reviews: FC = () => {
     }, [authStatus])
 
 
-
     const dataLoading = isLoading || isFetching
     return <Container max_w={"800px"}>
-        <Stack size={'container'}
+        <Stack size={'width'}
                spacing={4}
                vAlign={'start'}>
             <ReviewSearchForm data={searchData as NS.IReviewSearchData}

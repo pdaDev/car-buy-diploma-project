@@ -105,7 +105,7 @@ export const Test: FC = () => {
                 recommendations: {
                     price: {
                         min: 0,
-                        max: 10000000
+                        max: 1000000
                     },
                     car_body_type: ['Sedan', "HATCHBACK"],
                     drive: ['FWD', "AWD"],

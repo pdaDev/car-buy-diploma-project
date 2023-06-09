@@ -29,10 +29,7 @@ export const MyReviews: FC = () => {
     const [sort, setSort] = useState<string | null>(null)
 
 
-    const {isLoading, data, refetch} = useGetMyReviewsQuery()
-    useEffect(() => {
-        refetch()
-    }, [authStatus, refetch, sort])
+    const {isLoading, data} = useGetMyReviewsQuery(0,{ skip: !authStatus })
 
     const n = useAppNavigate()
     const createReview = () => n(p => p.reviews.create)

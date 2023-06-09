@@ -73,12 +73,12 @@ export const Box: FC<IProps> = ({
     const ti = selective ? {
         tabIndex: 0
     } : {}
-    return <StyledBox {...props}
+    return (<StyledBox {...props}
                       measure={measure}
                       onClick={onClick ? onClick as MouseEventHandler : () => {
                       }}
                       {...ti}
     >
         {children}
-    </StyledBox>
+    </StyledBox>)
 }

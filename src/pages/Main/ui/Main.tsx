@@ -51,7 +51,7 @@ export const MainPage: FC = () => {
 
 
 
-    const { limit, page, setPage } = usePaginationAndSorting()
+    const { limit, page, setPage, skeletonLoading } = usePaginationAndSorting()
 
     useEffect(() => {
         if (!authStatus && initStatus) {
@@ -66,7 +66,7 @@ export const MainPage: FC = () => {
 
 
 
-    useOnScrollPagination({
+    const { elements: recent } =  useOnScrollPagination({
         data: recentAds?.results,
         loading: recentAdsLoading,
         sort: null,
@@ -95,8 +95,9 @@ export const MainPage: FC = () => {
                         </RenderContent>
                     </>}
                     <RenderContent title={getMainIndex('recent')}>
-                        <AdvertisementsList data={recentAds?.results || []}
-                                            loading={recentAdsLoading}
+                        <AdvertisementsList data={recent as any}
+                                            loading={skeletonLoading && recentAdsLoading}
+                                            fetching={recentAdsLoading}
                                             cols={5}
                                             withFavourites
                                             carType={'small'}

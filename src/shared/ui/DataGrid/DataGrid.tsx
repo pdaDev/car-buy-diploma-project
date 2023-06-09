@@ -8,9 +8,7 @@ import {Label} from "../Label/Label";
 import {useTranslation} from "react-i18next";
 import {Loader} from "../Loader/Loader";
 
-interface ISortOption {
 
-}
 
 interface IProps {
     loading: boolean

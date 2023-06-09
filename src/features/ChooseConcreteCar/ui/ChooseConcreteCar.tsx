@@ -62,6 +62,12 @@ export const ChooseConcreteCar: FC<IProps> = ({ onFinish }) => {
     const equipments = equipmentsAndGenVariants ? equipmentsAndGenVariants.equipments : []
     const generationVariants = equipmentsAndGenVariants ? equipmentsAndGenVariants.generation_variants : []
 
+    useEffect(() => {
+        if (equipmentsAndGenVariants?.generation_variants.length === 1) {
+            setGenVariant(equipmentsAndGenVariants.generation_variants[0].generation_variant_id)
+        }
+    }, [equipmentsAndGenVariants])
+
     const onSelectBrend = (value: CarPropTypeId) => {
         setBrend(value)
         setEquipment(null)

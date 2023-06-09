@@ -6,7 +6,7 @@ import {
     LoadImages,
     ReviewPointsWithoutTotal, SelectedCar,
     Stack,
-    TextArea
+    TextArea, useMultiLanguageValidationErrors
 } from "../../../shared";
 import {RenderFormLine} from "./RenderFormLine";
 import {ReviewSetScore} from "../../../features/ReviewSetScore";
@@ -43,7 +43,7 @@ export const ReviewCreateForm: FC<IProps> = (
         loading
     }) => {
     const isEdit = Boolean(defaultData)
-    const {register, handleSubmit, setValue, clearErrors, formState: {errors}, setError} = useForm<UseFormParams>(
+    const {register, handleSubmit, setValue, clearErrors, watch, formState: {errors}, setError} = useForm<UseFormParams>(
         {
             mode: 'onTouched', defaultValues: {
                 title: defaultData?.title || '', message: defaultData?.message || ''
@@ -63,6 +63,8 @@ export const ReviewCreateForm: FC<IProps> = (
     const [searchParams, setSearchParams] = useSearchParams()
     const searchParamCarChoose = searchParams.get('choose-car')
     const carChooseOpportunity = searchParamCarChoose ? !!(+searchParamCarChoose) : withCarChoose
+
+    console.log(carChooseOpportunity)
 
     const queryParamsCar: SelectedCar = {
         brend_id: searchParams.get('brend_id') !== null ? +searchParams.get('brend_id')! : null,
@@ -122,11 +124,12 @@ export const ReviewCreateForm: FC<IProps> = (
     }
     const {t} = useTranslation()
     const declineEditMode = () => setSearchParams({mode: 'view'})
+    const errorsMessages = useMultiLanguageValidationErrors(errors)
 
     return <Container max_w={'800px'}>
         <Stack size={'width'} spacing={4}>
             {carChooseOpportunity
-                ? <RenderFormLine title={'car'}>
+                ? <RenderFormLine title={'car'} zi={10}>
                     <CarSearchBlock data={queryParamsCar} onSearchChange={onCarChange}/>
                     <Label label={errors.car?.message}/>
                 </RenderFormLine>
@@ -151,10 +154,11 @@ export const ReviewCreateForm: FC<IProps> = (
                 <RenderFormLine title={'content'}>
                     <Input width={'full'}
                            title={'Заголовок'}
-                           error={errors.title?.message}
+                           error={errorsMessages.title}
                            register={register('title', { validate: validators.title })}/>
-                    <TextArea error={errors.message?.message}
+                    <TextArea error={errorsMessages.message}
                               title={'Текст'}
+                              value={watch('message')}
                               maxLength={3000}
                               register={register('message', { validate: validators.message })}/>
                 </RenderFormLine>

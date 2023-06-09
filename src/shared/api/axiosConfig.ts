@@ -1,10 +1,10 @@
-import axios, {CreateAxiosDefaults} from "axios";
+import axios from "axios";
 import {BASE_URL, SAFE_METHODS} from "../lib";
 import {getToken, refreshToken} from "./token.api";
 import type { AxiosRequestConfig, AxiosError } from 'axios'
 import {BaseQueryFn} from "@reduxjs/toolkit/query";
-import {parseError, setFatalError, StateType} from "../../app/services";
-import {addSystemNotification} from "../../entities/Notification";
+import {parseError, setFatalError, StateType} from "../../../../car-buy/src/app/services";
+import {addSystemNotification} from "../../../../car-buy/src/entities/Notification";
 
 
 
@@ -47,8 +47,8 @@ privateApi.interceptors.response.use(response => response, async (error )=> {
     throw new Error(error)
 })
 
-
-type Headers = CreateAxiosDefaults['headers']
+//CreateAxiosDefaults['headers']
+type Headers = any
 
 const h: Headers = {
     "Content-Type": 'multipart/form-data'
