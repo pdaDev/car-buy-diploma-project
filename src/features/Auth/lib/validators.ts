@@ -8,6 +8,10 @@ const email = combineValidators(
 )
 const password = combineValidators(
     v.required(),
+    v.hasSpecialSymbols(),
+    v.onlyEnglish(),
+    v.hasDigit(),
+    v.hasUpperLetter(),
     v.minLength(8)
 )
 const first_name = combineValidators(

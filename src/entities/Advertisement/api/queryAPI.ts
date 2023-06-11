@@ -6,7 +6,7 @@ import {getRecentAds} from "./historyAPI";
 
 export const advertisementAPI = createApi({
     reducerPath: 'advertisement',
-    tagTypes: ['advertisement', 'me-ads'],
+    tagTypes: ['advertisement', 'me-ads', 'history'],
     baseQuery: axiosBaseQuery({ baseUrl: 'advertisements/' }),
     endpoints: build => ({
         getAds: build.mutation<any, NS.GetAvertisemensPayload>({
@@ -62,7 +62,8 @@ export const advertisementAPI = createApi({
                 url: 'me/history/',
                 privacy: 'authenticated',
                 method: 'GET',
-            })
+            }),
+            providesTags: ['history']
         }),
         getRecommendations: build.query<NS.IAdvertisementListItem[], any>({
             query: () => ({
@@ -114,7 +115,9 @@ export const advertisementAPI = createApi({
         }),
         getAdvertisement: build.query<NS.IServerAdvertisement, number | string>({
             query: (id) => `${id}/`,
-            providesTags: ['advertisement']
+            providesTags: ['advertisement'],
+            // @ts-ignore
+            invalidatesTags: ['history']
         })
 
     })

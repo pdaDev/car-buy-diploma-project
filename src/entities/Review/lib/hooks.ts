@@ -13,7 +13,7 @@ export const useReviewManagement = (id: number) => {
                 onConfirm: async () => {
                     await deleteR(id).unwrap()
                     if (!isError) {
-                        n(p => p.reviews)
+                        n(p => p.reviews.me)
                     }
                 },
                 index: 'delete_review'
