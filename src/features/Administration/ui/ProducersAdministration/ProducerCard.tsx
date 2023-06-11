@@ -1,8 +1,7 @@
 import * as NS from '../../namespace'
 import {FC} from "react";
-import {Card, Container, Grid} from "../../../../shared";
+import {Card, Grid} from "shared";
 import {PropsRender} from "../PropsRender";
-import {CardManagePanel} from "../CardManagePanel";
 
 interface IProps {
 }

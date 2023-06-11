@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Label, RangeInput, Stack} from "../../../shared";
+import {Label, RangeInput, Stack} from "shared";
 import {useTranslation} from "react-i18next";
 import { NS } from 'entities/Review'
 interface IProps {

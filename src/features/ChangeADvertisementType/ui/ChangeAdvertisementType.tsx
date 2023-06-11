@@ -1,6 +1,6 @@
 import {FC} from "react"
 import s from './ChangeAdvertisementType.module.scss'
-import {CardType, cn} from "../../../shared";
+import {CardType, cn} from "shared";
 
 
 interface IProps {

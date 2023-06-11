@@ -1,15 +1,15 @@
-import {FC, useEffect, useState} from 'react'
-import {Card, Clickable, Label, Stack, useForceUpdate, useOpenStatus} from "../../../shared";
+import {FC, useEffect} from 'react'
+import {Clickable, Label, Stack} from "shared";
 import Icon from "@mdi/react";
 import {mdiMapMarker} from "@mdi/js/commonjs/mdi";
-import {selectSearchGeoLocation, useAppDispatch, useAppSelector} from "../../../app/services";
-import {openModal} from "../../../app/services/withPopupProvider";
+import {selectSearchGeoLocation, useAppDispatch, useAppSelector} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
 import {SelectGeoLocationModal} from "./SelectGeoLocationModal";
 import {IServerGeoLocationItem} from "../namespace";
 import {getSearchGeoLocation, setSearchGeoLocation} from "../api";
 import {useTranslation} from "react-i18next";
 import {getGeoItemLabel} from "../lib/helpers";
-import {setSearchGeo} from "../../../app/services/withCommonData/model/slice";
+import {setSearchGeo} from "app/services/withCommonData/model/slice";
 
 export const SelectGeoLocation: FC = () => {
     const d = useAppDispatch()

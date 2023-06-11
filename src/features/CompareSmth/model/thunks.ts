@@ -2,8 +2,8 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import * as NS from '../namespace'
 import {addElementToCompare, removeElementFromCompare} from "./slice";
 import * as api from '../api'
-import {selectActiveStatus, selectAuthStatus} from "../../../entities/User/model/selectors";
-import {StateType} from "../../../app/services";
+import {selectActiveStatus, selectAuthStatus} from "entities/User/model/selectors";
+import {StateType} from "app/services";
 
 
 

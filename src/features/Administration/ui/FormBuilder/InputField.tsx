@@ -3,16 +3,14 @@ import * as NS from '../../namespace'
 import {
     Checkbox,
     ColorPicker,
-    Container,
     CountSetter,
     Input,
     NumberInput,
     Register,
-    Stack,
+    Stack, Selector, DateInput,
     TextArea
-} from "../../../../shared";
-import {Selector} from "../../../../shared/ui/Selector/Selector";
-import {DateInput} from "../../../../shared/ui/Inputs/DateInput/DateInput";
+} from "shared";
+;
 
 interface IProps {
     register: Register

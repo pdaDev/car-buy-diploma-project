@@ -1,6 +1,6 @@
-import {handbooks} from "../../../app/services/withCommonData/namespace";
+import {handbooks} from "app/services/withCommonData/namespace";
 import {EMPTY_CAR_BODY_TYPE, EMPTY_COLOR_HANDBOOK_ITEM, EMPTY_HANDBOOK_ITEM} from "./constants";
-import {ICarBodyTypeHandbook, IColor, IHandbookItem} from "../../../shared";
+import {ICarBodyTypeHandbook, IColor, IHandbookItem} from "shared";
 
 
 export const getHandbookEmptyItem = (code: typeof handbooks[number]['key']): IHandbookItem & ICarBodyTypeHandbook & IColor => {

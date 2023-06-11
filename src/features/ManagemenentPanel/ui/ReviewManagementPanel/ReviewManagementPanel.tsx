@@ -1,9 +1,9 @@
 import {FC} from "react";
 import {ManagementPanel} from "../ManagementPanel/ManagementPanel";
-import {getTranslationIndexCreator} from "../../../../shared";
+import {getTranslationIndexCreator} from "shared";
 import * as NS from '../../namespace'
 import {mdiDeleteOutline, mdiPencil} from "@mdi/js";
-import {useReviewManagement} from "../../../../entities/Review";
+import {useReviewManagement} from "entities/Review";
 interface IProps {
     review_id: number
 }

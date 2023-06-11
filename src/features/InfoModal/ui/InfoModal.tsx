@@ -1,7 +1,7 @@
-import {FC, MouseEventHandler, useRef, useState} from 'react'
+import {FC, MouseEventHandler, useState} from 'react'
 
 import s from './InfoModal.module.scss'
-import {closeSymbol, cn, Label, Text, useBlurFocus} from "../../../shared";
+import {closeSymbol, cn, Label, Text, useBlurFocus} from "shared";
 
 
 interface IProps {

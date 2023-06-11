@@ -1,6 +1,6 @@
 import {FC} from "react";
 import * as NS from '../namespace'
-import {Button, getTranslationIndexCreator, Stack} from "../../../shared";
+import {Button, getTranslationIndexCreator, Stack} from "shared";
 import {useTranslation} from "react-i18next";
 
 interface IProps {

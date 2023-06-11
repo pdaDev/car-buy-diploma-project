@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Container, Label, List, Separator, Stack} from "../../../../shared";
+import {List} from "shared";
 import {EntitiesListItem} from "./EnititiesListItem";
 import * as NS from '../../namespace'
 

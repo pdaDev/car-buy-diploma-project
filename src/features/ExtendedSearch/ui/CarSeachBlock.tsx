@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC} from "react";
 import {useTranslation} from 'react-i18next'
 import {
     Button,
@@ -6,10 +6,10 @@ import {
     EMPTY_CAR_SEARCH_FILTER,
     ICarSearch,
     SelectedCar,
-    Stack
-} from "../../../shared";
-import {selectBrends, selectGenerations, selectModels, useAppSelector} from "../../../app/services";
-import {Selector} from "../../../shared/ui/Selector/Selector";
+    Stack,
+    Selector,
+} from "shared";
+import {selectBrends, selectGenerations, selectModels, useAppSelector} from "app/services";
 
 interface IProps {
     data: ICarSearch[] | ICarSearch | SelectedCar

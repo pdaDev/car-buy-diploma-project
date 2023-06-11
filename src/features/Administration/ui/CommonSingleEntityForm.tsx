@@ -1,17 +1,11 @@
 import {FC, ReactNode, useState} from "react";
 import {useDeleteEntity, useFormOpenStatus} from "../lib/hooks";
-import {apiRoutes} from "../lib/constants";
-import {Button, Card, Grid, Stack} from "../../../shared";
-import {PropsRender} from "./PropsRender";
+import {Stack} from "shared";
 import {CommonListForm} from "./CommonListForm";
-import {useGetGenerationsQuery} from "../api";
 import * as NS from "../namespace";
 import {EntitiesListItem} from "./CarAdministration/EnititiesListItem";
-import Icon from "@mdi/react";
-import {mdiArrowLeft} from "@mdi/js/commonjs/mdi";
 import {useTranslation} from "react-i18next";
-import {BackButton} from "../../../pages/Administration/ui/BackButton";
-import {number} from "prop-types";
+import {BackButton} from "pages/Administration/ui/BackButton";
 import {CardManagePanel} from "./CardManagePanel";
 
 interface IProps {

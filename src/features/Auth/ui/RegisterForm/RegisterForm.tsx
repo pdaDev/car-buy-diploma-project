@@ -4,16 +4,15 @@ import s from './RegisterForm.module.scss'
 import {
     Button,
     Stack,
-    Container,
+    PasswordInput,
     Input,
     useMultiLanguageValidationErrors,
     getTranslationIndexCreator
-} from "../../../../shared";
-import {set, SubmitHandler, useForm} from "react-hook-form";
+} from "shared";
+import {SubmitHandler, useForm} from "react-hook-form";
 
-import {register as authRegister, IRegisterPayload, selectors} from 'entities/User'
-import {useAppDispatch, useAppSelector} from "../../../../app/services";
-import {PasswordInput} from "../../../../shared/ui/Inputs/PasswordInput/PasswordInput";
+import {register as authRegister, selectors} from 'entities/User'
+import {useAppDispatch, useAppSelector} from "app/services";
 import {validators} from "../../lib/validators";
 import {FormValues} from "../../namespace";
 import {useTranslation} from "react-i18next";

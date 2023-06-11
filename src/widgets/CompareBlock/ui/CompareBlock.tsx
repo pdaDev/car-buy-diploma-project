@@ -1,13 +1,12 @@
 import {FC, useEffect, useState} from "react";
 import {CompareCard, CompareCharacteristics, NS} from 'features/CompareSmth'
-import {Button, cn, Container, Slider, Stack, Text} from "../../../shared";
+import { cn, Slider, Stack} from "shared";
 import s from './CompareBlock.module.scss'
-import {useAppDispatch, useAppSelector} from "../../../app/services";
-import {selectAuthStatus} from "../../../entities/User/model/selectors";
+import {useAppDispatch} from "app/services";
 import {useTranslation} from "react-i18next";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
-import {AuthMotivation} from "../../../features/Auth";
+import {openModal} from "app/services/withPopupProvider";
+import {useAuthorize} from "entities/User/lib/hooks";
+import {AuthMotivation} from "features/Auth";
 
 interface IProps {
     loading: boolean

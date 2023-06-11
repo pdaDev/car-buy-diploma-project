@@ -1,26 +1,20 @@
 import React, {FC, useMemo, useState} from "react";
-import {withPopup} from "../../../../app/services/withPopupProvider/lib/hocs";
-import {IBaseModelProps, IComparePayload} from "../../../../app/services/withPopupProvider/namespace";
+import {withPopup} from "app/services/withPopupProvider/lib/hocs";
+import {IBaseModelProps, IComparePayload} from "app/services/withPopupProvider/namespace";
 import {
     Button,
-    Card,
-    Container, getCarName, getTimeAccordingNow, getTranslationIndex,
-    getTranslationIndexCreator, getYear,
+    Container,
+    getTranslationIndexCreator,
     Label,
     Slider,
-    Stack, Table,
-    useMultiLanguageHandbooks, useOpenStatus
-} from "../../../../shared";
+    Stack, Table, useOpenStatus
+} from "shared";
 import s from './CompareResultsModals.module.scss'
 import {useTranslation} from "react-i18next";
 import {CompareElCard} from "./CompareElCard";
 import * as NS from './../../namespace'
-import {AddRemoveToFavourites, useAdvertisementsFavourites} from "../../../OperateWithAdvertisementFavourites";
-import {useAppNavigate, useAppSelector} from "../../../../app/services";
-import {selectors as userSelectors} from "../../../../entities/User";
 import {characteristicsForCompare} from "../../lib/constants";
 import {CompareBestCard} from "./CompareBestCard";
-import {useStartChat} from "../../../../entities/Chat";
 
 type Props = IBaseModelProps & IComparePayload
 

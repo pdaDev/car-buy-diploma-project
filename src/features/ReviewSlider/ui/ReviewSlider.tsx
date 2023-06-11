@@ -1,21 +1,14 @@
 import React, {FC} from "react";
-import {useAppNavigate, useAppSelector} from "../../../app/services";
-import {selectors as userSelectors} from "../../../entities/User";
+import {useAppNavigate} from "app/services";
 import {
     Card,
-    Container,
-    getCarName, getCarQuery,
-    getTimeAccordingNow,
-    getYear, ICarNameWithId,
+    getCarQuery,
+     ICarNameWithId,
     IServerReviewListItem, Label,
-    Slider, Stack,
-    useMultiLanguageHandbooks
-} from "../../../shared";
+    Slider
+} from "shared";
 import {useTranslation} from "react-i18next";
-import {AdvertisementCard} from "../../../entities/Advertisement";
-import {AddRemoveToFavourites} from "../../OperateWithAdvertisementFavourites";
-import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
-import {NS, ReviewCard} from 'entities/Review'
+import {ReviewCard} from 'entities/Review'
 
 interface IProps {
     data?: IServerReviewListItem[]

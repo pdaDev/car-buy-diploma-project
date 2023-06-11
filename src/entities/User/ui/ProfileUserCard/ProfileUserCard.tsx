@@ -3,19 +3,14 @@ import {
     Box,
     Container,
     formatPhoneNumber,
-    getTranslationIndexCreator,
     Label,
     Stack,
-    Symbol,
-    UserNickname
-} from "../../../../shared";
+} from "shared";
 import {ProfileAvatar} from "../ProfileAvatar/ProfileAvatar";
 import * as NS from '../../namespace'
-import {useTranslation} from "react-i18next";
 import {TextWithLabel} from "./TextWithLabel";
-import {PhoneNumberBlock} from "../../../../features/OperateWithAdvertisement/ui/ContactsWithOwner/PhoneNumberBlock";
-import {SelectGeoLocationModal} from "../../../../features/SelectGeoLocation/ui/SelectGeoLocationModal";
-import {SelectPersonalGeoLocation} from "../../../../features/SelectGeoLocation/ui/SelectProfileLocation";
+import {PhoneNumberBlock} from "features/OperateWithAdvertisement/ui/ContactsWithOwner/PhoneNumberBlock";
+import {SelectPersonalGeoLocation} from "features/SelectGeoLocation/ui/SelectProfileLocation";
 
 type Props = {
     type: "owner" | 'another'

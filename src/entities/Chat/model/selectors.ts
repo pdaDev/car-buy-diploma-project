@@ -1,4 +1,4 @@
-import {StateType} from "../../../app/services";
+import {StateType} from "app/services";
 
 const selectData  = (state: StateType) => state.chat
 

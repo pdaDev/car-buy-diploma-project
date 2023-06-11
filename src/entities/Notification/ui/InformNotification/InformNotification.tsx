@@ -1,8 +1,7 @@
 import {FC} from 'react'
 
-import s from './InformNotification.module.scss'
 import * as NS from '../../namespace'
-import {Box, Label, Text} from "../../../../shared";
+import {Box, Label, Text} from "shared";
 import {NotificationCloseButton} from "../NotificationCloseButton/NotificationCloseButton";
 
 interface IProps extends NS.IInformNotification {

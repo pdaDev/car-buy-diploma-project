@@ -1,11 +1,10 @@
 import {FC} from "react";
 import * as NS from '../../../namespace'
 import {useGetProducersQuery} from "../../../api";
-import {createOptions, IBrend, useMultiLanguageHandbooks} from "../../../../../shared";
+import {createOptions, IBrend, useMultiLanguageHandbooks} from "shared";
 import {FormBuilder} from "../../FormBuilder/FormBuilder";
 import {apiRoutes, EMPTY_BREND, EMPTY_MODEL} from "../../../lib/constants";
-import {selectHandbook, selectHandbooks, useAppSelector} from "../../../../../app/services";
-import {getCarPropsIndex} from "../../../lib/helpers";
+import {selectHandbook, selectHandbooks, useAppSelector} from "app/services";
 import {modelValidators} from "../../../lib/validators";
 
 interface IProps {

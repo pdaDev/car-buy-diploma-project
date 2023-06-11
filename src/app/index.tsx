@@ -3,10 +3,10 @@ import {withStoreProvider, withCommonData, Router, withCommonLayout, withErrorBo
 import {withThemeProvider, withErrorDispatcher, withLanguageProvider} from "./services";
 import {ComponentType} from "react";
 import {withActivation, withBan, withInitAuth} from "entities/User";
-import {withFavourites} from "../features/OperateWithAdvertisementFavourites";
-import {withCompare} from "../features/CompareSmth";
-import {withChat} from "../entities/Chat";
-import {withNotifications} from "../entities/Notification";
+import {withFavourites} from "features/OperateWithAdvertisementFavourites";
+import {withCompare} from "features/CompareSmth";
+import {withChat} from "entities/Chat";
+import {withNotifications} from "entities/Notification";
 
 
 export default compose(

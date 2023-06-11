@@ -1,27 +1,22 @@
-import {FC, MouseEventHandler, ReactNode, useEffect, useState} from "react";
-import {useAppDispatch, useAppNavigate, useAppSelector} from "app/services";
-import {selectors} from 'entities/User'
-import {AdvertisementsList} from "../../../widgets/AdvertisementsList";
-import {useGetFavouriteAdsQuery} from "../../../entities/Advertisement/api/queryAPI";
+import {FC, useEffect} from "react";
+import {useAppNavigate, useAppSelector} from "app/services";
+import {AdvertisementsList} from "widgets/AdvertisementsList";
+import {useGetFavouriteAdsQuery} from "entities/Advertisement";
 import {
-    Box,
-    Button,
     Container,
     HeartIcon,
     Label,
     Stack,
     Text,
-    useNavigationPermission, useOnScrollPagination, usePaginationAndSorting,
+    MotivationBlock, useOnScrollPagination, usePaginationAndSorting,
     useTabTile
-} from "../../../shared";
+} from "shared";
 import {useTranslation} from "react-i18next";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {MotivationBlock} from "../../../shared/ui/MotivationBlock/MotivationBlock";
 import {selectors as favSelectors} from 'features/OperateWithAdvertisementFavourites'
-import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
-import {AuthMotivation} from "../../../features/Auth";
-import {SortBLock} from "../../../features/SortBlock";
+import {IAdvertisementListItem} from "entities/Advertisement/namespace";
+import {useAuthorize} from "entities/User/lib/hooks";
+import {AuthMotivation} from "features/Auth";
+import {SortBLock} from "features/SortBlock";
 
 export const FavouritesAds: FC = () => {
     const {authStatus} = useAuthorize()

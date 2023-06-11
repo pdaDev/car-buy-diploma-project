@@ -1,8 +1,7 @@
 import {FC} from "react";
 import {ChatLabel} from "./ChatLabel";
-import {Card, Clickable, getTimeWithoutSeconds, Stack, Symbol, Text} from "../../../../shared";
+import {Card, Clickable, getTimeWithoutSeconds, Symbol} from "shared";
 import * as NS from '../../namespace'
-import {useNotificationView} from "../../../Notification";
 
 interface IProps {
     data: NS.IChatCardData

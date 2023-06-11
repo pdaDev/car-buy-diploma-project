@@ -1,34 +1,27 @@
 import {FC, useEffect} from "react";
-import {selectInitializedStatus, useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
-import {makeHeaderNormal, makeHeaderTransparent} from "../../../app/services/withCommonLayout/model/slice";
+import {selectInitializedStatus, useAppDispatch, useAppSelector} from "app/services";
+import {makeHeaderNormal, makeHeaderTransparent} from "app/services/withCommonLayout/model/slice";
 import {useTranslation} from "react-i18next";
 import {
-    Button,
-    Card,
     Container,
-    createRuWordEndingByNumberGetter, getTranslationIndexCreator,
-    Image,
-    Label,
-    Slider,
+    getTranslationIndexCreator,
     Stack,
-    Symbol, useOnScrollPagination, usePaginationAndSorting, useTabTile
-} from "../../../shared";
+    useOnScrollPagination, usePaginationAndSorting, useTabTile
+} from "shared";
 // @ts-ignore
 import promo from './image 6.png'
-import {Advertisement} from "../../Advertisement";
+
 import {
-    AdvertisementCard,
     useGetAdsMutation, useGetHistoryElsMutation,
     useGetHistoryQuery,
-    useGetRecommendationsQuery
-} from "../../../entities/Advertisement";
-import {getRecentAds} from "../../../entities/Advertisement/api/historyAPI";
-import {AdvertisementSlider} from "../../../features/AdvertisementSlider";
-import {selectAuthStatus} from "../../../entities/User/model/selectors";
-import {AdvertisementsList} from "../../../widgets/AdvertisementsList";
-import {MainPageBanner} from "../../../features/MainPageBanner/ui/MainPageBanner";
+} from "entities/Advertisement";
+import {AdvertisementSlider} from "features/AdvertisementSlider";
+import {selectAuthStatus} from "entities/User/model/selectors";
+import {AdvertisementsList} from "widgets/AdvertisementsList";
+import {MainPageBanner} from "features/MainPageBanner/ui/MainPageBanner";
 import {RenderContent} from "./RenderContent";
-import {PreTestModal} from "../../../features/Test";
+import {PreTestModal} from "features/Test";
+
 export const MainPage: FC = () => {
     const d = useAppDispatch()
     const initStatus = useAppSelector(selectInitializedStatus)
@@ -43,15 +36,14 @@ export const MainPage: FC = () => {
     useTabTile(t('pages.main'))
 
     const authStatus = useAppSelector(selectAuthStatus)
-    const {data: ads, isLoading} = useGetHistoryQuery({},{ skip: !authStatus })
+    const {data: ads, isLoading} = useGetHistoryQuery({}, {skip: !authStatus})
     // const {data: recommendedAds = [], isLoading: recommendationsLoading} = useGetRecommendationsQuery({},{ skip: !authStatus })
     const [getAds, {data: recentAds, isLoading: recentAdsLoading}] = useGetAdsMutation()
 
-    const [getHistoryEls, { data: historyEls = [] }] = useGetHistoryElsMutation( )
+    const [getHistoryEls, {data: historyEls = []}] = useGetHistoryElsMutation()
 
 
-
-    const { limit, page, setPage, skeletonLoading } = usePaginationAndSorting()
+    const {limit, page, setPage, skeletonLoading} = usePaginationAndSorting()
 
     useEffect(() => {
         if (!authStatus && initStatus) {
@@ -61,12 +53,11 @@ export const MainPage: FC = () => {
 
     useEffect(() => {
         if (initStatus)
-            getAds({ sort: 'start_date', filters: null, page, limit })
+            getAds({sort: 'start_date', filters: null, page, limit})
     }, [authStatus, page, initStatus])
 
 
-
-    const { elements: recent } =  useOnScrollPagination({
+    const {elements: recent} = useOnScrollPagination({
         data: recentAds?.results,
         loading: recentAdsLoading,
         sort: null,
@@ -75,7 +66,6 @@ export const MainPage: FC = () => {
         count: recentAds?.count || 0,
         onPagination: setPage
     })
-
 
 
     const getMainIndex = getTranslationIndexCreator('main')

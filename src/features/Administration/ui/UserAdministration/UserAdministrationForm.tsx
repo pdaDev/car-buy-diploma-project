@@ -10,11 +10,11 @@ import {
     Paginator,
     Stack, Switcher, useMultiLanguageHandbooks,
     usePaginationAndSorting
-} from "../../../../shared";
+} from "shared";
 import {UserCard} from "./UserCard";
 
 import {CommonListForm} from "../CommonListForm";
-import {selectHandbooks, useAppSelector} from "../../../../app/services";
+
 import {useTranslation} from "react-i18next";
 
 

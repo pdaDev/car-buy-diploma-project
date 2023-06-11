@@ -1,7 +1,6 @@
-import {FC, ReactNode} from "react";
-import * as NS from '../../namespace'
-import {Container, getPercents, ReviewPoints, Stack} from "shared";
-import {Label} from "../../../../shared";
+import {FC} from "react";
+import {getPercents, ReviewPoints, Stack} from "shared";
+import {Label} from "shared";
 import {useTranslation} from "react-i18next";
 import s from './ReviewScoreBlock.module.scss'
 import styled from "styled-components";

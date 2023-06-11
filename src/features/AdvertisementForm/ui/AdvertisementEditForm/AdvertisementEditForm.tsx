@@ -4,12 +4,12 @@ import {
     Checkbox,
     getTranslationIndexCreator, IOption, Label, LoadedImage, LoadImages,
     NumberInput,
-    Register, RegisterFunction,
+    RegisterFunction,
     RUB_SYMBOL,
     Stack,
-    TextArea
-} from "../../../../shared";
-import {Selector} from "../../../../shared/ui/Selector/Selector";
+    TextArea,
+    Selector
+} from "shared";
 import {useTranslation} from "react-i18next";
 import {NS} from 'entities/Advertisement'
 import {validators} from "../../lib/validators";

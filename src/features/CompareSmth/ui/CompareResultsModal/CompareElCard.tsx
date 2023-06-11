@@ -1,18 +1,16 @@
 import {FC} from "react";
-import s from './CompareResultsModals.module.scss'
 import {
     Card,
     CardImageViewer,
     Container,
-    getCarName,
     getCarNameFromObjectWithId,
     Label,
     Price,
     Stack
-} from "../../../../shared";
+} from "shared";
 import {CompareType, IServerCompareItem} from "../../namespace";
 import {Mark} from "./Mark";
-import {useAppNavigate} from "../../../../app/services";
+import {useAppNavigate} from "app/services";
 
 interface IProps {
     data: IServerCompareItem

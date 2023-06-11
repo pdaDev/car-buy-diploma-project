@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Card, Grid} from "../../../../../shared";
+import {Card, Grid} from "shared";
 import {PropsRender} from "../../PropsRender";
 import * as NS from '../../../namespace'
 import {getCarPropsIndex} from "../../../lib/helpers";

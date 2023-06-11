@@ -1,23 +1,22 @@
 import {FC} from "react";
 import {useParams} from "react-router-dom";
-import {useGetCarModelQuery} from "../../../entities/Car";
+import {useGetCarModelQuery} from "entities/Car";
 import {
     Card,
-    CardImageViewer,
     Container,
     getTranslationIndexCreator,
     ImageSlider,
     Label,
     Stack,
     Symbol
-} from "../../../shared";
-import {CarGenerationsList} from "../../../features/CarGenerationsList";
+} from "shared";
+import {CarGenerationsList} from "features/CarGenerationsList";
 import {useTranslation} from "react-i18next";
-import {CarPathNavigation} from "../../../features/CarPathNavigation/ui/CarPathNavigation";
-import {ReviewSlider} from "../../../features/ReviewSlider";
-import {AdvertisementSlider} from "../../../features/AdvertisementSlider";
-import {getGenerationPeriod, getPriceRange} from "../../../entities/Car/lib/helpers";
-import {SAMPLE_GENERATIONS} from "../../../features/CarGenerationsList/lib/constants";
+import {CarPathNavigation} from "features/CarPathNavigation";
+import {ReviewSlider} from "features/ReviewSlider";
+import {AdvertisementSlider} from "features/AdvertisementSlider";
+import {getGenerationPeriod, getPriceRange} from "entities/Car/lib/helpers";
+import {SAMPLE_GENERATIONS} from "features/CarGenerationsList/lib/constants";
 
 export const CarModel: FC = () => {
     const { id } = useParams()

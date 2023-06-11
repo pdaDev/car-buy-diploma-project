@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Card, CircleDiagram, Container, getObjectKeys, Label, Stack} from "../../../../shared";
+import {Card, CircleDiagram, Container, getObjectKeys, Label, Stack} from "shared";
 import * as NS from '../../namespace'
 import {useTranslation} from "react-i18next";
 interface IProps {

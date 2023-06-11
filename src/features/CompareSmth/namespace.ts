@@ -1,11 +1,8 @@
-import {ICarName, ICarNameWithId, IHandbookItem, IUserCommonData} from "../../shared";
-import {number} from "prop-types";
-import {CarProps, ISererCarCharacteristics, IServerCarProps} from "../../entities/Car/namespace";
+import {ICarNameWithId, IHandbookItem, IUserCommonData} from "shared";
+import {CarProps, IServerCarProps} from "entities/Car/namespace";
 import {
     IServerAdvertisement,
-    IServerCarCharacteristic,
-    IServerEngineCharacteristics
-} from "../../entities/Advertisement/namespace";
+} from "entities/Advertisement/namespace";
 
 
 export interface IServerCommonCompareItem {

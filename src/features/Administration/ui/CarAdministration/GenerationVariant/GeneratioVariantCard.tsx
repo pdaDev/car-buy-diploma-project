@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Card, Container, ImageSlider, Label, Stack, useMultiLanguageHandbooks} from "../../../../../shared";
+import {Card, ImageSlider, Label, Stack, useMultiLanguageHandbooks} from "shared";
 import * as NS from '../../../namespace'
 import {CardManagePanel} from "../../CardManagePanel";
 import {useDeleteEntity} from "../../../lib/hooks";

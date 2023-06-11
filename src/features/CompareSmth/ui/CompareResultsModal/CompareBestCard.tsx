@@ -1,20 +1,18 @@
 import React, {FC} from "react";
-import s from './CompareResultsModals.module.scss'
 import {
     Button,
     Card,
-    getCarName,
     getCarNameFromObjectWithId,
     Label,
     Stack,
     useMultiLanguageHandbooks
-} from "../../../../shared";
-import {CompareType, IServerCompareItem} from "../../namespace";
+} from "shared";
+import {IServerCompareItem} from "../../namespace";
 import {Mark} from "./Mark";
-import {CarPropLine} from "../../../../entities/Car/ui/CarPropLine/CarPropLine";
+import {CarPropLine} from "entities/Car/ui/CarPropLine/CarPropLine";
 import {useTranslation} from "react-i18next";
 import {useAdvertisementsFavourites} from "../../../OperateWithAdvertisementFavourites";
-import {useStartChat} from "../../../../entities/Chat";
+import {useStartChat} from "entities/Chat";
 
 
 interface IProps {

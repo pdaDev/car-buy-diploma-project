@@ -1,5 +1,5 @@
 import {FC, MouseEventHandler, ReactNode} from "react";
-import {cn, Image, Label, Stack} from "../../../../shared";
+import {cn,Label, Stack} from "shared";
 import s from './StepWrapper.module.scss'
 import Icon from "@mdi/react";
 import {mdiCheck, mdiCircle} from "@mdi/js/commonjs/mdi";

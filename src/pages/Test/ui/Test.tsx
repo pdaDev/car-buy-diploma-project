@@ -1,13 +1,12 @@
-import {FC, useState} from "react";
-import {Container, TestProgressBar, useQuery, useQueryObject} from "../../../shared";
-import {TestQuestionsBlock} from "../../../widgets/TestQuestinsBlock";
+import {FC} from "react";
+import {Container,  useQuery, useQueryObject} from "shared";
+import {TestQuestionsBlock} from "widgets/TestQuestinsBlock";
 import {INIT_TEST_DATA} from "../lib/constants";
-import {useSearchParams} from "react-router-dom";
-import {TestResult} from "../../../features/Test/ui/TestResult/TestResult";
-import * as NS from "../../../features/Test/namespace";
+import {TestResult} from "features/Test/ui/TestResult/TestResult";
+import * as NS from "features/Test/namespace";
 import {getStepElementsFromArray, getStepElementsFromEntities} from "../lib/helpers";
-import {DESIRES} from "../../../features/Test/namespace";
-import {selectBrends, selectHandbooks, useAppSelector} from "../../../app/services";
+import {DESIRES} from "features/Test/namespace";
+import {selectBrends, selectHandbooks, useAppSelector} from "app/services";
 
 
 export const Test: FC = () => {

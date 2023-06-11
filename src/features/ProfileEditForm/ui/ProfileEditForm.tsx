@@ -7,14 +7,14 @@ import {
     PhoneNumberInput,
     Stack, transformObjectToFormData,
     useMultiLanguageValidationErrors
-} from "../../../shared";
+} from "shared";
 import {useTranslation} from "react-i18next";
-import {useAppDispatch, useAppSelector} from "../../../app/services";
-import {set, useForm} from "react-hook-form";
-import {IUserData, patchUser} from "../../../entities/User";
+import {useAppDispatch, useAppSelector} from "app/services";
+import {useForm} from "react-hook-form";
+import {IUserData, patchUser} from "entities/User";
 import {validators} from "../lib/validators";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {selectUserDataLoadingStatus} from "../../../entities/User/model/selectors";
+import {openModal} from "app/services/withPopupProvider";
+import {selectUserDataLoadingStatus} from "entities/User/model/selectors";
 
 type FormState = Pick<IUserData, 'firstName' | 'secondName' | 'phoneNumber'>
 

@@ -1,8 +1,8 @@
 import React, {FC} from "react";
-import {Card, Container, formatPrice, getTranslationIndexCreator, Stack, Symbol, Text} from "../../../../shared";
+import {Card, Container, formatPrice, Stack, Symbol, Text} from "shared";
 import {useTranslation} from "react-i18next";
-import {getPriceRange} from "../../../../entities/Car/lib/helpers";
-import {NS} from "../../../../entities/Car";
+import {getPriceRange} from "entities/Car/lib/helpers";
+import {NS} from "entities/Car";
 
 interface IProps {
     price: NS.IPriceRange

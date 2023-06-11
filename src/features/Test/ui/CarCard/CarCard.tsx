@@ -1,6 +1,5 @@
 import {FC} from "react";
 import {
-    Box,
     Card,
     CardImageViewer, Color,
     Container,
@@ -8,10 +7,9 @@ import {
     Label,
     Stack, Symbol, Tooltip,
     useMultiLanguageHandbooks
-} from "../../../../shared";
+} from "shared";
 import * as NS from '../../namespace'
-import {useAppNavigate} from "../../../../app/services";
-import {getPriceRange} from "../../../../entities/Car/lib/helpers";
+import {getPriceRange} from "entities/Car/lib/helpers";
 import {useTranslation} from "react-i18next";
 
 interface IProps {

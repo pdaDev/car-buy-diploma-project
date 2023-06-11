@@ -15,13 +15,13 @@ import {CarBrend} from "pages/CarBrend";
 import {CarModel} from "pages/CarModel";
 import {CarCharacteristics} from "pages/CarCharacteristics/ui/CarCharacteristics";
 import {Compare} from "pages/Compare";
-import {CreateReview} from "../../../../pages/CreateReview/ui/CreateReview";
-import {CreateAdvertisement} from "../../../../pages/CreateAdvertisement";
-import {Chat} from "../../../../pages/Chat";
-import {MyReviews} from "../../../../pages/MyReviews";
-import {Test} from "../../../../pages/Test";
-import {Administration, AdministrationDataManagement, AdministrationUserManagement} from "../../../../pages/Administration";
-import {SaveTestResults} from "../../../../pages/SavedTestResults";
+import {CreateReview} from "pages/CreateReview/ui/CreateReview";
+import {CreateAdvertisement} from "pages/CreateAdvertisement";
+import {Chat} from "pages/Chat";
+import {MyReviews} from "pages/MyReviews";
+import {Test} from "pages/Test";
+import {Administration, AdministrationDataManagement, AdministrationUserManagement} from "pages/Administration";
+import {SaveTestResults} from "pages/SavedTestResults";
 
 
 export const Router: FC = () => {

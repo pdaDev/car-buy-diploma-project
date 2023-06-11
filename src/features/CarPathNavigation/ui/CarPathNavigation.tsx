@@ -1,7 +1,7 @@
 import {FC} from "react";
-import {PathNavigation} from "../../../shared";
+import {PathNavigation} from "shared";
 import {useTranslation} from "react-i18next";
-import {useAppNavigate} from "../../../app/services";
+import {useAppNavigate} from "app/services";
 
 
 interface ICar {

@@ -5,12 +5,10 @@ import * as NS from '../../namespace'
 import {
     formatPrice,
     FormMode,
-    getCarName,
     getCarNameFromModelWithId,
-    Input,
     Label,
     NumberInput
-} from "../../../../shared";
+} from "shared";
 
 
 

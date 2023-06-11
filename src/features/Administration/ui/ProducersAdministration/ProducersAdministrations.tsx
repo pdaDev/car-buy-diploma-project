@@ -1,14 +1,8 @@
 import {FC} from "react";
-import {CommonListForm} from "../CommonListForm";
-import {useGetProducersQuery, useGetTransmissionsQuery} from "../../api";
-import {Details} from "../../../../shared";
-import * as NS from '../../namespace'
+import {useGetProducersQuery} from "../../api";
 import {ProducerCard} from "./ProducerCard";
-import {useFormOpenStatus} from "../../lib/hooks";
 import {CommonSingleEntityForm} from "../CommonSingleEntityForm";
-import {apiRoutes, EMPTY_PRODUCER, EMPTY_TRANSMISSION} from "../../lib/constants";
-import {TransmissionCard} from "../TransmissionAdministration/TransmissionCard";
-import {TransmissionForm} from "../TransmissionAdministration/TransmissionForm";
+import {apiRoutes} from "../../lib/constants";
 import {ProducerForm} from "./ProducerForm";
 
 export const ProducersAdministrations: FC = () => {

@@ -7,11 +7,11 @@ import {
     mdiRestart,
     mdiBookOffOutline
 } from '@mdi/js';
-import {getTranslationIndexCreator, Stack} from "../../../../shared";
+import {getTranslationIndexCreator} from "shared";
 import {
     NS as AdNS,
     useAdvertisementManagement
-} from "../../../../entities/Advertisement";
+} from "entities/Advertisement";
 import * as NS from '../../namespace'
 import {ManagementPanel} from "../ManagementPanel/ManagementPanel";
 

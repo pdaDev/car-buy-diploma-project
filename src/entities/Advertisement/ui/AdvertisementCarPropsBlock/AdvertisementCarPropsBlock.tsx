@@ -1,7 +1,7 @@
 import React, {FC, ReactNode} from 'react'
 
 import * as NS from '../../namespace'
-import {Box, ColorMark, Container, FormMode, Label, Stack, useMultiLanguageHandbooks} from "../../../../shared";
+import {Box, ColorMark, Container, FormMode, Label, Stack, useMultiLanguageHandbooks} from "shared";
 import {useTranslation} from "react-i18next";
 import s from './AdvertisementCarPropsBlock.module.scss'
 import {CarPropLine} from "../../../Car/ui/CarPropLine/CarPropLine";

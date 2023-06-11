@@ -1,8 +1,7 @@
-import {FC, useEffect, useState} from "react";
-import {Selector} from "../../../shared/ui/Selector/Selector";
-import {CarPropBlock, NS} from 'entities/Car'
-import {Box, Card, Container, createOptions, Label, Stack, useQuery} from "../../../shared";
-import {useTranslation} from "react-i18next";
+import {FC} from "react";
+import { NS} from 'entities/Car'
+import { createOptions, useQuery, Selector} from "shared";
+
 import './CarPropsByEquipment.scss'
 
 interface IProps {

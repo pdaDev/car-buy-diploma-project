@@ -1,24 +1,18 @@
 import {FC, useState} from "react";
 import {
     Card, Checkbox,
-    Clickable,
     Container,
     Details, getTranslationIndexCreator, Grid,
     Label,
-    Separator,
     Stack,
-    useMultiLanguageHandbooks, useOpenStatus
-} from "../../../../../shared";
+    useMultiLanguageHandbooks
+} from "shared";
 import {useTranslation} from "react-i18next";
 import {CommonListForm} from "../../CommonListForm";
 import * as NS from '../../../namespace'
 import {useGetConcreteCarsQuery, useGetEquipmentsQuery, useGetGenerationVariantsQuery} from "../../../api";
 import {EntitiesListItem} from "../EnititiesListItem";
 import {PropsRender} from "../../PropsRender";
-import {getCarPropsIndex} from "../../../lib/helpers";
-import s from "../CarAdminnistrattion.module.scss";
-import Icon from "@mdi/react";
-import {mdiCircle} from "@mdi/js/commonjs/mdi";
 import {useDeleteEntity} from "../../../lib/hooks";
 import {apiRoutes} from "../../../lib/constants";
 import {CardManagePanel} from "../../CardManagePanel";

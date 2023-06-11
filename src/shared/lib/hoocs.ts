@@ -1,15 +1,13 @@
-import {DragEventHandler, FocusEventHandler, UIEventHandler, useEffect, useMemo, useRef, useState} from "react";
-import {ExtendedSearchData, FormMode, ICarSearch, IHandbookItem, IOption, IShortHandbookItem} from "../types";
+import {DragEventHandler, FocusEventHandler, UIEventHandler, useEffect, useRef, useState} from "react";
+import {FormMode, ICarSearch, IHandbookItem, IOption, IShortHandbookItem} from "../types";
 import {useTranslation} from "react-i18next";
 import {useSearchParams} from "react-router-dom";
-import {set, useForm, UseFormProps} from "react-hook-form";
-import {debounce, getObjectKeys, isObject, setObjectFieldFromPath} from "./commonHelpers";
+
+import {debounce, getObjectKeys, isObject} from "./commonHelpers";
 import {TimeoutId} from "@reduxjs/toolkit/dist/query/core/buildMiddleware/types";
-import {selectInitializedStatus, useAppNavigate, useAppSelector} from "../../../../car-buy/src/app/services";
-import {selectCurrentUser, selectUserId} from "../../../../car-buy/src/entities/User/model/selectors";
-import {number, object} from "prop-types";
-import {query} from "firebase/firestore";
-import {useAuthorize} from "../../../../car-buy/src/entities/User/lib/hooks";
+import {selectInitializedStatus, useAppNavigate, useAppSelector} from "app/services";
+import {selectCurrentUser} from "entities/User/model/selectors";
+
 
 export const useTabTile = (title: string, loading: boolean = false) => {
     const { t } = useTranslation()
@@ -170,12 +168,6 @@ export function useQueryParamsFormMode<T extends object>(initData?: T) {
     }
     return {editData, setEditData, formMode, setEditMode, setViewMode, resetEditData, edit, isEditMode, setMode}
 }
-
-interface IOnScrollPaginationOutput {
-    limit: number,
-    offset: number
-}
-
 
 export const usePaginationAndSorting = (props?: { limit?: number, sort?: string }) => {
     const [page, setPage] = useState(0)

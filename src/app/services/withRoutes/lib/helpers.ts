@@ -1,5 +1,5 @@
 import {keyParam, pathParam} from "../model/routeTree";
-import {getObjectKeys} from "../../../../shared";
+import {getObjectKeys} from "shared";
 
 type ObjectWithGetKey = { getKey: () => string }
 type Tree<T extends object> = {[P in Exclude<keyof T,typeof pathParam>]: P extends typeof keyParam ? (key?: string | number) => T[P] extends object ? ObjectWithGetKey & Tree<T[P]> : ObjectWithGetKey :T[P] extends object ? ObjectWithGetKey & Tree<T[P]> : ObjectWithGetKey }

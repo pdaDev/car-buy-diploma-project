@@ -1,6 +1,5 @@
 import {FC} from "react";
-import {useAppNavigate, useAppSelector} from "../../../../app/services";
-import {Button} from "../../../../shared";
+import {useAppNavigate, useAppSelector} from "app/services";
 import Icon from "@mdi/react";
 import {mdiCarSearch} from "@mdi/js/commonjs/mdi";
 import {selectSavedResultsId} from "../../model/selectors";

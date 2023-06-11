@@ -2,13 +2,6 @@ import React, {FC, ReactNode} from 'react'
 
 import s from './Form.module.scss'
 import {Stack} from "../Layout";
-import {RenderFormLine} from "../../../../../car-buy/src/widgets/ReviewCreateForm/ui/RenderFormLine";
-import {Input} from "../Inputs";
-import {validators} from "../../../../../car-buy/src/widgets/ReviewCreateForm/lib/validators";
-import {TextArea} from "../TextArea/TextArea";
-import {ReviewSetScore} from "../../../../../car-buy/src/features/ReviewSetScore";
-import {LoadImages} from "../LoadImages/LoadImages";
-import {Button} from "../Buttons";
 
 interface IProps {
     onSubmit: Function

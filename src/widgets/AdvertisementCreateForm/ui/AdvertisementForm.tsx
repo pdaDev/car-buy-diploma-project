@@ -2,17 +2,17 @@ import {FC, useEffect, useState} from "react";
 import {
     Button, Container, createOptions, debounce, Form, formatNumber, formatPhoneNumber, FormMode,
     IOption, LoadedImage, transformObjectToFormData, useMultiLanguageValidationErrors
-} from "../../../shared";
+} from "shared";
 import {patchUser, selectors as userSelectors} from 'entities/User'
-import {NS} from "../../../entities/Advertisement";
-import {useGetCarPriceRangeQuery, useGetCarSearchPropQuery} from "../../../entities/Car";
+import {NS} from "entities/Advertisement";
+import {useGetCarPriceRangeQuery, useGetCarSearchPropQuery} from "entities/Car";
 import {useForm} from "react-hook-form";
 import {useTranslation} from "react-i18next";
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {AdvertisementCreateForm, AdvertisementEditForm} from "../../../features/AdvertisementForm";
-import {IServerGeoLocationItem} from "../../../features/SelectGeoLocation/namespace";
-import {getPersonalGeoLocation} from "../../../features/SelectGeoLocation/api";
+import {useAppDispatch, useAppNavigate, useAppSelector} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
+import {AdvertisementCreateForm, AdvertisementEditForm} from "features/AdvertisementForm";
+import {IServerGeoLocationItem} from "features/SelectGeoLocation/namespace";
+import {getPersonalGeoLocation} from "features/SelectGeoLocation/api";
 
 
 interface IProps {

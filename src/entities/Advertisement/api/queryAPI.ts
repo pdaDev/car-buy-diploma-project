@@ -1,7 +1,7 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {axiosBaseQuery, CommonGetListPayload, CommonServerListResult, IServerReviewListItem} from "shared";
+import {createApi} from "@reduxjs/toolkit/query/react";
+import {axiosBaseQuery, CommonGetListPayload} from "shared";
 import * as NS from '../namespace'
-import {getSearchGeoLocation} from "../../../features/SelectGeoLocation/api";
+import {getSearchGeoLocation} from "features/SelectGeoLocation/api";
 import {getRecentAds} from "./historyAPI";
 
 export const advertisementAPI = createApi({

@@ -1,8 +1,8 @@
 // @ts-nocheck
 
 import * as NS from '../namespace'
-import {STEPS} from "../../../widgets/TestQuestinsBlock/lib/constants";
-import {isObject} from "../../../shared";
+import {STEPS} from "widgets/TestQuestinsBlock/lib/constants";
+import {isObject} from "shared";
 
 export const getData = (data: NS.TestData) => {
     const total = {}

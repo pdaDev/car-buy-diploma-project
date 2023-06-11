@@ -1,29 +1,28 @@
 import {FC, useMemo} from "react";
-import {CarTitle} from "../../../entities/Car/ui/CarTitle/CarTitle";
+import {CarTitle} from "entities/Car/ui/CarTitle/CarTitle";
 import {
     Button,
     Card,
-    CardImageViewer, CircleDiagram,
-    Container, createRuWordEndingByNumberGetter,
-    formatPrice, getCarQuery, getObjectKeys, getTranslationIndex,
+    CircleDiagram,
+    Container, createRuWordEndingByNumberGetter, getCarQuery, getObjectKeys,
     getTranslationIndexCreator,
     ImageSlider,
-    Label, PathNavigation,
-    Stack, Switcher, useMultiLanguageHandbooks, useQuerySearchCar
-} from "../../../shared";
-import {useGetCarGenerationQuery} from "../../../entities/Car";
+    Label,
+    Stack, useMultiLanguageHandbooks, useQuerySearchCar
+} from "shared";
+import {useGetCarGenerationQuery} from "entities/Car";
 import {useParams} from "react-router-dom";
-import {ReviewSlider} from "../../../features/ReviewSlider";
+import {ReviewSlider} from "features/ReviewSlider";
 import {useTranslation} from "react-i18next";
-import {CarPathNavigation} from "../../../features/CarPathNavigation";
-import {useAppNavigate} from "../../../app/services";
-import {getPriceRange} from "../../../entities/Car/lib/helpers";
+import {CarPathNavigation} from "features/CarPathNavigation";
+import {useAppNavigate} from "app/services";
+import {getPriceRange} from "entities/Car/lib/helpers";
 import {GenerationCharacteristics} from "../namespace";
-import {AdvertisementSlider} from "../../../features/AdvertisementSlider";
-import {CarGenerationSwitcher} from "../../../features/CarGenerationSwitcher";
+import {AdvertisementSlider} from "features/AdvertisementSlider";
+import {CarGenerationSwitcher} from "features/CarGenerationSwitcher";
 import Icon from "@mdi/react";
 import {mdiCompare} from "@mdi/js/commonjs/mdi";
-import {useContentCompare} from "../../../features/CompareSmth";
+import {useContentCompare} from "features/CompareSmth";
 
 
 export const CarGeneration: FC = () => {

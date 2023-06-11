@@ -1,7 +1,7 @@
 import {FC, useMemo} from "react";
 import * as NS from '../../namespace'
 import {
-    Box, Button,
+    Button,
     Container, createOptions, formatNumber,
     getCarQuery,
     getObjectKeys,
@@ -10,15 +10,14 @@ import {
     ICarNameWithId, IOption,
     Label,
     Stack, useMultiLanguageHandbooks
-} from "../../../../shared";
+} from "shared";
 
-import {DESIRES, MIN_MAX_CRITERIA, MULTIPLE_VALUES_CRITERIA} from "../../namespace";
+import { MIN_MAX_CRITERIA, MULTIPLE_VALUES_CRITERIA} from "../../namespace";
 import {useGetTestDataQuery} from "../../api";
 import {CarCard} from "../CarCard/CarCard";
-import {selectBrends, selectHandbooks, useAppNavigate, useAppSelector} from "../../../../app/services";
+import {selectBrends, selectHandbooks, useAppNavigate, useAppSelector} from "app/services";
 import {useTranslation} from "react-i18next";
 import {useTestResults} from "../../lib/hooks";
-import {useAuthorize} from "../../../../entities/User/lib/hooks";
 
 interface IProps {
     data: NS.TestData

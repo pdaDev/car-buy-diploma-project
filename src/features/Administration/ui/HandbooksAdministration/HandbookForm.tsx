@@ -8,13 +8,11 @@ import {
     Input, Label,
     Stack, useMultiLanguageHandbooks,
     useMultiLanguageValidationErrors
-} from "../../../../shared";
-import {useAppDispatch} from "../../../../app/services";
-import {openModal} from "../../../../app/services/withPopupProvider";
+} from "shared";
+import {useAppDispatch} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
 import {useTranslation} from "react-i18next";
-import {handbookValidators, modelValidators} from "../../lib/validators";
-import {FormBuilder} from "../FormBuilder/FormBuilder";
-import {apiRoutes, EMPTY_MODEL} from "../../lib/constants";
+import {handbookValidators} from "../../lib/validators";
 import {InputField} from "../FormBuilder/InputField";
 
 interface IProps {

@@ -7,20 +7,13 @@ import {
     sorter,
     Stack,
     usePaginationAndSorting
-} from "../../../../../shared";
-import Icon from "@mdi/react";
-import {mdiMagnify, mdiPlusCircle} from "@mdi/js/commonjs/mdi";
-import {SortBLock} from "../../../../SortBlock";
-import {EntitiesList} from "../EntitiesList";
-import {selectBrends, useAppSelector} from "../../../../../app/services";
-import {useTranslation} from "react-i18next";
+} from "shared";
 import * as NS from '../../../namespace'
 import {useDeleteEntity} from "../../../lib/hooks";
 import {apiRoutes} from "../../../lib/constants";
-import {useGetBrendsQuery, useGetModelsQuery} from "../../../api";
+import {useGetBrendsQuery} from "../../../api";
 import {EntitiesListItem} from "../EnititiesListItem";
 import {CommonListForm} from "../../CommonListForm";
-import {useGetCarBrendQuery} from "../../../../../entities/Car";
 
 interface IProps {
     selectBrend: Function

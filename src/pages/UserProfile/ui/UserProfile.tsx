@@ -1,10 +1,10 @@
 import React, {FC, useEffect, useState} from "react";
-import {useAppDispatch, useAppSelector} from "../../../app/services";
+import {useAppDispatch, useAppSelector} from "app/services";
 import {getAnotherUserProfileData, getUserName, selectors} from 'entities/User'
 import {useParams} from "react-router-dom";
-import {ProfileUserCard} from "../../../entities/User/ui/ProfileUserCard/ProfileUserCard";
-import {Container, Stack, Switcher, useTabTile} from "../../../shared";
-import {AdvertisementsList} from "../../../widgets/AdvertisementsList";
+import {ProfileUserCard} from "entities/User/ui/ProfileUserCard/ProfileUserCard";
+import {Container, Stack, useTabTile} from "shared";
+import {AdvertisementsList} from "widgets/AdvertisementsList";
 import {useTranslation} from "react-i18next";
 export const UserProfile: FC = () => {
     const d = useAppDispatch()

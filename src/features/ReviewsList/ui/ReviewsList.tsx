@@ -1,19 +1,18 @@
 import React, {FC, useState} from "react";
-import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
-import {AdvertisementCard, NS} from "../../../entities/Advertisement";
+import {AdvertisementCard} from "entities/Advertisement";
 import {SortBLock} from "../../SortBlock";
-import {selectHandbook, useAppNavigate, useAppSelector} from "../../../app/services";
-import {selectors as userSelectors} from "../../../entities/User";
+import { useAppNavigate} from "app/services";
+
 import {
-    CardType, Container, DataGrid,
-    Grid, IServerReviewListItem, Label, List,
+    CardType, DataGrid,
+   IServerReviewListItem, List,
     Stack,
-} from "../../../shared";
-import {useTranslation} from "react-i18next";
+} from "shared";
+
 import {ChangeAdvertisementType} from "../../ChangeADvertisementType";
-import {ReviewCard} from "../../../entities/Review";
-import {AdvertisementManagementPanel, ReviewManagementPanel} from "../../ManagemenentPanel";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+import {ReviewCard} from "entities/Review";
+import { ReviewManagementPanel} from "../../ManagemenentPanel";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 
 interface IProps {

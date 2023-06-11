@@ -1,26 +1,23 @@
 import {FC, useEffect, useState} from "react";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+import {useAuthorize} from "entities/User/lib/hooks";
 import {
-    Button, Card,
+    Button,
     Container,
     getTranslationIndexCreator,
-    Label, List,
+    Label,
     sorter,
-    Stack, Text,
-    usePaginationAndSorting, useQuery, useQueryObject, useTabTile
-} from "../../../shared";
+    Stack,
+    usePaginationAndSorting, useQueryObject, useTabTile
+} from "shared";
 import {useTranslation} from "react-i18next";
 import * as NS from 'features/Test/namespace'
 import {SaveResultsCard} from "./SaveResultsCard";
-import {useAppNavigate, useAppSelector} from "../../../app/services";
-import {deleteTestResults} from "../../../features/Test/api/savedResultsAPI";
-import {SortBLock} from "../../../features/SortBlock";
-import {useTestResults} from "../../../features/Test/lib/hooks";
-import {MotivationBlock} from "../../../shared/ui/MotivationBlock/MotivationBlock";
-import {selectSavedResultsId} from "../../../features/Test/model/selectors";
+import {useAppNavigate, useAppSelector} from "app/services";
+import {SortBLock} from "features/SortBlock";
+import {useTestResults} from "features/Test/lib/hooks";
+import {selectSavedResultsId} from "features/Test/model/selectors";
 import {INIT_TEST_DATA} from "../../Test/lib/constants";
-import {AuthMotivation} from "../../../features/Auth";
-import {useSearchParams} from "react-router-dom";
+import {AuthMotivation} from "features/Auth";
 
 export const SaveTestResults: FC = () => {
     const {sort, onSort} = usePaginationAndSorting()

@@ -1,6 +1,6 @@
 import {FC} from "react";
-import {IAdvertisementListItemWithStatus} from "../../../entities/Advertisement/namespace";
-import {Card, CircleDiagram, Container, IOption, Label, Stack} from "../../../shared";
+import {IAdvertisementListItemWithStatus} from "entities/Advertisement/namespace";
+import {Card, CircleDiagram, Container, IOption, Label, Stack} from "shared";
 
 
 interface IProps {

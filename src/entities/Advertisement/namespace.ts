@@ -5,8 +5,7 @@ import {
     IShortHandbookItem,
     IUserCommonData, Nullable,
     PaginationParams,
-    ReviewPoints
-} from "../../shared";
+} from "shared";
 import {IReview} from "../Review/namespace";
 
 

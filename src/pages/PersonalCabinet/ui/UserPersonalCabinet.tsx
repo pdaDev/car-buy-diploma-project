@@ -1,24 +1,22 @@
 import {FC} from "react";
 import {selectors} from 'entities/User'
-import {useAppSelector} from "../../../app/services";
+import {useAppSelector} from "app/services";
 
-import {ProfileUserCard} from "../../../entities/User/ui/ProfileUserCard/ProfileUserCard";
+import {ProfileUserCard} from "entities/User/ui/ProfileUserCard/ProfileUserCard";
 import {
-    Card,
     Clickable,
     Container,
-    Input,
     Stack,
     Tooltip,
     useNavigationPermission,
     useQueryParamsFormMode
-} from "../../../shared";
+} from "shared";
 import Icon from "@mdi/react";
 import {mdiPencil} from "@mdi/js/commonjs/mdi";
-import {ProfileEditForm} from "../../../features/ProfileEditForm/ui/ProfileEditForm";
+import {ProfileEditForm} from "features/ProfileEditForm/ui/ProfileEditForm";
 
 export const UserPersonalCabinet: FC = () => {
-    const {id, isAdmin, data} = useAppSelector(selectors.selectCurrentUser)
+    const {data} = useAppSelector(selectors.selectCurrentUser)
     const {setEditMode, setViewMode, isEditMode} = useQueryParamsFormMode()
     useNavigationPermission(['authorized'])
 

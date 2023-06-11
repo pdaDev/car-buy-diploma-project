@@ -1,19 +1,15 @@
-import {FC, MouseEventHandler, ReactNode} from "react";
+import {FC, MouseEventHandler} from "react";
 import {
-    Card,
     CardImageViewer,
     Container,
-    formatPrice,
-    getCarName,
     getCarNameFromObjectWithId,
-    Grid,
     Label,
     Price,
     Stack
-} from "../../../../shared";
+} from "shared";
 import * as NS from '../../namespace'
 import s from './CompareCard.module.scss'
-import {useAppNavigate} from "../../../../app/services";
+import {useAppNavigate} from "app/services";
 import {useContentCompare} from "../../lib/hooks";
 import Icon from "@mdi/react";
 import {mdiClose} from "@mdi/js";

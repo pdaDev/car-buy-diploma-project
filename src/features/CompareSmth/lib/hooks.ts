@@ -1,10 +1,6 @@
 import {addToCompare, removeFromCompare} from "../model";
-import {useAppDispatch, useAppSelector} from "../../../app/services";
+import {useAppDispatch, useAppSelector} from "app/services";
 import {selectCompareAds, selectCompareModels} from "../model/selectors";
-
-
-
-
 
 
 export const useContentCompare = (type: 'ad' | 'model', compare_item_id: number) => {

@@ -1,6 +1,6 @@
 import {FC} from "react";
-import {UserAdministrationForm} from "../../../features/Administration/ui/UserAdministration/UserAdministrationForm";
-import {Container, Stack, useNavigationPermission, useTabTile} from "../../../shared";
+import {UserAdministrationForm} from "features/Administration/ui/UserAdministration/UserAdministrationForm";
+import {Container, Stack, useTabTile} from "shared";
 import {BackButton} from "./BackButton";
 import {useTranslation} from "react-i18next";
 

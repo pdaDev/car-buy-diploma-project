@@ -1,9 +1,9 @@
 import {FC} from "react";
 import {useTranslation} from "react-i18next";
-import {Button, Clickable, Stack} from "../../../shared";
+import {Button, Clickable, Stack} from "shared";
 import Icon from "@mdi/react";
 import {mdiArrowLeftThin} from "@mdi/js/commonjs/mdi";
-import {useAppNavigate} from "../../../app/services";
+import {useAppNavigate} from "app/services";
 
 interface IProps {
     onClick?: Function

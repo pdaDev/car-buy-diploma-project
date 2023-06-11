@@ -10,13 +10,10 @@ import {
     List,
     Loader,
     Stack
-} from "../../../../../shared";
-import {useGetCarModelsQuery} from "../../../../../entities/Car";
-import {GenerationCard} from "../Generation/GenerationCard";
+} from "shared";
 import {CommonListForm} from "../../CommonListForm";
 import {useGetModelsQuery} from "../../../api";
 import * as NS from '../../../namespace'
-import {ModelCard} from "../Model/ModelCard";
 import {EntitiesListItem} from "../EnititiesListItem";
 import {useDeleteEntity} from "../../../lib/hooks";
 import {apiRoutes} from "../../../lib/constants";

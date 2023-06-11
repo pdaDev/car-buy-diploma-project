@@ -1,21 +1,18 @@
-import {FC, useState} from 'react'
+import {FC} from 'react'
 
-import s from './AuthForm.module.scss'
 import {
     Button,
     Input,
-    Label,
-    Box,
     Stack,
+    PasswordInput,
     useMultiLanguageValidationErrors,
     basicValidators,
-    getTranslationIndexCreator, Separator
-} from "../../../../shared";
-import {useAppDispatch, useAppSelector} from "../../../../app/services";
+    getTranslationIndexCreator
+} from "shared";
+import {useAppDispatch, useAppSelector} from "app/services";
 
-import {login, IAuthPayload, selectors, loginViaVK} from 'entities/User'
+import {login, IAuthPayload, selectors} from 'entities/User'
 import {SubmitHandler, useForm} from "react-hook-form";
-import {PasswordInput} from "../../../../shared/ui/Inputs/PasswordInput/PasswordInput";
 import {validators} from "../../lib/validators";
 import {useTranslation} from "react-i18next";
 

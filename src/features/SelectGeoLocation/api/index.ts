@@ -1,8 +1,5 @@
 // ts-nocheck
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {axiosBaseQuery} from "../../../shared";
-import * as NS from '../namespace'
-import {IServerGeoLocationItem, IServerResponse} from "../namespace";
+import {IServerGeoLocationItem} from "../namespace";
 import fetchJsonp from "fetch-jsonp";
 
 export const getRussianRegions = async () => {

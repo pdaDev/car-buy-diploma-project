@@ -1,24 +1,23 @@
 import React, {FC, useEffect, useState} from "react";
 import {
-    Button, Card, Container, Form,
-    Input, IRetrieveImage,
+    Button, Container, Form,
+    Input,
     IServerCarName, Label, LoadedImage,
     LoadImages,
     ReviewPointsWithoutTotal, SelectedCar,
     Stack,
     TextArea, useMultiLanguageValidationErrors
-} from "../../../shared";
+} from "shared";
 import {RenderFormLine} from "./RenderFormLine";
-import {ReviewSetScore} from "../../../features/ReviewSetScore";
-import {CarSearchBlock} from "../../../features/ExtendedSearch/ui/CarSeachBlock";
+import {ReviewSetScore} from "features/ReviewSetScore";
+import {CarSearchBlock} from "features/ExtendedSearch/ui/CarSeachBlock";
 import {NS} from 'entities/Review'
-import {CarTitle} from "../../../entities/Car/ui/CarTitle/CarTitle";
-import {useGetCarFullNameQuery} from "../../../entities/Car";
+import {CarTitle} from "entities/Car/ui/CarTitle/CarTitle";
+import {useGetCarFullNameQuery} from "entities/Car";
 import {useForm} from "react-hook-form";
 import {validators} from "../lib/validators";
 import {useSearchParams} from "react-router-dom";
-import {useAppDispatch} from "../../../app/services";
-import {openModal} from "../../../app/services/withPopupProvider";
+import {useAppDispatch} from "app/services";
 import {useTranslation} from "react-i18next";
 
 

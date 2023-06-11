@@ -2,7 +2,7 @@ import {FC, MouseEventHandler, ReactNode} from "react";
 
 import * as NS from '../../namespace'
 import s from './AdvertisementCard.module.scss'
-import {addPrefix, Card, CardImageViewer, cn, Container, formatPrice, Label, Stack, Symbol} from "../../../../shared";
+import {addPrefix, CardImageViewer, cn, formatPrice, Label, Stack} from "shared";
 
 interface IProps {
     data: NS.IAdvertisementCardData | null

@@ -1,10 +1,10 @@
 import {FC} from "react";
 import {NS} from 'entities/Car'
-import {Card, Grid, Label, Separator, Stack, useMultiLanguageHandbooks} from "../../../shared";
+import {Card, Grid, Label, Separator, Stack, useMultiLanguageHandbooks} from "shared";
 import {useTranslation} from "react-i18next";
 import s from './CarGenerationsList.module.scss'
-import {useAppNavigate} from "../../../app/services";
-import {getGenerationPeriod} from "../../../entities/Car/lib/helpers";
+import {useAppNavigate} from "app/services";
+import {getGenerationPeriod} from "entities/Car/lib/helpers";
 
 interface IProps {
     loading?: boolean

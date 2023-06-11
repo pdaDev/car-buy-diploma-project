@@ -1,7 +1,7 @@
 import {FC, MouseEventHandler} from 'react'
 
 import s from './NotificationCloseButton.module.scss'
-import {closeSymbol} from "../../../../shared";
+import {closeSymbol} from "shared";
 
 interface IProps {
     onClick: Function

@@ -1,30 +1,21 @@
-import {FC, useState} from "react";
+import {FC} from "react";
 import {useTranslation} from "react-i18next";
 import {
-    BaseSearchData,
-    Button,
     ColorMark,
     Container,
-    createHandbookOptions,
-    createOptions,
-    DoubleInputRange,
     ExtendedSearchData,
     filtersCreator,
     getTranslationIndexCreator,
     Grid,
-    IHandbookItem,
     Label,
     RangeInput,
     SearchType,
-    SeparatedInput,
     Stack,
     useMultiLanguageHandbooks,
     useQuerySearchCar
-} from "../../../shared";
-import {Selector} from "../../../shared/ui/Selector/Selector";
-import {selectHandbooks, selectBrends, selectGenerations, selectModels} from 'app/services/withCommonData'
-import {useAppSelector} from "../../../app/services";
-import {getHandbook} from "../../../app/services/withCommonData/api/thunks";
+} from "shared";
+import {selectHandbooks} from 'app/services/withCommonData'
+import {useAppSelector} from "app/services";
 import {CarSearchBlock} from "./CarSeachBlock";
 import {MaterialCard} from "../../Administration/ui/CarAdministration/Equipment/MaterialCard";
 import {DoubleRangeInputSearch} from "./DoubleRangeInput";

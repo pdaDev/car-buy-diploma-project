@@ -1,27 +1,23 @@
 import {FC, useMemo} from "react";
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
+import {useAppDispatch, useAppNavigate, useAppSelector} from "app/services";
 import {
     ChatNotificationCard, clearNotifications,
     NS,
-    removeFromVisible, removeNotification,
-    selectors, SystemNotificationCard,
-    useNotifyVisibleUpdate
-} from "../../../entities/Notification";
+removeNotification, SystemNotificationCard,
+} from "entities/Notification";
 import {
-    addPrefix,
     Button,
-    cn,
     Container,
     getTimeWithoutSeconds,
     getTranslationIndexCreator,
     Label,
     Stack
-} from "../../../shared";
+} from "shared";
 import s from './SideMenuNotifications.module.scss'
 import {useTranslation} from "react-i18next";
-import {getNotificationsLS, removeNotificationLS, resetNotificationsLS} from "../../../entities/Notification/api";
-import {INotification} from "../../../entities/Notification/namespace";
-import {getAllNotifications} from "../../../entities/Notification/model/selectors";
+import {removeNotificationLS, resetNotificationsLS} from "entities/Notification/api";
+import {INotification} from "entities/Notification/namespace";
+import {getAllNotifications} from "entities/Notification/model/selectors";
 
 export const SideMenuNotifications: FC = () => {
     const notifications = useAppSelector(getAllNotifications)

@@ -1,5 +1,5 @@
 import {FC, ReactNode} from "react";
-import {Card, getTranslationIndexCreator, Input, Label, Stack} from "../../../shared";
+import {Card, Label, Stack} from "shared";
 import {useTranslation} from "react-i18next";
 
 interface IProps {

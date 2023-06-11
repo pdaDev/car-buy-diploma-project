@@ -1,25 +1,22 @@
-import {FC, useEffect, useState} from "react";
+import {FC} from "react";
 
 import s from './Header.module.scss'
-import {Button, FullScreenImageViewer, Label, ThreeDotsButton, useOpenStatus} from "../../../shared";
-import {HeaderSearch} from "../../../features/HeaderSearch";
+import {Button, FullScreenImageViewer, Label, ThreeDotsButton, useOpenStatus} from "shared";
 import {
     FavouritesButton
-} from "../../../features/OperateWithAdvertisementFavourites/ui/FavouritesButton/FavouritesButton";
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
-import {UISettings} from "../../../features/UISettings";
-import {HeaderUserMenu} from "../../../features/HeaderUserMenu/ui/HeaderUserMenu";
+} from "features/OperateWithAdvertisementFavourites/ui/FavouritesButton/FavouritesButton";
+import {useAppDispatch, useAppNavigate, useAppSelector} from "app/services";
+import {UISettings} from "features/UISettings";
+import {HeaderUserMenu} from "features/HeaderUserMenu/ui/HeaderUserMenu";
 import {logout, selectors as userSelectors} from 'entities/User'
 import {selectors as favouritesSelectors} from 'features/OperateWithAdvertisementFavourites'
-import {openModal} from "../../../app/services/withPopupProvider";
-import {AuthFormContainer} from "../../../features/Auth";
-import {SelectGeoLocation} from "../../../features/SelectGeoLocation/ui/SelectGeoLocation";
+import {openModal} from "app/services/withPopupProvider";
+import {AuthFormContainer} from "features/Auth";
+import {SelectGeoLocation} from "features/SelectGeoLocation/ui/SelectGeoLocation";
 import {useTranslation} from "react-i18next";
-import {CompareButton} from "../../../features/CompareSmth";
-import {ConfirmationModal} from "../../../app/services/withPopupProvider";
-import Icon from "@mdi/react";
-import {mdiCarSearch} from "@mdi/js/commonjs/mdi";
-import {TestResultsButton} from "../../../features/Test/ui/TestResultsButton/TestResultsButton";
+import {CompareButton} from "features/CompareSmth";
+import {ConfirmationModal} from "app/services/withPopupProvider";
+import {TestResultsButton} from "features/Test/ui/TestResultsButton/TestResultsButton";
 
 interface IProps {
     transparent: boolean

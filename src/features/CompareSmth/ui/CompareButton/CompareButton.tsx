@@ -1,6 +1,6 @@
 import {FC} from "react";
-import {useAppNavigate, useAppSelector} from "../../../../app/services";
-import {Button} from "../../../../shared";
+import {useAppNavigate, useAppSelector} from "app/services";
+import {Button} from "shared";
 import {useTranslation} from "react-i18next";
 import {selectors} from '../../model'
 

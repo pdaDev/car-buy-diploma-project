@@ -7,7 +7,7 @@ import {
     Label,
     Stack,
     useMultiLanguageHandbooks
-} from "../../../../../shared";
+} from "shared";
 import * as NS from '../../../namespace'
 import {PropsRender} from "../../PropsRender";
 import {useTranslation} from "react-i18next";

@@ -1,8 +1,6 @@
 import {FC} from "react";
-import {useDeleteReviewMutation, useReviewManagement} from "../../../entities/Review";
-import {useAppDispatch, useAppNavigate} from "../../../app/services";
-import {Button, Card} from "../../../shared";
-import {openModal} from "../../../app/services/withPopupProvider";
+import {useReviewManagement} from "entities/Review";
+import {Button, Card} from "shared";
 
 interface IProps {
     id: number

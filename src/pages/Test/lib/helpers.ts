@@ -1,4 +1,4 @@
-import * as NS from "../../../features/Test/namespace";
+import * as NS from "features/Test/namespace";
 
 type ELement = NS.Step['elements'][0]
 

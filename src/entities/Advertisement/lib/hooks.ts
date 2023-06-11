@@ -1,8 +1,8 @@
 import * as NS from './../namespace'
-import {useAppDispatch, useAppNavigate} from "../../../app/services";
+import {useAppDispatch, useAppNavigate} from "app/services";
 import React from "react";
 import {useDeleteAdMutation, usePatchAdMutation} from "../api";
-import {openModal} from "../../../app/services/withPopupProvider";
+import {openModal} from "app/services/withPopupProvider";
 
 export const useAdvertisementManagement = (advertisementId: number, status: NS.StatusCode) => {
     const n = useAppNavigate()

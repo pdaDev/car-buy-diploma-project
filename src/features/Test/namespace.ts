@@ -1,9 +1,6 @@
 import {ReactNode} from "react";
-import {ICarBodyTypeHandbook, ICarNameWithId, IOption} from "../../shared";
-import {IServerAdvertisement} from "../../entities/Advertisement/namespace";
-import {CarProps} from "../../entities/Car/namespace";
-import {number} from "prop-types";
-import {Timestamp} from "firebase/firestore";
+import {ICarBodyTypeHandbook, ICarNameWithId} from "shared";
+import {CarProps} from "entities/Car/namespace";
 
 
 

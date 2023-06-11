@@ -1,4 +1,4 @@
-import {capitalize, getFirstSymbolInUpperCase, UserNicknameType} from "../../../shared";
+import {capitalize, getFirstSymbolInUpperCase, UserNicknameType} from "shared";
 
 export const getUserName = (type: UserNicknameType, first_name: string | null | undefined, last_name: string | null | undefined) => {
     switch (type) {

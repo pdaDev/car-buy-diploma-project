@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {privateApi} from "../../../shared";
+import {privateApi} from "shared";
 import {addFavouriteAd, removeFavouriteAd} from "./slice";
 
 

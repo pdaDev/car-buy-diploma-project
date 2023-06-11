@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import {Container, Label, Sorter, Stack} from "../../../shared";
+import {Container, Label, Sorter, Stack} from "shared";
 import {useTranslation} from "react-i18next";
 interface IProps {
     sortKeys: string[]

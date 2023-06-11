@@ -2,8 +2,7 @@ import {FC} from "react";
 import {CommonListForm} from "../../CommonListForm";
 import {useGetGenerationsQuery} from "../../../api";
 import * as NS from '../../../namespace'
-import {GenerationCard} from "../Generation/GenerationCard";
-import {Card, Container, Details, getTranslationIndexCreator, Grid, Stack} from "../../../../../shared";
+import {Card,getTranslationIndexCreator, Grid, Stack} from "shared";
 import {PropsRender} from "../../PropsRender";
 import {EntitiesListItem} from "../EnititiesListItem";
 import {useDeleteEntity} from "../../../lib/hooks";

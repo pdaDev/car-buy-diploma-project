@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
-import {cleanCompareData, getCompareList, NS, selectors, setCompareLoadingStatus} from "../../../features/CompareSmth";
+import {useAppDispatch, useAppNavigate, useAppSelector} from "app/services";
+import {cleanCompareData, getCompareList, NS, selectors, setCompareLoadingStatus} from "features/CompareSmth";
 import {
     Button,
     Checkbox,
@@ -11,16 +11,15 @@ import {
     Loader,
     Stack,
     Switcher,
-    useTabTile
-} from "../../../shared";
+    useTabTile, MotivationBlock
+} from "shared";
 import {useTranslation} from "react-i18next";
-import {CompareBlock} from "../../../widgets/CompareBlock";
-import {MotivationBlock} from "../../../shared/ui/MotivationBlock/MotivationBlock";
-import {flatObject} from "../../../features/CompareSmth/lib/helpers";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {CompareResultsModal} from "../../../features/CompareSmth/ui/CompareResultsModal/CompareResultsModal";
-import {characteristicsForCompare} from "../../../features/CompareSmth/lib/constants";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+import {CompareBlock} from "widgets/CompareBlock";
+import {flatObject} from "features/CompareSmth/lib/helpers";
+import {openModal} from "app/services/withPopupProvider";
+import {CompareResultsModal} from "features/CompareSmth/ui/CompareResultsModal/CompareResultsModal";
+import {characteristicsForCompare} from "features/CompareSmth/lib/constants";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 export const Compare: FC = () => {
 

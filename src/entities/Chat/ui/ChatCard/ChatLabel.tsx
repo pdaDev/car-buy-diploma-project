@@ -1,15 +1,11 @@
 import {FC, ReactNode} from "react";
 import {
-    Container,
-    getTimeWithoutSeconds,
-    ICarName, ICarNameWithId,
+    ICarNameWithId,
     IUserCommonData, Label,
     Stack,
-    Symbol, Text,
     UserAvatar,
     UserNickname
-} from "../../../../shared";
-import {UserBlock} from "../../../../shared/ui/User/UserBlock/UserBlock";
+} from "shared";
 import s from './ChatCard.module.scss'
 import Icon from "@mdi/react";
 import {mdiFaceAgent} from "@mdi/js/commonjs/mdi";

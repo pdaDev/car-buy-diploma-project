@@ -1,13 +1,10 @@
 import {FC} from "react";
-import {AdvertisementForm} from "../../../widgets/AdvertisementCreateForm";
-import {NS, useCreateAdvertisementMutation} from 'entities/Advertisement'
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
-import {selectors as userSelectors} from "../../../entities/User";
-import {MotivationBlock} from "../../../shared/ui/MotivationBlock/MotivationBlock";
+import {AdvertisementForm} from "widgets/AdvertisementCreateForm";
+import {useCreateAdvertisementMutation} from 'entities/Advertisement'
+import {useAppNavigate} from "app/services";
 import {useTranslation} from "react-i18next";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {getTranslationIndexCreator, useNavigationPermission, useTabTile} from "../../../shared";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+import {getTranslationIndexCreator, useNavigationPermission, useTabTile, MotivationBlock} from "shared";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 export const CreateAdvertisement: FC = () => {
     const [create, { isLoading: isCreateLoading }] = useCreateAdvertisementMutation()

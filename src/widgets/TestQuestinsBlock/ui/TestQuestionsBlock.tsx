@@ -1,7 +1,7 @@
-import {FC, useState} from "react";
+import {FC} from "react";
 import * as NS from 'features/Test/namespace'
-import {Card, Container, Stack, TestProgressBar, useQuery} from "../../../shared";
-import {NavigationButtons, StepsWrapper} from "../../../features/Test";
+import {Card, Container, Stack, TestProgressBar, useQuery} from "shared";
+import {NavigationButtons, StepsWrapper} from "features/Test";
 
 import {MultipleValue} from "features/Test/namespace";;
 

@@ -6,13 +6,10 @@ import {
     IBrend,
     LoadSingleImage,
     useMultiLanguageHandbooks
-} from "../../../../../shared";
+} from "shared";
 import {useGetProducersQuery} from "../../../api";
-import {selectHandbook, useAppSelector} from "../../../../../app/services";
-import {useTranslation} from "react-i18next";
 import {FormBuilder} from "../../FormBuilder/FormBuilder";
 import {apiRoutes, EMPTY_BREND, EMPTY_TRANSMISSION} from "../../../lib/constants";
-import {type} from "@testing-library/user-event/dist/type";
 import {brendValidators} from "../../../lib/validators";
 
 export const BrendForm: FC<NS.CommonFormData<IBrend>> = ({ defaultData, close, type }) => {

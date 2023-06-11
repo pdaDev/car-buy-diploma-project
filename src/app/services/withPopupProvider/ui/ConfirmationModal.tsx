@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Button, Card, Container, getTranslationIndexCreator, Label, Stack, Text} from "../../../../shared";
+import {Button, Card, Container, getTranslationIndexCreator, Label, Stack, Text} from "shared";
 import {useTranslation} from "react-i18next";
 import {withPopup} from "../lib/hocs";
 import * as NS from '../namespace'

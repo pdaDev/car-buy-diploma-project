@@ -1,7 +1,7 @@
 import {FC} from "react";
 
 import s from './HeaderSearch.module.scss'
-import {Selector} from "../../../shared/ui/Selector/Selector";
+import {Selector} from "shared";
 interface IProps {
 
 }

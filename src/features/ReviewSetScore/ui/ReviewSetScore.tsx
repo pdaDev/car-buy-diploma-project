@@ -1,6 +1,5 @@
 import {FC} from "react";
-import {RangeFilter, ReviewPoints, ReviewPointsWithoutTotal, Stack} from "../../../shared";
-import { NS } from 'entities/Review'
+import {ReviewPoints, ReviewPointsWithoutTotal, Stack} from "shared";
 import {SetPointLine} from "./SetPointLine";
 interface IProps {
     data: ReviewPointsWithoutTotal

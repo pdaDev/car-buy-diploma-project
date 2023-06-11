@@ -1,9 +1,8 @@
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
-import {selectUserId} from "../../../entities/User/model/selectors";
+import {useAppDispatch, useAppNavigate} from "app/services";
 import {clearTestResults, deleteTestResults, getResults, saveResults} from "../api/savedResultsAPI";
 import * as NS from '../namespace'
 import {reduxDeleteResult, reduxSaveResult, reduxSetResults} from "../model/slice";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 export const useTestStart = () => {
     const n = useAppNavigate()

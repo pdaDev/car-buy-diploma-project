@@ -1,8 +1,8 @@
 import React, {FC, ReactNode} from "react";
-import {MotivationBlock} from "../../../../shared/ui/MotivationBlock/MotivationBlock";
-import {useAuthorize} from "../../../../entities/User/lib/hooks";
+import {MotivationBlock} from "shared";
+import {useAuthorize} from "entities/User/lib/hooks";
 import {useTranslation} from "react-i18next";
-import {selectInitializedStatus, useAppSelector} from "../../../../app/services";
+import {selectInitializedStatus, useAppSelector} from "app/services";
 
 
 interface IProps {

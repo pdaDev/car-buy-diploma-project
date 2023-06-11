@@ -1,6 +1,6 @@
 import * as NS from 'features/Test/namespace'
-import {arrayUnion, doc, getDoc, setDoc, Timestamp, updateDoc} from "firebase/firestore";
-import {db} from "../../../entities/Chat";
+import {arrayUnion, doc, getDoc, setDoc, updateDoc} from "firebase/firestore";
+import {db} from "entities/Chat";
 
 const LS_KEY = 'saved_tests'
 const FB_DOC_PATH = "user_test_results"

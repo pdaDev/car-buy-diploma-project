@@ -4,18 +4,15 @@ import {
     BaseSearchData,
     Box,
     Button,
-    Container, createMultiLanguageOptions, createRuWordEndingByNumberGetter, ExtendedSearchData, INIT_SEARCH_DATA,
-    IOption,
+    Container, createMultiLanguageOptions, ExtendedSearchData, INIT_SEARCH_DATA,
     SearchType,
     Stack,
-    Switcher
+    Label
 } from "shared";
 
-import s from './SearchBlock.module.scss'
 import {BaseSearch} from "features/BaseSearch";
-import {ExtendedSearch} from "../../../features/ExtendedSearch";
-import {Label} from "../../../shared/ui/Label/Label";
-import {useSearchQuery} from "../../../features/Administration/lib/hooks";
+import {ExtendedSearch} from "features/ExtendedSearch";
+
 import {useSearchParams} from "react-router-dom";
 
 
@@ -55,8 +52,6 @@ export const SearchBlock: FC<IProps> = ({
     const setAdvertisementType = (o: any) => {
         // @ts-ignore
         onChange({...data, advertisementType: o})
-
-
     }
 
     const toggleMode = () => {

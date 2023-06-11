@@ -1,9 +1,7 @@
 import {FC, ReactNode} from 'react'
 
 import s from './ReviewScoreBlock.module.scss'
-import * as NS from '../../namespace'
-import {Box, Container, Label, Stack, ReviewPoints} from "../../../../shared";
-import {CircleDiagram} from "../../../../shared/ui/CircleDiagram/CircelDiagram";
+import {CircleDiagram, Container, Label, Stack, ReviewPoints} from "shared";
 import {ReviewPointLine} from "./ReviewPointLine";
 import {SAMPLE_REVIEW_POINTS} from "../../lib/constants";
 

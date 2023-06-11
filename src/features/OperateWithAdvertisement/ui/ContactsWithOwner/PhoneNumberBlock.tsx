@@ -1,11 +1,8 @@
 import {FC, useState} from "react";
 import s from "./ContactWtihOwner.module.scss";
-import {formatPhoneNumber} from "../../../../shared";
-import {useAppDispatch, useAppSelector} from "../../../../app/services";
-import {selectors as userSelectors} from "../../../../entities/User";
-import {openModal} from "../../../../app/services/withPopupProvider";
+import {formatPhoneNumber} from "shared";
 import {useTranslation} from "react-i18next";
-import {useAuthorize} from "../../../../entities/User/lib/hooks";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 interface IProps {
     phoneNumber: string | null | undefined

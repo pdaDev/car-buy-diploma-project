@@ -1,8 +1,6 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
-import {axiosBaseQuery, CommonServerListResult, IHandbookItem} from "../../../shared";
+import {axiosBaseQuery, CommonServerListResult, IHandbookItem} from "shared";
 import * as NS from '../namespace'
-import {IServerUser} from "../../../entities/User";
-import {IServerBrend} from "../../../entities/Car/namespace";
 
 export const adminAPI = createApi({
     reducerPath: 'admin',

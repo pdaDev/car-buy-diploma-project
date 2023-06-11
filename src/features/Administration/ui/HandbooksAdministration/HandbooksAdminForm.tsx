@@ -1,5 +1,5 @@
 import {FC, useEffect, useState} from "react";
-import {handbooks} from "../../../../app/services/withCommonData/namespace";
+import {handbooks} from "app/services/withCommonData/namespace";
 import * as NS from '../../namespace'
 import {
     useCreateHandbookItemMutation,
@@ -16,15 +16,15 @@ import {
     Stack,
     Table,
     useMultiLanguageHandbooks, usePaginationAndSorting
-} from "../../../../shared";
+} from "shared";
 import {getHandbookEmptyItem} from "../../lib/helpers";
 import {useTranslation} from "react-i18next";
-import {useAppDispatch} from "../../../../app/services";
-import {openModal} from "../../../../app/services/withPopupProvider";
+import {useAppDispatch} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
 import {HandbookForm} from "./HandbookForm";
 import {SortBLock} from "../../../SortBlock";
  import {FormType} from "../../namespace";
- import {addSystemNotification} from "../../../../entities/Notification";
+ import {addSystemNotification} from "entities/Notification";
 
 
 interface IProps {

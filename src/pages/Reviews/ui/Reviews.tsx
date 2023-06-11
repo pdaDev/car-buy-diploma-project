@@ -1,22 +1,15 @@
-import {FC, useEffect, useMemo, useRef, useState} from "react";
+import {FC, useEffect, useRef, useState} from "react";
 import {
     Container,
-    ExtendedSearchData, ICarSearch,
     IServerReviewListItem,
-    List, Loader,
     Stack, useClassState,
     useOnScrollPagination, usePaginationAndSorting, useQuerySearchCar
-} from "../../../shared";
-import {ReviewCard, useGetReviewsQuery} from "../../../entities/Review";
-import {useAppNavigate} from "../../../app/services";
-import {useSearchParams} from "react-router-dom";
+} from "shared";
+import {useGetReviewsQuery} from "entities/Review";
 import {NS} from 'entities/Review'
-import {ReviewSearchForm} from "../../../features/ReviewsSearchForm";
-import {SortBLock} from "../../../features/SortBlock";
-import {ReviewRangeFilter} from "../../../features/ReviewsSearchForm/ui/ReviewRangeFilter";
-import {ReviewsList} from "../../../features/ReviewsList/ui/ReviewsList";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
-import {EMPTY_SEARCH_DATA} from "../lib/constants";
+import {ReviewSearchForm} from "features/ReviewsSearchForm";
+import {ReviewsList} from "features/ReviewsList";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 export const Reviews: FC = () => {
 

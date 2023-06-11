@@ -1,9 +1,6 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import {AdvertisementCard} from "./AdvertisementCard";
-import {
-    FavouritesButton
-} from "../../../../features/OperateWithAdvertisementFavourites/ui/FavouritesButton/FavouritesButton";
-// import {AdvertisementManagementPanel} from "../../../../features/OperateWithAdvertisement";
+
 
 export default {
     name: 'AdvertisementCard',

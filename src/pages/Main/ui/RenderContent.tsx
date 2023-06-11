@@ -1,6 +1,6 @@
 import {FC, ReactNode} from "react";
 import {useTranslation} from "react-i18next";
-import {Label, Stack} from "../../../shared";
+import {Label, Stack} from "shared";
 
 interface IProps {
     children: ReactNode

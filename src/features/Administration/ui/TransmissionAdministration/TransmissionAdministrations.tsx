@@ -1,24 +1,21 @@
 import {FC} from "react";
 import {useGetProducersQuery, useGetTransmissionsQuery} from "../../api";
-import {useFormOpenStatus, useSearchQuery} from "../../lib/hooks";
-import {CommonListForm} from "../CommonListForm";
-import * as NS from '../../namespace'
+import * as NS from '../../namespace';
 
 import {
     createHandbookOptions,
+    Selector,
     createOptions,
-    Details, filtersCreator, Label, Stack,
+    filtersCreator, Label, Stack,
     useClassState,
     useMultiLanguageHandbooks
-} from "../../../../shared";
+} from "shared";
 import {TransmissionCard} from "./TransmissionCard";
 import {CommonSingleEntityForm} from "../CommonSingleEntityForm";
 import {TransmissionForm} from "./TransmissionForm";
-import {apiRoutes, EMPTY_TRANSMISSION} from "../../lib/constants";
-import {selectHandbook, selectHandbooks, useAppSelector} from "../../../../app/services";
-import {number} from "prop-types";
+import {apiRoutes} from "../../lib/constants";
+import {selectHandbook, useAppSelector} from "app/services";
 import {useTranslation} from "react-i18next";
-import {Selector} from "../../../../shared/ui/Selector/Selector";
 
 export const TransmissionAdministrations: FC = () => {
 

@@ -1,24 +1,18 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useState} from "react";
 import {
     Button,
     Container,
-    IServerReviewListItem,
-    Label, sorter, sortList, Stack, useNavigationPermission,
-    useTabTile
-} from "../../../shared";
+    Label, sorter, Stack,
+    useTabTile,
+    MotivationBlock
+} from "shared";
 import {useTranslation} from "react-i18next";
-import {SortBLock} from "../../../features/SortBlock";
-import {selectHandbook, useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
-import {selectors} from "../../../entities/User";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {useGetMyAdsQuery} from "../../../entities/Advertisement";
-import {MotivationBlock} from "../../../shared/ui/MotivationBlock/MotivationBlock";
-import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
-import {useGetMyReviewsQuery} from "../../../entities/Review";
+import { useAppNavigate, useAppSelector} from "app/services";
+import {selectors} from "entities/User";
+import {useGetMyReviewsQuery} from "entities/Review";
 
-import {ReviewsList} from "../../../features/ReviewsList";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
-import {AuthMotivation} from "../../../features/Auth";
+import {ReviewsList} from "features/ReviewsList";
+import {AuthMotivation} from "features/Auth";
 
 
 export const MyReviews: FC = () => {

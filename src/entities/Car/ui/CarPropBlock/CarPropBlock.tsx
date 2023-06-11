@@ -1,8 +1,7 @@
 import {FC} from 'react'
 
-import s from './CarPropBlock.module.scss'
 import * as NS from '../../namespace'
-import {Container, flatCarProps, Grid, Label, Stack} from "../../../../shared";
+import {Container, flatCarProps, Grid, Label, Stack} from "shared";
 import {useTranslation} from "react-i18next";
 
 import {CarPropLine} from "../CarPropLine/CarPropLine";

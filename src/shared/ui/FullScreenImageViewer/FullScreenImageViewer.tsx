@@ -1,13 +1,12 @@
 import {FC, useEffect, useRef, useState} from 'react'
 
 import s from './FullScreenImageViewer.module.scss'
-import {Container} from "../Layout";
-import {cn, debounce} from "../../lib";
-import {withPopup} from "../../../../../car-buy/src/app/services/withPopupProvider/lib/hocs";
-import {observe} from "web-vitals/dist/modules/lib/observe";
+
+import {withPopup} from "app/services/withPopupProvider/lib/hocs";
+
 import {NavigationImageItem} from "./NavigationImageItem";
 import {FullScreenImage} from "./FullScreenImage";
-import * as NS from "../../../../../car-buy/src/app/services/withPopupProvider/namespace";
+import * as NS from "app/services/withPopupProvider/namespace";
 
 
 type Props = NS.IBaseModelProps & NS.IImagePayload

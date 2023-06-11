@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Card, Label} from "../../../../shared";
+import {Card, Label} from "shared";
 import Icon from "@mdi/react";
 import s from './Administration.module.scss'
 

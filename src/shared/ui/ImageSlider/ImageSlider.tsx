@@ -1,19 +1,15 @@
-import React, {FC, ReactNode, useEffect, useLayoutEffect, useRef, useState} from 'react'
+import React, {FC, ReactNode, useState} from 'react'
 
 import s from './ImageSlider.module.scss'
-import {NavigationButton} from "./NavigationButton";
-import {Container, Stack} from "../Layout";
+
+import {Container} from "../Layout";
 import {cn} from "../../lib";
 import {Slider} from "../Slider/Slider";
 import {Image} from "../Image/Image";
-import {Counter} from "../Counter/Counter";
 import {NumberCounter} from "../NumberCounter/NumberCounter";
-import {Label} from "../Label/Label";
 import {useTranslation} from "react-i18next";
-import {useAppDispatch} from "../../../../../car-buy/src/app/services";
-import {openModal} from "../../../../../car-buy/src/app/services/withPopupProvider";
-import {Simulate} from "react-dom/test-utils";
-import click = Simulate.click;
+import {useAppDispatch} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
 import {Symbol} from "../Symbol/Symbol";
 
 interface IProps {

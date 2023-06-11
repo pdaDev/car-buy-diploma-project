@@ -5,12 +5,11 @@ import {mdiDeleteOutline, mdiPencil, mdiProgressClose} from '@mdi/js';
 import Icon from "@mdi/react";
 import { usePatchAdMutation } from 'entities/Advertisement'
 import {useSearchParams} from "react-router-dom";
-import { useDeleteAdMutation } from "../../../../entities/Advertisement";
-import {Selector} from "../../../../shared/ui/Selector/Selector";
-import {Container, IHandbookItem, Stack, useMultiLanguageHandbooks, useQueryParamsFormMode} from "../../../../shared";
-import {selectHandbook, useAppDispatch, useAppSelector} from "../../../../app/services";
-import {StatusCode} from "../../../../entities/Advertisement/namespace";
-import {openModal} from "../../../../app/services/withPopupProvider";
+import { useDeleteAdMutation } from "entities/Advertisement";
+import {Container, IHandbookItem, Stack, useMultiLanguageHandbooks,Selector, useQueryParamsFormMode} from "shared";
+import {selectHandbook, useAppDispatch, useAppSelector} from "app/services";
+import {StatusCode} from "entities/Advertisement/namespace";
+import {openModal} from "app/services/withPopupProvider";
 
 interface IProps {
     advertisementId: number

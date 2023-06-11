@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Label, Stack} from "../../../../shared";
+import {Label, Stack} from "shared";
 import {useTranslation} from "react-i18next";
 
 interface IProps {

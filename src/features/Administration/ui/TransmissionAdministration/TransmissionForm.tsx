@@ -1,10 +1,9 @@
 import {FC} from "react";
 import * as NS from '../../namespace'
 import {FormBuilder} from "../FormBuilder/FormBuilder";
-import {selectHandbook, useAppSelector} from "../../../../app/services";
+import {selectHandbook, useAppSelector} from "app/services";
 import {useGetProducersQuery} from "../../api";
-import {useHandbook} from "../../../../app/services/withCommonData/lib/hooks";
-import {createHandbookOptions, createOptions, IHandbookItem, useMultiLanguageHandbooks} from "../../../../shared";
+import {createHandbookOptions, createOptions, useMultiLanguageHandbooks} from "shared";
 import {useTranslation} from "react-i18next";
 import {apiRoutes, EMPTY_TRANSMISSION} from "../../lib/constants";
 import {getCarPropsIndex} from "../../lib/helpers";

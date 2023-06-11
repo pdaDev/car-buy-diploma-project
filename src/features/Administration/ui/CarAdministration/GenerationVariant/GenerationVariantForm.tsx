@@ -2,8 +2,8 @@ import React, {FC, useState} from "react";
 import * as NS from '../../../namespace'
 import {FormBuilder} from "../../FormBuilder/FormBuilder";
 import {apiRoutes, EMPTY_GENERATION, EMPTY_GENERATION_VARIANT} from "../../../lib/constants";
-import {selectHandbooks, useAppSelector} from "../../../../../app/services";
-import {LoadedImage, LoadImages, useMultiLanguageHandbooks} from "../../../../../shared";
+import {selectHandbooks, useAppSelector} from "app/services";
+import {LoadedImage, LoadImages, useMultiLanguageHandbooks} from "shared";
 import {getCarPropsIndex} from "../../../lib/helpers";
 import {generationVariantValidators} from "../../../lib/validators";
 

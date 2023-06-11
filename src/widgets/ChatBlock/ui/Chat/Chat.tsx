@@ -1,37 +1,30 @@
 import {FC, useEffect, useRef, useState} from "react";
-import {Container, ChatLoadedImage, Stack} from "../../../../shared";
-import {MessagesWrapper} from "../../../../entities/Chat/ui/MessagesWrapper/MessagesWrapper";
-import {ChatHeader, SendMessage} from "../../../../features/Chat";
+import {ChatLoadedImage, Stack} from "shared";
+import {MessagesWrapper} from "entities/Chat";
+import {ChatHeader, SendMessage} from "features/Chat";
 import {addCarId, addUserId, db, NS, parseChatId, storage} from 'entities/Chat'
 import {
     arrayUnion,
     collection,
     doc,
-    getDoc,
-    getDocs,
     onSnapshot,
-    query, setDoc,
+    setDoc,
     Timestamp,
     updateDoc,
-    where
 } from "firebase/firestore";
-import {useAppDispatch, useAppSelector} from "../../../../app/services";
+import {useAppDispatch, useAppSelector} from "app/services";
 import {
     selectCars,
     selectCarsId,
     selectChatDataLoadingStatus, selectChats, selectUsers,
     selectUsersId
-} from "../../../../entities/Chat/model/selectors";
-import {selectAuthStatus, selectCurrentUser, selectUserId} from "../../../../entities/User/model/selectors";
+} from "entities/Chat/model/selectors";
+import {selectAuthStatus, selectCurrentUser} from "entities/User/model/selectors";
 import {deleteObject, getDownloadURL, ref, uploadBytesResumable} from "firebase/storage";
 import {v4 as uuid} from "uuid";
-import {IMessage, LastMessage} from "../../../../entities/Chat/namespace";
-import {MessagesMenu} from "../../../../entities/Chat/ui/MessagesMenu/MessagesMenu";
-import {getUserName, IUserData} from "../../../../entities/User";
-import {MotivationBlock} from "../../../../shared/ui/MotivationBlock/MotivationBlock";
-import {useTranslation} from "react-i18next";
-import {useAuthorize} from "../../../../entities/User/lib/hooks";
-import {AuthMotivation} from "../../../../features/Auth";
+import {IMessage, LastMessage} from "entities/Chat/namespace";
+import {MessagesMenu} from "entities/Chat/ui/MessagesMenu/MessagesMenu";
+import {AuthMotivation} from "features/Auth";
 
 interface IProps {
     selectedChat: string

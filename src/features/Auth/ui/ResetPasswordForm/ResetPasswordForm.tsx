@@ -1,23 +1,20 @@
 import {FC, useState} from 'react'
 
-import s from './ResetPasswordForm.module.scss'
-import {PasswordInput} from "../../../../shared/ui/Inputs/PasswordInput/PasswordInput";
 import {validators} from "../../lib/validators";
-import {set, useForm} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import {
     api,
     Button,
     Checkbox, Container,
     Form,
     getTranslationIndexCreator, Input, Label, SeparatedInput, Stack,
-    Switcher, Text, Timer,
+    PasswordInput, Text, Timer,
     useMultiLanguageValidationErrors
-} from "../../../../shared";
-import {IAuthPayload, IRegisterPayload} from "../../../../entities/User";
+} from "shared";
+
 import {FormValues} from "../../namespace";
 import {useTranslation} from "react-i18next";
-import {closeModal} from "../../../../app/services/withPopupProvider";
-import {useAppDispatch} from "../../../../app/services";
+
 
 interface IProps {
     setLoginForm: Function

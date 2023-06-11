@@ -1,12 +1,10 @@
 import React, {ComponentType, FC, useEffect} from "react";
-import {connect, ConnectedProps, MapStateToProps, MapStateToPropsParam} from "react-redux";
-import {selectBrends, selectGenerations, selectHandbooks, selectModels} from '../model'
-import {StateType, useAppDispatch, useAppSelector} from "../../withStore";
+import {selectBrends, selectGenerations, selectModels} from '../model'
+import {useAppDispatch, useAppSelector} from "../../withStore";
 import {getBrends, getGenerations, getHandbook, getModels} from '../api/thunks'
-import {HandbookOption, handbooks as handbooksOptions, IReduxState} from "../namespace";
-import {useNotify} from "../../../../entities/Notification";
+import {HandbookOption, handbooks as handbooksOptions} from "../namespace";
 import fetchJsonp from "fetch-jsonp";
-import {IServerGeoLocationItem} from "../../../../features/SelectGeoLocation/namespace";
+import {IServerGeoLocationItem} from "features/SelectGeoLocation/namespace";
 import {setRegions} from "../model/slice";
 
 export const withCommonData = (Component: ComponentType<any>) => {

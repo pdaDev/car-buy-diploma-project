@@ -1,12 +1,9 @@
-import {FC} from "react";
 import {
-    checkIsRussian,
     getTranslationIndexCreator, IHandbookItem, isHandbook,
     Label,
-    Separator,
     Stack,
     useMultiLanguageHandbooks
-} from "../../../shared";
+} from "shared";
 import {useTranslation} from "react-i18next";
 
 interface IProps<T> {

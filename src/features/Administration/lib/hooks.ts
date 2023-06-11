@@ -1,8 +1,8 @@
 import {useRef, useState} from "react";
 import * as NS from '../namespace'
 import {F} from "@storybook/react-webpack5/dist/types-6a41b796";
-import {useAppDispatch} from "../../../app/services";
-import {openModal} from "../../../app/services/withPopupProvider";
+import {useAppDispatch} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
 import {useDeleteCarDataMutation} from "../api";
 import {object} from "prop-types";
 

@@ -1,10 +1,9 @@
 import {FC} from "react";
 import * as NS from '../../../namespace'
-import {selectHandbooks, useAppSelector} from "../../../../../app/services";
-import {getTranslationIndex, useMultiLanguageHandbooks} from "../../../../../shared";
+import {selectHandbooks, useAppSelector} from "app/services";
+import {useMultiLanguageHandbooks} from "shared";
 import {FormBuilder} from "../../FormBuilder/FormBuilder";
-import {apiRoutes, EMPTY_GENERATION, EMPTY_MODEL} from "../../../lib/constants";
-import {getCarPropsIndex} from "../../../lib/helpers";
+import {apiRoutes, EMPTY_GENERATION} from "../../../lib/constants";
 import {generationValidators} from "../../../lib/validators";
 
 interface IProps {

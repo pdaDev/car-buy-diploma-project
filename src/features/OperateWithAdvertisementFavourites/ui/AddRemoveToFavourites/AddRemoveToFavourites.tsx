@@ -1,8 +1,8 @@
-import {FC, MouseEventHandler, useState} from "react";
+import {FC, MouseEventHandler} from "react";
 
 import s from './AddRemoveToFavourites.module.scss'
 
-import {cn, HeartIconFilled, HeartIcon} from "../../../../shared";
+import {cn, HeartIconFilled, HeartIcon} from "shared";
 import {useAdvertisementsFavourites} from "../../lib/hooks";
 
 interface IProps {

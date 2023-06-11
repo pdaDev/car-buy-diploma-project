@@ -1,12 +1,11 @@
 import {FC, MouseEventHandler, useEffect, useRef} from 'react'
 import s from './Message.module.scss'
-import {addPrefix, Clickable, cn, getTimeWithoutSeconds, Image, Label, Stack, Text} from "../../../../shared";
-import {Timestamp} from 'firebase/firestore'
+import {addPrefix, cn, getTimeWithoutSeconds, Image, Label, Stack, Text} from "shared";
 import {useTranslation} from "react-i18next";
 import Icon from "@mdi/react";
 import {mdiCheck, mdiPencil, mdiReply} from "@mdi/js/commonjs/mdi";
-import {useAppDispatch} from "../../../../app/services";
-import {openModal} from "../../../../app/services/withPopupProvider";
+import {useAppDispatch} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
 
 
 interface IProps {

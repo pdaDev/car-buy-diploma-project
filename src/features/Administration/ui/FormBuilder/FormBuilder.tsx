@@ -11,12 +11,12 @@ import {
     isHandbook, Label,
     Stack,
     useMultiLanguageValidationErrors, Validators
-} from "../../../../shared";
-import {useAppDispatch} from "../../../../app/services";
+} from "shared";
+import {useAppDispatch} from "app/services";
 import {useCreateCarDataMutation, useUpdateCarDataMutation} from "../../api";
-import {openModal} from "../../../../app/services/withPopupProvider";
+import {openModal} from "app/services/withPopupProvider";
 import {number} from "prop-types";
-import {addSystemNotification} from "../../../../entities/Notification";
+import {addSystemNotification} from "entities/Notification";
 
 interface IProps<T extends object, D extends object> {
     config: NS.FormBuilderConfig<T>,

@@ -1,24 +1,22 @@
 import React, {FC, useEffect, useState} from "react";
-import {selectHandbook, useAppDispatch, useAppSelector} from "app/services";
-import {selectors} from 'entities/User'
-import {useGetAdsMutation, useGetMyAdsQuery} from "../../../entities/Advertisement/api/queryAPI";
-import {AdvertisementsList} from "../../../widgets/AdvertisementsList";
-import {MotivationBlock} from "../../../shared/ui/MotivationBlock/MotivationBlock";
+import {selectHandbook, useAppSelector} from "app/services";
+import {useGetMyAdsQuery} from "entities/Advertisement";
+import {AdvertisementsList} from "widgets/AdvertisementsList";
 import {useTranslation} from "react-i18next";
 
 import {
+    MotivationBlock,
     Container,
     IHandbookItem,
-    sortList,
     Label,
     Stack,
     useMultiLanguageHandbooks,
     useTabTile,
-    IOption, Switcher, sorter, CircleDiagram, useNavigationPermission
-} from "../../../shared";
+    IOption, Switcher
+} from "shared";
 
-import {useAuthorize} from "../../../entities/User/lib/hooks";
-import {AuthMotivation} from "../../../features/Auth/ui/AuthMotivation/AuthMotivation";
+import {useAuthorize} from "entities/User/lib/hooks";
+import {AuthMotivation} from "features/Auth";
 import {AdvertisementsAnalyze} from "./AdvertisementsAnalyze";
 
 export const Garage: FC = () => {

@@ -1,4 +1,4 @@
-import {api, privateApi} from "../../../shared";
+import {api, privateApi} from "shared";
 import * as NS from '../namespace'
 
 interface ILSOutcome<T extends object = any> {

@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import * as NS from '../namespace'
 import {getBrends, getGenerations, getHandbook, getModels} from "../api/thunks";
 import {getInitHandbooks} from "../lib/helpers";
-import {IServerGeoLocationItem} from "../../../../features/SelectGeoLocation/namespace";
+import {IServerGeoLocationItem} from "features/SelectGeoLocation/namespace";
 
 
 const initialState = {

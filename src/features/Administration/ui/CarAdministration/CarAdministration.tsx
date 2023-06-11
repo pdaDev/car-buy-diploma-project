@@ -1,22 +1,15 @@
 import {FC, useState} from "react";
-import {selectBrends, useAppSelector} from "../../../../app/services";
+
 import {
-    Button,
-    Card,
     Container,
-    getTranslationIndexCreator,
-    IBrend, Input, PathNavigation,
-    sorter, Stack,
+    IBrend, PathNavigation,
+    Stack,
     useMultiLanguageHandbooks,
-    usePaginationAndSorting
-} from "../../../../shared";
-import {useTranslation} from "react-i18next";
+} from "shared";
+
 import * as NS from "../../namespace";
 import {useFormOpenStatus} from "../../lib/hooks";
-import Icon from "@mdi/react";
-import {mdiMagnify} from "@mdi/js/commonjs/mdi";
-import {SortBLock} from "../../../SortBlock";
-import {EntitiesList} from "./EntitiesList";
+
 import {BrendCard} from "./Brend/BrendCard";
 import {ModelCard} from "./Model/ModelCard";
 import {GenerationCard} from "./Generation/GenerationCard";
@@ -30,14 +23,6 @@ import {GenerationForm} from "./Generation/GenerationForm";
 import {GenerationVariantForm} from "./GenerationVariant/GenerationVariantForm";
 import {EquipmentForm} from "./Equipment/EquipementForm";
 import {ConcreteCarFrom} from "./Car/ConcreteCarFrom";
-import {
-    EMPTY_BREND, EMPTY_CONCRETE_CAR,
-    EMPTY_EQUIPMENT,
-    EMPTY_GENERATION,
-    EMPTY_GENERATION_VARIANT,
-    EMPTY_MODEL
-} from "../../lib/constants";
-
 
 export const CarAdministration: FC = () => {
 

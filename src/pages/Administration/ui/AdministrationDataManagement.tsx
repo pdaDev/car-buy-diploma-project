@@ -1,22 +1,22 @@
 import {FC, useState} from "react";
 import {
-    Button,
+
     Card, CaseRenderer,
     Container,
     createMultiLanguageOptions,
-    getTranslationIndexCreator, IOption,
-    Label, Paginator,
-    SideNavigationMenu, Stack, useNavigationPermission, usePaginationAndSorting, useTabTile
-} from "../../../shared";
+    getTranslationIndexCreator,
+    Label,
+    SideNavigationMenu, Stack, useTabTile
+} from "shared";
 import {useTranslation} from "react-i18next";
-import {handbooks} from "../../../app/services/withCommonData/namespace";
+import {handbooks} from "app/services/withCommonData/namespace";
 import {
     CarAdministration,
     EnginesAdministration,
     HandbooksAdminForm,
     ProducersAdministrations,
     TransmissionAdministrations
-} from "../../../features/Administration";
+} from "features/Administration";
 import {BackButton} from "./BackButton";
 
 

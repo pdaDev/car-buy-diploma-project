@@ -1,13 +1,12 @@
 import {
     IBrend,
     ICarBodyTypeHandbook,
-    ICarName,
     IColor,
     IHandbookItem,
     IServerCarName,
     IServerReviewListItem
-} from "../../shared";
-import {IServerEquipment, IServerProducer} from "../../features/Administration";
+} from "shared";
+import {IServerEquipment, IServerProducer} from "features/Administration";
 import {IAdvertisementListItem} from "../Advertisement/namespace";
 
 

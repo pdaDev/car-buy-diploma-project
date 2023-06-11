@@ -1,10 +1,8 @@
 import {FC, MouseEventHandler, ReactNode} from "react";
-import {Clickable, Container, Label, Separator, Stack} from "../../../../shared";
+import {Clickable, Container, Label, Separator, Stack} from "shared";
 import Icon from "@mdi/react";
 import s from './CarAdminnistrattion.module.scss'
 import {mdiCircle, mdiDelete, mdiFileEdit} from "@mdi/js/commonjs/mdi";
-import {useAppDispatch} from "../../../../app/services";
-import {openModal} from "../../../../app/services/withPopupProvider";
 import * as NS from '../../namespace'
 
 interface IProps {

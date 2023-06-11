@@ -1,9 +1,9 @@
 import {FC} from "react";
-import {IBaseModelProps} from "../../../app/services/withPopupProvider/namespace";
+import {IBaseModelProps} from "app/services/withPopupProvider/namespace";
 import {useTranslation} from "react-i18next";
-import {withPopup} from "../../../app/services/withPopupProvider/lib/hocs";
-import {Button, Card, getTranslationIndexCreator, Label, Stack, Text} from "../../../shared";
-import {useAppNavigate} from "../../../app/services";
+import {withPopup} from "app/services/withPopupProvider/lib/hocs";
+import {Button, Card, getTranslationIndexCreator, Label, Stack, Text} from "shared";
+import {useAppNavigate} from "app/services";
 
 type Props = IBaseModelProps
 

@@ -1,4 +1,4 @@
-import {FC, ReactNode, useState} from "react";
+import {FC, ReactNode} from "react";
 import {
     Box,
     Button,
@@ -11,12 +11,9 @@ import {
     Paginator,
     Stack, Symbol,
     usePaginationAndSorting
-} from "../../../shared";
-import {useGetUsersQuery, usePatchUserStatusMutation} from "../api";
-import {number} from "prop-types";
+} from "shared";
 import {useTranslation} from "react-i18next";
 import {SortBLock} from "../../SortBlock";
-import {UserCard} from "./UserAdministration/UserCard";
 import {useSearchQuery} from "../lib/hooks";
 import Icon from "@mdi/react";
 import {mdiMagnify, mdiPlusCircle} from "@mdi/js/commonjs/mdi";

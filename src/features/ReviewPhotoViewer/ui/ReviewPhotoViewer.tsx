@@ -1,10 +1,10 @@
-import {ChangeEventHandler, FC, MouseEventHandler, UIEventHandler, useEffect, useRef, useState} from "react";
+import {FC, MouseEventHandler, UIEventHandler, useEffect, useRef, useState} from "react";
 import s from './ReviewPhotoViewer.module.scss'
-import {NavigationButton} from "../../../shared/ui/Slider/NavigationButton";
+
 import styled from "styled-components";
-import {Box, Image} from "../../../shared";
-import {useAppDispatch} from "../../../app/services";
-import {openModal} from "../../../app/services/withPopupProvider";
+import {Image, NavigationButton} from "shared";
+import {useAppDispatch} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
 
 
 interface IProps {

@@ -1,5 +1,4 @@
-import {DoubleInputRange, getTranslationIndexCreator, RangeFilter} from "../../../shared";
-import {MinMax} from "../../Test/namespace";
+import {DoubleInputRange, RangeFilter} from "shared";
 import {FC} from "react";
 import {useTranslation} from "react-i18next";
 

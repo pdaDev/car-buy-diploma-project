@@ -3,11 +3,10 @@ import {
     Card,
     formatNumber,
     formatPrice,
-    getCarName,
     getCarNameFromModelWithId,
     ICarNameWithId,
-    Label, Stack, useMultiLanguageHandbooks
-} from "../../../../shared";
+    Label, useMultiLanguageHandbooks
+} from "shared";
 import * as NS from '../../namespace'
 import s from './AdvertisementFullscreenImageBanner.module.scss'
 import {useTranslation} from "react-i18next";

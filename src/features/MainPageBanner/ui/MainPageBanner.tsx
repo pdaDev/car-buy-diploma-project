@@ -1,11 +1,11 @@
 import {FC} from "react";
-import {Button, Card, getTranslationIndexCreator, Image, Stack, Symbol} from "../../../shared";
+import {Button, getTranslationIndexCreator, Image, Stack, Symbol} from "shared";
 // @ts-ignore
-import promo from "../../../pages/Main/ui/image 6.png";
-import {useAppDispatch, useAppNavigate} from "../../../app/services";
+import promo from "pages/Main/ui/image 6.png";
+import {useAppDispatch, useAppNavigate} from "app/services";
 import {useTranslation} from "react-i18next";
 import s from './MainPageBanner.module.scss'
-import {openModal} from "../../../app/services/withPopupProvider";
+import {openModal} from "app/services/withPopupProvider";
 
 export const MainPageBanner: FC = () => {
     const d = useAppDispatch()

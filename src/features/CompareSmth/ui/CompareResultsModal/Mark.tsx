@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {addPrefix, cn, Label} from "../../../../shared";
+import {addPrefix, cn} from "shared";
 import s from './CompareResultsModals.module.scss'
 interface IProps {
     mark: number

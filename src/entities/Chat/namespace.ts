@@ -1,5 +1,4 @@
-import {ICarNameWithId, IUserCommonData} from "../../shared";
-import {Timestamp} from "firebase/firestore";
+import {ICarNameWithId, IUserCommonData} from "shared";
 
 export type ChatType = 'sell' | 'support' | 'admin'
 export type LastMessage = Pick<IMessage, 'text' | 'date' | 'senderId'>

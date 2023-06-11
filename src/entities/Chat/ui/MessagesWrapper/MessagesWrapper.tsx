@@ -1,26 +1,23 @@
 import {DragEventHandler, FC, MouseEventHandler, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react'
 import {NS} from 'entities/Chat'
 import s from './MessagesWrapper.module.scss'
-import {useAppSelector} from "../../../../app/services";
+import {useAppSelector} from "app/services";
 import {selectCurrentUser, selectUserId} from "../../../User/model/selectors";
 import {Message} from "../Message/Message";
 import {
-    Card, checkIsRussian,
-    Clickable,
-    cn, Container, createRuWordEndingByNumberGetter,
-    getTranslationIndex,
+    Card,
+    cn, Container,
+    getTranslationIndex, Calendar,
     getTranslationIndexCreator, IUserCommonData,
     Label,
-    LoadedImage, Loader, Stack,
-    Text, useFileDrop, useForceUpdate, useOpenStatus
-} from "../../../../shared";
+    Loader,
+    Text, useFileDrop,
+} from "shared";
 import {IMessage} from "../../namespace";
 
 import {useTranslation} from "react-i18next";
 import Icon from "@mdi/react";
 import {mdiCamera} from "@mdi/js/commonjs/mdi";
-import {TimeoutId} from "@reduxjs/toolkit/dist/query/core/buildMiddleware/types";
-import {Calendar} from "../../../../shared/ui/Inputs/DateInput/Calendar";
 import {getUserName, IUserData} from "../../../User";
 
 interface IProps {

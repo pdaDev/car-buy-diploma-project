@@ -1,5 +1,5 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {axiosBaseQuery, CommonGetListPayload, CommonServerListResult, IServerReviewListItem} from "../../../shared";
+import {createApi} from "@reduxjs/toolkit/query/react";
+import {axiosBaseQuery, CommonGetListPayload, CommonServerListResult, IServerReviewListItem} from "shared";
 import * as NS from '../namespace'
 
 export const reviewAPI = createApi({

@@ -1,17 +1,14 @@
 import {FC} from "react";
 import {
-    Button,
-    Card,
     Container,
     getTranslationIndexCreator,
     Grid,
     Label,
     Stack,
     useNavigationPermission, useTabTile
-} from "../../../../shared";
+} from "shared";
 import {useTranslation} from "react-i18next";
-import {useAppNavigate} from "../../../../app/services";
-import Icon from "@mdi/react";
+import {useAppNavigate} from "app/services";
 import {NavigationCard} from "./NavigationCard";
 import {mdiAccountMultiple, mdiDatabaseEdit} from "@mdi/js/commonjs/mdi";
 

@@ -1,10 +1,10 @@
 import {FC, useEffect} from "react";
 import {useParams} from "react-router-dom";
-import {ChatBlock} from "../../../widgets/ChatBlock";
-import {useAppDispatch, useAppNavigate} from "../../../app/services";
-import {Card, Container, useNavigationPermission, useTabTile} from "../../../shared";
-import {setCurrentChat} from "../../../entities/Chat";
-import {AuthMotivation} from "../../../features/Auth";
+import {ChatBlock} from "widgets/ChatBlock";
+import {useAppDispatch, useAppNavigate} from "app/services";
+import {Card, Container, useTabTile} from "shared";
+import {setCurrentChat} from "entities/Chat";
+import {AuthMotivation} from "features/Auth";
 import {useTranslation} from "react-i18next";
 
 export const Chat: FC = () => {

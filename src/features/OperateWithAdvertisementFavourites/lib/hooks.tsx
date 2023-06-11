@@ -1,4 +1,4 @@
-import {useAppDispatch, useAppSelector} from "../../../app/services";
+import {useAppDispatch, useAppSelector} from "app/services";
 import {addFavourite, removeFavourite, selectors} from "../model";
 
 export const useAdvertisementsFavourites = (advertisementId: number) => {

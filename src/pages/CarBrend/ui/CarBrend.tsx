@@ -1,11 +1,9 @@
 import {FC} from "react";
 import {useParams} from "react-router-dom";
-import {CarModelMiniCard, useGetCarBrendQuery, NS} from "../../../entities/Car";
-import {Box, Card, Container, Grid, Image, Label, Stack, Text, useMultiLanguageHandbooks} from "../../../shared";
-import {useAppNavigate} from "../../../app/services";
+import {useGetCarBrendQuery} from "entities/Car";
+import { Card, Container, Image, Label, Stack, Text, useMultiLanguageHandbooks} from "shared";
 import {useTranslation} from "react-i18next";
-import {BrendModelsGrid} from "../../../widgets/BrendModelsGrid";
-import {IModelMiniCard} from "../../../entities/Car/namespace";
+import {BrendModelsGrid} from "widgets/BrendModelsGrid";
 import s from './CarBrend.module.scss'
 import {SAMPLE_BREND_MODELS} from "../lib/constants";
 

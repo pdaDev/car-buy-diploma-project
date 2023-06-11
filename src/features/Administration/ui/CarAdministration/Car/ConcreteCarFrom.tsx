@@ -1,9 +1,8 @@
 import {FC} from "react";
 import * as NS from '../../../namespace'
-import {selectHandbooks, useAppSelector} from "../../../../../app/services";
-import {useMultiLanguageHandbooks} from "../../../../../shared";
+import {useMultiLanguageHandbooks} from "shared";
 import {FormBuilder} from "../../FormBuilder/FormBuilder";
-import {apiRoutes, EMPTY_CONCRETE_CAR, EMPTY_GENERATION} from "../../../lib/constants";
+import {apiRoutes, EMPTY_CONCRETE_CAR} from "../../../lib/constants";
 import {getCarPropsIndex} from "../../../lib/helpers";
 import {concreteCarValidators} from "../../../lib/validators";
 

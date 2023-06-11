@@ -1,6 +1,5 @@
 // @ts-nocheck
-
-import {isObject} from "../../../shared";
+import {isObject} from "shared";
 
 const flatObjectLevel = (obj: object, level: number, maxLevel?: number) => {
     return Object.keys(obj)

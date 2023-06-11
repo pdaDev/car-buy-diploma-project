@@ -1,7 +1,7 @@
 import {FC, KeyboardEvent, useRef, useState} from "react";
 import s from './SelectGeoLocation.module.scss'
 import {IServerGeoLocationItem} from "../namespace";
-import {Label, useBlurFocus} from "../../../shared";
+import {Label} from "shared";
 import {getGeoItemLabel} from "../lib/helpers";
 import Icon from "@mdi/react";
 import {mdiClose, mdiMagnify} from "@mdi/js/commonjs/mdi";

@@ -1,21 +1,17 @@
 import React, {FC, useEffect, useMemo, useState} from "react";
-import {selectHandbooks, selectSearchGeoLocation, useAppSelector} from "../../../app/services";
-import {SearchBlock} from "../../../widgets/SearchBlock/ui/SearchBlock";
+import {selectSearchGeoLocation, useAppSelector} from "app/services";
+import {SearchBlock} from "widgets/SearchBlock/ui/SearchBlock";
 import {
-    BaseSearchData, Container, createRuWordEndingByNumberGetter,
+    BaseSearchData, createRuWordEndingByNumberGetter,
     ExtendedSearchData,
-    ICarSearch,
     INIT_SEARCH_DATA,
-    List,
-    SearchType, Stack, Text,
+    SearchType, Stack,
     useClassState, useOnScrollPagination, usePaginationAndSorting, useQuerySearchCar, useTabTile
-} from "../../../shared";
-import {useGetAdsMutation, useGetPreSearchDataQuery} from "../../../entities/Advertisement/api/queryAPI";
-import {AdvertisementsList} from "../../../widgets/AdvertisementsList/ui/AdvertisementsList";
-import {selectAuthStatus} from "../../../entities/User/model/selectors";
-import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
-import {getSearchGeoLocation} from "../../../features/SelectGeoLocation/api";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+} from "shared";
+import {useGetAdsMutation, useGetPreSearchDataQuery} from "entities/Advertisement";
+import {AdvertisementsList} from "widgets/AdvertisementsList";
+import {IAdvertisementListItem} from "entities/Advertisement/namespace";
+import {useAuthorize} from "entities/User/lib/hooks";
 import {useTranslation} from "react-i18next";
 
 export const Search: FC = () => {

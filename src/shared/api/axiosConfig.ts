@@ -1,10 +1,10 @@
 import axios from "axios";
 import {BASE_URL, SAFE_METHODS} from "../lib";
 import {getToken, refreshToken} from "./token.api";
-import type { AxiosRequestConfig, AxiosError } from 'axios'
+import type { AxiosRequestConfig } from 'axios'
 import {BaseQueryFn} from "@reduxjs/toolkit/query";
-import {parseError, setFatalError, StateType} from "../../../../car-buy/src/app/services";
-import {addSystemNotification} from "../../../../car-buy/src/entities/Notification";
+import {parseError, setFatalError, StateType} from "app/services";
+import {addSystemNotification} from "entities/Notification";
 
 
 

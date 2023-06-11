@@ -1,13 +1,12 @@
 import {FC} from "react";
-import {Button, Card, Container, Label, Stack, Symbol, useOpenStatus, UserNickname} from "../../../../shared";
+import {Button, Card, Container, Label, Stack, Symbol, useOpenStatus, UserNickname} from "shared";
 import * as NS from '../../namespace'
 import s from './UserAdministration.module.scss'
 import {useTranslation} from "react-i18next";
-import {UserProfile} from "../../../../pages/UserProfile";
-import {ProfileUserCard} from "../../../../entities/User/ui/ProfileUserCard/ProfileUserCard";
+import {ProfileUserCard} from "entities/User/ui/ProfileUserCard/ProfileUserCard";
 import {AdvertisementCount} from "./AdvertisementCount";
-import {useAppNavigate} from "../../../../app/services";
-import {useStartChat} from "../../../../entities/Chat";
+import {useAppNavigate} from "app/services";
+import {useStartChat} from "entities/Chat";
 
 interface IProps {
     data: null | NS.IAdminServerUser

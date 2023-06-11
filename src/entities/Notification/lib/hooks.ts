@@ -1,6 +1,6 @@
 import * as NS from '../namespace'
 import {useEffect, useRef, useState} from "react";
-import {useAppDispatch, useAppSelector} from "../../../app/services";
+import {useAppDispatch, useAppSelector} from "app/services";
 import {
     addChatNotification, addInformNotification,
     addNotification, addSystemNotification,
@@ -8,7 +8,6 @@ import {
     selectors, setNotifications, viewNotification
 } from "../model";
 import {addNotificationLS, getNotificationsLS, viewNotificationLS} from "../api";
-import {INotification} from "../namespace";
 
 interface IUseNotifyReturnType {
     notify: (notification: NS.NotificationPayload) => void

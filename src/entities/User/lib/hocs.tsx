@@ -1,8 +1,8 @@
 import {Component, ComponentType, FC, useEffect} from "react";
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
+import {useAppDispatch, useAppNavigate, useAppSelector} from "app/services";
 import {activateUser, authme} from "../model";
 import {selectActiveStatus, selectBanStatus} from "../model/selectors";
-import {Card, Container as UIContainer, Label, Stack, Text} from "../../../shared";
+import {Card, Container as UIContainer, Label, Stack, Text} from "shared";
 import {useTranslation} from "react-i18next";
 import {useSearchParams} from "react-router-dom";
 import {addSystemNotification} from "../../Notification";

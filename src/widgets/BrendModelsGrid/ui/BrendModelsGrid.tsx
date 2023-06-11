@@ -1,8 +1,8 @@
 // @ts-nocheck
 import {FC, memo, useMemo} from "react";
-import {CarModelMiniCard, NS} from "../../../entities/Car";
-import {addPrefix, cn, Grid} from "../../../shared";
-import {useAppNavigate} from "../../../app/services";
+import {CarModelMiniCard, NS} from "entities/Car";
+import {addPrefix, cn} from "shared";
+import {useAppNavigate} from "app/services";
 import s from './BrendModelsGrid.module.scss'
 
 interface IProps {

@@ -1,4 +1,4 @@
-import {Box, Container, getTranslationIndexCreator, Label, Stack, Symbol, Text} from "../../../../shared";
+import {Box, Container, getTranslationIndexCreator, Label, Stack, Symbol, Text} from "shared";
 import {useTranslation} from "react-i18next";
 import {FC} from "react";
 

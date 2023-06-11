@@ -1,8 +1,7 @@
 import { FC } from 'react'
 
-import s from './PriceChangesGraph.module.scss'
 import * as NS from '../../namespace'
-import {Box} from "../../../../shared";
+import {Box} from "shared";
 interface IProps {
     changes: NS.IPrice[]
 }

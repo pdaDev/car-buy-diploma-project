@@ -1,9 +1,7 @@
 import {FC, MouseEventHandler} from "react";
-import {Button, Card, Label, Stack} from "../../../shared";
-import {useTranslation} from "react-i18next";
-import {Timestamp} from "firebase/firestore";
+import {Button, Card, Label, Stack} from "shared";
 import Icon from "@mdi/react";
-import {mdiBucket, mdiBucketOutline, mdiDeleteOutline} from "@mdi/js/commonjs/mdi";
+import {mdiDeleteOutline} from "@mdi/js/commonjs/mdi";
 
 interface IProps {
     label: string

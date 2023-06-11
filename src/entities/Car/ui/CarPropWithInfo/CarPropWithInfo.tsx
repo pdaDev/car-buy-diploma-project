@@ -1,14 +1,13 @@
 import {FC} from "react";
 import {
     CarPropType,
-    formatNumber,
     IHandbookItem,
     isHandbook,
     Label,
     Stack,
     useMultiLanguageHandbooks
-} from "../../../../shared";
-import {InfoModal} from "../../../../features/InfoModal";
+} from "shared";
+import {InfoModal} from "features/InfoModal";
 import {CAR_PROP_DESCRIPTION} from "../../lib/constants";
 import {useTranslation} from "react-i18next";
 

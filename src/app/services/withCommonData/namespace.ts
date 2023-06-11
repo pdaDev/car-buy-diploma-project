@@ -1,5 +1,5 @@
 import {IBrend, ICarBodyTypeHandbook, IColor, IGeneration, IHandbookItem, IModel} from "shared";
-import {IServerGeoLocationItem} from "../../../features/SelectGeoLocation/namespace";
+import {IServerGeoLocationItem} from "features/SelectGeoLocation/namespace";
 
 export interface IReduxState {
     handbooks: HandbookPayload<Handbook, ExtraHandbookType>

@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {IHandbookItem, Stack} from "../../../../shared";
+import {IHandbookItem, Stack} from "shared";
 import {CarPropWithInfo} from "../CarPropWithInfo/CarPropWithInfo";
 
 interface IProps {

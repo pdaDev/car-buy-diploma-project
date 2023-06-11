@@ -5,7 +5,7 @@ import {selectOpenedModals, selectOpenedModelsKeys} from "../../model/selectors"
 import {closeModal} from "../../model";
 import s from "../../ui/Modal.module.scss";
 import {createPortal} from "react-dom";
-import {usePopup} from "../../../../../shared";
+import {usePopup} from "shared";
 
 const modalNode = document.getElementById('modal')
 export const withPopup = (modalKey: NS.ModalsKeys) => (Component: ComponentType<NS.ModalProps>) => {

@@ -1,8 +1,8 @@
-import React, {FC, MouseEventHandler} from "react";
+import React, {FC} from "react";
 import s from './ManagementPanel.module.scss'
 import {useTranslation} from "react-i18next";
 import Icon from "@mdi/react";
-import {Stack, Tooltip} from "../../../../shared";
+import {Stack, Tooltip} from "shared";
 import * as NS from '../../namespace'
 
 

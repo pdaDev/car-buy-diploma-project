@@ -2,21 +2,17 @@ import {FC, useEffect, useState} from 'react'
 
 import s from './AuthFormContainer.module.scss'
 import {
-    Button,
-    Box,
-    Input,
-    Label,
     Switcher,
     Stack,
     Container,
     Card,
     getTranslationIndexCreator, createMultiLanguageOptions
-} from "../../../../shared";
-import {useAppDispatch} from "../../../../app/services";
+} from "shared";
+
 import {AuthForm} from "../AuthForm/AuthForm";
 import {RegisterForm} from "../RegisterForm/RegisterForm";
 import {ResetPasswordForm} from "../ResetPasswordForm/ResetPasswordForm";
-import {withPopup} from "../../../../app/services/withPopupProvider/lib/hocs";
+import {withPopup} from "app/services/withPopupProvider/lib/hocs";
 import {useTranslation} from "react-i18next";
 
 interface IProps {

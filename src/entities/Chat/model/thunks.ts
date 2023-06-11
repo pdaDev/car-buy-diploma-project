@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import * as NS from '../namespace'
-import {privateApi} from "../../../shared";
+import {privateApi} from "shared";
 
 
 export const getChatCars = createAsyncThunk(

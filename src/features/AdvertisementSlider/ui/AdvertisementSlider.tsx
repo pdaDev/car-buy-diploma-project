@@ -7,14 +7,13 @@ import {
     ICarNameWithId, Label,
     Slider,
     useMultiLanguageHandbooks
-} from "../../../shared";
-import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
-import {useAppNavigate, useAppSelector} from "../../../app/services";
-import {selectors as userSelectors} from "../../../entities/User";
+} from "shared";
+import {IAdvertisementListItem} from "entities/Advertisement/namespace";
+import {useAppNavigate} from "app/services";
 import {useTranslation} from "react-i18next";
-import {AdvertisementCard, NS} from "../../../entities/Advertisement";
+import {AdvertisementCard, NS} from "entities/Advertisement";
 import {AddRemoveToFavourites} from "../../OperateWithAdvertisementFavourites";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 
 interface IProps {

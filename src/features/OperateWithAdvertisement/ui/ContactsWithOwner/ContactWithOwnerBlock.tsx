@@ -1,14 +1,11 @@
-import {FC, useState} from "react";
+import {FC} from "react";
 
 import {NS} from 'entities/Advertisement'
-import {selectors as userSelectors} from 'entities/User'
-import {Box, Container, formatPhoneNumber, Stack} from "../../../../shared";
-import {UserBlock} from "../../../../shared/ui/User/UserBlock/UserBlock";
+import { Container, UserBlock} from "shared";
 import s from './ContactWtihOwner.module.scss'
 import {useTranslation} from "react-i18next";
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../../app/services";
 import {PhoneNumberBlock} from "./PhoneNumberBlock";
-import {useStartChat} from "../../../../entities/Chat";
+import {useStartChat} from "entities/Chat";
 
 interface IProps {
     loading?: boolean

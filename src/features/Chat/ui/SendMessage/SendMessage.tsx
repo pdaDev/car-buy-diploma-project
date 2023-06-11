@@ -1,22 +1,14 @@
 import {FC, useState} from "react";
-import {Card, ChatLoadedImage, Clickable, Image, Input, LoadedImage, Stack} from "../../../../shared";
+import {Card, ChatLoadedImage, Clickable, Image, Input, LoadedImage, Stack} from "shared";
 import Icon from "@mdi/react";
 import {mdiClose, mdiImage, mdiSend} from "@mdi/js/commonjs/mdi";
 import s from './SendMessage.module.scss'
 import {MessageTemplates} from "../MessageTemplates/MessageTemplates";
-import {updateDoc, arrayUnion, doc, Timestamp} from 'firebase/firestore'
-import {ref, getDownloadURL, uploadBytesResumable} from 'firebase/storage'
-import {useAppSelector} from "../../../../app/services";
-import {selectUserId} from "../../../../entities/User/model/selectors";
-import {db, storage} from "../../../../entities/Chat";
 // @ts-ignore
 import {v4 as uuid} from 'uuid'
 import {useTranslation} from "react-i18next";
 
 
-// // @ts-ignore
-// import firebase from "firebase";
-// import Timestamp = firebase.firestore.Timestamp;
 
 
 interface IProps {

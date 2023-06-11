@@ -1,22 +1,16 @@
 import {FC, useEffect, useState} from "react";
 import {
-    Card,
-    CarWithEquipmentAndCarBodyType,
-    createMultiLanguageOptions,
-    createOptions, getTranslationIndexCreator, IOption, Label, Stack,
-    useClassState
-} from "../../../shared";
-import {string} from "prop-types";
-import {use} from "i18next";
+    Selector,
+    createOptions, getTranslationIndexCreator, IOption, Stack,
+} from "shared";
+
 import {
     useGetCarEquipmentsAndGenerationVariantsQuery,
         useGetCarGenerationsQuery, useGetCarIdQuery,
     useGetCarModelsQuery
-} from "../../../entities/Car";
-import {selectBrends, useAppSelector} from "../../../app/services";
+} from "entities/Car";
+import {selectBrends, useAppSelector} from "app/services";
 import {useTranslation} from "react-i18next";
-import {Selector} from "../../../shared/ui/Selector/Selector";
-import {set} from "react-hook-form";
 
 interface IProps {
     onFinish: Function

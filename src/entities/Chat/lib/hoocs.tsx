@@ -1,5 +1,5 @@
-import {Component, ComponentType, FC, useEffect, useState} from "react";
-import {useAppDispatch, useAppSelector} from "../../../app/services";
+import {ComponentType, FC, useEffect, useState} from "react";
+import {useAppDispatch, useAppSelector} from "app/services";
 import {
     selectCars,
     selectCarsId, selectChats,
@@ -9,15 +9,15 @@ import {
     selectUsersId
 } from "../model/selectors";
 import {getChatCars, getChatUsers} from "../model/thunks";
-import {collection, doc, getDocs, onSnapshot, query, where, or} from "firebase/firestore";
+import {collection, onSnapshot, query, where, or} from "firebase/firestore";
 import {db} from "./config";
 import {setCars, setChats, setUsers} from "../model";
 import {selectUserId} from "../../User/model/selectors";
-import {IChatCardData, IReduxChat} from "../namespace";
+import {IReduxChat} from "../namespace";
 import {addChatNotification} from "../../Notification";
 import {getUserName} from "../../User";
 import {parseChatId} from "./helpers";
-import {useTestResults} from "../../../features/Test/lib/hooks";
+import {useTestResults} from "features/Test/lib/hooks";
 import {useAuthorize} from "../../User/lib/hooks";
 
 

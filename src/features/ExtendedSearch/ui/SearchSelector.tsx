@@ -1,7 +1,6 @@
 import {FC} from "react";
-import {Selector} from "../../../shared/ui/Selector/Selector";
 import {useTranslation} from "react-i18next";
-import {IOption} from "../../../shared";
+import {IOption, Selector} from "shared";
 
 interface IProps {
     options: IOption[]

@@ -1,25 +1,24 @@
 import {FC, useEffect, useMemo, useState} from "react";
-import * as NS from "../../../app/services/withPopupProvider/namespace";
+import * as NS from "app/services/withPopupProvider/namespace";
 import {
     Button,
     Card, cn,
     Container, debounce,
     getTranslationIndex,
     getTranslationIndexCreator,
-    Grid,
-    Label, Loader,
+    Label,
     Separator, Stack
-} from "../../../shared";
+} from "shared";
 import {useTranslation} from "react-i18next";
 import s from './SelectGeoLocation.module.scss'
 import {IServerGeoLocationItem} from "../namespace";
 import {LocationSelector} from "./LocationSelector";
-import {withPopup} from "../../../app/services/withPopupProvider/lib/hocs";
+import {withPopup} from "app/services/withPopupProvider/lib/hocs";
 import fetchJsonp from "fetch-jsonp";
 import {getGeoItemLabel} from "../lib/helpers";
 import Icon from "@mdi/react";
 import {mdiClose} from "@mdi/js/commonjs/mdi";
-import {selectRegions, useAppSelector} from "../../../app/services";
+import {selectRegions, useAppSelector} from "app/services";
 
 
 type Props = NS.IBaseModelProps & NS.ISetGeoPayload

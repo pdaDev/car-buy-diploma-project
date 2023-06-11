@@ -1,13 +1,11 @@
-import React, {FC, useEffect} from "react";
+import React, {FC} from "react";
 import {useSearchParams} from "react-router-dom";
-import {useGetCarCharacteristicsQuery, NS, CarPropBlock} from "../../../entities/Car";
-import {Card, Container, Label, Stack, Switcher} from "../../../shared";
-import {CarTitle} from "../../../entities/Car/ui/CarTitle/CarTitle";
-import {CarPropsByEquipment} from "../../../features/ChooseCarEquipment/ui/CarPropsByEquipment";
-import {CarPathNavigation} from "../../../features/CarPathNavigation/ui/CarPathNavigation";
-import {useAppNavigate} from "../../../app/services";
-import {CarGenerationSwitcher} from "../../../features/CarGenerationSwitcher";
-import {Selector} from "../../../shared/ui/Selector/Selector";
+import {useGetCarCharacteristicsQuery, CarPropBlock} from "entities/Car";
+import {Card, Container, Label, Stack} from "shared";
+import {CarTitle} from "entities/Car/ui/CarTitle/CarTitle";
+import {CarPropsByEquipment} from "features/ChooseCarEquipment/ui/CarPropsByEquipment";
+import {CarPathNavigation} from "features/CarPathNavigation";
+import {CarGenerationSwitcher} from "features/CarGenerationSwitcher";
 import {useTranslation} from "react-i18next";
 import {SAMPLE_CAR_CHARACTERISTICS} from "../lib/constants";
 

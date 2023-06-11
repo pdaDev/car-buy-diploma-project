@@ -13,9 +13,9 @@ import {CarClassItem} from "./CarClassItem";
 import {TagItem} from "./TagItem";
 
 import s from './BaseSearch.module.scss'
-import {selectBrends, selectHandbooks, useAppSelector} from "../../../app/services";
-import {current} from "@reduxjs/toolkit";
-import {useGetPopularBrendsQuery} from "../../../entities/Car";
+import {selectBrends, selectHandbooks, useAppSelector} from "app/services";
+
+import {useGetPopularBrendsQuery} from "entities/Car";
 
 interface IProps {
     type: SearchType;

@@ -1,10 +1,10 @@
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
+import {useAppDispatch, useAppNavigate, useAppSelector} from "app/services";
 import {combineChatId} from "./helpers";
 import * as NS from '../namespace'
-import {addCar, addCarId, addUser, addUserId} from "../model";
+import {addCar, addUser} from "../model";
 
-import {selectCarsId, selectUsers, selectUsersId} from "../model/selectors";
-import {ADMIN_USER_ID, ICarNameWithId, IUserCommonData} from "../../../shared";
+import {selectCarsId, selectUsersId} from "../model/selectors";
+import {ADMIN_USER_ID, ICarNameWithId, IUserCommonData} from "shared";
 import {selectUserId} from "../../User/model/selectors";
 
 export const useStartChat = (type: NS.ChatType, receiver?: IUserCommonData, advertisementId?: number, car?: ICarNameWithId) => {

@@ -1,6 +1,6 @@
 import {useDeleteReviewMutation} from "../api";
-import {useAppDispatch, useAppNavigate} from "../../../app/services";
-import {openModal} from "../../../app/services/withPopupProvider";
+import {useAppDispatch, useAppNavigate} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
 
 
 export const useReviewManagement = (id: number) => {

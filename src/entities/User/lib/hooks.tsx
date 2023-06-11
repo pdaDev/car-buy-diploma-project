@@ -1,6 +1,6 @@
-import {useAppDispatch, useAppSelector} from "../../../app/services";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {selectActiveStatus, selectAuthStatus, selectCurrentUser, selectUserId} from "../model/selectors";
+import {useAppDispatch, useAppSelector} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
+import {selectActiveStatus, selectAuthStatus, selectUserId} from "../model/selectors";
 
 
 export const useAuthorize = () => {

@@ -4,18 +4,13 @@ import {
     Button,
     Card, Container,
     filtersCreator,
-    ICarSearch,
-    Label,
-    RangeInput,
     Stack,
     useOpenStatus,
     useQuerySearchCar
-} from "../../../shared";
+} from "shared";
 import {useTranslation} from "react-i18next";
 import {NS} from 'entities/Review'
-import {IReviewSearchData} from "../../../entities/Review/namespace";
-import {useForm} from "react-hook-form";
-import {F} from "@storybook/react-webpack5/dist/types-6a41b796";
+import {IReviewSearchData} from "entities/Review/namespace";
 import {ReviewRangeFilter} from "./ReviewRangeFilter";
 
 interface IProps {

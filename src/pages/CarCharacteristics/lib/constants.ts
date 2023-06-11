@@ -1,5 +1,5 @@
 import * as NS from 'entities/Car/namespace'
-import {EMPTY_CAR_BODY_TYPE, EMPTY_HANDBOOK_ITEM} from "../../../features/Administration/lib/constants";
+import {EMPTY_CAR_BODY_TYPE, EMPTY_HANDBOOK_ITEM} from "features/Administration/lib/constants";
 
 export const SAMPLE_CAR_CHARACTERISTICS: NS.ISererCarCharacteristics['info'] = {
     performance_indicators: {

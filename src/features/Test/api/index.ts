@@ -1,5 +1,5 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
-import {axiosBaseQuery} from "../../../shared";
+import {axiosBaseQuery} from "shared";
 import * as NS from '../namespace'
 
 export const testAPI = createApi({

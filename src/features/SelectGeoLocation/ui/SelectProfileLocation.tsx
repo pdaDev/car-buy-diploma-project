@@ -1,10 +1,10 @@
-import {FC, useEffect, useState} from "react";
-import {useAppDispatch} from "../../../app/services";
+import {FC, useState} from "react";
+import {useAppDispatch} from "app/services";
 import {IServerGeoLocationItem} from "../namespace";
-import {getPersonalGeoLocation, getSearchGeoLocation, setPersonalGeoLocation, setSearchGeoLocation} from "../api";
+import {getPersonalGeoLocation, setPersonalGeoLocation} from "../api";
 import {useTranslation} from "react-i18next";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {Button, Clickable, Label, Stack} from "../../../shared";
+import {openModal} from "app/services/withPopupProvider";
+import {Button, Clickable, Label, Stack} from "shared";
 import Icon from "@mdi/react";
 import {mdiMapMarker, mdiPencil} from "@mdi/js/commonjs/mdi";
 import {getGeoItemLabel} from "../lib/helpers";

@@ -2,8 +2,7 @@ import {FC} from "react";
 import * as NS from "../../namespace";
 import s from './NavigationButtons.module.scss'
 import {useTranslation} from "react-i18next";
-import {Button, Container, getTranslationIndexCreator, Stack} from "../../../../shared";
-import {MultipleValue} from "../../namespace";
+import {Button, Container, getTranslationIndexCreator, Stack} from "shared";
 interface IProps {
     steps: NS.Step[]
     currentStep: string

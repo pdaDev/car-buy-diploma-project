@@ -6,9 +6,9 @@ import {
     IHandbookItem,
     IOption, LoadedImage,
     Nullable
-} from "../../shared";
-import {handbooks} from "../../app/services/withCommonData/namespace";
-import {IServerUser} from "../../entities/User";
+} from "shared";
+import {handbooks} from "app/services/withCommonData/namespace";
+import {IServerUser} from "entities/User";
 import {number} from "prop-types";
 
 export type R = ''

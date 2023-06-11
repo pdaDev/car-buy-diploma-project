@@ -1,11 +1,11 @@
-import {IServerGeoLocationItem} from "../../../features/SelectGeoLocation/namespace";
+import {IServerGeoLocationItem} from "features/SelectGeoLocation/namespace";
 import {ReactNode} from "react";
 import {
     CompareType,
     IServerCompareAdvertisementCharacteristics,
     IServerCompareItem,
     IServerCompareModelCharacteristics
-} from "../../../features/CompareSmth/namespace";
+} from "features/CompareSmth/namespace";
 
 interface IInfoPayload {
     red: string

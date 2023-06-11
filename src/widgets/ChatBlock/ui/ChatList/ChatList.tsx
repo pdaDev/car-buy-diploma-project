@@ -1,4 +1,4 @@
-import {FC, useEffect, useMemo, useState} from "react";
+import {FC, useMemo, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {
     Button,
@@ -8,17 +8,16 @@ import {
     Label,
     Separator,
     Stack,
-    Switcher, Symbol, useClassState
-} from "../../../../shared";
-import {addCar, addUser, ChatCard, combineChatId, db, NS, setCars, setUsers, useStartChat} from 'entities/Chat'
-import {query, collection, where, getDoc, getDocs, doc, setDoc, Timestamp} from "firebase/firestore";
-import {selectGenerations, useAppDispatch, useAppSelector} from "../../../../app/services";
-import {selectAdminStatus, selectUserId} from "../../../../entities/User/model/selectors";
-import {selectCars, selectChats, selectUsers} from "../../../../entities/Chat/model/selectors";
+    Switcher, Symbol
+} from "shared";
+import {ChatCard, NS, useStartChat} from 'entities/Chat'
+import {useAppSelector} from "app/services";
+import {selectAdminStatus, selectUserId} from "entities/User/model/selectors";
+import {selectCars, selectChats, selectUsers} from "entities/Chat/model/selectors";
 import Icon from "@mdi/react";
 import {mdiFaceAgent} from "@mdi/js/commonjs/mdi";
-import {IChatCardData} from "../../../../entities/Chat/namespace";
-import {getUserName} from "../../../../entities/User";
+import {IChatCardData} from "entities/Chat/namespace";
+import {getUserName} from "entities/User";
 import s from './ChatList.module.scss'
 
 interface IProps {

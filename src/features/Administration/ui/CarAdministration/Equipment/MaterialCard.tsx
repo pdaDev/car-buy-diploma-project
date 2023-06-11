@@ -1,6 +1,6 @@
 import {FC, MouseEventHandler} from "react";
 import s from './Equipment.module.scss'
-import {cn, Label} from "../../../../../shared";
+import {cn, Label} from "shared";
 import Icon from "@mdi/react";
 import {mdiCircle} from "@mdi/js/commonjs/mdi";
 

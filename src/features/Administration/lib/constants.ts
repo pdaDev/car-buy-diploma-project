@@ -1,4 +1,4 @@
-import {ICarBodyTypeHandbook, IColor, IHandbookItem} from "../../../shared";
+import {ICarBodyTypeHandbook, IColor, IHandbookItem} from "shared";
 import  * as NS from '../namespace'
 
 export const EMPTY_HANDBOOK_ITEM: IHandbookItem = {

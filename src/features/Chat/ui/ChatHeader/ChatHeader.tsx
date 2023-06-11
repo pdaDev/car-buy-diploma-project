@@ -1,18 +1,16 @@
 import {FC, useState} from "react";
-import {Button, Card, Clickable, ICarNameWithId, Input, IUserCommonData, Stack} from "../../../../shared";
+import {Button, Card, Clickable, ICarNameWithId, Input, IUserCommonData, Stack} from "shared";
 import s from './ChatHeader.module.scss'
-import {ChatLabel} from "../../../../entities/Chat";
-import {useAppDispatch, useAppNavigate} from "../../../../app/services";
+import {ChatLabel} from "entities/Chat";
+import {useAppDispatch, useAppNavigate} from "app/services";
 import Icon from "@mdi/react";
 import {
-    mdiArrowBottomLeft,
-    mdiArrowULeftBottom,
     mdiChevronLeft,
     mdiClose,
     mdiMagnify,
     mdiOpenInNew
 } from "@mdi/js/commonjs/mdi";
-import {toggleSideMenuChat} from "../../../../app/services/withCommonLayout/model/slice";
+import {toggleSideMenuChat} from "app/services/withCommonLayout/model/slice";
 import {useTranslation} from "react-i18next";
 
 interface IProps {

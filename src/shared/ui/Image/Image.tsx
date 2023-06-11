@@ -1,9 +1,8 @@
 import {FC} from 'react'
 
-import s from './Image.module.scss'
 import styled from "styled-components";
-import {useAppDispatch} from "../../../../../car-buy/src/app/services";
-import {openModal} from "../../../../../car-buy/src/app/services/withPopupProvider";
+import {useAppDispatch} from "app/services";
+import {openModal} from "app/services/withPopupProvider";
 // @ts-ignore
 import template from './template.png'
 

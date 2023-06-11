@@ -2,14 +2,12 @@ import {FC} from "react";
 import * as NS from '../../namespace'
 import {
     Container,
-    getTranslationIndexCreator,
     Grid,
     Label,
-    Separator,
     Stack,
     Text,
     useMultiLanguageHandbooks
-} from "../../../../shared";
+} from "shared";
 import {useTranslation} from "react-i18next";
 import {SelectingElement} from "./SelectingElement";
 

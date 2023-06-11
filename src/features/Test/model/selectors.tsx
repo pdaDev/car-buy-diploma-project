@@ -1,5 +1,5 @@
-import {StateType} from "../../../app/services";
+import {StateType} from "app/services";
 
 
 const selectDate = (state: StateType) => state.savedTestResults
-export const selectSavedResultsId = (state: StateType) => state.savedTestResults.savedResultsId
+export const selectSavedResultsId = (state: StateType) => selectDate(state).savedResultsId

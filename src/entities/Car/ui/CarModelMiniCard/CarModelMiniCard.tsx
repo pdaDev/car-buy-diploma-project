@@ -1,8 +1,7 @@
 import {FC, MouseEventHandler} from "react";
 import s from './CarBrendCar.module.scss'
 import * as NS from '../../namespace'
-import {useParams} from "react-router-dom";
-import {addPrefix, checkIsRussian, cn, createRuWordEndingByNumberGetter, Label, Stack} from "../../../../shared";
+import {addPrefix, checkIsRussian, cn, createRuWordEndingByNumberGetter, Label} from "shared";
 import {useTranslation} from "react-i18next";
 
 export const CarModelMiniCard: FC<NS.IModelMiniCard & { onClick: Function, size: NS.ModelMiniCardSize, loading: boolean }> = ({

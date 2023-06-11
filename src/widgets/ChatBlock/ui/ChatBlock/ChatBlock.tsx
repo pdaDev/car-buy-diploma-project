@@ -4,10 +4,10 @@ import {Chat} from "../Chat/Chat";
 import {ChatList} from "../ChatList/ChatList";
 
 import 'firebase/firestore'
-import {useAuthorize} from "../../../../entities/User/lib/hooks";
-import {Button, Container, getTranslationIndexCreator, Label, Stack, Text} from "../../../../shared";
+import {useAuthorize} from "entities/User/lib/hooks";
+import { getTranslationIndexCreator} from "shared";
 import {useTranslation} from "react-i18next";
-import {AuthMotivation} from "../../../../features/Auth";
+import {AuthMotivation} from "features/Auth";
 
 
 interface IProps {

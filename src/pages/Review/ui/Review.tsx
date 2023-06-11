@@ -1,26 +1,24 @@
 import {
     Card,
     Container,
-    FormMode, getCarNameFromObjectWithId, getTimeWithoutSeconds,
-    IServerReviewListItem,
+    getCarNameFromObjectWithId, getTimeWithoutSeconds,
+    UserBlock,
     Label, Loader,
-    Slider,
     Stack,
     Text,
     useQueryParamsFormMode, useTabTile
-} from "../../../shared";
-import {FC, useState} from "react";
-import {useGetReviewQuery, NS, useEditReviewMutation, ReviewScoreBlock, ReviewCard} from "../../../entities/Review";
+} from "shared";
+import {FC} from "react";
+import {useGetReviewQuery, NS, useEditReviewMutation, ReviewScoreBlock} from "entities/Review";
 import {useParams, useSearchParams} from "react-router-dom";
-import {CarTitle} from "../../../entities/Car/ui/CarTitle/CarTitle";
+import {CarTitle} from "entities/Car/ui/CarTitle/CarTitle";
 import {selectors} from 'entities/User'
-import {UserBlock} from "../../../shared/ui/User/UserBlock/UserBlock";
 import {useTranslation} from "react-i18next";
-import {useAppNavigate, useAppSelector} from "../../../app/services";
-import {ReviewCreateForm} from "../../../widgets/ReviewCreateForm";
-import {ReviewManagementBlock} from "../../../features/ReviewManagementBlock";
-import {ReviewPhotoViewer} from "../../../features/ReviewPhotoViewer";
-import {ReviewSlider} from "../../../features/ReviewSlider";
+import {useAppNavigate, useAppSelector} from "app/services";
+import {ReviewCreateForm} from "widgets/ReviewCreateForm";
+import {ReviewManagementBlock} from "features/ReviewManagementBlock";
+import {ReviewPhotoViewer} from "features/ReviewPhotoViewer";
+import {ReviewSlider} from "features/ReviewSlider";
 
 export const Review: FC = () => {
     const {id} = useParams()

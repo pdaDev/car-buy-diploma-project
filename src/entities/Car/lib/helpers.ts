@@ -1,5 +1,5 @@
 import * as NS from '../namespace'
-import {formatNumber, formatPrice, IServerGenerationWithPeriod} from "../../../shared";
+import {formatNumber, formatPrice, IServerGenerationWithPeriod} from "shared";
 export function getGenerationPeriod(generation: Pick<IServerGenerationWithPeriod, 'start' | 'end'>) {
    return `${new Date(generation.start).getFullYear()} - ${generation.end ? new Date(generation.end ).getFullYear() : 'н.в.'}`
 }

@@ -2,32 +2,24 @@ import {FC} from "react";
 import {CommonListForm} from "../CommonListForm";
 import * as NS from '../../namespace'
 import {
-    Container, createHandbookOptions, createOptions,
-    Details,
+    Selector, createHandbookOptions, createOptions,
     filtersCreator,
-    Grid,
     Label,
     Stack,
     useClassState,
     useMultiLanguageHandbooks
-} from "../../../../shared";
+} from "shared";
 import {useGetEnginesQuery, useGetProducersQuery} from "../../api";
-import {PropsRender} from "../PropsRender";
-import {getCarPropsIndex} from "../../lib/helpers";
-import {useFormOpenStatus} from "../../lib/hooks";
 import {CommonSingleEntityForm} from "../CommonSingleEntityForm";
 import {apiRoutes, EMPTY_TRANSMISSION} from "../../lib/constants";
-import {ProducerCard} from "../ProducersAdministration/ProducerCard";
-import {ProducerForm} from "../ProducersAdministration/ProducerForm";
 import {EngineCard} from "./EngineCard";
 import {EngineForm} from "./EngineForm";
-import {Selector} from "../../../../shared/ui/Selector/Selector";
-import {selectHandbook, useAppSelector} from "../../../../app/services";
+import {selectHandbook, useAppSelector} from "app/services";
 import {useTranslation} from "react-i18next";
 
 export const EnginesAdministration: FC = () => {
 
-    const { data: producers, isLoading } = useGetProducersQuery({ type: 'options' })
+    const { data: producers } = useGetProducersQuery({ type: 'options' })
 
     const transmissionTypes = useAppSelector(selectHandbook('engineTypes'))
     const  [data, setData] = useClassState<NS.TransmissionsFilterData>({ producer_id: null, type_code: null })

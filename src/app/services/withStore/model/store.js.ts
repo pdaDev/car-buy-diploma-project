@@ -6,16 +6,16 @@ import {notificationReducer} from "entities/Notification";
 import {popupReducer} from "../../withPopupProvider";
 import {commonLayoutReducer} from "../../withCommonLayout";
 import { advertisementAPI } from 'entities/Advertisement'
-import {searchApi} from "../../../../pages/Search";
-import {userReducer} from "../../../../entities/User";
-import {favouritesReducer} from "../../../../features/OperateWithAdvertisementFavourites";
-import {reviewAPI} from "../../../../entities/Review";
-import {carApi} from "../../../../entities/Car";
-import {compareReducer} from "../../../../features/CompareSmth";
-import {chatReducer, chatSlice} from "../../../../entities/Chat";
-import {adminAPI} from "../../../../features/Administration";
-import {testAPI} from "../../../../features/Test/api";
-import {savedTestResultReducer} from "../../../../features/Test/model/slice";
+import {searchApi} from "pages/Search";
+import {userReducer} from "entities/User";
+import {favouritesReducer} from "features/OperateWithAdvertisementFavourites";
+import {reviewAPI} from "entities/Review";
+import {carApi} from "entities/Car";
+import {compareReducer} from "features/CompareSmth";
+import {chatReducer} from "entities/Chat";
+import {adminAPI} from "features/Administration";
+import {testAPI} from "features/Test/api";
+import {savedTestResultReducer} from "features/Test/model/slice";
 
 
 

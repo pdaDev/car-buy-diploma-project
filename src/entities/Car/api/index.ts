@@ -1,5 +1,5 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {axiosBaseQuery, ICarName, IServerCarName} from "../../../shared";
+import {createApi} from "@reduxjs/toolkit/query/react";
+import {axiosBaseQuery, IServerCarName} from "shared";
 import * as NS from '../namespace'
 import {IServerBrend} from "../namespace";
 

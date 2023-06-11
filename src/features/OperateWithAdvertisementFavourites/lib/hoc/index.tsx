@@ -1,8 +1,8 @@
 import {ComponentType, FC, useEffect} from "react";
-import {useAppDispatch, useAppSelector} from "../../../../app/services";
-import {selectors as userSelectors} from 'entities/User'
+import {useAppDispatch} from "app/services";
+
 import {cleanFavourites, getFavouritesIdsList} from "../../model";
-import {useAuthorize} from "../../../../entities/User/lib/hooks";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 export const withFavourites = (Component: ComponentType) => {
     const Container: FC = (props) => {

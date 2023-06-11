@@ -5,7 +5,6 @@ import styled, {css} from "styled-components";
 import {Container} from "../Layout";
 import {Label} from "../Label/Label";
 import {getPercents} from "../../lib";
-import {TestData} from "../../../../../car-buy/src/features/Test/namespace";
 
 type Step = {
     weight: number

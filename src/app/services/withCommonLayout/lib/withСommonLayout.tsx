@@ -1,11 +1,11 @@
 import {ComponentType, FC} from "react";
 import {selectors} from '../model'
 import {selectInitializedStatus, useAppSelector} from "../../index";
-import {Header} from "../../../../widgets/Header";
-import {Footer} from "../../../../widgets/Footer";
-import {Stack, Container as UIContainer, Loader, Card} from "../../../../shared";
-import {NotificationModule} from "../../../../widgets/Notification/ui/NotificationModule";
-import {SideMenu} from "../../../../widgets/SideMenu";
+import {Header} from "widgets/Header";
+import {Footer} from "widgets/Footer";
+import {Stack, Container as UIContainer, Loader} from "shared";
+import {NotificationModule} from "widgets/Notification/ui/NotificationModule";
+import {SideMenu} from "widgets/SideMenu";
 
 export const withCommonLayout = (Component: ComponentType) => {
     const Container: FC = () => {

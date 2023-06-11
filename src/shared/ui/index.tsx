@@ -44,6 +44,11 @@ export { Switcher } from './Switcher/Switcher';
 export { Table } from './Table/Table';
 export { Label } from './Label/Label'
 export { Button } from './Buttons'
+export { Calendar } from './Inputs/DateInput/Calendar'
+export { MotivationBlock } from './MotivationBlock/MotivationBlock'
+export { Selector } from './Selector/Selector'
+export { NavigationButton } from './Slider/NavigationButton'
+
 
 export * from './Layout'
 export * from './icons'

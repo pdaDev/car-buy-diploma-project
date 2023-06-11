@@ -1,25 +1,24 @@
 import React, {FC, ReactNode, useState} from "react";
 import {
-    CardType, Container, DataGrid, formatNumber,
+    CardType, DataGrid, formatNumber,
     getCarName,
     getTimeAccordingNow,
-    getYear, Grid, Label,
     List, sorter,
     Stack,
     useMultiLanguageHandbooks
-} from "../../../shared";
-import {IAdvertisementListItem} from "../../../entities/Advertisement/namespace";
-import {AdvertisementCard} from "../../../entities/Advertisement";
-import {AddRemoveToFavourites} from "../../../features/OperateWithAdvertisementFavourites";
+} from "shared";
+import {IAdvertisementListItem} from "entities/Advertisement/namespace";
+import {AdvertisementCard} from "entities/Advertisement";
+import {AddRemoveToFavourites} from "features/OperateWithAdvertisementFavourites";
 import {useTranslation} from "react-i18next";
 import {NS} from 'entities/Advertisement'
-import {selectHandbook, useAppNavigate, useAppSelector} from "../../../app/services";
+import {useAppNavigate} from "app/services";
 
-import {SortBLock} from "../../../features/SortBlock";
-import {AdvertisementManagementPanel} from "../../../features/ManagemenentPanel";
-import {ChangeAdvertisementType} from "../../../features/ChangeADvertisementType";
-import {getEngineCharacteristicsLabel} from "../../../entities/Advertisement/lib/helpers";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+import {SortBLock} from "features/SortBlock";
+import {AdvertisementManagementPanel} from "features/ManagemenentPanel";
+import {ChangeAdvertisementType} from "features/ChangeADvertisementType";
+import {getEngineCharacteristicsLabel} from "entities/Advertisement/lib/helpers";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 
 interface IProps {

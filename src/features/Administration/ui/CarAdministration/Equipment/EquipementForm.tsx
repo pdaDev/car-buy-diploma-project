@@ -2,8 +2,8 @@ import {FC, useState} from "react";
 import * as NS from '../../../namespace'
 import {FormBuilder} from "../../FormBuilder/FormBuilder";
 import {apiRoutes, EMPTY_EQUIPMENT, EMPTY_GENERATION} from "../../../lib/constants";
-import {selectHandbooks, useAppSelector} from "../../../../../app/services";
-import {ColorMark, createOptions, IColor, IHandbookItem, Stack, useMultiLanguageHandbooks} from "../../../../../shared";
+import {selectHandbooks, useAppSelector} from "app/services";
+import {ColorMark, createOptions, IColor, IHandbookItem, Stack, useMultiLanguageHandbooks} from "shared";
 import {useGetEnginesQuery, useGetProducersQuery, useGetTransmissionsQuery} from "../../../api";
 import {MaterialCard} from "./MaterialCard";
 import {getCarPropsIndex} from "../../../lib/helpers";

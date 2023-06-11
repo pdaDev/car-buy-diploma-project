@@ -1,7 +1,6 @@
 import {FC} from 'react'
 
-import {IOption, Label, Switcher} from "../../../shared";
-import {Selector} from "../../../shared/ui/Selector/Selector";
+import {IOption, Label, Switcher, Selector} from "shared";
 import {setTheme, useAppDispatch, selectCurrentTheme, useAppSelector, selectLanguage, setLanguage} from 'app/services'
 
 import s from './UISettings.module.scss'

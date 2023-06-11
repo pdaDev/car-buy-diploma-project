@@ -1,5 +1,5 @@
 import {FC, ReactNode} from "react";
-import {Card, cn, Container, Label, Stack} from "../../../../shared";
+import {Card, cn, Container, Label, Stack} from "shared";
 import s from './AdvertisementCreateForm.module.scss'
 import Icon from "@mdi/react";
 import {mdiCheck} from "@mdi/js/commonjs/mdi";

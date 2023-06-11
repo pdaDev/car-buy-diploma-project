@@ -9,15 +9,11 @@ import {
     getTranslationIndexCreator, IUserCommonData,
     Label,
     Stack,
-    Text, UserNickname
-} from "../../../../shared";
+    Text
+} from "shared";
 import {mdiDeleteOutline} from "@mdi/js";
 import {useTranslation} from "react-i18next";
 import {IMessage} from "../../namespace";
-import {arrayUnion, arrayRemove, doc, Timestamp, updateDoc} from "firebase/firestore";
-import {db, storage} from "../../lib/config";
-import {v4 as uuid} from "uuid";
-import {ref, deleteObject} from "firebase/storage";
 import {getUserName, IUser, IUserData} from "../../../User";
 
 interface IProps {

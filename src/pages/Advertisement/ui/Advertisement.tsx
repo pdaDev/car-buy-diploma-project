@@ -1,5 +1,5 @@
-import React, {FC, useEffect, useState} from "react";
-import {useParams, useSearchParams} from "react-router-dom";
+import React, {FC, useEffect} from "react";
+import {useParams} from "react-router-dom";
 import {selectors} from 'entities/User'
 import {
     AdvertisementDescriptionBLock,
@@ -7,32 +7,30 @@ import {
     useGetAdvertisementQuery,
     AdvertisementCarPropsBlock,
     NS, usePatchAdMutation, AdvertisementFullscreenImageBanner
-} from "../../../entities/Advertisement";
+} from "entities/Advertisement";
 import {
-    Button, Card,
+    Button,
     Container,
-    FormMode, getCarName, getCarNameFromModelWithId,
+    getCarNameFromModelWithId,
     ImageSlider, Loader,
     Stack,
-    useClassState,
     useQueryParamsFormMode,
     useTabTile
-} from "../../../shared";
-import {useAppDispatch, useAppNavigate, useAppSelector} from "../../../app/services";
-import {AddRemoveToFavourites} from "../../../features/OperateWithAdvertisementFavourites";
+} from "shared";
+import {useAppDispatch, useAppNavigate, useAppSelector} from "app/services";
+import {AddRemoveToFavourites} from "features/OperateWithAdvertisementFavourites";
 import {
     AdvertisementControlPanel,
     ContactWithOwnerBlock
-} from "../../../features/OperateWithAdvertisement";
+} from "features/OperateWithAdvertisement";
 import {useTranslation} from "react-i18next";
-import {ReviewScoreBlock} from "../../../entities/Review";
-import {saveAdvertisementToHistory} from "../../../entities/Advertisement/api/historyAPI";
-import {addToCompare, removeFromCompare, useContentCompare} from "../../../features/CompareSmth";
-import {selectCompareAds} from "../../../features/CompareSmth/model/selectors";
-import {AdvertisementForm} from "../../../widgets/AdvertisementCreateForm";
-import {StatusCode} from "../../../entities/Advertisement/namespace";
-import {openModal} from "../../../app/services/withPopupProvider";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+import {ReviewScoreBlock} from "entities/Review";
+import {saveAdvertisementToHistory} from "entities/Advertisement/api/historyAPI";
+import {addToCompare, removeFromCompare, useContentCompare} from "features/CompareSmth";
+import {AdvertisementForm} from "widgets/AdvertisementCreateForm";
+import {StatusCode} from "entities/Advertisement/namespace";
+import {openModal} from "app/services/withPopupProvider";
+import {useAuthorize} from "entities/User/lib/hooks";
 
 
 export const Advertisement: FC = () => {

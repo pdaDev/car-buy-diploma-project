@@ -4,12 +4,11 @@ import s from './HeaderUserMenu.module.scss'
 import {
     Button,
     cn,
-    getTranslationIndex,
     getTranslationIndexCreator,
     Label,
     useBlurFocus,
     useOpenStatus
-} from "../../../shared";
+} from "shared";
 import {CSSTransition} from "react-transition-group";
 import {useTranslation} from "react-i18next";
 

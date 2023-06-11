@@ -1,6 +1,6 @@
 import {FC} from "react";
-import {Switcher} from "../../../shared";
-import {useAppNavigate} from "../../../app/services";
+import {Switcher} from "shared";
+import {useAppNavigate} from "app/services";
 import {useTranslation} from "react-i18next";
 
 interface IProps {

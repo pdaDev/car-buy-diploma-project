@@ -1,8 +1,8 @@
 import {FC} from "react";
-import {ReviewCreateForm} from "../../../widgets/ReviewCreateForm";
-import {useCreateReviewMutation, NS} from "../../../entities/Review";
-import {useAppNavigate} from "../../../app/services";
-import {useNavigationPermission} from "../../../shared";
+import {ReviewCreateForm} from "widgets/ReviewCreateForm";
+import {useCreateReviewMutation} from "entities/Review";
+import {useAppNavigate} from "app/services";
+import {useNavigationPermission} from "shared";
 
 export const CreateReview: FC = () => {
 

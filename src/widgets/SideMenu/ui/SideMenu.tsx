@@ -1,22 +1,20 @@
-import {FC, useEffect, useState} from "react";
+import {FC, useEffect} from "react";
 import s from './SideMenu.module.scss'
 import Icon from "@mdi/react";
 import {mdiBellOutline, mdiChatOutline} from "@mdi/js/commonjs/mdi";
-import {cn} from "../../../shared";
+import {cn} from "shared";
 import {ChatBlock} from "../../ChatBlock";
-import {NotificationModule} from "../../Notification/ui/NotificationModule";
 import {
     selectors as slc,
     useAppDispatch,
     useAppSelector
-} from "../../../app/services";
-import {toggleSideMenuChat, toggleSideMenuNotifications} from "../../../app/services/withCommonLayout/model/slice";
-import {selectModalCurrentChat} from "../../../entities/Chat/model/selectors";
-import {setModalCurrentChat} from "../../../entities/Chat";
-import {SideMenuNotifications} from "../../../features/SideMenuNotifications/ui/SideMenyNotifications";
-import {getNotViewedNotificationsCount} from "../../../entities/Notification/api";
-import {selectNotViewedNotificationsCount} from "../../../entities/Notification/model/selectors";
-import {useAuthorize} from "../../../entities/User/lib/hooks";
+} from "app/services";
+import {toggleSideMenuChat, toggleSideMenuNotifications} from "app/services/withCommonLayout/model/slice";
+import {selectModalCurrentChat} from "entities/Chat/model/selectors";
+import {setModalCurrentChat} from "entities/Chat";
+import {SideMenuNotifications} from "features/SideMenuNotifications/ui/SideMenyNotifications";
+import {selectNotViewedNotificationsCount} from "entities/Notification/model/selectors";
+
 
 
 export const SideMenu: FC = () => {

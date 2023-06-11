@@ -1,9 +1,9 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import * as NS from "../namespace";
-import {api, clearRefreshToken, clearToken, getToken, privateApi, saveRefreshToken, saveToken} from "../../../shared";
+import {api, clearRefreshToken, clearToken, getToken, privateApi, saveRefreshToken, saveToken} from "shared";
 import {addInformNotification, addSystemNotification} from 'entities/Notification'
-import {closeModal} from "../../../app/services/withPopupProvider";
-import {initialize} from "../../../app/services/withCommonData/model/slice";
+import {closeModal} from "app/services/withPopupProvider";
+import {initialize} from "app/services/withCommonData/model/slice";
 
 export const register = createAsyncThunk(
     'register',

@@ -1,24 +1,22 @@
 import {FC} from "react";
 import {Step, StepsContainer} from "./StepsContainer";
 import {ChooseConcreteCar} from "../../../ChooseConcreteCar";
-import {Selector} from "../../../../shared/ui/Selector/Selector";
 import {
     Checkbox, Container, getTranslationIndex, getTranslationIndexCreator, IOption, LoadedImage, LoadImages,
     NumberInput,
     PhoneNumberInput,
+    Selector,
     RegisterFunction,
     RUB_SYMBOL,
     Stack,
     Text,
     TextArea
-} from "../../../../shared";
+} from "shared";
 import {StepWrapper} from "./StepWrapper";
 import {PriceInfo} from "./PriceInfo";
 import {NS} from 'entities/Advertisement'
 import {useTranslation} from "react-i18next";
-import {IPriceRange} from "../../../../entities/Car/namespace";
-import {validators} from '../../lib/validators'
-import {getPersonalGeoLocation} from "../../../SelectGeoLocation/api";
+import {IPriceRange} from "entities/Car/namespace";
 import {SelectPersonalGeoLocation} from "../../../SelectGeoLocation/ui/SelectProfileLocation";
 
 type FormWithPhoneNumber = NS.AdvertisementFormState & { phoneNumber: string }

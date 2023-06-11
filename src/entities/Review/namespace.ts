@@ -1,12 +1,9 @@
 import {
-    ICarName,
-    IUserCommonData,
     ReviewPoints,
     IServerCarName,
     IServerReviewListItem,
-    ICarSearch,
     RangeFilter, ReviewPointsWithoutTotal, IRetrieveImage
-} from "../../shared";
+} from "shared";
 
 
 

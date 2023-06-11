@@ -1,10 +1,10 @@
 import {FC} from "react";
 import * as NS from '../../namespace'
 import {useGetProducersQuery} from "../../api";
-import {useHandbook} from "../../../../app/services/withCommonData/lib/hooks";
-import {selectHandbook, selectHandbooks, useAppSelector} from "../../../../app/services";
+
+import { selectHandbooks, useAppSelector} from "app/services";
 import {useTranslation} from "react-i18next";
-import {createHandbookOptions, createOptions, useMultiLanguageHandbooks} from "../../../../shared";
+import { createOptions, useMultiLanguageHandbooks} from "shared";
 import {FormBuilder} from "../FormBuilder/FormBuilder";
 import {apiRoutes, EMPTY_ENGINE, EMPTY_TRANSMISSION} from "../../lib/constants";
 import {getCarPropsIndex} from "../../lib/helpers";

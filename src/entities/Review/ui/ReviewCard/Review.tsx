@@ -1,25 +1,16 @@
 import {FC, MouseEventHandler, ReactNode} from 'react'
 
 import {
-    Box,
     CardImageViewer,
     Container,
     Label,
     Stack,
     Text,
-    Symbol,
-    UserAvatar,
-    UserNickname,
-    CardType, addPrefix, cn, Button, IServerReviewListItem, getCarNameFromObjectWithId, getCarName
-} from "../../../../shared";
-import * as NS from '../../namespace'
-import {UserBlock} from "../../../../shared/ui/User/UserBlock/UserBlock";
+    UserBlock,
+    CardType, addPrefix, cn, Button, IServerReviewListItem, getCarNameFromObjectWithId
+} from "shared";
 import s from './Review.module.scss'
 import {useTranslation} from "react-i18next";
-import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
-
-
 
 
 interface IProps {

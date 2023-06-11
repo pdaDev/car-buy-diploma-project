@@ -1,10 +1,9 @@
 // @ts-nocheck
 import {FC} from "react";
-import {CarPropType, cn, Container, flatCarProps, Grid, isHandbook, Label, Stack} from "../../../../shared";
+import {cn, Container, isHandbook, Label} from "shared";
 import * as NS from '../../namespace'
 import {useTranslation} from "react-i18next";
-import {CarPropLine} from "../../../../entities/Car/ui/CarPropLine/CarPropLine";
-import {CarPropWithInfo} from "../../../../entities/Car/ui/CarPropWithInfo/CarPropWithInfo";
+import {CarPropWithInfo} from "entities/Car/ui/CarPropWithInfo/CarPropWithInfo";
 import styled from "styled-components";
 import s from './CompareCharacteristics.module.scss'
 
